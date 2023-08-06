@@ -19,7 +19,7 @@ const About = () => {
             User-centric designs that evoke emotions. Lifelong learner. Let's
             collaborate and create something extraordinary.
           </p>
-          <a download="" href={Resume} className="button button_flex">
+          <a download="Shihab Rahman S.pdf" href={Resume} className="button button_flex">
             Download CV
             <i class="uil uil-file-bookmark-alt button_icon"></i>
           </a>

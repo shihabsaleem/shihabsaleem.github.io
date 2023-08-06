@@ -9,11 +9,13 @@ const Portfolio = () => {
       title: "Union",
       description: "College Electoral Web App",
       image: union,
+      link: "https://github.com/shihabsaleem/unionCES",
     },
     {
       title: "AR Wardrobe",
       description: "E Commerce with AR",
       image: arwardrobe,
+      link: "https://github.com/shihabsaleem/AR-Wardrobe",
     },
 
     // Add more projects here
@@ -28,11 +30,13 @@ const Portfolio = () => {
         {projects.map((project, index) => (
           <div className="portfolio_content" key={index}>
             <div className="portfolio_item">
-              <img
-                src={project.image} // Updated image source
-                alt={project.title}
-                className="portfolio_img"
-              />
+              <a href={project.link}>
+                <img
+                  src={project.image} // Updated image source
+                  alt={project.title}
+                  className="portfolio_img"
+                />
+              </a>
               <div className="portfolio_data">
                 <h3 className="portfolio_title">{project.title}</h3>
                 <p className="portfolio_desc">{project.description}</p>
