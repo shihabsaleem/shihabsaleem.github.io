@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.84267230.css",
+    "main.js": "/static/js/main.26c19bac.js",
+    "static/media/arw.jpg": "/static/media/arw.f6509017619565a4046e.jpg",
+    "static/media/union.jpg": "/static/media/union.fc57f66725bb01dc07cf.jpg",
+    "static/media/pic11.jpg": "/static/media/pic11.b2b572a8fa2527f6b2c1.jpg",
+    "static/media/Shihab Rahman S.pdf": "/static/media/Shihab Rahman S.341c1fb298c71d3b391c.pdf",
+    "index.html": "/index.html",
+    "main.84267230.css.map": "/static/css/main.84267230.css.map",
+    "main.26c19bac.js.map": "/static/js/main.26c19bac.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84267230.css",
+    "static/js/main.26c19bac.js"
+  ]
+}
