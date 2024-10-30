@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shihabsaleem/shihabsaleem.github.io/static/css/main.e1160159.css",
+    "main.js": "/shihabsaleem/shihabsaleem.github.io/static/js/main.01b2862e.js",
+    "static/js/453.c058f798.chunk.js": "/shihabsaleem/shihabsaleem.github.io/static/js/453.c058f798.chunk.js",
+    "index.html": "/shihabsaleem/shihabsaleem.github.io/index.html",
+    "main.e1160159.css.map": "/shihabsaleem/shihabsaleem.github.io/static/css/main.e1160159.css.map",
+    "main.01b2862e.js.map": "/shihabsaleem/shihabsaleem.github.io/static/js/main.01b2862e.js.map",
+    "453.c058f798.chunk.js.map": "/shihabsaleem/shihabsaleem.github.io/static/js/453.c058f798.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1160159.css",
+    "static/js/main.01b2862e.js"
+  ]
+}
