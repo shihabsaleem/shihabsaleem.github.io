@@ -3,6 +3,17 @@ import avatar from "../Assets/avatar.svg";
 import Education from "../Components/Education";
 import Experience from "../Components/Experience";
 
+const ExperienceCard = ({ post, company, period }) => {
+  return (
+    <div className="border border-PaleOrange rounded-lg p-4 font-montserrat min-w-48 ">
+      <div className="text-PaleOrange font-montserrat font-bold">{post}</div>
+      <div className="company font-montserrat text-sm font-medium">
+        {company}
+      </div>
+      <div className="period font-montserrat text-xs pt-4">{period}</div>
+    </div>
+  );
+};
 
 
 const About = () => {
@@ -24,19 +35,19 @@ const About = () => {
           <div className="buttons z-30">
             <div className="flex flex-row lg:flex-col gap-2">
               <div
-                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black font-bold py-2 px-4 rounded mb-2"
+                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black   py-2 px-4 rounded mb-2"
                 onClick={() => setActiveSection("bio")}
               >
                 Bio.
               </div>
               <div
-                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black font-bold py-2 px-4 rounded mb-2"
+                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black   py-2 px-4 rounded mb-2"
                 onClick={() => setActiveSection("education")}
               >
                 Edu.
               </div>
               <div
-                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black font-bold py-2 px-4 rounded mb-2"
+                className="btn-hover border border-PaleOrange hover:bg-PaleOrange text-black   py-2 px-4 rounded mb-2"
                 onClick={() => setActiveSection("experience")}
               >
                 Exp.
