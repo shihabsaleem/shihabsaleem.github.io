@@ -10,12 +10,12 @@ function App() {
       {/* <Home/> */}
 
       <Router>
-      <div className="absolute top-0 left-0 z-50">
-        <Navbar />
-      </div>
+        <div className="absolute top-0 left-0 z-20 ">
+          <Navbar />
+        </div>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About/> }></Route>
+          <Route path="/about" element={<About />}></Route>
         </Routes>
       </Router>
     </div>

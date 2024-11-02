@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
 import hero from "../Assets/hero.svg";
 
 const Home = () => {
@@ -12,10 +11,9 @@ const Home = () => {
       </div>
       <div className=" flex justify-center items-center">
         <div className="absolute bottom-10 font-montserrat">
-          Craft with with love.{" "}
+          &copy; Shihab. Craft with &#9829;.
         </div>
       </div>
-    
     </div>
   );
 };

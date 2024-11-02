@@ -8,8 +8,6 @@ module.exports = {
       },
       colors: {
         PaleOrange: "#FFB07F",
-        White: "#fff",
-        Black: "#000",
         OffWhite: "#ededed",
       },
     },
