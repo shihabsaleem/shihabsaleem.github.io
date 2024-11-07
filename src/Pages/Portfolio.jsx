@@ -1,24 +1,28 @@
 import React from "react";
-import project1 from "../Assets/jadbery.png";
-import project2 from "../Assets/branding-1.jpg";
+import project1 from "../Assets/website-1.jpg";
+import project2 from "../Assets/branding-2.jpg";
 import project3 from "../Assets/ui-1.jpg";
 import project4 from "../Assets/ui-2.jpg";
+import project5 from "../Assets/ui-3.png";
+import project6 from "../Assets/branding-1.jpg";
 
 const Portfolio = () => {
   // List of project items
   const projects = [
-    { src: project2, alt: "Branding 1", title: "Branding / Acuverse" },
+    { src: project2, alt: "Branding 2", title: "Branding / Acuverse" },
     { src: project3, alt: "User Interface 1", title: "Uix / Diet+" },
     { src: project4, alt: "User Interface 2", title: "Uix / Finance" },
-    { src: project1, alt: "Jadbery Project", title: "Website / Jadbery" },
-    { src: project1, alt: "Project 3", title: "Project 3" },
-    { src: project1, alt: "Project 3", title: "Project 3" },
+    { src: project5, alt: "User Interface 3", title: "Uix / Inventory" },
+    { src: project6, alt: "Branding 1", title: "Branding / Parrot" },
+    { src: project1, alt: "Website 1", title: "Website / Jadbery" },
   ];
 
   return (
     <div className="min-h-screen bg-OffWhite py-12">
       <div className="mx-4 lg:mx-56">
-        <h1 className="text-2xl lg:text-4xl mb-8 py-4">What I've Done</h1>
+        <h1 className="text-2xl lg:text-4xl m-4 md:mb-8 py-4">
+          What I've Done<span className="text-PaleOrange ">.</span>
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
