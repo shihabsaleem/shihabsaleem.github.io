@@ -11,6 +11,8 @@ module.exports = {
         OffWhite: "#ededed",
       },
     },
-    plugins: [],
+    plugins: [
+      require('@tailwindcss/aspect-ratio'),
+    ],
   },
 };

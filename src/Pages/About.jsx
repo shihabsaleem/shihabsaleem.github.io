@@ -25,7 +25,7 @@ const About = () => {
       <div className="mx-4 lg:mx-56 py-12">
         <div className="avatar flex flex-col lg:flex-row lg:justify-between">
           <div className="flex justify-start items-end mb-8">
-            <img src={avatar} className="h-48" alt="avatar" />
+            <img src={avatar} className="h-48" alt="avatar - @drawkit" />
             <h1 className="text-2xl lg:text-4xl mb-8">
               Hi,
               <br />
