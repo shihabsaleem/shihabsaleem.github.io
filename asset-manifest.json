@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3a4e91fe.css",
-    "main.js": "/static/js/main.d6405bb1.js",
+    "main.js": "/static/js/main.09f024e8.js",
     "static/js/453.c058f798.chunk.js": "/static/js/453.c058f798.chunk.js",
     "static/media/BlackHanSans.ttf": "/static/media/BlackHanSans.f4f89062321390018f92.ttf",
     "static/media/branding-1.jpg": "/static/media/branding-1.768519816b670317b135.jpg",
@@ -11,11 +11,11 @@
     "static/media/avatar.svg": "/static/media/avatar.13c9c93be2624574330b12389e632b0d.svg",
     "index.html": "/index.html",
     "main.3a4e91fe.css.map": "/static/css/main.3a4e91fe.css.map",
-    "main.d6405bb1.js.map": "/static/js/main.d6405bb1.js.map",
+    "main.09f024e8.js.map": "/static/js/main.09f024e8.js.map",
     "453.c058f798.chunk.js.map": "/static/js/453.c058f798.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3a4e91fe.css",
-    "static/js/main.d6405bb1.js"
+    "static/js/main.09f024e8.js"
   ]
 }
