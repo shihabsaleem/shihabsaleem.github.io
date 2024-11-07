@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.3a4e91fe.css",
-    "main.js": "/static/js/main.09f024e8.js",
+    "main.css": "/static/css/main.a27cdd37.css",
+    "main.js": "/static/js/main.64bde453.js",
     "static/js/453.c058f798.chunk.js": "/static/js/453.c058f798.chunk.js",
     "static/media/BlackHanSans.ttf": "/static/media/BlackHanSans.f4f89062321390018f92.ttf",
-    "static/media/branding-1.jpg": "/static/media/branding-1.768519816b670317b135.jpg",
+    "static/media/branding-1.jpg": "/static/media/branding-1.7d8a28704bb5d3888f8b.jpg",
+    "static/media/branding-2.jpg": "/static/media/branding-2.768519816b670317b135.jpg",
     "static/media/ui-1.jpg": "/static/media/ui-1.d9ca392188565070d077.jpg",
     "static/media/ui-2.jpg": "/static/media/ui-2.95a6e3429d09a56a923e.jpg",
-    "static/media/jadbery.png": "/static/media/jadbery.df69ef07fb0e35c46820.png",
+    "static/media/website-1.jpg": "/static/media/website-1.5efb8a565069ef65579b.jpg",
+    "static/media/ui-3.png": "/static/media/ui-3.e923e5367beb44344a97.png",
     "static/media/avatar.svg": "/static/media/avatar.13c9c93be2624574330b12389e632b0d.svg",
     "index.html": "/index.html",
-    "main.3a4e91fe.css.map": "/static/css/main.3a4e91fe.css.map",
-    "main.09f024e8.js.map": "/static/js/main.09f024e8.js.map",
+    "main.a27cdd37.css.map": "/static/css/main.a27cdd37.css.map",
+    "main.64bde453.js.map": "/static/js/main.64bde453.js.map",
     "453.c058f798.chunk.js.map": "/static/js/453.c058f798.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a4e91fe.css",
-    "static/js/main.09f024e8.js"
+    "static/css/main.a27cdd37.css",
+    "static/js/main.64bde453.js"
   ]
 }
