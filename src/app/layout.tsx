@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"
-     crxlauncher=""
+    //  crxlauncher=""
     >
       <body
         className={`${stalinistOne.variable} ${montserrat.variable} antialiased`}
