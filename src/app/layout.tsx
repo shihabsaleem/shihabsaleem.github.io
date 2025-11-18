@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 const stalinistOne = Stalinist_One({
   variable: "--font-stalinistOne",
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
 });
 
 const montserrat = Montserrat({
@@ -17,7 +17,11 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Shihab",
-  description: "Shihab Rahman Saleem | UI / UX Designer, Developer & Branding Specialist ",
+  description:
+    "Shihab Rahman Saleem | UI / UX Designer, Developer & Branding Specialist ",
+  other: {
+    "google-site-verification": "GemZ4BhmvHdCTI6hyWsUcn8uOrXX0NciFwKhSpfsXKQ",
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"
-    //  crxlauncher=""
+    <html
+      lang="en"
+      //  crxlauncher=""
     >
       <body
         className={`${stalinistOne.variable} ${montserrat.variable} antialiased`}
