@@ -32,9 +32,9 @@ export default function Home() {
             duration: 0.8,
             ease: "power3.inOut",
           }),
-        start: "top 70%",
-        end: "bottom 60%",
-        //markers: false,
+        start: "top 60%",
+        end: "bottom 10%",
+        // markers : true,
       });
     }, containerRef);
 
