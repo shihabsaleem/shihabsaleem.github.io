@@ -16,9 +16,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Shihab",
+  title:
+    "Shihab Rahman - UI / UX Designer, Developer & Branding Specialist in Kerala",
   description:
-    "Shihab Rahman Saleem | UI / UX Designer, Developer & Branding Specialist ",
+    "Shihab Rahman Saleem | UI / UX Designer, Developer & Branding Specialist in Kerala. Crafting seamless digital experiences through innovative design and development.",
   other: {
     "google-site-verification": "GemZ4BhmvHdCTI6hyWsUcn8uOrXX0NciFwKhSpfsXKQ",
   },
