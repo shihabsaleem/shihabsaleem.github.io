@@ -48,13 +48,13 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-6 w-full">
           <div
             ref={expRef}
-            className="flex-1 border-2 border-gray-900 p-6 rounded-3xl text-white"
+            className="flex-1 border-2 border-gray-900 p-6 rounded-3xl "
           >
             <Experience />
           </div>
           <div
             ref={eduRef}
-            className="flex-1 border-2 border-gray-900 p-6 rounded-3xl text-white"
+            className="flex-1 border-2 border-gray-900 p-6 rounded-3xl "
           >
             <Education />
           </div>
@@ -63,7 +63,7 @@ const About = () => {
 
       <div
         ref={skillRef}
-        className="w-full lg:w-4/12 border-2 border-gray-900 p-6 rounded-3xl text-white"
+        className="w-full lg:w-4/12 border-2 border-gray-900 p-6 rounded-3xl "
       >
         <Skill />
       </div>

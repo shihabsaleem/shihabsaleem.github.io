@@ -13,11 +13,9 @@ const Education = () => {
         {educations.map((edu) => (
           <li key={edu.id} className=" px-4 py-2 rounded-lg">
             <div className="font-semibold ">{edu.qualification}</div>
-            <div className="text-xs text-gray-400 py-0.5">{edu.College}</div>
-            <div className="text-xs text-gray-400 py-0.5">
-              Affiliated to {edu.Aff}
-            </div>
-            <div className="text-xs text-gray-500 mt-1 py-0.5">
+            <div className="text-xs  py-0.5">{edu.College}</div>
+            <div className="text-xs  py-0.5">Affiliated to {edu.Aff}</div>
+            <div className="text-xs  mt-1 py-0.5">
               {edu.start} - {edu.end}
             </div>
           </li>
