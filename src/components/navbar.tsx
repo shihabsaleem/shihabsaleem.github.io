@@ -11,18 +11,18 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4">
         {/* Brand */}
         <Link href="/" className="font-display text-2xl font-bold">
-          Shihab<span className="text-cyan-500">.</span>
+          Shihab<span className="text-red-500">.</span>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-lg">
-          <Link href="/about" className="hover:text-cyan-500">
+          <Link href="/about" className="hover:text-red-500">
             About
           </Link>
-          <Link href="/" className="hover:text-cyan-500">
+          <Link href="/" className="hover:text-red-500">
             Work
           </Link>
-          <Link href="/contact" className="hover:text-cyan-500">
+          <Link href="/contact" className="hover:text-red-500">
             Contact
           </Link>
         </div>
@@ -64,21 +64,21 @@ const Navbar = () => {
         <div className="md:hidden text-white shadow-md mt-2 rounded-b-lg py-4">
           <Link
             href="/about"
-            className="block px-6 py-2 hover:text-cyan-500"
+            className="block px-6 py-2 hover:text-red-500"
             onClick={() => setIsOpen(false)}
           >
             About
           </Link>
           <Link
             href="/"
-            className="block px-6 py-2 hover:text-cyan-500"
+            className="block px-6 py-2 hover:text-red-500"
             onClick={() => setIsOpen(false)}
           >
             Work
           </Link>
           <Link
             href="/contact"
-            className="block px-6 py-2 hover:text-cyan-500"
+            className="block px-6 py-2 hover:text-red-500"
             onClick={() => setIsOpen(false)}
           >
             Contact

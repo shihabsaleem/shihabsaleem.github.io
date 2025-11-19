@@ -139,7 +139,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   {work.shortdesc}
                 </p>
-                <button className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity">
+                <button className="text-sm mt-4 opacity-90 hover:opacity-100 transition-opacity">
                   View Project
                 </button>
               </div>
@@ -151,9 +151,7 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden rounded-2xl transition-all duration-700 ${
-                    hoveredId === work.id ? "scale-100 shadow-xl" : "scale-100"
-                  }`}
+                  className="relative overflow-hidden rounded-sm transition-all duration-700"
                   style={{
                     height: hoveredId === work.id ? "500px" : "400px",
                   }}
