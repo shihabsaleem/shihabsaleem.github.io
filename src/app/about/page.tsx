@@ -13,11 +13,13 @@ const About = () => {
   const expRef = useRef<HTMLDivElement>(null);
   const eduRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
 
-    tl.fromTo(bioRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0 })
+    tl.fromTo(titleRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0 })
+      .fromTo(bioRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0 })
       .fromTo(
         expRef.current,
         { opacity: 0, x: -50 },
@@ -41,18 +43,15 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-6 md:px-12 lg:px-20 py-12">
       {/* Hero Section */}
-      <div className="mb-20">
+      <div ref={titleRef} className="mb-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
           About Me<span className="text-red-500">.</span>
         </h1>
-        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl">
-          Designer & Developer crafting beautiful digital experiences
-        </p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Left Column */}
-        <div className="flex flex-col gap-8 w-full lg:w-8/12">
+        <div className="flex flex-col gap-8 w-full ">
           <div ref={bioRef}>
             <Bio />
           </div>
@@ -71,14 +70,12 @@ const About = () => {
               <Education />
             </div>
           </div>
-        </div>
-
-        {/* Right Column - Skills */}
-        <div
-          ref={skillRef}
-          className="w-full lg:w-4/12 border-2 border-gray-200 dark:border-gray-800 p-8 rounded-3xl h-fit lg:sticky lg:top-8"
-        >
-          <Skill />
+          <div
+            ref={skillRef}
+            className="w-full border-2 border-gray-200 dark:border-gray-800 p-8 rounded-3xl h-fit lg:sticky "
+          >
+            <Skill />
+          </div>
         </div>
       </div>
     </div>

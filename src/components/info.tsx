@@ -5,13 +5,16 @@ const infos = data.info[0];
 
 const Info = () => {
   return (
-    <section aria-label="User introduction">
-      <p className="text-xs py-1">Hi, I&apos;m</p>
-      <h1 className="font-semibold text-lg py-1">{infos.name}</h1>
-      <p className="font-normal text-xs  py-1 leading-6">
+    <div className="w-full  space-y-6">
+      <p className="text-2xl text-gray-600 dark:text-gray-400 ">Hi, I&apos;m</p>
+      <h2 className="text-2xl md:text-3xl lg:text-5xl font-semibold">
+        {infos.name}
+        <span className="text-red-500">.</span>
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
         {infos.desc}
       </p>
-    </section>
+    </div>
   );
 };
 

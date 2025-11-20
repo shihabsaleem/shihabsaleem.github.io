@@ -1,20 +1,18 @@
 import React from "react";
-import Image from "next/image";
 import data from "@/data/asset";
 
 const info = data.info[0];
 
 const Dp = () => {
   return (
-    <div className="w-full h-auto rounded-xl overflow-hidden">
-      <Image
-        src={info.dp}
-        alt={info.name}
-        width={600}
-        height={400}
-        className="w-full h-auto object-cover rounded-xl"
-        priority
-      />
+    <div className="w-full h-auto ">
+      <div className="relative aspect-square rounded-3xl overflow-hidden ">
+        <img
+          src={info.dp}
+          alt={info.name}
+          className="w-full h-auto object-contain opacity-90 dark:bg-blend-color dark:opacity-60"
+        />
+      </div>
     </div>
   );
 };

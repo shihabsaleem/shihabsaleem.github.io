@@ -59,10 +59,10 @@ const works = [
 
 const info = [
   {
-    name: "Shihab Rahman Saleem",
-    desc: "As a UI Designer and Front-End Developer, I specialize in designing and building user-centric interfaces that are both visually striking and technically sound. With a background in graphic design and a strong command of HTML, CSS, and JavaScript frameworks, I bring a unique blend of creative vision and development precision to every project.",
+    name: "Shihab Rahman",
+    desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
     dp: "/assets/shihab.png",
-    phone: "+971545217895",
+    phone: "+917907689743",
     email: "shihabrsaleem@gmail.com",
     linkedin: "linkedin.com/in/shihab-rahman",
     github: "github.com/shihabsaleem",
