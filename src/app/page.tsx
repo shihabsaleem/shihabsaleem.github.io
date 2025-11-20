@@ -108,7 +108,7 @@ export default function Home() {
         {works.map((work, index) => (
           <div
             key={work.id}
-            className={`work-item opacity-0 translate-y-12 transition-all duration-500 ${
+            className={`work-item opacity-0 translate-y-12 transition-all duration-500  ${
               index > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''
             }`}
             onMouseMove={(e) => handleMouseMove(e, work.id)}
@@ -127,7 +127,7 @@ export default function Home() {
 
               {/* Project Info */}
               <div className={`col-span-10 md:col-span-4 lg:col-span-3 ${work.id % 2 === 0 ? 'md:order-3' : ''}`}>
-                <h2 className="text-3xl md:text-4xl font-light mb-2">{work.name}</h2>
+                <h2 className="text-3xl md:text-4xl font-light mb-2 ">{work.name}</h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400">{work.shortdesc}</p>
                 <button className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity">
                   View Project
@@ -222,13 +222,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <a
-                href="/assets/Shihab.pdf"
-                download
-                className="block text-center border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white"
-              >
-                <span className="text-sm font-medium">Download Resume</span>
-              </a>
+              
             </div>
           </div>
         </div>
