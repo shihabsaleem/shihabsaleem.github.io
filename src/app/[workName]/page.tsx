@@ -1,5 +1,5 @@
 // src/app/[workName]/page.tsx
-import ProjectPage from "@/components/projectpage";
+import ProjectPage from "@/components/workpage";
 import data from "@/data/asset";
 import { notFound } from "next/navigation";
 
