@@ -39,7 +39,7 @@ const ContactInfo = ({ layout }: { layout: string }) => (
       >
         {info.phone}
       </a>
-      {/* <p className="text-xl">{info.phone}</p> */}
+     
     </div>
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">

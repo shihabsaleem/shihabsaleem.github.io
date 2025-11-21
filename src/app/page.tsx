@@ -9,6 +9,7 @@ import data from "@/data/asset";
 gsap.registerPlugin(ScrollTrigger);
 
 const works = data.works;
+const info = data.info[0];
 
 export default function Home() {
   const router = useRouter();
@@ -239,7 +240,7 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-4">
                 <a
-                  href="https://linkedin.com/in/shihab-rahman"
+                  href={`https://${info.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
@@ -247,7 +248,7 @@ export default function Home() {
                   <span className="text-sm font-medium">LinkedIn</span>
                 </a>
                 <a
-                  href="https://github.com/shihabsaleem"
+                  href={`https://${info.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
