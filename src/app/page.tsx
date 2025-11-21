@@ -105,7 +105,7 @@ export default function Home() {
       </div>
 
       {/* Hero Title */}
-      <div className="hero-title mb-32">
+      <div className="hero-title">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
           Crafted Pieces
           <span className="text-red-500 dark:text-red-500">.</span>
@@ -171,7 +171,7 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none"
+                  className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none  shadow-gray-500 dark:shadow-gray-900 drop-shadow-xs"
                   style={{
                     height: hoveredId === work.id ? "500px" : "400px",
                   }}
@@ -183,11 +183,11 @@ export default function Home() {
                     alt={work.name}
                     className="w-full h-full object-cover"
                   />
-                  <div
+                  {/* <div
                     className={`absolute inset-0 bg-black transition-opacity duration-500 ${
                       hoveredId === work.id ? "opacity-0" : "opacity-30"
                     }`}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
