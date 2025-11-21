@@ -6,8 +6,8 @@ const works = [
     shortdesc: "UI / UX Design",
     year: "2024",
     client: "Snack Manufacturing Co.",
-    role: "Lead UI/UX Designer",
-    duration: "3 months",
+    role: "UI/UX Designer",
+    duration: "1 month",
     description:
       "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency. Built to support day-to-day operations, it enhances visibility and control across all stages of production and supply.",
     challenge:
@@ -22,9 +22,9 @@ const works = [
     ],
     images: [
       "/assets/inventory.jpg",
-      "/assets/inventory-2.jpg",
-      "/assets/inventory-3.jpg",
-      "/assets/inventory-4.jpg",
+      "/assets/inventory-1.png",
+      "/assets/inventory-1.png",
+      "/assets/inventory-1.png",
     ],
     tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
   },
@@ -35,8 +35,8 @@ const works = [
     shortdesc: "UI/UX Design",
     year: "2024",
     client: "Snack Manufacturing Co.",
-    role: "Lead UI/UX Designer",
-    duration: "4 months",
+    role: "UI/UX Designer",
+    duration: "1 month",
     description:
       "A clean and functional UI/UX design for an ERP product tailored to the needs of the snack manufacturing industry. The system streamlines and manages production, sales, storage, and distribution through an intuitive, user-friendly interface — helping businesses improve efficiency, visibility, and operational control across all departments.",
     challenge:
@@ -55,7 +55,13 @@ const works = [
       "/assets/erp-3.jpg",
       "/assets/erp-4.jpg",
     ],
-    tags: ["ERP Design", "System Integration", "UX Research", "Figma", "Workflow Design"],
+    tags: [
+      "ERP Design",
+      "System Integration",
+      "UX Research",
+      "Figma",
+      "Workflow Design",
+    ],
   },
   {
     id: 3,
@@ -65,7 +71,7 @@ const works = [
     year: "2024",
     client: "ADOVO Agency",
     role: "Brand Designer",
-    duration: "2 months",
+    duration: "2 Weeks",
     description:
       "The Adovo logo combines a wordmark with an abstract symbol, reflecting the fusion of technology and creativity. Designed with a minimalist approach in midnight blue with white background, it captures the agency's focus on AI-driven innovation with clarity and sophistication.",
     challenge:
@@ -84,7 +90,12 @@ const works = [
       "/assets/adovo-3.jpg",
       "/assets/adovo-4.jpg",
     ],
-    tags: ["Brand Identity", "Logo Design", "Visual Identity", "Adobe Illustrator"],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Visual Identity",
+      "Adobe Illustrator",
+    ],
   },
   {
     id: 4,
@@ -94,7 +105,7 @@ const works = [
     year: "2023",
     client: "Jadbery IT Services",
     role: "UI/UX Designer",
-    duration: "2 months",
+    duration: "2 Weeks",
     description:
       "Jadbery is a minimalist website design created for an IT service company portfolio. Focused on clean layouts and simple navigation, the design highlights services, expertise, and case studies with clarity and professionalism, reflecting the brand's modern and reliable approach to technology solutions.",
     challenge:
@@ -123,7 +134,7 @@ const works = [
     year: "2024",
     client: "Personal Project",
     role: "Product Designer",
-    duration: "6 weeks",
+    duration: "2 weeks",
     description:
       "A minimal and intuitive UI/UX design for a mobile expense tracking app that helps users monitor their monthly spending, set limits, and view used vs. remaining budgets in real time. The goal is to promote smarter spending habits and avoid overspending through a clean, user-friendly experience.",
     challenge:
@@ -152,7 +163,7 @@ const works = [
     year: "2023",
     client: "Milkow Fresh",
     role: "Brand & Packaging Designer",
-    duration: "3 months",
+    duration: "1 week",
     description:
       "The Milkow Fresh logo features a friendly mascot combined with a clean wordmark, creating a memorable and approachable brand identity. Designed in solid black to contrast perfectly with the transparent milk bottles and the white milk inside, the minimalist abstract style ensures clarity and versatility, reflecting freshness and trust for our local unpasteurized cow milk.",
     challenge:
@@ -171,7 +182,13 @@ const works = [
       "/assets/milkow-3.jpg",
       "/assets/milkow-4.jpg",
     ],
-    tags: ["Branding", "Packaging Design", "Logo Design", "Adobe Illustrator", "Print Design"],
+    tags: [
+      "Branding",
+      "Packaging Design",
+      "Logo Design",
+      "Adobe Illustrator",
+      "Print Design",
+    ],
   },
   {
     id: 7,
@@ -181,7 +198,7 @@ const works = [
     year: "2023",
     client: "Parrot Vacation Services",
     role: "Brand Designer",
-    duration: "6 weeks",
+    duration: "1 weeks",
     description:
       "The Parrot Vacation logo blends a parrot, location pin, and the letter 'P' into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
     challenge:
