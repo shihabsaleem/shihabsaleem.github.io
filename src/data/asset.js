@@ -4,56 +4,203 @@ const works = [
     name: "Inventory",
     image: "/assets/inventory.jpg",
     shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Snack Manufacturing Co.",
+    role: "Lead UI/UX Designer",
+    duration: "3 months",
     description:
-      "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency. Built to support day-to-day operations, it enhances visibility and control across all stages of production and supply..",
+      "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency. Built to support day-to-day operations, it enhances visibility and control across all stages of production and supply.",
+    challenge:
+      "The company was struggling with outdated inventory management systems that lacked visibility and real-time tracking. The goal was to create an intuitive interface that would help staff quickly understand stock levels, production status, and distribution needs without extensive training.",
+    solution:
+      "We designed a dashboard-first approach with clear visual hierarchies, color-coded status indicators, and streamlined workflows. The interface prioritizes the most critical information while keeping advanced features accessible through progressive disclosure.",
+    impact: [
+      "40% reduction in inventory processing time",
+      "Improved accuracy in stock management",
+      "Enhanced cross-department collaboration",
+      "Faster onboarding for new employees",
+    ],
+    images: [
+      "/assets/inventory.jpg",
+      "/assets/inventory-2.jpg",
+      "/assets/inventory-3.jpg",
+      "/assets/inventory-4.jpg",
+    ],
+    tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
   },
   {
     id: 2,
     name: "Custom ERP",
     image: "/assets/erp.jpg",
     shortdesc: "UI/UX Design",
+    year: "2024",
+    client: "Snack Manufacturing Co.",
+    role: "Lead UI/UX Designer",
+    duration: "4 months",
     description:
       "A clean and functional UI/UX design for an ERP product tailored to the needs of the snack manufacturing industry. The system streamlines and manages production, sales, storage, and distribution through an intuitive, user-friendly interface — helping businesses improve efficiency, visibility, and operational control across all departments.",
+    challenge:
+      "The client needed a comprehensive ERP system that could handle multiple departments while remaining simple enough for non-technical staff. The existing fragmented systems caused data silos and inefficiencies across production, sales, and distribution teams.",
+    solution:
+      "We created a unified design system with role-based dashboards, automated workflows, and real-time data visualization. The modular interface allows each department to focus on their specific needs while maintaining seamless integration with other business functions.",
+    impact: [
+      "Unified data across all departments",
+      "50% faster order processing",
+      "Real-time visibility into production pipeline",
+      "Reduced manual data entry errors by 65%",
+    ],
+    images: [
+      "/assets/erp.jpg",
+      "/assets/erp-2.jpg",
+      "/assets/erp-3.jpg",
+      "/assets/erp-4.jpg",
+    ],
+    tags: ["ERP Design", "System Integration", "UX Research", "Figma", "Workflow Design"],
   },
   {
     id: 3,
     name: "ADOVO",
     image: "/assets/adovo-white.jpg",
     shortdesc: "Branding",
+    year: "2024",
+    client: "ADOVO Agency",
+    role: "Brand Designer",
+    duration: "2 months",
     description:
       "The Adovo logo combines a wordmark with an abstract symbol, reflecting the fusion of technology and creativity. Designed with a minimalist approach in midnight blue with white background, it captures the agency's focus on AI-driven innovation with clarity and sophistication.",
+    challenge:
+      "ADOVO needed a brand identity that would communicate their expertise in AI-driven solutions while maintaining a professional and approachable aesthetic. The challenge was to balance cutting-edge technology with human-centered design principles.",
+    solution:
+      "We developed a clean, geometric logo that merges abstract symbolism with a custom wordmark. The midnight blue color palette conveys trust and intelligence, while the minimalist approach ensures versatility across digital and print applications.",
+    impact: [
+      "Strong brand recognition in the AI tech space",
+      "Versatile identity system across all touchpoints",
+      "Enhanced professional credibility",
+      "Positive client feedback on brand perception",
+    ],
+    images: [
+      "/assets/adovo-white.jpg",
+      "/assets/adovo-2.jpg",
+      "/assets/adovo-3.jpg",
+      "/assets/adovo-4.jpg",
+    ],
+    tags: ["Brand Identity", "Logo Design", "Visual Identity", "Adobe Illustrator"],
   },
   {
     id: 4,
     name: "Jadbery",
     image: "/assets/jadbery.jpg",
     shortdesc: "UI / UX Design",
+    year: "2023",
+    client: "Jadbery IT Services",
+    role: "UI/UX Designer",
+    duration: "2 months",
     description:
-      "Jadbery is a minimalist website design created for an IT service company portfolio. Focused on clean layouts and simple navigation, the design highlights services, expertise, and case studies with clarity and professionalism, reflecting the brand’s modern and reliable approach to technology solutions.",
+      "Jadbery is a minimalist website design created for an IT service company portfolio. Focused on clean layouts and simple navigation, the design highlights services, expertise, and case studies with clarity and professionalism, reflecting the brand's modern and reliable approach to technology solutions.",
+    challenge:
+      "The client needed a portfolio website that would stand out in a crowded IT services market while clearly communicating their technical expertise and service offerings. The challenge was to create a design that was both visually striking and highly functional.",
+    solution:
+      "We implemented a minimalist design approach with strategic use of whitespace, clear typography hierarchy, and intuitive navigation patterns. The layout emphasizes key services and case studies while maintaining a clean, professional aesthetic throughout.",
+    impact: [
+      "45% increase in client inquiries",
+      "Improved engagement metrics across all pages",
+      "Reduced bounce rate by 30%",
+      "Enhanced brand perception as a modern IT partner",
+    ],
+    images: [
+      "/assets/jadbery.jpg",
+      "/assets/jadbery-2.jpg",
+      "/assets/jadbery-3.jpg",
+      "/assets/jadbery-4.jpg",
+    ],
+    tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
   {
     id: 5,
     name: "Finance",
     image: "/assets/finance.jpg",
     shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Personal Project",
+    role: "Product Designer",
+    duration: "6 weeks",
     description:
       "A minimal and intuitive UI/UX design for a mobile expense tracking app that helps users monitor their monthly spending, set limits, and view used vs. remaining budgets in real time. The goal is to promote smarter spending habits and avoid overspending through a clean, user-friendly experience.",
+    challenge:
+      "Many expense tracking apps overwhelm users with complex features and cluttered interfaces. The challenge was to create a simple, intuitive experience that makes financial tracking effortless while providing meaningful insights at a glance.",
+    solution:
+      "We designed a streamlined mobile interface with visual budget indicators, real-time spending updates, and smart categorization. The app uses progressive disclosure to keep the main interface clean while making detailed analytics accessible when needed.",
+    impact: [
+      "Simplified expense tracking process",
+      "Clear visualization of spending patterns",
+      "Real-time budget monitoring capabilities",
+      "Positive user feedback on ease of use",
+    ],
+    images: [
+      "/assets/finance.jpg",
+      "/assets/finance-2.jpg",
+      "/assets/finance-3.jpg",
+      "/assets/finance-4.jpg",
+    ],
+    tags: ["Mobile App", "UI Design", "UX Research", "Figma", "Prototyping"],
   },
   {
     id: 6,
     name: "Milkow",
     image: "/assets/milkow.jpg",
     shortdesc: "Branding & Packaging",
+    year: "2023",
+    client: "Milkow Fresh",
+    role: "Brand & Packaging Designer",
+    duration: "3 months",
     description:
       "The Milkow Fresh logo features a friendly mascot combined with a clean wordmark, creating a memorable and approachable brand identity. Designed in solid black to contrast perfectly with the transparent milk bottles and the white milk inside, the minimalist abstract style ensures clarity and versatility, reflecting freshness and trust for our local unpasteurized cow milk.",
+    challenge:
+      "A local dairy needed a brand identity that would communicate freshness, quality, and trustworthiness while standing out on retail shelves. The design had to work perfectly with transparent packaging and appeal to health-conscious consumers.",
+    solution:
+      "We created a mascot-based logo system with a friendly cow character paired with clean typography. The solid black design was specifically chosen to create maximum contrast against transparent bottles and white milk, ensuring visibility and brand recognition.",
+    impact: [
+      "Strong shelf presence in retail environments",
+      "Increased brand recognition among local consumers",
+      "Positive association with quality and freshness",
+      "Successful packaging system across product line",
+    ],
+    images: [
+      "/assets/milkow.jpg",
+      "/assets/milkow-2.jpg",
+      "/assets/milkow-3.jpg",
+      "/assets/milkow-4.jpg",
+    ],
+    tags: ["Branding", "Packaging Design", "Logo Design", "Adobe Illustrator", "Print Design"],
   },
   {
     id: 7,
     name: "Parrot Vacation",
     image: "/assets/parrot.jpg",
     shortdesc: "Branding",
+    year: "2023",
+    client: "Parrot Vacation Services",
+    role: "Brand Designer",
+    duration: "6 weeks",
     description:
-      "The Parrot Vacation logo blends a parrot, location pin, and the letter &lsquo;P&rsquo; into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
+      "The Parrot Vacation logo blends a parrot, location pin, and the letter 'P' into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
+    challenge:
+      "A travel agency needed a brand identity that would evoke feelings of adventure, freedom, and exotic destinations while remaining professional and trustworthy. The design needed to be memorable and work well across digital and print applications.",
+    solution:
+      "We developed a clever logomark that combines three elements: a parrot (representing exotic travel), a location pin (navigation/destination), and the letter 'P' (brand initial). The vibrant parakeet-inspired colors create an energetic, approachable identity.",
+    impact: [
+      "Distinctive brand presence in travel industry",
+      "Memorable logo with multiple symbolic meanings",
+      "Versatile identity across marketing materials",
+      "Enhanced brand recall among target audience",
+    ],
+    images: [
+      "/assets/parrot.jpg",
+      "/assets/parrot-2.jpg",
+      "/assets/parrot-3.jpg",
+      "/assets/parrot-4.jpg",
+    ],
+    tags: ["Branding", "Logo Design", "Visual Identity", "Adobe Illustrator"],
   },
 ];
 

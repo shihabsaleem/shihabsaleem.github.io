@@ -1,16 +1,17 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import data from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
-
-import data from "@/data/asset";
 
 const works = data.works;
 
 export default function Home() {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -55,7 +56,7 @@ export default function Home() {
         scale: 1,
         opacity: 1,
         duration: 0.3,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
   };
@@ -66,13 +67,19 @@ export default function Home() {
         scale: 0,
         opacity: 0,
         duration: 0.3,
-        ease: "power2.in"
+        ease: "power2.in",
       });
     }
   };
 
   const handleMouseLeave = () => {
     setHoveredId(null);
+  };
+
+  const navigateToProject = (workName: string) => {
+    // Convert work name to URL-friendly slug
+    const slug = workName.toLowerCase().replace(/\s+/g, "-");
+    router.push(`/${slug}`);
   };
 
   return (
@@ -87,8 +94,8 @@ export default function Home() {
         style={{
           left: `${cursorPos.x}px`,
           top: `${cursorPos.y}px`,
-          transform: 'translate(-50%, -50%) scale(0)',
-          opacity: 0
+          transform: "translate(-50%, -50%) scale(0)",
+          opacity: 0,
         }}
       >
         <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium">
@@ -99,7 +106,8 @@ export default function Home() {
       {/* Hero Title */}
       <div className="hero-title mb-32">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
-          Crafted Pieces<span className="text-red-500 dark:text-red-500">.</span>
+          Crafted Pieces
+          <span className="text-red-500 dark:text-red-500">.</span>
         </h1>
       </div>
 
@@ -108,38 +116,63 @@ export default function Home() {
         {works.map((work, index) => (
           <div
             key={work.id}
-            className={`work-item opacity-0 translate-y-12 transition-all duration-500  ${
-              index > 0 ? 'border-t border-gray-200 dark:border-gray-800' : ''
+            className={`work-item opacity-0 translate-y-12 transition-all duration-500 cursor-pointer ${
+              index > 0 ? "border-t border-gray-200 dark:border-gray-800" : ""
             }`}
             onMouseMove={(e) => handleMouseMove(e, work.id)}
             onMouseEnter={() => handleMouseEnter(work.id)}
             onMouseLeave={handleMouseLeave}
+            onClick={() => navigateToProject(work.name)}
           >
-            <div className={`grid grid-cols-12 gap-8 items-center py-8 md:py-12 ${
-              work.id % 2 === 0 ? 'md:flex-row-reverse' : ''
-            }`}>
+            <div
+              className={`grid grid-cols-12 gap-8 items-center py-8 md:py-12 ${
+                work.id % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
+            >
               {/* Number */}
-              <div className={`col-span-2 md:col-span-1 ${work.id % 2 === 0 ? 'md:order-2' : ''}`}>
+              <div
+                className={`col-span-2 md:col-span-1 ${
+                  work.id % 2 === 0 ? "md:order-2" : ""
+                }`}
+              >
                 <span className="text-4xl md:text-5xl font-light opacity-40">
-                  {String(work.id).padStart(2, '0')}
+                  {String(work.id).padStart(2, "0")}
                 </span>
               </div>
 
               {/* Project Info */}
-              <div className={`col-span-10 md:col-span-4 lg:col-span-3 ${work.id % 2 === 0 ? 'md:order-3' : ''}`}>
-                <h2 className="text-3xl md:text-4xl font-light mb-2 ">{work.name}</h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{work.shortdesc}</p>
-                <button className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity">
+              <div
+                className={`col-span-10 md:col-span-4 lg:col-span-3 ${
+                  work.id % 2 === 0 ? "md:order-3" : ""
+                }`}
+              >
+                <h2 className="text-3xl md:text-4xl font-light mb-2 ">
+                  {work.name}
+                </h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {work.shortdesc}
+                </p>
+                <button 
+                  className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigateToProject(work.name);
+                  }}
+                >
                   View Project
                 </button>
               </div>
 
               {/* Image */}
-              <div className={`col-span-12 md:col-span-7 lg:col-span-8 ${work.id % 2 === 0 ? 'md:order-1' : ''}`}>
-                <div 
+              <div
+                className={`col-span-12 md:col-span-7 lg:col-span-8 ${
+                  work.id % 2 === 0 ? "md:order-1" : ""
+                }`}
+              >
+                <div
                   className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none"
                   style={{
-                    height: hoveredId === work.id ? '500px' : '400px',
+                    height: hoveredId === work.id ? "500px" : "400px",
                   }}
                   onMouseEnter={handleImageMouseEnter}
                   onMouseLeave={handleImageMouseLeave}
@@ -149,9 +182,9 @@ export default function Home() {
                     alt={work.name}
                     className="w-full h-full object-cover"
                   />
-                  <div 
+                  <div
                     className={`absolute inset-0 bg-black transition-opacity duration-500 ${
-                      hoveredId === work.id ? 'opacity-0' : 'opacity-30'
+                      hoveredId === work.id ? "opacity-0" : "opacity-30"
                     }`}
                   />
                 </div>
@@ -175,7 +208,8 @@ export default function Home() {
                 <span className="text-red-500">Amazing.</span>
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400 max-w-md">
-                Have a project in mind? I'd love to hear about it. Let's work together to bring your ideas to life.
+                Have a project in mind? I'd love to hear about it. Let's work
+                together to bring your ideas to life.
               </p>
             </div>
 
@@ -221,8 +255,6 @@ export default function Home() {
                   <span className="text-sm font-medium">GitHub</span>
                 </a>
               </div>
-
-              
             </div>
           </div>
         </div>

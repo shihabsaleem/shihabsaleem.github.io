@@ -1,43 +1,26 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import data from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Sample project data - you can pass this as props or fetch it
-const project = {
-  id: 1,
-  name: "Inventory",
-  shortdesc: "UI / UX Design",
-  year: "2024",
-  client: "Snack Manufacturing Co.",
-  role: "Lead UI/UX Designer",
-  duration: "3 months",
-  description:
-    "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency.",
-  challenge:
-    "The company was struggling with outdated inventory management systems that lacked visibility and real-time tracking. The goal was to create an intuitive interface that would help staff quickly understand stock levels, production status, and distribution needs without extensive training.",
-  solution:
-    "We designed a dashboard-first approach with clear visual hierarchies, color-coded status indicators, and streamlined workflows. The interface prioritizes the most critical information while keeping advanced features accessible through progressive disclosure.",
-  impact: [
-    "40% reduction in inventory processing time",
-    "Improved accuracy in stock management",
-    "Enhanced cross-department collaboration",
-    "Faster onboarding for new employees",
-  ],
-  images: [
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=800&fit=crop",
-  ],
-  tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
-};
+const { works } = data;
 
-export default function ProjectPage() {
+// Helper function to convert work name to slug
+function nameToSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, "-");
+}
+
+export default function ProjectPage({ projectId }: { projectId: number }) {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Find the project based on ID
+  const project = works.find((work) => work.id === projectId) || works[0];
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -144,7 +127,18 @@ export default function ProjectPage() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [projectId]);
+
+  // Navigation functions
+  const currentIndex = works.findIndex((work) => work.id === project.id);
+  const prevProject = currentIndex > 0 ? works[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+
+  const navigateToProject = (workName: string) => {
+    const slug = nameToSlug(workName);
+    router.push(`/${slug}`);
+  };
 
   return (
     <div
@@ -300,12 +294,26 @@ export default function ProjectPage() {
       {/* Navigation */}
       <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <button className="text-lg hover:opacity-60 transition-opacity">
-            ← Previous Project
-          </button>
-          <button className="text-lg hover:opacity-60 transition-opacity">
-            Next Project →
-          </button>
+          {prevProject ? (
+            <button
+              onClick={() => navigateToProject(prevProject.name)}
+              className="text-lg hover:opacity-60 transition-opacity"
+            >
+              ← {prevProject.name}
+            </button>
+          ) : (
+            <div></div>
+          )}
+          {nextProject ? (
+            <button
+              onClick={() => navigateToProject(nextProject.name)}
+              className="text-lg hover:opacity-60 transition-opacity"
+            >
+              {nextProject.name} →
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </section>
     </div>

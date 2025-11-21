@@ -72,7 +72,7 @@ const About = () => {
           </div>
           <div
             ref={skillRef}
-            className="w-full border-2 border-gray-200 dark:border-gray-800 p-8 rounded-3xl h-fit lg:sticky "
+            className="w-full border-2 border-gray-200 dark:border-gray-800 p-8 rounded-3xl lg:sticky "
           >
             <Skill />
           </div>

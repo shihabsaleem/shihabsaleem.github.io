@@ -324,7 +324,7 @@ const Skill: React.FC = () => {
   }, [isVisible]);
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-8 w-full">
       <h2 className="text-2xl font-light mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
         Skill Set
       </h2>
@@ -343,6 +343,7 @@ const Skill: React.FC = () => {
             }} // <- changed: no returned value
             className="absolute border-2 border-gray-200 dark:border-gray-800 px-4 py-2 rounded-full text-sm bg-white dark:bg-gray-950 hover:bg-gray-200 hover:text-black dark:hover:bg-gray-800 dark:hover:text-white transition-colors duration-300 shadow-md select-none"
           >
+            <span className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1 before:w-2 before:h-2 before:bg-red-500 before:rounded-full"></span>
             {skill}
           </span>
         ))}
