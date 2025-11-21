@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Dps from "@/components/dp";
 
 import data from "@/data/asset";
 
@@ -9,8 +10,8 @@ const info = data.info[0];
 
 // Mock components for demonstration
 const Dp = () => (
-  <div className="flex items-center justify-center h-full">
-    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-red-500 to-purple-600" />
+  <div className="flex items-center justify-center">
+    <Dps />
   </div>
 );
 
@@ -20,33 +21,57 @@ const ContactInfo = ({ layout }: { layout: string }) => (
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
         Email
       </h3>
-      <p className="text-xl">hello@example.com</p>
+      <a
+        href={info.email}
+        target="_blank"
+        className="text-xl hover:text-red-500 transition-colors"
+      >
+        {info.email}
+      </a>
     </div>
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
         Phone
       </h3>
-      <p className="text-xl">+1 (555) 123-4567</p>
+      <a
+        href={info.phone}
+        className="text-xl hover:text-red-500 transition-colors"
+      >
+        {info.phone}
+      </a>
+      {/* <p className="text-xl">{info.phone}</p> */}
     </div>
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
         Location
       </h3>
-      <p className="text-xl">San Francisco, CA</p>
+      <p className="text-xl">{info.location}</p>
     </div>
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
         Social
       </h3>
       <div className="flex gap-4">
-        <a href="#" className="text-xl hover:text-red-500 transition-colors">
+        <a
+          href={`https://${info.linkedin}`}
+          target="_blank"
+          className="text-xl hover:text-red-500 transition-colors"
+        >
           LinkedIn
         </a>
-        <a href="#" className="text-xl hover:text-red-500 transition-colors">
+        <a
+          href={`https://${info.github}`}
+          target="_blank"
+          className="text-xl hover:text-red-500 transition-colors"
+        >
           GitHub
         </a>
-        <a href="#" className="text-xl hover:text-red-500 transition-colors">
-          Twitter
+        <a
+          href={`https://${info.insta}`}
+          target="_blank"
+          className="text-xl hover:text-red-500 transition-colors"
+        >
+          Instagram
         </a>
       </div>
     </div>

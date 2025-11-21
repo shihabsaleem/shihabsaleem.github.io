@@ -25,7 +25,9 @@ const Contact = ({ layout = "row" }) => {
     ${isColumn ? "w-full" : ""}
   `}
       >
-        <a href={`tel:${info.phone}`}>Call Me</a>
+        <a href={`tel:${info.phone}`} >
+          Call Me
+        </a>
       </div>
       <div
         className={`
@@ -37,7 +39,7 @@ const Contact = ({ layout = "row" }) => {
     ${isColumn ? "w-full" : ""}
   `}
       >
-        <a href={`https://wa.me/${info.phone}`}>Text Me</a>
+        <a href={`https://wa.me/${info.phone}`} target="_blank">Text Me</a>
       </div>
       <div
         className={`
@@ -49,7 +51,7 @@ const Contact = ({ layout = "row" }) => {
     ${isColumn ? "w-full" : ""}
   `}
       >
-        <a href={`${info.cv}`} target="_blank" rel="noopener noreferrer">
+        <a href={`${info.cv}`} target="_blank" download={info.name} rel="noopener noreferrer">
           Download CV
         </a>
       </div>
