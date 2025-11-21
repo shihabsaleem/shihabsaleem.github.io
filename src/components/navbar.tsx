@@ -16,12 +16,13 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-lg">
-          <Link href="/about" className="hover:text-red-500">
-            About
-          </Link>
           <Link href="/" className="hover:text-red-500">
             Work
           </Link>
+          <Link href="/about" className="hover:text-red-500">
+            About
+          </Link>
+
           <Link href="/contact" className="hover:text-red-500">
             Contact
           </Link>
@@ -61,14 +62,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden text-white shadow-md mt-2 rounded-b-lg py-4">
-          <Link
-            href="/about"
-            className="block px-6 py-2 hover:text-red-500"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </Link>
+        <div className="md:hidden bg-white dark:bg-black  mt-2 rounded-b-lg py-4">
           <Link
             href="/"
             className="block px-6 py-2 hover:text-red-500"
@@ -76,6 +70,14 @@ const Navbar = () => {
           >
             Work
           </Link>
+          <Link
+            href="/about"
+            className="block px-6 py-2 hover:text-red-500"
+            onClick={() => setIsOpen(false)}
+          >
+            About
+          </Link>
+
           <Link
             href="/contact"
             className="block px-6 py-2 hover:text-red-500"

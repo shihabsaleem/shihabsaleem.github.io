@@ -45,7 +45,7 @@ const About = () => {
       {/* Hero Section */}
       <div ref={titleRef} className="mb-20">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
-          About Me<span className="text-red-500">.</span>
+          My Story<span className="text-red-500">.</span>
         </h1>
       </div>
 

@@ -26,7 +26,7 @@ body {
   font-family: "montserrat", Arial, Helvetica, sans-serif;
 }
 ::selection {
-  background-color:oklch(57.7% 0.245 27.325);
+  background-color: oklch(57.7% 0.245 27.325);
   /* background: linear-gradient(to right, #ef4444, #991b1b); */
   color: white;
 }
