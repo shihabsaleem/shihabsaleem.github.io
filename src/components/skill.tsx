@@ -4,11 +4,11 @@ import { gsap } from "gsap";
 import data from "@/data/asset";
 
 const skills = data.skills;
-
 const Skill: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const skillsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(400);
   const occupiedSpaces = useRef<Array<any>>([]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const Skill: React.FC = () => {
 
     const containerRect = container.getBoundingClientRect();
     const containerWidth = containerRect.width;
-    const containerHeight = containerRect.height;
+    let containerHeight = containerRect.height;
 
     const rectsOverlap = (a: any, b: any) => {
       if (!a || !b) return false;
@@ -58,6 +58,24 @@ const Skill: React.FC = () => {
 
     const clamp = (val: number, min: number, max: number) =>
       Math.max(min, Math.min(val, max));
+
+    // Calculate required height based on skill count
+    const estimatedSkillWidth = 120; // average skill width
+    const estimatedSkillHeight = 40; // average skill height
+    const minHeight = 400;
+    const skillsPerRow = Math.floor(
+      containerWidth / (estimatedSkillWidth + gap)
+    );
+    const estimatedRows = Math.ceil(skillElements.length / skillsPerRow);
+    const calculatedHeight = Math.max(
+      minHeight,
+      estimatedRows * (estimatedSkillHeight + gap) + padding * 2
+    );
+
+    if (calculatedHeight > containerHeight) {
+      setContainerHeight(calculatedHeight);
+      containerHeight = calculatedHeight;
+    }
 
     // tighter packing algorithm: more attempts and denser fallback grid
     const placeAll = () => {
@@ -311,8 +329,14 @@ const Skill: React.FC = () => {
       mouse.y = -1000;
     };
 
-    container.addEventListener("mousemove", onMouseMove);
-    container.addEventListener("mouseleave", onMouseLeave);
+    // Only add mouse events on non-touch devices
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    if (!isTouchDevice) {
+      container.addEventListener("mousemove", onMouseMove);
+      container.addEventListener("mouseleave", onMouseLeave);
+    }
 
     // cleanup
     return () => {
@@ -330,17 +354,15 @@ const Skill: React.FC = () => {
       </h2>
       <div
         ref={containerRef}
-        className="relative w-full overflow-hidden  rounded-lg"
-        style={{ height: "400px" }}
+        className="relative w-full overflow-hidden rounded-lg"
+        style={{ height: `${containerHeight}px`, minHeight: "400px" }}
       >
         {skills.map((skill, index) => (
           <span
-            key={
-              skill /* prefer a stable unique key instead of index when possible */
-            }
+            key={skill}
             ref={(el) => {
               skillsRef.current[index] = el;
-            }} // <- changed: no returned value
+            }}
             className="absolute border-2 border-gray-200 dark:border-gray-800 px-4 py-2 rounded-full text-sm bg-white dark:bg-gray-950 hover:bg-gray-200 hover:text-black dark:hover:bg-gray-800 dark:hover:text-white transition-colors duration-300 shadow-md select-none"
           >
             <span className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1 before:w-2 before:h-2 before:bg-red-500 before:rounded-full"></span>
