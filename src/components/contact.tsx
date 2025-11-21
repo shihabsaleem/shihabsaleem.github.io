@@ -15,8 +15,9 @@ const Contact = ({ layout = "row" }) => {
           : "grid grid-cols-2 sm:grid-cols-3 lg:flex gap-4"
       }`}
     >
-      <div
-        className={`
+      <a href={`tel:${info.phone}`}>
+        <div
+          className={`
     border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
     transition-all duration-300 transform
     hover:-translate-y-1 
@@ -24,13 +25,13 @@ const Contact = ({ layout = "row" }) => {
     dark:hover:bg-gray-800 dark:hover:text-white
     ${isColumn ? "w-full" : ""}
   `}
-      >
-        <a href={`tel:${info.phone}`} >
+        >
           Call Me
-        </a>
-      </div>
-      <div
-        className={`
+        </div>
+      </a>
+      <a href={`https://wa.me/${info.phone}`} target="_blank">
+        <div
+          className={`
     border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
     transition-all duration-300 transform
     hover:-translate-y-1 
@@ -38,11 +39,18 @@ const Contact = ({ layout = "row" }) => {
     dark:hover:bg-gray-800 dark:hover:text-white
     ${isColumn ? "w-full" : ""}
   `}
+        >
+          Whatsapp Me
+        </div>
+      </a>
+      <a
+        href={`${info.cv}`}
+        target="_blank"
+        download={info.name}
+        rel="noopener noreferrer"
       >
-        <a href={`https://wa.me/${info.phone}`} target="_blank">Text Me</a>
-      </div>
-      <div
-        className={`
+        <div
+          className={`
     border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
     transition-all duration-300 transform
     hover:-translate-y-1 
@@ -50,25 +58,21 @@ const Contact = ({ layout = "row" }) => {
     dark:hover:bg-gray-800 dark:hover:text-white
     ${isColumn ? "w-full" : ""}
   `}
-      >
-        <a href={`${info.cv}`} target="_blank" download={info.name} rel="noopener noreferrer">
+        >
+          {" "}
           Download CV
-        </a>
-      </div>
+        </div>
+      </a>
 
       {isColumn ? (
-        <div className="flex gap-4 w-full">
-          <div className="flex-1 border-2 border-gray-200 dark:border-gray-800  p-4 rounded-xl flex justify-center  hover:text-gray-900 hover:bg-white transition">
-            <a
-              href={`https://${info.linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin className="w-6 h-6" />
-            </a>
-          </div>
-          <div
-            className={`
+        <div className="flex gap-4 w-full justify-center">
+          <a
+            href={`https://${info.linkedin}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div
+              className={`
     border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
     transition-all duration-300 transform
     hover:-translate-y-1 
@@ -76,15 +80,28 @@ const Contact = ({ layout = "row" }) => {
     dark:hover:bg-gray-800 dark:hover:text-white
     ${isColumn ? "w-full" : ""}
   `}
+            >
+              <FaLinkedin className="w-6 h-6" />
+            </div>
+          </a>
+          <a
+            href={`https://${info.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <a
-              href={`https://${info.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <div
+              className={`
+    border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
+    transition-all duration-300 transform
+    hover:-translate-y-1 
+    hover:bg-gray-200 hover:text-black
+    dark:hover:bg-gray-800 dark:hover:text-white
+    ${isColumn ? "w-full" : ""}
+  `}
             >
               <FaGithub className="w-6 h-6" />
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       ) : (
         <>
@@ -106,7 +123,14 @@ const Contact = ({ layout = "row" }) => {
               <FaLinkedin className="w-6 h-6" />
             </a>
           </div>
-          <div className="border-2 border-gray-200 dark:border-gray-800  p-4 rounded-xl flex justify-center  hover:text-gray-900 hover:bg-white transition">
+          <div className={`
+    border-2 border-gray-200 dark:border-gray-800 p-4 rounded-xl text-center
+    transition-all duration-300 transform
+    hover:-translate-y-1 
+    hover:bg-gray-200 hover:text-black
+    dark:hover:bg-gray-800 dark:hover:text-white
+    ${isColumn ? "w-full" : ""}
+  `}>
             <a
               href={`https://${info.github}`}
               target="_blank"

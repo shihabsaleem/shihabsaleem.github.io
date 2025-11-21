@@ -98,7 +98,7 @@ export default function Home() {
           opacity: 0,
         }}
       >
-        <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium">
+        <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium ">
           View
         </div>
       </div>
@@ -152,7 +152,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   {work.shortdesc}
                 </p>
-                <button 
+                <button
                   className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity"
                   onClick={(e) => {
                     e.stopPropagation();
