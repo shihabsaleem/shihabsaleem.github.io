@@ -5,7 +5,7 @@ const works = [
     image: "/assets/inventory.jpg",
     shortdesc: "UI / UX Design",
     year: "2024",
-    client: "Snack Manufacturing Co.",
+    client: "Jadbery.",
     role: "UI/UX Designer",
     duration: "1 month",
     description:
@@ -21,10 +21,10 @@ const works = [
       "Faster onboarding for new employees",
     ],
     images: [
-      "/assets/inventory.jpg",
-      "/assets/inventory-1.png",
-      "/assets/inventory-1.png",
-      "/assets/inventory-1.png",
+      "/assets/inventory-0.jpg",
+      "/assets/inventory-1.jpg",
+      "/assets/inventory-2.jpg",
+      "/assets/inventory-3.jpg",
     ],
     tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
   },
@@ -34,7 +34,7 @@ const works = [
     image: "/assets/erp.jpg",
     shortdesc: "UI/UX Design",
     year: "2024",
-    client: "Snack Manufacturing Co.",
+    client: "Jadbery.",
     role: "UI/UX Designer",
     duration: "1 month",
     description:
@@ -50,10 +50,10 @@ const works = [
       "Reduced manual data entry errors by 65%",
     ],
     images: [
-      "/assets/erp.jpg",
+      "/assets/erp-0.jpg",
+      "/assets/erp-1.jpg",
       "/assets/erp-2.jpg",
       "/assets/erp-3.jpg",
-      "/assets/erp-4.jpg",
     ],
     tags: [
       "ERP Design",
@@ -66,10 +66,10 @@ const works = [
   {
     id: 3,
     name: "ADOVO",
-    image: "/assets/adovo-white.jpg",
+    image: "/assets/adovo.jpg",
     shortdesc: "Branding",
-    year: "2024",
-    client: "ADOVO Agency",
+    year: "2025",
+    client: "ADOVO Solutions",
     role: "Brand Designer",
     duration: "2 Weeks",
     description:
@@ -85,10 +85,10 @@ const works = [
       "Positive client feedback on brand perception",
     ],
     images: [
-      "/assets/adovo-white.jpg",
+      "/assets/adovo-0.jpg",
+      "/assets/adovo-1.jpg",
       "/assets/adovo-2.jpg",
-      "/assets/adovo-3.jpg",
-      "/assets/adovo-4.jpg",
+      // "/assets/adovo-4.jpg",
     ],
     tags: [
       "Brand Identity",
