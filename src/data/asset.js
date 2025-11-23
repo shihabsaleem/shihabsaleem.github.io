@@ -1,11 +1,12 @@
 const works = [
   {
     id: 1,
-    name: "Inventory",
+    name: "Adil Rafeeque",
     image: "/assets/inventory.jpg",
     shortdesc: "UI / UX Design",
     year: "2024",
     client: "Jadbery.",
+    clientLink: "https://www.jadbery.com/",
     role: "UI/UX Designer",
     duration: "1 month",
     description:
@@ -30,11 +31,42 @@ const works = [
   },
   {
     id: 2,
+    name: "Inventory",
+    image: "/assets/inventory.jpg",
+    shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Jadbery.",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "1 month",
+    description:
+      "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency. Built to support day-to-day operations, it enhances visibility and control across all stages of production and supply.",
+    challenge:
+      "The company was struggling with outdated inventory management systems that lacked visibility and real-time tracking. The goal was to create an intuitive interface that would help staff quickly understand stock levels, production status, and distribution needs without extensive training.",
+    solution:
+      "We designed a dashboard-first approach with clear visual hierarchies, color-coded status indicators, and streamlined workflows. The interface prioritizes the most critical information while keeping advanced features accessible through progressive disclosure.",
+    impact: [
+      "40% reduction in inventory processing time",
+      "Improved accuracy in stock management",
+      "Enhanced cross-department collaboration",
+      "Faster onboarding for new employees",
+    ],
+    images: [
+      "/assets/inventory-0.jpg",
+      "/assets/inventory-1.jpg",
+      "/assets/inventory-2.jpg",
+      "/assets/inventory-3.jpg",
+    ],
+    tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
+  },
+  {
+    id: 3,
     name: "Custom ERP",
     image: "/assets/erp.jpg",
     shortdesc: "UI/UX Design",
     year: "2024",
     client: "Jadbery.",
+    clientLink: "https://www.jadbery.com/",
     role: "UI/UX Designer",
     duration: "1 month",
     description:
@@ -64,46 +96,43 @@ const works = [
     ],
   },
   {
-    id: 3,
-    name: "ADOVO",
-    image: "/assets/adovo.jpg",
-    shortdesc: "Branding",
+    id: 4,
+    name: "ADIL",
+    image: "/assets/adil.jpg",
+    clientLink: "#",
+    shortdesc: "Personal Brand Identity",
     year: "2025",
-    client: "ADOVO Solutions",
+    client: "Adil Rafeeque",
     role: "Brand Designer",
     duration: "2 Weeks",
     description:
-      "The Adovo logo combines a wordmark with an abstract symbol, reflecting the fusion of technology and creativity. Designed with a minimalist approach in midnight blue with white background, it captures the agency's focus on AI-driven innovation with clarity and sophistication.",
+      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
     challenge:
-      "ADOVO needed a brand identity that would communicate their expertise in AI-driven solutions while maintaining a professional and approachable aesthetic. The challenge was to balance cutting-edge technology with human-centered design principles.",
+      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
     solution:
-      "We developed a clean, geometric logo that merges abstract symbolism with a custom wordmark. The midnight blue color palette conveys trust and intelligence, while the minimalist approach ensures versatility across digital and print applications.",
+      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
     impact: [
-      "Strong brand recognition in the AI tech space",
-      "Versatile identity system across all touchpoints",
-      "Enhanced professional credibility",
-      "Positive client feedback on brand perception",
+      "A recognizable and scalable personal brand identity",
+      "Professional digital presence across platforms",
+      "Clear association with growth and performance analytics",
+      "Strong visual system with a versatile icon",
     ],
-    images: [
-      "/assets/adovo-0.jpg",
-      "/assets/adovo-1.jpg",
-      "/assets/adovo-2.jpg",
-      // "/assets/adovo-4.jpg",
-    ],
+    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
     tags: [
-      "Brand Identity",
+      "Personal Branding",
       "Logo Design",
-      "Visual Identity",
-      "Adobe Illustrator",
+      "Wordmark Design",
+      "Digital Marketing Identity",
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: "Jadbery",
     image: "/assets/jadbery.jpg",
     shortdesc: "UI / UX Design",
-    year: "2023",
-    client: "Jadbery IT Services",
+    year: "2025",
+    client: "Jadbery",
+    clientLink: "https://www.jadbery.com/",
     role: "UI/UX Designer",
     duration: "2 Weeks",
     description:
@@ -126,99 +155,102 @@ const works = [
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
-  {
-    id: 5,
-    name: "Finance",
-    image: "/assets/finance.jpg",
-    shortdesc: "UI / UX Design",
-    year: "2024",
-    client: "Personal Project",
-    role: "Product Designer",
-    duration: "2 weeks",
-    description:
-      "A minimal and intuitive UI/UX design for a mobile expense tracking app that helps users monitor their monthly spending, set limits, and view used vs. remaining budgets in real time. The goal is to promote smarter spending habits and avoid overspending through a clean, user-friendly experience.",
-    challenge:
-      "Many expense tracking apps overwhelm users with complex features and cluttered interfaces. The challenge was to create a simple, intuitive experience that makes financial tracking effortless while providing meaningful insights at a glance.",
-    solution:
-      "We designed a streamlined mobile interface with visual budget indicators, real-time spending updates, and smart categorization. The app uses progressive disclosure to keep the main interface clean while making detailed analytics accessible when needed.",
-    impact: [
-      "Simplified expense tracking process",
-      "Clear visualization of spending patterns",
-      "Real-time budget monitoring capabilities",
-      "Positive user feedback on ease of use",
-    ],
-    images: [
-      "/assets/finance.jpg",
-      "/assets/finance-2.jpg",
-      "/assets/finance-3.jpg",
-      "/assets/finance-4.jpg",
-    ],
-    tags: ["Mobile App", "UI Design", "UX Research", "Figma", "Prototyping"],
-  },
-  {
-    id: 6,
-    name: "Milkow",
-    image: "/assets/milkow.jpg",
-    shortdesc: "Branding & Packaging",
-    year: "2023",
-    client: "Milkow Fresh",
-    role: "Brand & Packaging Designer",
-    duration: "1 week",
-    description:
-      "The Milkow Fresh logo features a friendly mascot combined with a clean wordmark, creating a memorable and approachable brand identity. Designed in solid black to contrast perfectly with the transparent milk bottles and the white milk inside, the minimalist abstract style ensures clarity and versatility, reflecting freshness and trust for our local unpasteurized cow milk.",
-    challenge:
-      "A local dairy needed a brand identity that would communicate freshness, quality, and trustworthiness while standing out on retail shelves. The design had to work perfectly with transparent packaging and appeal to health-conscious consumers.",
-    solution:
-      "We created a mascot-based logo system with a friendly cow character paired with clean typography. The solid black design was specifically chosen to create maximum contrast against transparent bottles and white milk, ensuring visibility and brand recognition.",
-    impact: [
-      "Strong shelf presence in retail environments",
-      "Increased brand recognition among local consumers",
-      "Positive association with quality and freshness",
-      "Successful packaging system across product line",
-    ],
-    images: [
-      "/assets/milkow.jpg",
-      "/assets/milkow-2.jpg",
-      "/assets/milkow-3.jpg",
-      "/assets/milkow-4.jpg",
-    ],
-    tags: [
-      "Branding",
-      "Packaging Design",
-      "Logo Design",
-      "Adobe Illustrator",
-      "Print Design",
-    ],
-  },
-  {
-    id: 7,
-    name: "Parrot Vacation",
-    image: "/assets/parrot.jpg",
-    shortdesc: "Branding",
-    year: "2023",
-    client: "Parrot Vacation Services",
-    role: "Brand Designer",
-    duration: "1 weeks",
-    description:
-      "The Parrot Vacation logo blends a parrot, location pin, and the letter 'P' into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
-    challenge:
-      "A travel agency needed a brand identity that would evoke feelings of adventure, freedom, and exotic destinations while remaining professional and trustworthy. The design needed to be memorable and work well across digital and print applications.",
-    solution:
-      "We developed a clever logomark that combines three elements: a parrot (representing exotic travel), a location pin (navigation/destination), and the letter 'P' (brand initial). The vibrant parakeet-inspired colors create an energetic, approachable identity.",
-    impact: [
-      "Distinctive brand presence in travel industry",
-      "Memorable logo with multiple symbolic meanings",
-      "Versatile identity across marketing materials",
-      "Enhanced brand recall among target audience",
-    ],
-    images: [
-      "/assets/parrot.jpg",
-      "/assets/parrot-2.jpg",
-      "/assets/parrot-3.jpg",
-      "/assets/parrot-4.jpg",
-    ],
-    tags: ["Branding", "Logo Design", "Visual Identity", "Adobe Illustrator"],
-  },
+  // {
+  //   id: 6,
+  //   name: "Finance",
+  //   image: "/assets/finance.jpg",
+  //   shortdesc: "UI / UX Design",
+  //   year: "2024",
+  //   client: "Personal Project",
+  //   clientLink: "#",
+  //   role: "Product Designer",
+  //   duration: "2 weeks",
+  //   description:
+  //     "A minimal and intuitive UI/UX design for a mobile expense tracking app that helps users monitor their monthly spending, set limits, and view used vs. remaining budgets in real time. The goal is to promote smarter spending habits and avoid overspending through a clean, user-friendly experience.",
+  //   challenge:
+  //     "Many expense tracking apps overwhelm users with complex features and cluttered interfaces. The challenge was to create a simple, intuitive experience that makes financial tracking effortless while providing meaningful insights at a glance.",
+  //   solution:
+  //     "We designed a streamlined mobile interface with visual budget indicators, real-time spending updates, and smart categorization. The app uses progressive disclosure to keep the main interface clean while making detailed analytics accessible when needed.",
+  //   impact: [
+  //     "Simplified expense tracking process",
+  //     "Clear visualization of spending patterns",
+  //     "Real-time budget monitoring capabilities",
+  //     "Positive user feedback on ease of use",
+  //   ],
+  //   images: [
+  //     "/assets/finance.jpg",
+  //     "/assets/finance-2.jpg",
+  //     "/assets/finance-3.jpg",
+  //     "/assets/finance-4.jpg",
+  //   ],
+  //   tags: ["Mobile App", "UI Design", "UX Research", "Figma", "Prototyping"],
+  // },
+  // {
+  //   id: 7,
+  //   name: "Milkow",
+  //   image: "/assets/milkow.jpg",
+  //   clientLink: "#",
+  //   shortdesc: "Branding & Packaging",
+  //   year: "2023",
+  //   client: "Milkow Fresh",
+  //   role: "Brand & Packaging Designer",
+  //   duration: "1 week",
+  //   description:
+  //     "The Milkow Fresh logo features a friendly mascot combined with a clean wordmark, creating a memorable and approachable brand identity. Designed in solid black to contrast perfectly with the transparent milk bottles and the white milk inside, the minimalist abstract style ensures clarity and versatility, reflecting freshness and trust for our local unpasteurized cow milk.",
+  //   challenge:
+  //     "A local dairy needed a brand identity that would communicate freshness, quality, and trustworthiness while standing out on retail shelves. The design had to work perfectly with transparent packaging and appeal to health-conscious consumers.",
+  //   solution:
+  //     "We created a mascot-based logo system with a friendly cow character paired with clean typography. The solid black design was specifically chosen to create maximum contrast against transparent bottles and white milk, ensuring visibility and brand recognition.",
+  //   impact: [
+  //     "Strong shelf presence in retail environments",
+  //     "Increased brand recognition among local consumers",
+  //     "Positive association with quality and freshness",
+  //     "Successful packaging system across product line",
+  //   ],
+  //   images: [
+  //     "/assets/milkow.jpg",
+  //     "/assets/milkow-2.jpg",
+  //     "/assets/milkow-3.jpg",
+  //     "/assets/milkow-4.jpg",
+  //   ],
+  //   tags: [
+  //     "Branding",
+  //     "Packaging Design",
+  //     "Logo Design",
+  //     "Adobe Illustrator",
+  //     "Print Design",
+  //   ],
+  // },
+  // {
+  //   id: 8,
+  //   name: "Parrot Vacation",
+  //   image: "/assets/parrot.jpg",
+  //   shortdesc: "Branding",
+  //   year: "2023",
+  //   client: "Parrot Vacation",
+  //   clientLink: "#",
+  //   role: "Brand Designer",
+  //   duration: "1 weeks",
+  //   description:
+  //     "The Parrot Vacation logo blends a parrot, location pin, and the letter 'P' into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
+  //   challenge:
+  //     "A travel agency needed a brand identity that would evoke feelings of adventure, freedom, and exotic destinations while remaining professional and trustworthy. The design needed to be memorable and work well across digital and print applications.",
+  //   solution:
+  //     "We developed a clever logomark that combines three elements: a parrot (representing exotic travel), a location pin (navigation/destination), and the letter 'P' (brand initial). The vibrant parakeet-inspired colors create an energetic, approachable identity.",
+  //   impact: [
+  //     "Distinctive brand presence in travel industry",
+  //     "Memorable logo with multiple symbolic meanings",
+  //     "Versatile identity across marketing materials",
+  //     "Enhanced brand recall among target audience",
+  //   ],
+  //   images: [
+  //     "/assets/parrot.jpg",
+  //     "/assets/parrot-2.jpg",
+  //     "/assets/parrot-3.jpg",
+  //     "/assets/parrot-4.jpg",
+  //   ],
+  //   tags: ["Branding", "Logo Design", "Visual Identity", "Adobe Illustrator"],
+  // },
 ];
 
 const info = [

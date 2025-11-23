@@ -171,8 +171,8 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             <div className="hero-meta">
               <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
                 Client
-              </div>
-              <div className="text-lg">{project.client}</div>
+              </div><a href={project.clientLink} target="_blank" rel="noopener noreferrer">
+              <div className="text-lg">{project.client}</div></a>
             </div>
             <div className="hero-meta">
               <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
