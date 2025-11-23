@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 import Bio from "@/components/bio";
@@ -14,6 +14,7 @@ const About = () => {
   const eduRef = useRef<HTMLDivElement>(null);
   const skillRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
@@ -35,7 +36,18 @@ const About = () => {
       .fromTo(
         skillRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0 },
+        {
+          opacity: 1,
+          y: 0,
+          onComplete: () => {
+            // Notify that animation is complete
+            setAnimationComplete(true);
+            // Trigger a resize event to help skill component recalculate
+            setTimeout(() => {
+              window.dispatchEvent(new Event("resize"));
+            }, 100);
+          },
+        },
         "-=0.7"
       );
   }, []);
