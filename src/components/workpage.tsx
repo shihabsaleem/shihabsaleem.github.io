@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "@/data/asset";
@@ -171,8 +172,10 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             <div className="hero-meta">
               <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
                 Client
-              </div><a href={project.clientLink} target="_blank" rel="noopener noreferrer">
-              <div className="text-lg">{project.client}</div></a>
+              </div>
+              <a href={project.clientLink} target="_blank" rel="noopener noreferrer">
+                <div className="text-lg">{project.client}</div>
+              </a>
             </div>
             <div className="hero-meta">
               <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
@@ -191,10 +194,13 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           {/* Hero Image */}
           <div className="hero-image">
             <div className="relative w-full h-[60vh] rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src={project.images[0]}
                 alt={project.name}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                priority
               />
             </div>
           </div>
@@ -242,10 +248,12 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
                 <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
-                  <img
+                  <Image
                     src={image}
                     alt={`${project.name} screenshot ${index + 2}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
