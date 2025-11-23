@@ -172,9 +172,11 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none  shadow-gray-500 dark:shadow-gray-900 drop-shadow-xs"
+                  className={`relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none shadow-gray-500 dark:shadow-gray-900 drop-shadow-xs ${
+                    hoveredId === work.id ? "scale-[1.02]" : "scale-100"
+                  }`}
                   style={{
-                    height: hoveredId === work.id ? "500px" : "400px",
+                    aspectRatio: "16/9",
                   }}
                   onMouseEnter={handleImageMouseEnter}
                   onMouseLeave={handleImageMouseLeave}

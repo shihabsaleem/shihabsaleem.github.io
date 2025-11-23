@@ -193,7 +193,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
 
           {/* Hero Image */}
           <div className="hero-image">
-            <div className="relative w-full h-[60vh] rounded-2xl overflow-hidden">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
               <Image
                 src={project.images[0]}
                 alt={project.name}
@@ -247,7 +247,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           <div className="grid md:grid-cols-2 gap-8">
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
-                <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                   <Image
                     src={image}
                     alt={`${project.name} screenshot ${index + 2}`}
