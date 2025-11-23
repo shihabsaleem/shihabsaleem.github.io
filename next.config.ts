@@ -1,8 +1,14 @@
 const nextConfig = {
-  output: 'export',
+  output: "export",
   images: { unoptimized: true },
-  basePath: '',
+  basePath: "",
   trailingSlash: true,
+
+  allowedDevOrigins: [
+    "local-origin.dev",
+    "*.local-origin.dev",
+    "192.168.29.225",
+  ],
 };
 
 export default nextConfig;

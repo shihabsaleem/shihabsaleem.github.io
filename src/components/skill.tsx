@@ -390,7 +390,8 @@ const Skill: React.FC = () => {
     }, 100); // Wait 100ms for layout to settle
 
     return () => clearTimeout(timeoutId);
-  }, [isVisible, placementKey.current, isMobile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible, isMobile]);
 
   // Handle resize events (only for desktop)
   useEffect(() => {
@@ -411,7 +412,7 @@ const Skill: React.FC = () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimeout);
     };
-  }, [isVisible]);
+  }, [isVisible, isMobile]);
 
   return (
     <div className="w-full">

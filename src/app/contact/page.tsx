@@ -39,7 +39,6 @@ const ContactInfo = () => (
       >
         {info.phone}
       </a>
-     
     </div>
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
