@@ -6,14 +6,26 @@ const info = data.info[0];
 
 const Dp = () => {
   return (
-    <div className="w-full h-auto ">
-      <div className="relative aspect-square rounded-3xl overflow-hidden ">
+    <div className="w-full h-auto">
+      <div className="relative aspect-square rounded-3xl overflow-hidden">
+        {/* Light mode image */}
         <Image
-          src={info.dp}
+          src={info.dpLight}
           alt={info.name}
           fill
-          className="object-contain opacity-90 dark:bg-blend-color dark:opacity-60"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain opacity-90 grayscale saturate-0 block dark:hidden"
+          priority
+        />
+
+        {/* Dark mode image */}
+        <Image
+          src={info.dpDark}
+          alt={info.name}
+          fill
+          className="object-contain opacity-60 hidden dark:block"
+          sizes="(max-width: 768px) 100vw, 
+             (max-width: 1200px) 50vw, 
+             33vw"
           priority
         />
       </div>

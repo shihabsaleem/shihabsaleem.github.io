@@ -262,7 +262,8 @@ const info = [
   {
     name: "Shihab Rahman",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
-    dp: "/assets/shihab.png",
+    dpDark: "/assets/shihab.png",
+    dpLight: "/assets/shihab-Light.png",
     phone: "+917907689743",
     email: "shihabrsaleem@gmail.com",
     linkedin: "linkedin.com/in/shihab-rahman",
