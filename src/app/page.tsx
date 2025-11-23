@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "@/data/asset";
@@ -43,7 +44,7 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent, workId: number) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
   };
 
@@ -120,7 +121,7 @@ export default function Home() {
             className={`work-item opacity-0 translate-y-12 transition-all duration-500 cursor-pointer ${
               index > 0 ? "border-t border-gray-200 dark:border-gray-800" : ""
             }`}
-            onMouseMove={(e) => handleMouseMove(e, work.id)}
+            onMouseMove={handleMouseMove}
             onMouseEnter={() => handleMouseEnter(work.id)}
             onMouseLeave={handleMouseLeave}
             onClick={() => navigateToProject(work.name)}
@@ -178,16 +179,13 @@ export default function Home() {
                   onMouseEnter={handleImageMouseEnter}
                   onMouseLeave={handleImageMouseLeave}
                 >
-                  <img
+                  <Image
                     src={work.image}
                     alt={work.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
                   />
-                  {/* <div
-                    className={`absolute inset-0 bg-black transition-opacity duration-500 ${
-                      hoveredId === work.id ? "opacity-0" : "opacity-30"
-                    }`}
-                  /> */}
                 </div>
               </div>
             </div>
@@ -202,15 +200,15 @@ export default function Home() {
             {/* Left Side - Text */}
             <div className="space-y-6">
               <h2 className="text-5xl md:text-7xl font-light tracking-tight">
-                Let's Create
+                Let&apos;s Create
                 <br />
                 Something
                 <br />
                 <span className="text-red-500">Amazing.</span>
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400 max-w-md">
-                Have a project in mind? I'd love to hear about it. Let's work
-                together to bring your ideas to life.
+                Have a project in mind? I&apos;d love to hear about it.
+                Let&apos;s work together to bring your ideas to life.
               </p>
             </div>
 

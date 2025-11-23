@@ -15,7 +15,7 @@ const Dp = () => (
   </div>
 );
 
-const ContactInfo = ({ layout }: { layout: string }) => (
+const ContactInfo = () => (
   <div className="space-y-6">
     <div>
       <h3 className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
@@ -122,7 +122,7 @@ const Contact = () => {
           ref={rightRef}
           className="w-full lg:w-8/12 border-2 border-gray-200 dark:border-gray-800 p-8 rounded-3xl flex flex-col justify-center"
         >
-          <ContactInfo layout="column" />
+          <ContactInfo />
         </div>
       </div>
     </div>

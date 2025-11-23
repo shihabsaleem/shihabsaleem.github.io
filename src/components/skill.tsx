@@ -3,13 +3,27 @@ import { gsap } from "gsap";
 
 import data from "@/data/asset";
 
+interface Rect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
+
+interface Velocity {
+  vx: number;
+  vy: number;
+}
+
 const skills = data.skills;
 const Skill: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const skillsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [containerHeight, setContainerHeight] = useState(400);
-  const occupiedSpaces = useRef<Array<any>>([]);
+  const occupiedSpaces = useRef<Array<Rect | null>>([]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -46,7 +60,7 @@ const Skill: React.FC = () => {
     const containerWidth = containerRect.width;
     let containerHeight = containerRect.height;
 
-    const rectsOverlap = (a: any, b: any) => {
+    const rectsOverlap = (a: Rect | null, b: Rect | null) => {
       if (!a || !b) return false;
       return !(
         a.right <= b.left ||
@@ -92,7 +106,7 @@ const Skill: React.FC = () => {
           const y =
             Math.random() * (containerHeight - h - padding * 2) + padding;
 
-          const newRect = {
+          const newRect: Rect = {
             left: x,
             top: y,
             right: x + w,
@@ -133,7 +147,7 @@ const Skill: React.FC = () => {
               xx <= containerWidth - w - padding && !slotFound;
               xx += w + gap
             ) {
-              const newRect = {
+              const newRect: Rect = {
                 left: xx,
                 top: yy,
                 right: xx + w,
@@ -184,6 +198,7 @@ const Skill: React.FC = () => {
     // set elements immediately to positions
     skillElements.forEach((skill, index) => {
       const target = occupiedSpaces.current[index];
+      if (!target) return;
       const x = target.left;
       const y = target.top;
       gsap.set(skill, {
@@ -195,11 +210,11 @@ const Skill: React.FC = () => {
     });
 
     // repulsion: on mousemove, push nearby items away smoothly
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
     const radius = 100;
     const strength = 50;
 
-    const velocities = skillElements.map(() => ({ vx: 0, vy: 0 }));
+    const velocities: Velocity[] = skillElements.map(() => ({ vx: 0, vy: 0 }));
 
     let rafId: number | null = null;
 
@@ -221,6 +236,7 @@ const Skill: React.FC = () => {
 
         // Store original position for return force
         const targetRect = occupiedSpaces.current[i];
+        if (!targetRect) continue;
         const originalX = targetRect.left;
         const originalY = targetRect.top;
 
@@ -281,17 +297,21 @@ const Skill: React.FC = () => {
             parseFloat(gsap.getProperty(skillElements[b], "y") as string) ||
             rb.top;
 
-          const aRect = {
+          const aRect: Rect = {
             left: aX,
             top: aY,
             right: aX + ra.width,
             bottom: aY + ra.height,
+            width: ra.width,
+            height: ra.height,
           };
-          const bRect = {
+          const bRect: Rect = {
             left: bX,
             top: bY,
             right: bX + rb.width,
             bottom: bY + rb.height,
+            width: rb.width,
+            height: rb.height,
           };
 
           if (rectsOverlap(aRect, bRect)) {
