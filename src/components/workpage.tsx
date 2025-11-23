@@ -193,12 +193,13 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
 
           {/* Hero Image */}
           <div className="hero-image">
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+            <div className="relative w-full rounded-2xl overflow-hidden">
               <Image
                 src={project.images[0]}
                 alt={project.name}
-                fill
-                className="object-cover"
+                width={1200}
+                height={675}
+                className="w-full h-auto"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                 priority
               />
@@ -247,12 +248,13 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           <div className="grid md:grid-cols-2 gap-8">
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+                <div className="relative w-full rounded-2xl overflow-hidden">
                   <Image
                     src={image}
                     alt={`${project.name} screenshot ${index + 2}`}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>

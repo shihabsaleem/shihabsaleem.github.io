@@ -175,17 +175,15 @@ export default function Home() {
                   className={`relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none shadow-gray-500 dark:shadow-gray-900 drop-shadow-xs ${
                     hoveredId === work.id ? "scale-[1.02]" : "scale-100"
                   }`}
-                  style={{
-                    aspectRatio: "16/9",
-                  }}
                   onMouseEnter={handleImageMouseEnter}
                   onMouseLeave={handleImageMouseLeave}
                 >
                   <Image
                     src={work.image}
                     alt={work.name}
-                    fill
-                    className="object-cover"
+                    width={1200}
+                    height={675}
+                    className="w-full h-auto"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
                   />
                 </div>
@@ -194,7 +192,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-
       {/* Creative CTA Section */}
       <div className="mt-32 mb-20">
         <div className="border-t border-gray-200 dark:border-gray-800 pt-20">
