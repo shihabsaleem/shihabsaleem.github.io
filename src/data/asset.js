@@ -153,10 +153,9 @@ const works = [
       "Enhanced brand perception as a modern IT partner",
     ],
     images: [
-      "/assets/jadbery.jpg",
+      "/assets/jadbery-0.jpg",
+      "/assets/jadbery-1.jpg",
       "/assets/jadbery-2.jpg",
-      "/assets/jadbery-3.jpg",
-      "/assets/jadbery-4.jpg",
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
