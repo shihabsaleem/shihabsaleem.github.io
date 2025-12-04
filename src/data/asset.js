@@ -190,7 +190,7 @@ const works = [
       "Brand Identity",
       "Logo Design",
       "Geometric Design",
-      "IT Development Branding",
+      "IT Branding",
     ],
   },
   // {
