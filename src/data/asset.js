@@ -184,7 +184,9 @@ const works = [
     images: [
       "/assets/acuverse-0.jpg",
       "/assets/acuverse-1.jpg",
-      "/assets/acuverse-2.jpg","/assets/acuverse-3.jpg","/assets/acuverse-4.jpg",
+      "/assets/acuverse-2.jpg",
+      "/assets/acuverse-3.jpg",
+      "/assets/acuverse-4.jpg",
     ],
     tags: [
       "Brand Identity",
