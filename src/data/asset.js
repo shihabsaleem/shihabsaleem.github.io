@@ -159,6 +159,40 @@ const works = [
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
+  {
+    id: 6,
+    name: "Acuverse",
+    image: "/assets/acuverse.jpg",
+    clientLink: "#",
+    shortdesc: "Branding",
+    year: "2024",
+    client: "Acuverse",
+    role: "Brand Designer",
+    duration: "3 Weeks",
+    description:
+      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company’s forward-thinking approach to IT development.",
+    challenge:
+      "Acuverse needed a brand identity that visually reflects its commitment to innovation, technological precision, and digital infrastructure. The challenge was to create a logo that is both minimal and highly symbolic, reinforcing trust and technical expertise.",
+    solution:
+      "We developed a geometric, interconnected monogram that forms an abstract 'A.' Its symmetrical construction and precise linework symbolize structured systems, seamless connectivity, and modern digital architecture. The simplified yet bold aesthetic ensures strong brand recognition across platforms.",
+    impact: [
+      "A modern and memorable visual identity",
+      "Clear association with digital connectivity and innovation",
+      "Scalable geometric logo adaptable to various digital environments",
+      "Strengthened brand presence within the IT development sector",
+    ],
+    images: [
+      "/assets/acuverse-0.jpg",
+      "/assets/acuverse-1.jpg",
+      "/assets/acuverse-2.jpg","/assets/acuverse-3.jpg","/assets/acuverse-4.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Geometric Design",
+      "IT Development Branding",
+    ],
+  },
   // {
   //   id: 6,
   //   name: "Finance",
