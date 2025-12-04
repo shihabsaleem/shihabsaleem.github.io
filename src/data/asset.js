@@ -1,36 +1,6 @@
 const works = [
   {
     id: 1,
-    name: "Adil Rafeeque",
-    image: "/assets/adil.jpg",
-    clientLink: "https://adilrafeeque.com/",
-    shortdesc: "Personal Brand Identity",
-    year: "2025",
-    client: "Adil Rafeeque",
-    role: "Brand Designer",
-    duration: "2 Weeks",
-    description:
-      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
-    challenge:
-      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
-    solution:
-      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
-    impact: [
-      "A recognizable and scalable personal brand identity",
-      "Professional digital presence across platforms",
-      "Clear association with growth and performance analytics",
-      "Strong visual system with a versatile icon",
-    ],
-    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
-    tags: [
-      "Personal Branding",
-      "Logo Design",
-      "Wordmark Design",
-      "Digital Marketing Identity",
-    ],
-  },
-  {
-    id: 2,
     name: "Inventory",
     image: "/assets/inventory.jpg",
     shortdesc: "UI / UX Design",
@@ -58,6 +28,36 @@ const works = [
       "/assets/inventory-3.jpg",
     ],
     tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
+  },
+  {
+    id: 2,
+    name: "Adil Rafeeque",
+    image: "/assets/adil.jpg",
+    clientLink: "https://adilrafeeque.com/",
+    shortdesc: "Personal Brand Identity",
+    year: "2025",
+    client: "Adil Rafeeque",
+    role: "Brand Designer",
+    duration: "2 Weeks",
+    description:
+      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
+    challenge:
+      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
+    solution:
+      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
+    impact: [
+      "A recognizable and scalable personal brand identity",
+      "Professional digital presence across platforms",
+      "Clear association with growth and performance analytics",
+      "Strong visual system with a versatile icon",
+    ],
+    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
+    tags: [
+      "Personal Branding",
+      "Logo Design",
+      "Wordmark Design",
+      "Digital Marketing Identity",
+    ],
   },
   {
     id: 3,
