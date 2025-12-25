@@ -75,12 +75,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${stalinistOne.variable} ${montserrat.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Navbar />
-        <main> {children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
