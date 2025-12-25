@@ -1,3 +1,4 @@
+
 const works = [
   {
     id: 1,
@@ -188,12 +189,7 @@ const works = [
       "/assets/acuverse-3.jpg",
       "/assets/acuverse-4.jpg",
     ],
-    tags: [
-      "Brand Identity",
-      "Logo Design",
-      "Geometric Design",
-      "IT Branding",
-    ],
+    tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
   },
   // {
   //   id: 6,
@@ -330,19 +326,29 @@ const education = [
 
 const experience = [
   {
+    Company: "Jadbery Digital",
+    CLink: "https://www.jadbery.com/",
+    Designation: "Product Designer / Dev",
+    start: "Apr 2024",
+    end: "Present",
+  },
+  {
     Company: "Saasyway",
-    Designation: "L1 Frontend Developer",
+    CLink: "https://saasyway.com/",
+    Designation: "Frontend Developer",
     start: "Jan 2025",
     end: "Jun 2025",
   },
   {
     Company: "PDS - EY GDS",
+    CLink: "https://www.pdspeermade.com/",
     Designation: "Angular Developer Intern",
     start: "Mar 2024",
     end: "Aug 2024",
   },
   {
     Company: "GJ Infotech p Ltd",
+    CLink: "https://www.gjinfotech.net/",
     Designation: "Web Designer",
     start: "May 2018",
     end: "Jun 2019",
