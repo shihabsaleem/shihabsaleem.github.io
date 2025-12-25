@@ -1,4 +1,3 @@
-
 const works = [
   {
     id: 1,
@@ -292,19 +291,24 @@ const works = [
 const info = [
   {
     name: "Shihab Rahman",
+    title: "UI/UX Designer & Developer",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
+    seoDesc:
+      "Product Designer and Developer specializing in UI/UX design, user research, and frontend development. Crafting intuitive digital experiences with Figma, React, and modern design systems.",
     dpDark: "/assets/shihab.png",
     dpLight: "/assets/shihab-Light.png",
+    ogImage: "/assets/og-shihab.jpg",
+    siteUrl: "https://shihabsaleem.github.io",
     phone: "+917907689743",
     email: "shihabrsaleem@gmail.com",
     linkedin: "linkedin.com/in/shihab-rahman",
     github: "github.com/shihabsaleem",
     insta: "instagram.com/shihabrsaleem",
+    twitter: "@shihabrsaleem",
     cv: "/assets/Shihab.pdf",
     location: "Kerala, India",
   },
 ];
-
 const education = [
   {
     id: 1,

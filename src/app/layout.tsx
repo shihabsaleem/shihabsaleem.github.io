@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Stalinist_One } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import data from "@/data/asset";
 
 const stalinistOne = Stalinist_One({
   variable: "--font-stalinistOne",
@@ -15,13 +16,55 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const info = data.info[0];
+
 export const metadata: Metadata = {
-  title:
-    "Shihab Rahman - UI / UX Designer, Developer & Branding Specialist in Kerala",
-  description:
-    "Shihab Rahman Saleem | UI / UX Designer, Developer & Branding Specialist in Kerala. Crafting seamless digital experiences through innovative design and development.",
-  other: {
-    "google-site-verification": "GemZ4BhmvHdCTI6hyWsUcn8uOrXX0NciFwKhSpfsXKQ",
+  title: `${info.name} - UI/UX Designer & Developer`,
+  description: `${
+    info.name
+  } | UI/UX Designer, Developer & Branding Specialist in ${
+    info.location
+  }. ${info.desc.substring(0, 150)}...`,
+  keywords:
+    "UI/UX Designer, Product Designer, Frontend Developer, Shihab Rahman, Kerala Designer, React Developer, Figma Designer, Branding Specialist",
+  authors: [{ name: info.name }],
+  creator: info.name,
+  openGraph: {
+    title: `${info.name} - UI/UX Designer & Developer`,
+    description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences through innovative design and development.`,
+    url: "https://shihabsaleem.github.io",
+    siteName: `${info.name} Portfolio`,
+    images: [
+      {
+        url: "/assets/og-shihab.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${info.name} - UI/UX Designer`,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${info.name} - UI/UX Designer & Developer`,
+    description: `UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
+    creator: "@shihabrsaleem",
+    images: ["/assets/og-shihab.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "GemZ4BhmvHdCTI6hyWsUcn8uOrXX0NciFwKhSpfsXKQ",
   },
 };
 
