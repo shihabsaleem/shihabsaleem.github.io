@@ -19,6 +19,7 @@ const montserrat = Montserrat({
 const info = data.info[0];
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shihabsaleem.github.io"), // Add this line
   title: `${info.name} - UI/UX Designer & Developer`,
   description: `${
     info.name
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     siteName: `${info.name} Portfolio`,
     images: [
       {
-        url: "/assets/og-shihab.jpg",
+        url: "/assets/og-shihab.jpg", // Now resolves to full URL
         width: 1200,
         height: 630,
         alt: `${info.name} - UI/UX Designer`,
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     title: `${info.name} - UI/UX Designer & Developer`,
     description: `UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
     creator: "@shihabrsaleem",
-    images: ["/assets/og-shihab.jpg"],
+    images: ["/assets/og-shihab.jpg"], // Now resolves to full URL
   },
   robots: {
     index: true,
