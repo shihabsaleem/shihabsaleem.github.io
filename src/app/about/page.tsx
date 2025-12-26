@@ -87,10 +87,10 @@ const About = () => {
             <Skill />
           </div>
         </div>
-        {/* Legal Links Footer */}
+      
+      </div>  {/* Legal Links Footer */}
       <div className="mt-16">
         <LegalLinks />
-      </div>
       </div>
     </div>
   );
