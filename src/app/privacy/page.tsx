@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h2 className="text-3xl font-light mb-4">Children's Privacy</h2>
+          <h2 className="text-3xl font-light mb-4">Children&apos;s Privacy</h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             My website is not directed to children under the age of 13, and I do not knowingly collect information from children.
           </p>
