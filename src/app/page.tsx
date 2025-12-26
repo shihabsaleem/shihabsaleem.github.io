@@ -104,15 +104,19 @@ export default function Home() {
           View
         </div>
       </div>
+      {/* SEO H1 - Hidden but visible to search engines */}
+      <h1 className="sr-only">
+        {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
+        {info.location}
+      </h1>
 
-      {/* Hero Title */}
+      {/* Visual Hero Title */}
       <div className="hero-title">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
           Crafted Pieces
           <span className="text-red-500 dark:text-red-500">.</span>
-        </h1>
+        </h2>
       </div>
-
       {/* Works Grid */}
       <div className="space-y-0">
         {works.map((work, index) => (
