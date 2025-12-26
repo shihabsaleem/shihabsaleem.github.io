@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
         <section>
           <h2 className="text-3xl font-light mb-4">Introduction</h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            This Privacy Policy describes how Shihab Saleem ("I", "me", or "my") collects, uses, and protects your information when you visit my portfolio website. I am committed to ensuring that your privacy is protected and that any information collected is handled responsibly.
+            This Privacy Policy describes how Shihab Saleem (&quot;I&quot;, &quot;me&quot;, or &quot;my&quot;) collects, uses, and protects your information when you visit my portfolio website. I am committed to ensuring that your privacy is protected and that any information collected is handled responsibly.
           </p>
         </section>
 
@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
           <ul className="space-y-3 text-gray-700 dark:text-gray-300">
             <li className="flex items-start">
               <span className="text-red-500 mr-2">•</span>
-              <span><strong>Contact Interactions:</strong> When you use the call button or WhatsApp button on my website, you will be redirected to your phone's native dialer or WhatsApp application. Any information shared through these channels is subject to your phone's privacy settings and WhatsApp's privacy policy respectively. I do not collect or store any data from these interactions.</span>
+              <span><strong>Contact Interactions:</strong> When you use the call button or WhatsApp button on my website, you will be redirected to your phone&apos;s native dialer or WhatsApp application. Any information shared through these channels is subject to your phone&apos;s privacy settings and WhatsApp&apos;s privacy policy respectively. I do not collect or store any data from these interactions.</span>
             </li>
             <li className="flex items-start">
               <span className="text-red-500 mr-2">•</span>
@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
         <section>
           <h2 className="text-3xl font-light mb-4">Changes to This Policy</h2>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            I may update this Privacy Policy from time to time to reflect changes in my practices or for legal reasons. The "Last updated" date at the top of this page indicates when the policy was last revised. I encourage you to review this policy periodically.
+            I may update this Privacy Policy from time to time to reflect changes in my practices or for legal reasons. The &quot;Last updated&quot; date at the top of this page indicates when the policy was last revised. I encourage you to review this policy periodically.
           </p>
         </section>
 
