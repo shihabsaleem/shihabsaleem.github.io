@@ -1,5 +1,6 @@
 // src/app/[workName]/page.tsx
 import ProjectPage from "@/components/workpage";
+import LegalLinks from "@/components/legal";
 import data from "@/data/asset";
 import { notFound } from "next/navigation";
 
@@ -56,5 +57,14 @@ export default async function Page({
     notFound();
   }
   
-  return <ProjectPage projectId={work.id} />;
+  return (
+    <div>
+      <ProjectPage projectId={work.id} />
+      
+      {/* Legal Links Footer */}
+      <div className="my-4 px-6 md:px-12 lg:px-20">
+        <LegalLinks />
+      </div>
+    </div>
+  );
 }

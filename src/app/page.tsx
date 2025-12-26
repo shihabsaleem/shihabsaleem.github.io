@@ -6,6 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "@/data/asset";
+import LegalLinks from "@/components/legal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -260,6 +261,13 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+     
+
+      
+      </div>   {/* Legal Links Footer */}
+      <div className="mt-16">
+        <LegalLinks />
       </div>
     </div>
   );

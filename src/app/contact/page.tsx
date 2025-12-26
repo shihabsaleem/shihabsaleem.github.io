@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Dps from "@/components/dp";
+import LegalLinks from "@/components/legal";
 
 import data from "@/data/asset";
 
@@ -123,6 +124,10 @@ const Contact = () => {
         >
           <ContactInfo />
         </div>
+      </div>
+      {/* Legal Links Footer */}
+      <div className="mt-16">
+        <LegalLinks />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Bio from "@/components/bio";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skill from "@/components/skill";
+import LegalLinks from "@/components/legal";
 
 const About = () => {
   const bioRef = useRef<HTMLDivElement>(null);
@@ -86,6 +87,10 @@ const About = () => {
             <Skill />
           </div>
         </div>
+        {/* Legal Links Footer */}
+      <div className="mt-16">
+        <LegalLinks />
+      </div>
       </div>
     </div>
   );
