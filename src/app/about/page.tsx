@@ -8,7 +8,9 @@ import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skill from "@/components/skill";
 import LegalLinks from "@/components/legal";
+import data from "@/data/asset";
 
+const info = data.info[0];
 const About = () => {
   const bioRef = useRef<HTMLDivElement>(null);
   const expRef = useRef<HTMLDivElement>(null);
@@ -53,10 +55,14 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-6 md:px-12 lg:px-20 py-12">
       {/* Hero Section */}
+      <h1 className="sr-only">
+        {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
+        {info.location}
+      </h1>
       <div ref={titleRef} className="mb-20">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
           My Story<span className="text-red-500">.</span>
-        </h1>
+        </h2>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">

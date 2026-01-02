@@ -103,11 +103,16 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-6 md:px-12 lg:px-20 py-12">
+
+      <h1 className="sr-only">
+        {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
+        {info.location}
+      </h1>
       {/* Hero Section */}
       <div ref={titleRef} className="mb-20">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
+        <h2 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight mb-4">
           Get in Touch<span className="text-red-500">.</span>
-        </h1>
+        </h2>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
