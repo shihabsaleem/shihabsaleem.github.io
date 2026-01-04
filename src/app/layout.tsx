@@ -19,8 +19,8 @@ const montserrat = Montserrat({
 const info = data.info[0];
 
 export const metadata: Metadata = {
-  metadataBase: new URL(""), // Add this line
-  title: `${info.name} - UI/UX Designer & Developer`,
+  metadataBase: new URL(info.siteUrl), // Add this line
+  title: `${info.name} - ${info.title}`,
   description: `${
     info.name
   } | UI/UX Designer, Developer & Branding Specialist in ${
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: info.name }],
   creator: info.name,
   openGraph: {
-    title: `${info.name} - UI/UX Designer & Developer`,
+    title: `${info.name} - ${info.title}`,
     description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences through innovative design and development.`,
     url: "https://shihabsaleem.online/",
     siteName: `${info.name} Portfolio`,
