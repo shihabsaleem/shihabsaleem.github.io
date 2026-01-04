@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${info.name} - ${info.title}`,
     description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences through innovative design and development.`,
-    url: "https://shihabsaleem.online/",
+    url: info.siteUrl,
     siteName: `${info.name} Portfolio`,
     images: [
       {
