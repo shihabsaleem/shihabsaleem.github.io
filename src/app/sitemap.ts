@@ -3,10 +3,8 @@ import assetData from "@/data/asset";
 
 export const dynamic = "force-static";
 
-// Vercel automatically provides VERCEL_URL during builds
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL 
-  || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null)
-  || "https://www.shihabsaleem.online"; // Note: your site uses www subdomain
+// Always use your production domain in sitemap
+const BASE_URL = "https://www.shihabsaleem.online";
 
 // MUST match your page.tsx logic
 function nameToSlug(name: string): string {
