@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "17KO-DusE9wfgprGcjm7kZyPCz74zmgG3Q5R2k0ffR4",
+    google: "wXIsQDNzW9JDNg5flpQbfbez4dH1FeapT0phCbPw55k",
   },
 };
 
