@@ -5,19 +5,19 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://shihabsaleem.github.io/",
+      url: "https://shihabsaleem.online/",
       lastModified: new Date(),
     },
     {
-      url: "https://shihabsaleem.github.io/about",
+      url: "https://shihabsaleem.online/about",
       lastModified: new Date(),
     },
      {
-      url: "https://shihabsaleem.github.io/contact",
+      url: "https://shihabsaleem.online/contact",
       lastModified: new Date(),
     },
     {
-      url: "https://shihabsaleem.github.io/privacy",
+      url: "https://shihabsaleem.online/privacy",
       lastModified: new Date(),
     },
   ];

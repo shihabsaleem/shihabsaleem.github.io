@@ -299,7 +299,7 @@ const info = [
     dpDark: "/assets/shihab.png",
     dpLight: "/assets/shihab-Light.png",
     ogImage: "/assets/og-shihab.jpg",
-    siteUrl: "https://shihabsaleem.github.io",
+    siteUrl: "https://shihabsaleem.online",
     phone: "+917907689743",
     email: "shihabrsaleem@gmail.com",
     linkedin: "linkedin.com/in/shihab-rahman",

@@ -5,7 +5,7 @@ A **dark-themed, bento-style** personal portfolio website built with **Next.js**
 
 ## 🔗 Live Demo
 
-[➡️ Visit My Portfolio](https://shihabsaleem.github.io)
+[➡️ Visit My Portfolio](https://shihabsaleem.online)
 
 ---
 
@@ -84,7 +84,7 @@ Licensed under the **MIT License**.
 ## 🙋‍♂️ About Me
 
 **Shihab Rahman**
-[Portfolio](https://shihabsaleem.github.io)
+[Portfolio](https://shihabsaleem.online)
 [LinkedIn](https://linkedin.com/in/shihab-rahman)
 [GitHub](https://github.com/shihabsaleem)
 

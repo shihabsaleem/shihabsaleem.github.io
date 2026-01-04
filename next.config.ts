@@ -1,7 +1,7 @@
 const nextConfig = {
-  output: "export",
-  images: { unoptimized: true },
-  basePath: "",
+  // output: "export", // for static export
+  // images: { unoptimized: true }, // for static export
+  // basePath: "", // for static export
   trailingSlash: true,
 
   allowedDevOrigins: [
