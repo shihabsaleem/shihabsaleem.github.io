@@ -44,8 +44,8 @@ export const metadata: Metadata = {
 
   /** ✅ FAVICON & ICONS (IMPORTANT FOR GOOGLE) */
   icons: {
-    icon: "/assets/favicon.ico", // ≥48x48 (Google)
-    shortcut: "/assets/favicon.ico",
+    icon: "/favicon.ico", // ≥48x48 (Google)
+    shortcut: "/favicon.ico",
     apple: "/assets/apple-touch-icon.png", // 180x180
   },
 
