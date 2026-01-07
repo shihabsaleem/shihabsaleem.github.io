@@ -19,7 +19,7 @@ const montserrat = Montserrat({
 const info = data.info[0];
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shihabsaleem.online"),
+  metadataBase: new URL("https://shihabsaleem.site"),
 
   title: `${info.name} - ${info.title}`,
   description: `${
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${info.name} - ${info.title}`,
     description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
-    url: "https://shihabsaleem.online",
+    url: "https://shihabsaleem.site",
     siteName: `${info.name} Portfolio`,
     images: [
       {

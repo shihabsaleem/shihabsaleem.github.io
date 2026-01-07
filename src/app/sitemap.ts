@@ -4,7 +4,7 @@ import assetData from "@/data/asset";
 export const dynamic = "force-static";
 
 // Always use your production domain in sitemap
-const BASE_URL = "https://www.shihabsaleem.online";
+const BASE_URL = "https://www.shihabsaleem.site";
 
 // MUST match your page.tsx logic
 function nameToSlug(name: string): string {
