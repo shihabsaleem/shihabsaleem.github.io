@@ -306,7 +306,7 @@ const info = [
     github: "github.com/shihabsaleem",
     insta: "instagram.com/shihabrsaleem",
     twitter: "@shihabrsaleem",
-    cv: "/assets/Shihab.pdf",
+    cv: "/assets/shihab.pdf",
     location: "Kerala, India",
   },
 ];
