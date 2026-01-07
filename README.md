@@ -1,5 +1,5 @@
 
-# 🚀 Shihab Rahman - Portfolio (Next.js)
+# 🚀 Shihab Saleem - Portfolio (Next.js)
 
 A **dark-themed, bento-style** personal portfolio website built with **Next.js** and **Tailwind CSS**. This project showcases my work, skills, and experience with a modern and minimal user interface optimized for performance and clarity.
 
@@ -83,7 +83,7 @@ Licensed under the **MIT License**.
 
 ## 🙋‍♂️ About Me
 
-**Shihab Rahman**
+**Shihab Saleem**
 [Portfolio](https://shihabsaleem.online)
 [LinkedIn](https://linkedin.com/in/shihab-rahman)
 [GitHub](https://github.com/shihabsaleem)

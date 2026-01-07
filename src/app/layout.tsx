@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "UI/UX Designer",
     "Product Designer",
     "Frontend Developer",
-    "Shihab Rahman",
+    "Shihab Saleem",
     "Kerala UI UX Designer",
     "React Developer",
     "Figma Designer",

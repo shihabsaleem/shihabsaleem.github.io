@@ -39,7 +39,7 @@ export async function generateMetadata({
   }
   
   return {
-    title: `${work.name} - Shihab Rahman`,
+    title: `${work.name} - Shihab Saleem`,
     description: work.description,
   };
 }

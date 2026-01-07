@@ -290,7 +290,7 @@ const works = [
 
 const info = [
   {
-    name: "Shihab Rahman",
+    name: "Shihab Saleem",
     title: "UI/UX Designer & Developer",
     logo: "/assets/shihab.svg",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
