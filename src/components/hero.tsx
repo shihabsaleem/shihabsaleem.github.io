@@ -26,11 +26,35 @@ const Hero = () => {
         defaults: { ease: "power4.out", duration: 1.2 },
       });
 
-      tl.fromTo(".stat-item", { y: -30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 })
-        .fromTo(".portrait-img", { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.8 }, "-=0.8")
-        .fromTo(".bio-text", { x: -30, opacity: 0 }, { x: 0, opacity: 1 }, "-=1")
-        .fromTo(".role-item", { x: 30, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.1 }, "-=1")
-        .fromTo(".main-name", { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.6");
+      tl.fromTo(
+        ".stat-item",
+        { y: -30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1 }
+      )
+        .fromTo(
+          ".portrait-img",
+          { scale: 1.1, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.8 },
+          "-=0.8"
+        )
+        .fromTo(
+          ".bio-text",
+          { x: -30, opacity: 0 },
+          { x: 0, opacity: 1 },
+          "-=1"
+        )
+        .fromTo(
+          ".role-item",
+          { x: 30, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.1 },
+          "-=1"
+        )
+        .fromTo(
+          ".main-name",
+          { y: 80, opacity: 0 },
+          { y: 0, opacity: 1 },
+          "-=0.6"
+        );
 
       const handleMouseMove = (e: MouseEvent) => {
         const x = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -67,7 +91,23 @@ const Hero = () => {
 
         <div className="portrait-img absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
           <div className="relative w-full max-w-lg aspect-square">
-            <Image src={info.dpDark} alt={info.name} fill className="object-contain" priority />
+            {/* Light mode image */}
+            <Image
+              src={info.dpLight}
+              alt={info.name}
+              fill
+              className="object-contain block dark:hidden"
+              priority
+            />
+
+            {/* Dark mode image */}
+            <Image
+              src={info.dpDark}
+              alt={info.name}
+              fill
+              className="object-contain hidden dark:block"
+              priority
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black via-transparent to-transparent opacity-80" />
           </div>
         </div>
@@ -102,12 +142,28 @@ const Hero = () => {
           </div>
 
           <div className="role-list text-right space-y-1">
-            {["Product Designer", "Frontend Developer", "Branding Strategist"].map((role) => (
+            {[
+              "Product Designer",
+              "Frontend Developer",
+              "Branding Strategist",
+            ].map((role) => (
               <p
                 key={role}
                 className="role-item text-lg md:text-xl font-normal cursor-pointer"
-                onMouseEnter={(e) => gsap.to(e.currentTarget, { x: 10, color: "#dc2626", duration: 0.3 })}
-                onMouseLeave={(e) => gsap.to(e.currentTarget, { x: 0, color: "inherit", duration: 0.3 })}
+                onMouseEnter={(e) =>
+                  gsap.to(e.currentTarget, {
+                    x: 10,
+                    color: "#dc2626",
+                    duration: 0.3,
+                  })
+                }
+                onMouseLeave={(e) =>
+                  gsap.to(e.currentTarget, {
+                    x: 0,
+                    color: "inherit",
+                    duration: 0.3,
+                  })
+                }
               >
                 {role}
               </p>
@@ -127,8 +183,12 @@ const Hero = () => {
                 key={s.label}
                 href={s.url === "#" ? "#" : `https://${s.url}`}
                 className="hover:text-black dark:hover:text-white transition-colors cursor-pointer"
-                onMouseEnter={(e) => gsap.to(e.currentTarget, { y: -3, duration: 0.3 })}
-                onMouseLeave={(e) => gsap.to(e.currentTarget, { y: 0, duration: 0.3 })}
+                onMouseEnter={(e) =>
+                  gsap.to(e.currentTarget, { y: -3, duration: 0.3 })
+                }
+                onMouseLeave={(e) =>
+                  gsap.to(e.currentTarget, { y: 0, duration: 0.3 })
+                }
               >
                 {s.label}
               </a>
@@ -136,11 +196,13 @@ const Hero = () => {
           </div>
 
           <div className="main-name">
-            <span className="text-lg md:text-2xl font-normal block">Hi, i'm</span>
+            <span className="text-lg md:text-2xl font-normal block">
+              Hi, i'm
+            </span>
             <h2 className="text-5xl md:text-8xl font-display">
-            {info.name}
-            <span className="text-red-600">.</span>
-          </h2>
+              {info.name}
+              <span className="text-red-600">.</span>
+            </h2>
           </div>
         </div>
       </div>
@@ -168,15 +230,37 @@ const Hero = () => {
       {/* Portrait */}
       <div className="flex justify-center mb-8">
         <div className="relative w-64 h-64">
-          <Image src={info.dpDark} alt={info.name} fill className="object-contain" priority />
+          {/* Light mode image */}
+          <Image
+            src={info.dpLight}
+            alt={info.name}
+            fill
+            className="object-contain block dark:hidden"
+            priority
+          />
+
+          {/* Dark mode image */}
+          <Image
+            src={info.dpDark}
+            alt={info.name}
+            fill
+            className="object-contain hidden dark:block"
+            priority
+          />
         </div>
       </div>
 
       {/* Roles */}
       <div className="mb-8">
-        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-3">What I Do</h2>
+        <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
+          What I Do
+        </h2>
         <div className="space-y-2">
-          {["Product Designer", "Frontend Developer", "Branding Strategist"].map((role) => (
+          {[
+            "Product Designer",
+            "Frontend Developer",
+            "Branding Strategist",
+          ].map((role) => (
             <div key={role} className="flex items-center gap-3">
               <div className="w-1 h-1 rounded-full bg-red-600" />
               <span className="text-base">{role}</span>
@@ -206,7 +290,9 @@ const Hero = () => {
 
       {/* Social Links */}
       <div className="mt-auto pt-8 border-t border-gray-200 dark:border-gray-800">
-        <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">Connect</h3>
+        <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
+          Connect
+        </h3>
         <div className="grid grid-cols-2 gap-2">
           {[
             { label: "Instagram", url: info.insta },
