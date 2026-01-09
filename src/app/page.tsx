@@ -22,24 +22,88 @@ export default function Home() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".hero-title", {
-        opacity: 0,
-        y: 100,
-        duration: 1.2,
-        ease: "power3.out",
+      // Enhanced hero title animation
+      gsap.fromTo(
+        ".hero-title",
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: "power4.out",
+        }
+      );
+
+      // Enhanced work items animation with stagger
+      ScrollTrigger.batch(".work-item", {
+        onEnter: (batch) => {
+          gsap.fromTo(
+            batch,
+            {
+              opacity: 0,
+              y: 60,
+              scale: 0.95,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              stagger: 0.2,
+              duration: 1.2,
+              ease: "power3.out",
+            }
+          );
+        },
+        start: "top 85%",
+        once: true,
       });
 
-      ScrollTrigger.batch(".work-item", {
-        onEnter: (batch) =>
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            stagger: 0.15,
-            duration: 1,
-            ease: "power3.out",
-          }),
-        start: "top 80%",
+      // Animate work item numbers separately
+      ScrollTrigger.batch(".work-number", {
+        onEnter: (batch) => {
+          gsap.fromTo(
+            batch,
+            {
+              opacity: 0,
+              x: -30,
+            },
+            {
+              opacity: 0.4,
+              x: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power2.out",
+            }
+          );
+        },
+        start: "top 85%",
+        once: true,
       });
+
+      // Animate CTA section
+      gsap.fromTo(
+        ".cta-section",
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".cta-section",
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -49,22 +113,49 @@ export default function Home() {
     setCursorPos({ x: e.clientX, y: e.clientY });
   };
 
-  const handleMouseEnter = (workId: number) => {
+  const handleMouseEnter = (workId: number, e: React.MouseEvent<HTMLDivElement>) => {
     setHoveredId(workId);
+    
+    // Animate the entire work item
+    gsap.to(e.currentTarget, {
+      x: 5,
+      duration: 0.4,
+      ease: "power2.out",
+    });
   };
 
-  const handleImageMouseEnter = () => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    setHoveredId(null);
+    
+    // Return work item to original position
+    gsap.to(e.currentTarget, {
+      x: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  };
+
+  const handleImageMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursorRef.current) {
       gsap.to(cursorRef.current, {
         scale: 1,
         opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
+        rotation: 0,
+        duration: 0.4,
+        ease: "back.out(1.7)",
       });
     }
+
+    // Add subtle rotation to image on hover
+    gsap.to(e.currentTarget, {
+      scale: 1.02,
+      rotation: 0.5,
+      duration: 0.6,
+      ease: "power2.out",
+    });
   };
 
-  const handleImageMouseLeave = () => {
+  const handleImageMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursorRef.current) {
       gsap.to(cursorRef.current, {
         scale: 0,
@@ -73,14 +164,33 @@ export default function Home() {
         ease: "power2.in",
       });
     }
+
+    // Return image to original state
+    gsap.to(e.currentTarget, {
+      scale: 1,
+      rotation: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    });
   };
 
-  const handleMouseLeave = () => {
-    setHoveredId(null);
+  const handleTitleHover = (e: React.MouseEvent<HTMLHeadingElement>) => {
+    gsap.to(e.currentTarget, {
+      x: 10,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
+
+  const handleTitleLeave = (e: React.MouseEvent<HTMLHeadingElement>) => {
+    gsap.to(e.currentTarget, {
+      x: 0,
+      duration: 0.3,
+      ease: "power2.out",
+    });
   };
 
   const navigateToProject = (workName: string) => {
-    // Convert work name to URL-friendly slug
     const slug = workName.toLowerCase().replace(/\s+/g, "-");
     router.push(`/${slug}`);
   };
@@ -101,23 +211,25 @@ export default function Home() {
           opacity: 0,
         }}
       >
-        <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium ">
+        <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium shadow-2xl">
           View
         </div>
       </div>
-      {/* SEO H1 - Hidden but visible to search engines */}
+
+      {/* SEO H1 */}
       <h1 className="sr-only">
         {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
         {info.location}
       </h1>
 
       {/* Visual Hero Title */}
-      <div className="hero-title">
+      <div className="hero-title mb-12 md:mb-20">
         <h2 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
           Crafted Pieces
           <span className="text-red-500 dark:text-red-500">.</span>
         </h2>
       </div>
+
       {/* Works Grid */}
       <div className="space-y-0">
         {works.map((work, index) => (
@@ -127,7 +239,7 @@ export default function Home() {
               index > 0 ? "border-t border-gray-200 dark:border-gray-800" : ""
             }`}
             onMouseMove={handleMouseMove}
-            onMouseEnter={() => handleMouseEnter(work.id)}
+            onMouseEnter={(e) => handleMouseEnter(work.id, e)}
             onMouseLeave={handleMouseLeave}
             onClick={() => navigateToProject(work.name)}
           >
@@ -142,7 +254,7 @@ export default function Home() {
                   work.id % 2 === 0 ? "md:order-2" : ""
                 }`}
               >
-                <span className="text-4xl md:text-5xl font-light opacity-40">
+                <span className="work-number text-4xl md:text-5xl font-light opacity-0">
                   {String(work.id).padStart(2, "0")}
                 </span>
               </div>
@@ -153,20 +265,36 @@ export default function Home() {
                   work.id % 2 === 0 ? "md:order-3" : ""
                 }`}
               >
-                <h2 className="text-3xl md:text-4xl font-light mb-2 ">
+                <h2
+                  className="text-3xl md:text-4xl font-light mb-2 cursor-pointer"
+                  onMouseEnter={handleTitleHover}
+                  onMouseLeave={handleTitleLeave}
+                >
                   {work.name}
                 </h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   {work.shortdesc}
                 </p>
                 <button
-                  className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity"
+                  className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity relative group"
                   onClick={(e) => {
                     e.stopPropagation();
                     navigateToProject(work.name);
                   }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      x: 5,
+                      duration: 0.3,
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      x: 0,
+                      duration: 0.3,
+                    });
+                  }}
                 >
-                  View Project
+                  View Project →
                 </button>
               </div>
 
@@ -177,9 +305,7 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none shadow-gray-500 dark:shadow-gray-900 drop-shadow-xs ${
-                    hoveredId === work.id ? "scale-[1.02]" : "scale-100"
-                  }`}
+                  className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none shadow-lg"
                   onMouseEnter={handleImageMouseEnter}
                   onMouseLeave={handleImageMouseLeave}
                 >
@@ -197,8 +323,9 @@ export default function Home() {
           </div>
         ))}
       </div>
+
       {/* Creative CTA Section */}
-      <div className="mt-32 mb-20">
+      <div className="cta-section mt-32 mb-20 opacity-0">
         <div className="border-t border-gray-200 dark:border-gray-800 pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Text */}
@@ -219,8 +346,22 @@ export default function Home() {
             {/* Right Side - CTA Buttons */}
             <div className="space-y-6 lg:pl-12">
               <a
-                href="mailto:shihabrsaleem@gmail.com"
+                href={`mailto:${info.email}`}
                 className="group block relative overflow-hidden bg-black dark:bg-white text-white dark:text-black px-8 py-6 rounded-2xl transition-all duration-500 hover:scale-105"
+                onMouseEnter={(e) => {
+                  gsap.to(e.currentTarget, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out",
+                  });
+                }}
               >
                 <div className="relative z-10 flex items-center justify-between">
                   <span className="text-2xl font-light">Get In Touch</span>
@@ -246,6 +387,20 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      y: -3,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      y: 0,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
                 >
                   <span className="text-sm font-medium">LinkedIn</span>
                 </a>
@@ -254,6 +409,20 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      y: -3,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      y: 0,
+                      duration: 0.3,
+                      ease: "power2.out",
+                    });
+                  }}
                 >
                   <span className="text-sm font-medium">GitHub</span>
                 </a>
@@ -261,14 +430,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-     
-
-      
-      </div>   {/* Legal Links Footer */}
-      <div className="mt-16">
-        <LegalLinks />
       </div>
+
+      {/* Legal Links Footer */}
+      <footer className="mt-16 border-t border-gray-200 dark:border-gray-800">
+        <LegalLinks />
+      </footer>
     </div>
   );
 }
