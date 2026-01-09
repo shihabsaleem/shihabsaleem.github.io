@@ -1,460 +1,288 @@
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+"use client";
 
-import data from "@/data/asset";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import assetData from "@/data/asset";
 
-interface Rect {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-  width: number;
-  height: number;
-}
-
-interface Velocity {
-  vx: number;
-  vy: number;
-}
-
-const skills = data.skills;
-const Skill: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const skillsRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const [isVisible, setIsVisible] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(400);
-  const occupiedSpaces = useRef<Array<Rect | null>>([]);
-  const placementKey = useRef(0);
-  const [isMobile, setIsMobile] = useState(false);
+const Skill = () => {
+  const sectionRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { skillCategories, skills } = assetData;
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isVisible) setIsVisible(true);
-        });
-      },
-      { threshold: 0.3 }
-    );
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, [isVisible]);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-  // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      opacity: number;
+    }> = [];
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.1,
+      });
+    }
 
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Skip animation setup for mobile
-  useEffect(() => {
-    if (!isVisible || isMobile) return;
+      particles.forEach((particle) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
 
-    const container = containerRef.current;
-    const skillElements = skillsRef.current.filter(Boolean) as HTMLElement[];
-    if (!container || skillElements.length === 0) return;
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-    // Wait for layout to settle
-    const timeoutId = setTimeout(() => {
-      const containerRect = container.getBoundingClientRect();
-      const containerWidth = containerRect.width;
-      let containerHeight = containerRect.height;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(220, 38, 38, ${particle.opacity})`;
+        ctx.fill();
+      });
 
-      // Responsive padding based on screen size
-      const isTablet = containerWidth >= 640 && containerWidth < 1024;
-      const padding = isTablet ? 8 : 4;
-      const gap = isTablet ? 6 : 4;
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach((p2) => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Reset occupied spaces
-      occupiedSpaces.current = new Array(skillElements.length).fill(null);
-
-      const rectsOverlap = (a: Rect | null, b: Rect | null) => {
-        if (!a || !b) return false;
-        return !(
-          a.right <= b.left ||
-          a.left >= b.right ||
-          a.bottom <= b.top ||
-          a.top >= b.bottom
-        );
-      };
-
-      const clamp = (val: number, min: number, max: number) =>
-        Math.max(min, Math.min(val, max));
-
-      // Calculate required height based on skill count
-      const estimatedSkillWidth = 120;
-      const estimatedSkillHeight = 40;
-      const minHeight = 400;
-      const skillsPerRow = Math.floor(
-        containerWidth / (estimatedSkillWidth + gap)
-      );
-      const estimatedRows = Math.ceil(skillElements.length / skillsPerRow);
-      const calculatedHeight = Math.max(
-        minHeight,
-        estimatedRows * (estimatedSkillHeight + gap) + padding * 2
-      );
-
-      if (calculatedHeight > containerHeight) {
-        setContainerHeight(calculatedHeight);
-        containerHeight = calculatedHeight;
-      }
-
-      // tighter packing algorithm: more attempts and denser fallback grid
-      const placeAll = () => {
-        for (let i = 0; i < skillElements.length; i++) {
-          const el = skillElements[i];
-          const r = el.getBoundingClientRect();
-          const w = r.width;
-          const h = r.height;
-
-          let placed = false;
-          const maxAttempts = 600;
-          for (let attempt = 0; attempt < maxAttempts && !placed; attempt++) {
-            const x =
-              Math.random() * (containerWidth - w - padding * 2) + padding;
-            const y =
-              Math.random() * (containerHeight - h - padding * 2) + padding;
-
-            const newRect: Rect = {
-              left: x,
-              top: y,
-              right: x + w,
-              bottom: y + h,
-              width: w,
-              height: h,
-            };
-
-            let collision = false;
-            for (let j = 0; j < i; j++) {
-              const occ = occupiedSpaces.current[j];
-              if (rectsOverlap(newRect, occ)) {
-                collision = true;
-                break;
-              }
-            }
-
-            if (!collision) {
-              occupiedSpaces.current[i] = newRect;
-              placed = true;
-            }
+          if (distance < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(220, 38, 38, ${0.1 * (1 - distance / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           }
-
-          if (!placed) {
-            // denser fallback scanning
-            let slotFound = false;
-            const cols = Math.max(
-              1,
-              Math.floor((containerWidth - padding * 2) / (w + gap))
-            );
-            for (
-              let yy = padding;
-              yy <= containerHeight - h - padding && !slotFound;
-              yy += h + gap
-            ) {
-              for (
-                let xx = padding;
-                xx <= containerWidth - w - padding && !slotFound;
-                xx += w + gap
-              ) {
-                const newRect: Rect = {
-                  left: xx,
-                  top: yy,
-                  right: xx + w,
-                  bottom: yy + h,
-                  width: w,
-                  height: h,
-                };
-                let collision = false;
-                for (let j = 0; j < i; j++) {
-                  const occ = occupiedSpaces.current[j];
-                  if (rectsOverlap(newRect, occ)) {
-                    collision = true;
-                    break;
-                  }
-                }
-                if (!collision) {
-                  occupiedSpaces.current[i] = newRect;
-                  slotFound = true;
-                }
-              }
-            }
-
-            if (!slotFound) {
-              // last resort: compact packing left-to-right, top-to-bottom
-              const x = padding + (i % cols) * (w + gap);
-              const y = padding + Math.floor(i / cols) * (h + gap);
-              occupiedSpaces.current[i] = {
-                left: x,
-                top: y,
-                right: x + w,
-                bottom: y + h,
-                width: w,
-                height: h,
-              };
-            }
-          }
-        }
-      };
-
-      placeAll();
-
-      // quickSetters for perf
-      const quickSetters = skillElements.map((el) => ({
-        setX: gsap.quickSetter(el, "x", "px"),
-        setY: gsap.quickSetter(el, "y", "px"),
-      }));
-
-      // set elements immediately to positions
-      skillElements.forEach((skill, index) => {
-        const target = occupiedSpaces.current[index];
-        if (!target) return;
-        const x = target.left;
-        const y = target.top;
-        gsap.set(skill, {
-          x,
-          y,
-          rotation: Math.random() * 10 - 5,
-          willChange: "transform",
         });
       });
 
-      // repulsion: on mousemove, push nearby items away smoothly
-      const mouse = { x: -1000, y: -1000 };
-      const radius = 100;
-      const strength = 50;
+      requestAnimationFrame(animate);
+    };
 
-      const velocities: Velocity[] = skillElements.map(() => ({
-        vx: 0,
-        vy: 0,
-      }));
+    animate();
 
-      let rafId: number | null = null;
-
-      const repelLoop = () => {
-        // smooth physics-based repulsion
-        const damping = 0.85;
-        const returnForce = 0.08;
-
-        for (let i = 0; i < skillElements.length; i++) {
-          const el = skillElements[i];
-          const rect = occupiedSpaces.current[i];
-          if (!rect || !el) continue;
-
-          const cx = (rect.left + rect.right) / 2;
-          const cy = (rect.top + rect.bottom) / 2;
-          const dx = cx - mouse.x;
-          const dy = cy - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          // Store original position for return force
-          const targetRect = occupiedSpaces.current[i];
-          if (!targetRect) continue;
-          const originalX = targetRect.left;
-          const originalY = targetRect.top;
-
-          // Apply repulsion force
-          if (dist < radius && dist > 0) {
-            const nx = dx / dist;
-            const ny = dy / dist;
-            const force = (1 - dist / radius) * strength;
-            velocities[i].vx += nx * force * 0.3;
-            velocities[i].vy += ny * force * 0.3;
-          }
-
-          // Apply return force (spring back to original position)
-          const currentX =
-            parseFloat(gsap.getProperty(el, "x") as string) || rect.left;
-          const currentY =
-            parseFloat(gsap.getProperty(el, "y") as string) || rect.top;
-          velocities[i].vx += (originalX - currentX) * returnForce;
-          velocities[i].vy += (originalY - currentY) * returnForce;
-
-          // Apply damping
-          velocities[i].vx *= damping;
-          velocities[i].vy *= damping;
-
-          // Update position
-          const newX = clamp(
-            currentX + velocities[i].vx,
-            0,
-            containerWidth - rect.width
-          );
-          const newY = clamp(
-            currentY + velocities[i].vy,
-            0,
-            containerHeight - rect.height
-          );
-
-          quickSetters[i].setX(newX);
-          quickSetters[i].setY(newY);
-        }
-
-        // minimal overlap resolution: small nudge pass
-        for (let a = 0; a < skillElements.length; a++) {
-          for (let b = a + 1; b < skillElements.length; b++) {
-            const ra = occupiedSpaces.current[a];
-            const rb = occupiedSpaces.current[b];
-            if (!ra || !rb) continue;
-
-            const aX =
-              parseFloat(gsap.getProperty(skillElements[a], "x") as string) ||
-              ra.left;
-            const aY =
-              parseFloat(gsap.getProperty(skillElements[a], "y") as string) ||
-              ra.top;
-            const bX =
-              parseFloat(gsap.getProperty(skillElements[b], "x") as string) ||
-              rb.left;
-            const bY =
-              parseFloat(gsap.getProperty(skillElements[b], "y") as string) ||
-              rb.top;
-
-            const aRect: Rect = {
-              left: aX,
-              top: aY,
-              right: aX + ra.width,
-              bottom: aY + ra.height,
-              width: ra.width,
-              height: ra.height,
-            };
-            const bRect: Rect = {
-              left: bX,
-              top: bY,
-              right: bX + rb.width,
-              bottom: bY + rb.height,
-              width: rb.width,
-              height: rb.height,
-            };
-
-            if (rectsOverlap(aRect, bRect)) {
-              const ax = (aRect.left + aRect.right) / 2;
-              const ay = (aRect.top + aRect.bottom) / 2;
-              const bx = (bRect.left + bRect.right) / 2;
-              const by = (bRect.top + bRect.bottom) / 2;
-              let vx = ax - bx;
-              let vy = ay - by;
-              const d = Math.sqrt(vx * vx + vy * vy) || 1;
-              vx /= d;
-              vy /= d;
-
-              const separationForce = 0.5;
-              velocities[a].vx += vx * separationForce;
-              velocities[a].vy += vy * separationForce;
-              velocities[b].vx -= vx * separationForce;
-              velocities[b].vy -= vy * separationForce;
-            }
-          }
-        }
-
-        rafId = requestAnimationFrame(repelLoop);
-      };
-
-      const onMouseMove = (e: MouseEvent) => {
-        const containerRectNow = container.getBoundingClientRect();
-        mouse.x = clamp(e.clientX - containerRectNow.left, 0, containerWidth);
-        mouse.y = clamp(e.clientY - containerRectNow.top, 0, containerHeight);
-        if (!rafId) rafId = requestAnimationFrame(repelLoop);
-      };
-
-      const onMouseLeave = () => {
-        mouse.x = -1000;
-        mouse.y = -1000;
-      };
-
-      // Only add mouse events on non-touch devices
-      const isTouchDevice =
-        "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-      if (!isTouchDevice) {
-        container.addEventListener("mousemove", onMouseMove);
-        container.addEventListener("mouseleave", onMouseLeave);
-      }
-
-      // cleanup
-      return () => {
-        container.removeEventListener("mousemove", onMouseMove);
-        container.removeEventListener("mouseleave", onMouseLeave);
-        if (rafId) cancelAnimationFrame(rafId);
-        gsap.killTweensOf(skillElements);
-      };
-    }, 100); // Wait 100ms for layout to settle
-
-    return () => clearTimeout(timeoutId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isVisible, isMobile]);
-
-  // Handle resize events (only for desktop)
-  useEffect(() => {
-    if (!isVisible || isMobile) return;
-
-    let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        placementKey.current += 1;
-        setIsVisible(false);
-        setTimeout(() => setIsVisible(true), 50);
-      }, 300);
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
 
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
-      clearTimeout(resizeTimeout);
     };
-  }, [isVisible, isMobile]);
+  }, []);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".skill-heading",
+        { y: 100, opacity: 0, rotationX: 90 },
+        {
+          y: 0,
+          opacity: 1,
+          rotationX: 0,
+          duration: 1.2,
+          ease: "power4.out",
+        }
+      );
+
+      gsap.fromTo(
+        ".category-card",
+        { 
+          scale: 0.8,
+          opacity: 0,
+          rotationY: -15,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotationY: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "back.out(1.2)",
+          delay: 0.4,
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleCardClick = (category: string) => {
+    setActiveCategory(activeCategory === category ? null : category);
+  };
+
+  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(card, {
+      rotationY: x * 0.02,
+      rotationX: -y * 0.02,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
+
+  const handleCardMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(card, {
+      rotationY: x * 0.02,
+      rotationX: -y * 0.02,
+      duration: 0.1,
+      ease: "power2.out",
+    });
+  };
+
+  const handleCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    gsap.to(e.currentTarget, {
+      rotationY: 0,
+      rotationX: 0,
+      duration: 0.5,
+      ease: "elastic.out(1, 0.5)",
+    });
+  };
 
   return (
-    <div className="w-full">
-      <h2 className="text-2xl font-light mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
-        Skill Set
-      </h2>
+    <section
+      ref={sectionRef}
+      className="relative px-6 md:px-12 lg:px-20 py-24 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
+    >
+      {/* Animated Canvas Background */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none"
+      />
 
-      {/* Mobile: Simple flex wrap list */}
-      {isMobile ? (
-        <div className="flex flex-wrap gap-3">
-          {skills.map((skill) => (
-            <span
-              key={skill}
-              className="border-2 border-gray-200 dark:border-gray-800 px-4 py-2 rounded-full text-sm bg-white dark:bg-gray-950 shadow-md select-none"
-            >
-              <span className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1 before:w-2 before:h-2 before:bg-red-500 before:rounded-full"></span>
-              {skill}
-            </span>
-          ))}
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="skill-heading text-5xl md:text-7xl font-display inline-block perspective-1000">
+            <span className="inline-block">Skills</span>
+            <span className="text-red-600">.</span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-500 mt-4 text-sm tracking-widest uppercase">
+            Click to expand
+          </p>
         </div>
-      ) : (
-        /* Desktop: Animated interactive layout */
-        <div
-          ref={containerRef}
-          className="relative w-full overflow-hidden rounded-lg"
-          style={{ height: `${containerHeight}px`, minHeight: "400px" }}
-        >
-          {skills.map((skill, index) => (
-            <span
-              key={skill}
-              ref={(el) => {
-                skillsRef.current[index] = el;
-              }}
-              className="absolute border-2 border-gray-200 dark:border-gray-800 px-4 py-2 rounded-full text-xs md:text-sm bg-white dark:bg-gray-950 hover:bg-gray-200 hover:text-black dark:hover:bg-gray-800 dark:hover:text-white transition-colors duration-300 shadow-md select-none"
-            >
-              <span className="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1 before:w-2 before:h-2 before:bg-red-500 before:rounded-full"></span>
-              {skill}
-            </span>
-          ))}
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Object.entries(skillCategories).map(([category, categorySkills], index) => {
+            const isActive = activeCategory === category;
+            
+            return (
+              <div
+                key={category}
+                className="category-card perspective-1000"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div
+                  className={`relative cursor-pointer transition-all duration-500 ${
+                    isActive ? "row-span-2" : ""
+                  }`}
+                  onClick={() => handleCardClick(category)}
+                  onMouseEnter={handleCardHover}
+                  onMouseMove={handleCardMove}
+                  onMouseLeave={handleCardLeave}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div className={`relative bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden transition-all duration-500 ${
+                    isActive ? "shadow-2xl shadow-red-600/20" : "hover:shadow-xl"
+                  }`}>
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className="relative p-8">
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="relative">
+                          <div className="absolute -left-2 -top-2 text-6xl font-bold text-red-600/10 dark:text-red-600/20">
+                            {String(index + 1).padStart(2, "0")}
+                          </div>
+                          <h3 className="text-2xl font-semibold relative z-10 pt-8">
+                            {category}
+                          </h3>
+                        </div>
+                        <div className={`w-10 h-10 rounded-full border-2 border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all duration-300 ${
+                          isActive ? "rotate-180 border-red-600 bg-red-600" : ""
+                        }`}>
+                          <svg
+                            className={`w-5 h-5 transition-colors ${isActive ? "text-white" : "text-gray-400"}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* Skill count badge */}
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full mb-6">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                          {categorySkills.length} skills
+                        </span>
+                      </div>
+
+                      {/* Skills preview or full list */}
+                      <div className={`transition-all duration-500 ${isActive ? "max-h-[500px] opacity-100" : "max-h-20 opacity-60"} overflow-hidden`}>
+                        <div className="space-y-2">
+                          {categorySkills.map((skill, idx) => (
+                            <div
+                              key={skill}
+                              className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 group/skill"
+                              style={{
+                                transitionDelay: isActive ? `${idx * 30}ms` : "0ms",
+                              }}
+                            >
+                              <div className="w-1 h-1 rounded-full bg-red-600 group-hover/skill:scale-150 transition-transform" />
+                              <span className="group-hover/skill:text-red-600 transition-colors">
+                                {skill}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom accent */}
+                    <div className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      )}
-    </div>
+
+
+      </div>
+    </section>
   );
 };
 

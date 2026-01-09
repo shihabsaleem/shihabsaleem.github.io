@@ -1,34 +1,137 @@
-import React from "react";
-import data from "@/data/asset";
+"use client";
 
-const educations = data.education;
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import assetData from "@/data/asset";
 
-const Education = () => {
+const Education = ({ data = assetData.education }) => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".edu-heading",
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        }
+      );
+
+      gsap.fromTo(
+        ".edu-item",
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          delay: 0.3,
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleItemHover = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const line = card.querySelector(".edu-line");
+    
+    gsap.to(card, {
+      scale: 1.02,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+
+    if (line) {
+      gsap.to(line, {
+        scaleX: 1,
+        duration: 0.4,
+      });
+    }
+  };
+
+  const handleItemLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const line = card.querySelector(".edu-line");
+    
+    gsap.to(card, {
+      scale: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+
+    if (line) {
+      gsap.to(line, {
+        scaleX: 0,
+        duration: 0.4,
+      });
+    }
+  };
+
   return (
-    <div>
-      <h2 className="text-2xl font-light mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
-        Education
-      </h2>
-      <ul className="space-y-6">
-        {educations.map((edu) => (
-          <li
-            key={edu.id}
-            className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-red-500 before:rounded-full"
-          >
-            <div className="font-medium text-lg">{edu.qualification}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              {edu.College}
+    <section
+      ref={sectionRef}
+      className="relative px-6 md:px-12 lg:px-20 py-24 bg-gray-50 dark:bg-zinc-950 text-black dark:text-white overflow-hidden"
+    >
+      {/* Background decoration */}
+      <div className="absolute top-20 right-10 w-96 h-96 bg-red-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 right-20 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto">
+        <h2 className="edu-heading text-3xl md:text-5xl font-display mb-16 relative inline-block">
+          Education<span className="text-red-600">.</span>
+          <div className="absolute -bottom-2 left-0 w-20 h-1 bg-red-600" />
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {data.map((edu, index) => (
+            <div
+              key={edu.id}
+              className="edu-item group cursor-pointer"
+              onMouseEnter={handleItemHover}
+              onMouseLeave={handleItemLeave}
+            >
+              <div className="relative h-full bg-white dark:bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 hover:border-red-600/50 dark:hover:border-red-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/10 overflow-hidden">
+                {/* Card number */}
+                <div className="absolute top-4 right-4 text-5xl font-bold text-gray-100 dark:text-gray-900 select-none">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                {/* Top accent dot */}
+                {/* <div className="absolute top-0 left-8 w-2 h-2 bg-red-600 rounded-full" /> */}
+
+                <div className="relative z-10">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-zinc-800 rounded-full mb-4">
+                    <span className="w-1.5 h-1.5 bg-red-600 rounded-full" />
+                    {edu.start} — {edu.end}
+                  </span>
+
+                  <h3 className="text-xl md:text-2xl font-normal mb-4 group-hover:text-red-600 transition-colors leading-tight">
+                    {edu.qualification}
+                  </h3>
+
+                  <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-medium mb-2">
+                    {edu.College}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-500">
+                    {edu.Aff}
+                  </p>
+                </div>
+
+                {/* Bottom accent line */}
+                <div className="edu-line absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-red-400 to-purple-600 transform scale-x-0 origin-left" />
+              </div>
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              Affiliated to {edu.Aff}
-            </div>
-            <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              {edu.start} - {edu.end}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
