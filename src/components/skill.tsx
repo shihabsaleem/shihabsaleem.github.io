@@ -181,10 +181,12 @@ const Skill = () => {
       />
 
       <div className="max-w-7xl mx-auto">
-        <h2 className="skill-heading text-3xl md:text-5xl font-display mb-16 relative inline-block">
-          Skills<span className="text-red-600">.</span>
-          <div className="absolute -bottom-2 left-0 w-24 h-1 bg-red-600" />
-        </h2>
+       <div className=" mb-8 md:mb-12">
+          <h2 className="exp-title text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8">
+            Skill<span className="text-red-600">.</span>
+          </h2>
+          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(skillCategories).map(

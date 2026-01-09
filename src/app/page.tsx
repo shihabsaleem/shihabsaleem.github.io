@@ -1,441 +1,227 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import data from "@/data/asset";
 import LegalLinks from "@/components/legal";
+import assetData from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const works = data.works;
-const info = data.info[0];
+const works = assetData.works;
+const info = assetData.info[0];
 
 export default function Home() {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [activeCursor, setActiveCursor] = useState(false);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Enhanced hero title animation
-      gsap.fromTo(
-        ".hero-title",
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.9,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: "power4.out",
-        }
-      );
-
-      // Enhanced work items animation with stagger
-      ScrollTrigger.batch(".work-item", {
-        onEnter: (batch) => {
-          gsap.fromTo(
-            batch,
-            {
-              opacity: 0,
-              y: 60,
-              scale: 0.95,
+      works.forEach((work) => {
+        gsap.fromTo(
+          `.work-${work.id} .work-image-container`,
+          { clipPath: "inset(0 0 100% 0)" },
+          {
+            clipPath: "inset(0 0 0% 0)",
+            duration: 1.2,
+            ease: "power4.inOut",
+            scrollTrigger: {
+              trigger: `.work-${work.id}`,
+              start: "top 80%",
             },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              stagger: 0.2,
-              duration: 1.2,
-              ease: "power3.out",
-            }
-          );
-        },
-        start: "top 85%",
-        once: true,
+          }
+        );
       });
 
-      // Animate work item numbers separately
-      ScrollTrigger.batch(".work-number", {
-        onEnter: (batch) => {
-          gsap.fromTo(
-            batch,
-            {
-              opacity: 0,
-              x: -30,
-            },
-            {
-              opacity: 0.4,
-              x: 0,
-              duration: 0.8,
-              stagger: 0.15,
-              ease: "power2.out",
-            }
-          );
+      gsap.from(".footer-content > *", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".cta-section",
+          start: "top 80%",
         },
-        start: "top 85%",
-        once: true,
       });
-
-      // Animate CTA section
-      gsap.fromTo(
-        ".cta-section",
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".cta-section",
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setCursorPos({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleMouseEnter = (workId: number, e: React.MouseEvent<HTMLDivElement>) => {
-    setHoveredId(workId);
-    
-    // Animate the entire work item
-    gsap.to(e.currentTarget, {
-      x: 5,
-      duration: 0.4,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    setHoveredId(null);
-    
-    // Return work item to original position
-    gsap.to(e.currentTarget, {
-      x: 0,
-      duration: 0.4,
-      ease: "power2.out",
-    });
-  };
-
-  const handleImageMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cursorRef.current) {
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
       gsap.to(cursorRef.current, {
-        scale: 1,
-        opacity: 1,
-        rotation: 0,
-        duration: 0.4,
-        ease: "back.out(1.7)",
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.1,
       });
-    }
-
-    // Add subtle rotation to image on hover
-    gsap.to(e.currentTarget, {
-      scale: 1.02,
-      rotation: 0.5,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  };
-
-  const handleImageMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cursorRef.current) {
-      gsap.to(cursorRef.current, {
-        scale: 0,
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in",
-      });
-    }
-
-    // Return image to original state
-    gsap.to(e.currentTarget, {
-      scale: 1,
-      rotation: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  };
-
-  const handleTitleHover = (e: React.MouseEvent<HTMLHeadingElement>) => {
-    gsap.to(e.currentTarget, {
-      x: 10,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleTitleLeave = (e: React.MouseEvent<HTMLHeadingElement>) => {
-    gsap.to(e.currentTarget, {
-      x: 0,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const navigateToProject = (workName: string) => {
-    const slug = workName.toLowerCase().replace(/\s+/g, "-");
-    router.push(`/${slug}`);
-  };
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => window.removeEventListener("mousemove", moveCursor);
+  }, []);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-white dark:bg-black text-black dark:text-white px-6 md:px-12 lg:px-20 py-12 relative"
+      className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white overflow-x-hidden selection:bg-red-600 selection:text-white transition-colors duration-500"
     >
-      {/* Custom Cursor Badge */}
-      <div
-        ref={cursorRef}
-        className="fixed pointer-events-none z-50"
-        style={{
-          left: `${cursorPos.x}px`,
-          top: `${cursorPos.y}px`,
-          transform: "translate(-50%, -50%) scale(0)",
-          opacity: 0,
-        }}
-      >
-        <div className="bg-black dark:bg-white text-white dark:text-black w-24 h-24 rounded-full flex items-center justify-center text-sm font-medium shadow-2xl">
-          View
-        </div>
-      </div>
-
-      {/* SEO H1 */}
+      {/* Hero Section */}
       <h1 className="sr-only">
         {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
         {info.location}
       </h1>
 
-      {/* Visual Hero Title */}
-      <div className="hero-title mb-12 md:mb-20">
-        <h2 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight">
-          Crafted Pieces
-          <span className="text-red-500 dark:text-red-500">.</span>
-        </h2>
-      </div>
+      {/* Texture Overlay */}
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      {/* Works Grid */}
-      <div className="space-y-0">
-        {works.map((work, index) => (
-          <div
-            key={work.id}
-            className={`work-item opacity-0 translate-y-12 transition-all duration-500 cursor-pointer ${
-              index > 0 ? "border-t border-gray-200 dark:border-gray-800" : ""
-            }`}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={(e) => handleMouseEnter(work.id, e)}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => navigateToProject(work.name)}
-          >
+      {/* Cursor */}
+      <div
+        ref={cursorRef}
+        className={`fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${
+          activeCursor ? "scale-[6]" : "scale-100"
+        }`}
+      />
+
+      <main className="relative z-10 pt-20">
+        {/* HERO */}
+        <section className=" h-[30vh] md:h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20">
+          <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
+            Selected
+            <br />
+            Works<span className="text-red-600">.</span>
+          </h2>
+        </section>
+
+        {/* WORKS LIST */}
+        <section className="border-t border-black/10 dark:border-white/10">
+          {works.map((work) => (
             <div
-              className={`grid grid-cols-12 gap-8 items-center py-8 md:py-12 ${
-                work.id % 2 === 0 ? "md:flex-row-reverse" : ""
-              }`}
+              key={work.id}
+              className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
+              onMouseEnter={() => setActiveCursor(true)}
+              onMouseLeave={() => setActiveCursor(false)}
+              onClick={() =>
+                router.push(`/${work.name.toLowerCase().replace(/\s+/g, "-")}`)
+              }
             >
-              {/* Number */}
-              <div
-                className={`col-span-2 md:col-span-1 ${
-                  work.id % 2 === 0 ? "md:order-2" : ""
-                }`}
-              >
-                <span className="work-number text-4xl md:text-5xl font-light opacity-0">
-                  {String(work.id).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Project Info */}
-              <div
-                className={`col-span-10 md:col-span-4 lg:col-span-3 ${
-                  work.id % 2 === 0 ? "md:order-3" : ""
-                }`}
-              >
-                <h2
-                  className="text-3xl md:text-4xl font-light mb-2 cursor-pointer"
-                  onMouseEnter={handleTitleHover}
-                  onMouseLeave={handleTitleLeave}
-                >
-                  {work.name}
-                </h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {work.shortdesc}
-                </p>
-                <button
-                  className="text-sm mt-4 opacity-60 hover:opacity-100 transition-opacity relative group"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigateToProject(work.name);
-                  }}
-                  onMouseEnter={(e) => {
-                    gsap.to(e.currentTarget, {
-                      x: 5,
-                      duration: 0.3,
-                    });
-                  }}
-                  onMouseLeave={(e) => {
-                    gsap.to(e.currentTarget, {
-                      x: 0,
-                      duration: 0.3,
-                    });
-                  }}
-                >
-                  View Project →
-                </button>
-              </div>
-
-              {/* Image */}
-              <div
-                className={`col-span-12 md:col-span-7 lg:col-span-8 ${
-                  work.id % 2 === 0 ? "md:order-1" : ""
-                }`}
-              >
-                <div
-                  className="relative overflow-hidden rounded-2xl transition-all duration-700 cursor-none shadow-lg"
-                  onMouseEnter={handleImageMouseEnter}
-                  onMouseLeave={handleImageMouseLeave}
-                >
-                  <Image
-                    src={work.image}
-                    alt={work.name}
-                    width={1200}
-                    height={675}
-                    className="w-full h-auto"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
-                  />
+              <div className="px-6 md:px-12 lg:px-20 py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
+                <div className="col-span-12 lg:col-span-4">
+                  <span className="font-mono text-red-600 text-xs mb-4 block">
+                    [{String(work.id).padStart(2, "0")}]
+                  </span>
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
+                    {work.name}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs uppercase tracking-widest">
+                    {work.shortdesc}
+                  </p>
+                </div>
+                <div className="col-span-12 lg:col-span-8">
+                  <div className="work-image-container relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <Image
+                      src={work.image}
+                      alt={work.name}
+                      width={1200}
+                      height={675}
+                      className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </section>
 
-      {/* Creative CTA Section */}
-      <div className="cta-section mt-32 mb-20 opacity-0">
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Text */}
-            <div className="space-y-6">
-              <h2 className="text-5xl md:text-7xl font-light tracking-tight">
-                Let&apos;s Create
-                <br />
-                Something
-                <br />
-                <span className="text-red-500">Amazing.</span>
+        {/* FOOTER */}
+        <footer className="cta-section pt-40 pb-20 px-6 border-t border-black/10 dark:border-white/10">
+          <div className="max-w-7xl mx-auto footer-content">
+            <div className="text-center mb-32">
+              <h2 className="text-[10vw] font-black leading-none tracking-tighter uppercase mb-12">
+                Let's Make <br /> <span className="text-red-600">History.</span>
               </h2>
-              <p className="text-lg text-gray-500 dark:text-gray-400 max-w-md">
-                Have a project in mind? I&apos;d love to hear about it.
-                Let&apos;s work together to bring your ideas to life.
-              </p>
-            </div>
-
-            {/* Right Side - CTA Buttons */}
-            <div className="space-y-6 lg:pl-12">
               <a
                 href={`mailto:${info.email}`}
-                className="group block relative overflow-hidden bg-black dark:bg-white text-white dark:text-black px-8 py-6 rounded-2xl transition-all duration-500 hover:scale-105"
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
+                className="text-2xl md:text-5xl font-light hover:text-red-600 transition-colors border-b border-black/20 dark:border-white/20 hover:border-red-600 pb-4 inline-block"
               >
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-2xl font-light">Get In Touch</span>
-                  <svg
-                    className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </div>
+                {info.email}
               </a>
+            </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <a
-                  href={`https://${info.linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
-                  onMouseEnter={(e) => {
-                    gsap.to(e.currentTarget, {
-                      y: -3,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }}
-                  onMouseLeave={(e) => {
-                    gsap.to(e.currentTarget, {
-                      y: 0,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }}
-                >
-                  <span className="text-sm font-medium">LinkedIn</span>
-                </a>
-                <a
-                  href={`https://${info.github}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border-2 border-gray-200 dark:border-gray-800 px-6 py-4 rounded-2xl transition-all duration-300 hover:border-black dark:hover:border-white text-center"
-                  onMouseEnter={(e) => {
-                    gsap.to(e.currentTarget, {
-                      y: -3,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }}
-                  onMouseLeave={(e) => {
-                    gsap.to(e.currentTarget, {
-                      y: 0,
-                      duration: 0.3,
-                      ease: "power2.out",
-                    });
-                  }}
-                >
-                  <span className="text-sm font-medium">GitHub</span>
-                </a>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end pt-20 border-t border-black/5 dark:border-white/5">
+              <div className="space-y-2">
+                <p className="font-mono text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.3em]">
+                  Based in
+                </p>
+                <p className="text-lg font-medium italic">{info.location}</p>
+              </div>
+
+              <div className="flex justify-center gap-8">
+                {[
+                  { label: "LI", url: info.linkedin },
+                  { label: "GH", url: info.github },
+                  { label: "BE", url: info.behance },
+                  { label: "IN", url: info.insta },
+                ].map((social) => (
+                  <a
+                    key={social.label}
+                    href={
+                      social.url.startsWith("http")
+                        ? social.url
+                        : `https://${social.url}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs hover:text-red-600 transition-colors tracking-widest"
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
+
+              {/* CV & WhatsApp Column - Refined Alignment */}
+              <div className="md:text-right flex flex-col gap-6 items-start md:items-end">
+                <div className="space-y-1">
+                  <p className="font-mono text-[9px] text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                    Instant Chat
+                  </p>
+                  <a
+                    href={`https://wa.me/${info.phone.replace(/\+/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm hover:text-red-600 transition-colors flex items-center md:justify-end gap-2"
+                  >
+                    <span>WhatsApp</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                  </a>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <p className="font-mono text-[9px] text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                    Documents
+                  </p>
+                  <a
+                    href={info.cv}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 border border-black/20 dark:border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 rounded-sm"
+                  >
+                    Download CV
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Legal Links Footer */}
-      <footer className="mt-16 border-t border-gray-200 dark:border-gray-800">
-        <LegalLinks />
-      </footer>
+            <div className="mt-16 pt-10 border-t border-black/5 dark:border-white/5">
+              <LegalLinks />
+            </div>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }

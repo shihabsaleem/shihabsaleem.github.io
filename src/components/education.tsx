@@ -79,10 +79,12 @@ const Education = ({ data = assetData.education }) => {
       className="relative px-6 md:px-12 lg:px-20 py-24 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="edu-heading text-3xl md:text-5xl font-display mb-16 relative inline-block">
-          Education<span className="text-red-600">.</span>
-          <div className="absolute -bottom-2 left-0 w-20 h-1 bg-red-600" />
-        </h2>
+        <div className=" mb-8 md:mb-12">
+          <h2 className="exp-title text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8">
+            Education<span className="text-red-600">.</span>
+          </h2>
+          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {data.map((edu, index) => (
@@ -104,7 +106,7 @@ const Education = ({ data = assetData.education }) => {
                     {edu.start} — {edu.end}
                   </span>
 
-                  <h3 className="text-xl md:text-2xl font-normal mb-4 group-hover:text-red-600 transition-colors leading-tight">
+                  <h3 className="text-xl md:text-2xl font-black mb-4 group-hover:text-red-600 transition-colors leading-tight">
                     {edu.qualification}
                   </h3>
 

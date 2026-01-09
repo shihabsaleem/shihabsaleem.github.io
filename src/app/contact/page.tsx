@@ -140,10 +140,13 @@ const Contact = () => {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>, section: string) => {
+  const handleCardHover = (
+    e: React.MouseEvent<HTMLDivElement>,
+    section: string
+  ) => {
     setActiveSection(section);
     const card = e.currentTarget;
-    
+
     gsap.to(card, {
       scale: 1.05,
       rotationY: 5,
@@ -183,7 +186,11 @@ const Contact = () => {
     { name: "GH", full: "GitHub", url: `https://${info.github}` },
     { name: "BE", full: "Behance", url: `https://${info.behance}` },
     { name: "IG", full: "Instagram", url: `https://${info.insta}` },
-    { name: "TW", full: "Twitter", url: `https://twitter.com/${info.twitter.replace("@", "")}` },
+    {
+      name: "TW",
+      full: "Twitter",
+      url: `https://twitter.com/${info.twitter.replace("@", "")}`,
+    },
   ];
 
   return (
@@ -192,6 +199,12 @@ const Contact = () => {
       className="relative min-h-screen bg-black text-white px-6 md:px-12 lg:px-20 py-24 overflow-hidden"
       style={{ perspective: "1000px" }}
     >
+      {/* Hero Section */}
+      <h1 className="sr-only">
+        {info.name} - UI/UX Designer, Developer & Branding Specialist in{" "}
+        {info.location}
+      </h1>
+
       {/* Animated Background */}
       <canvas
         ref={canvasRef}
@@ -218,15 +231,16 @@ const Contact = () => {
               <span className="text-sm tracking-wider">AVAILABLE FOR WORK</span>
             </div>
           </div>
-          
-          <h1 className="text-6xl md:text-9xl font-light tracking-tight mb-6">
+
+          <h2 className="text-6xl md:text-9xl font-light tracking-tight mb-6">
             Let's Create
             <br />
             <span className="text-red-600">Together</span>
-          </h1>
-          
+          </h2>
+
           <p className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto">
-            Ready to bring your ideas to life with exceptional design and development
+            Ready to bring your ideas to life with exceptional design and
+            development
           </p>
         </div>
 
@@ -243,23 +257,25 @@ const Contact = () => {
           >
             <div className="relative h-full bg-gradient-to-br from-zinc-900 to-black border border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
               <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-8">
-                  <span className="text-xs tracking-widest text-gray-500">01</span>
+                  <span className="text-xs tracking-widest text-gray-500">
+                    01
+                  </span>
                   <div className="w-12 h-12 border border-red-600/30 rounded-full flex items-center justify-center">
                     <div className="w-6 h-6 bg-red-600 rounded-full opacity-50" />
                   </div>
                 </div>
-                
+
                 <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
                   Email Address
                 </h3>
-                
+
                 <p className="text-2xl md:text-3xl font-light mb-6 break-all">
                   {info.email}
                 </p>
-                
+
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-600/30 rounded-full text-sm">
                   {copiedEmail ? "✓ Copied to clipboard" : "Click to copy"}
                 </div>
@@ -278,27 +294,39 @@ const Contact = () => {
             <a href={`tel:${info.phone}`} className="block h-full">
               <div className="relative h-full bg-gradient-to-br from-zinc-900 to-black border border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
                 <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-8">
-                    <span className="text-xs tracking-widest text-gray-500">02</span>
+                    <span className="text-xs tracking-widest text-gray-500">
+                      02
+                    </span>
                     <div className="w-12 h-12 border border-red-600/30 rounded-full flex items-center justify-center">
                       <div className="w-6 h-6 bg-red-600 rounded-full opacity-50" />
                     </div>
                   </div>
-                  
+
                   <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
                     Phone Number
                   </h3>
-                  
+
                   <p className="text-2xl md:text-3xl font-light mb-6">
                     {info.phone}
                   </p>
-                  
+
                   <div className="inline-flex items-center gap-2 text-sm text-red-600">
                     <span>Call now</span>
-                    <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-2 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -316,23 +344,25 @@ const Contact = () => {
           >
             <div className="relative h-full bg-gradient-to-br from-zinc-900 to-black border border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
               <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-8">
-                  <span className="text-xs tracking-widest text-gray-500">03</span>
+                  <span className="text-xs tracking-widest text-gray-500">
+                    03
+                  </span>
                   <div className="w-12 h-12 border border-red-600/30 rounded-full flex items-center justify-center">
                     <div className="w-6 h-6 bg-red-600 rounded-full opacity-50" />
                   </div>
                 </div>
-                
+
                 <h3 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
                   Based In
                 </h3>
-                
+
                 <p className="text-2xl md:text-3xl font-light mb-6">
                   {info.location}
                 </p>
-                
+
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-600/30 rounded-full text-sm">
                   Open to remote work
                 </div>
@@ -348,32 +378,59 @@ const Contact = () => {
             onMouseLeave={handleCardLeave}
             style={{ transformStyle: "preserve-3d" }}
           >
-            <a href={info.cv} target="_blank" rel="noopener noreferrer" className="block h-full">
+            <a
+              href={info.cv}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-full"
+            >
               <div className="relative h-full bg-gradient-to-br from-red-600 to-red-700 border border-red-500 rounded-3xl p-8 md:p-12 overflow-hidden group">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-                
+
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-8">
-                    <span className="text-xs tracking-widest text-red-200">04</span>
+                    <span className="text-xs tracking-widest text-red-200">
+                      04
+                    </span>
                     <div className="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      <svg
+                        className="w-6 h-6 group-hover:translate-y-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
                       </svg>
                     </div>
                   </div>
-                  
+
                   <h3 className="text-sm uppercase tracking-widest text-red-100 mb-4">
                     Resume / CV
                   </h3>
-                  
+
                   <p className="text-2xl md:text-3xl font-light mb-6">
                     Download My CV
                   </p>
-                  
+
                   <div className="inline-flex items-center gap-2 text-sm text-white">
                     <span>Get PDF</span>
-                    <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-2 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -387,7 +444,7 @@ const Contact = () => {
           <h2 className="text-2xl font-light mb-8 text-center">
             Connect on Social<span className="text-red-600">.</span>
           </h2>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             {socialLinks.map((social, index) => (
               <a
@@ -403,7 +460,7 @@ const Contact = () => {
                       {social.name}
                     </span>
                   </div>
-                  
+
                   <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                     <span className="text-xs text-gray-500">{social.full}</span>
                   </div>
