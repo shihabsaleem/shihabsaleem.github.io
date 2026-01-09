@@ -76,14 +76,16 @@ const Education = ({ data = assetData.education }) => {
   return (
     <section
       ref={sectionRef}
-      className="relative px-6 md:px-12 lg:px-20 py-24 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
+      /* UPDATED: Softer light background and neutral zinc text */
+      className="relative px-6 md:px-12 lg:px-20 py-24  text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto">
-        <div className=" mb-8 md:mb-12">
-          <h2 className="exp-title text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8">
+        <div className="mb-8 md:mb-12">
+          <h2 className="edu-heading text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8 text-zinc-900 dark:text-white">
             Education<span className="text-red-600">.</span>
           </h2>
-          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+          {/* UPDATED: Zinc border */}
+          <div className="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
@@ -94,26 +96,27 @@ const Education = ({ data = assetData.education }) => {
               onMouseEnter={handleItemHover}
               onMouseLeave={handleItemLeave}
             >
-              <div className="relative h-full bg-gray-50 dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 hover:border-red-600/50 dark:hover:border-red-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/10 overflow-hidden">
-                {/* Card number */}
-                <div className="absolute top-4 right-4 text-5xl font-bold text-gray-100 dark:text-gray-900 select-none">
+              <div className="relative h-full bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 hover:border-red-600/50 dark:hover:border-red-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/5 overflow-hidden">
+                
+                {/* UPDATED: Numbering contrast adjusted for zinc palette */}
+                <div className="absolute top-4 right-4 text-5xl font-bold text-zinc-100 dark:text-zinc-800/50 select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
                 <div className="relative z-10">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-zinc-800 rounded-full mb-4">
-                    <span className="w-1.5 h-1.5 bg-red-600 rounded-full" />
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-4 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse" />
                     {edu.start} — {edu.end}
                   </span>
 
-                  <h3 className="text-xl md:text-2xl font-black mb-4 group-hover:text-red-600 transition-colors leading-tight">
+                  <h3 className="text-xl md:text-2xl font-black mb-4 group-hover:text-red-600 transition-colors leading-tight text-zinc-900 dark:text-white">
                     {edu.qualification}
                   </h3>
 
-                  <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 font-medium mb-2">
+                  <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-300 font-medium mb-2 italic">
                     {edu.College}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">
+                  <p className="text-sm font-mono text-zinc-400 dark:text-zinc-500 tracking-tight">
                     {edu.Aff}
                   </p>
                 </div>

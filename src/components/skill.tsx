@@ -7,9 +7,10 @@ import assetData from "@/data/asset";
 const Skill = () => {
   const sectionRef = useRef(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { skillCategories, skills } = assetData;
+  const { skillCategories } = assetData;
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
+  // Particle animation background - Updated for theme awareness
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -43,6 +44,10 @@ const Skill = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Check theme for particle visibility
+      const isDark = document.documentElement.classList.contains("dark");
+      const particleAlpha = isDark ? 0.2 : 0.4;
+
       particles.forEach((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
@@ -52,27 +57,8 @@ const Skill = () => {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(220, 38, 38, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(220, 38, 38, ${particle.opacity * particleAlpha})`;
         ctx.fill();
-      });
-
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach((p2) => {
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(220, 38, 38, ${
-              0.1 * (1 - distance / 120)
-            })`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
       });
 
       requestAnimationFrame(animate);
@@ -86,42 +72,21 @@ const Skill = () => {
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".skill-heading",
-        { y: 100, opacity: 0, rotationX: 90 },
-        {
-          y: 0,
-          opacity: 1,
-          rotationX: 0,
-          duration: 1.2,
-          ease: "power4.out",
-        }
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
       );
 
       gsap.fromTo(
         ".category-card",
-        {
-          scale: 0.8,
-          opacity: 0,
-          rotationY: -15,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          rotationY: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "back.out(1.2)",
-          delay: 0.4,
-        }
+        { scale: 0.9, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)", delay: 0.2 }
       );
     }, sectionRef);
 
@@ -141,21 +106,8 @@ const Skill = () => {
     gsap.to(card, {
       rotationY: x * 0.02,
       rotationX: -y * 0.02,
+      scale: 1.02,
       duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleCardMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    gsap.to(card, {
-      rotationY: x * 0.02,
-      rotationX: -y * 0.02,
-      duration: 0.1,
       ease: "power2.out",
     });
   };
@@ -164,6 +116,7 @@ const Skill = () => {
     gsap.to(e.currentTarget, {
       rotationY: 0,
       rotationX: 0,
+      scale: 1,
       duration: 0.5,
       ease: "elastic.out(1, 0.5)",
     });
@@ -172,138 +125,103 @@ const Skill = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative px-6 md:px-12 lg:px-20 py-24 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
+      /* UPDATED: Theme-consistent backgrounds */
+      className="relative px-6 md:px-12 lg:px-20 py-24  text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
     >
-      {/* Animated Canvas Background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none"
-      />
+      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
-       <div className=" mb-8 md:mb-12">
-          <h2 className="exp-title text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8">
-            Skill<span className="text-red-600">.</span>
+        <div className="mb-8 md:mb-12">
+          <h2 className="skill-heading text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8 text-zinc-900 dark:text-white">
+            Skills<span className="text-red-600">.</span>
           </h2>
-          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+          {/* UPDATED: Zinc divider */}
+          <div className="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Object.entries(skillCategories).map(
-            ([category, categorySkills], index) => {
-              const isActive = activeCategory === category;
+          {Object.entries(skillCategories).map(([category, categorySkills], index) => {
+            const isActive = activeCategory === category;
 
-              return (
+            return (
+              <div
+                key={category}
+                className="category-card perspective-1000"
+                style={{ transformStyle: "preserve-3d" }}
+              >
                 <div
-                  key={category}
-                  className="category-card perspective-1000"
+                  className={`relative cursor-pointer transition-all duration-500`}
+                  onClick={() => handleCardClick(category)}
+                  onMouseEnter={handleCardHover}
+                  onMouseLeave={handleCardLeave}
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <div
-                    className={`relative cursor-pointer transition-all duration-500 ${
-                      isActive ? "row-span-2" : ""
+                    className={`relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 ${
+                      isActive ? "shadow-2xl shadow-red-600/10 border-red-600/30" : "hover:border-zinc-300 dark:hover:border-zinc-700"
                     }`}
-                    onClick={() => handleCardClick(category)}
-                    onMouseEnter={handleCardHover}
-                    onMouseMove={handleCardMove}
-                    onMouseLeave={handleCardLeave}
-                    style={{ transformStyle: "preserve-3d" }}
                   >
-                    <div
-                      className={`relative bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden transition-all duration-500 ${
-                        isActive
-                          ? "shadow-2xl shadow-red-600/20"
-                          : "hover:shadow-xl"
-                      }`}
-                    >
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-
-                      <div className="relative p-8">
-                        {/* Header */}
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="relative">
-                            <div className="absolute -left-2 -top-2 text-6xl font-bold text-red-600/10 dark:text-red-600/20">
-                              {String(index + 1).padStart(2, "0")}
-                            </div>
-                            <h3 className="text-2xl font-semibold relative z-10 pt-8">
-                              {category}
-                            </h3>
+                    <div className="relative p-8">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="relative">
+                          {/* UPDATED: Numbering color adjusted for zinc */}
+                          <div className="absolute -left-2 -top-2 text-6xl font-bold text-zinc-100 dark:text-zinc-800/50">
+                            {String(index + 1).padStart(2, "0")}
                           </div>
-                          <div
-                            className={`w-10 h-10 rounded-full border-2 border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all duration-300 ${
-                              isActive
-                                ? "rotate-180 border-red-600 bg-red-600"
-                                : ""
-                            }`}
-                          >
-                            <svg
-                              className={`w-5 h-5 transition-colors ${
-                                isActive ? "text-white" : "text-gray-400"
-                              }`}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                          </div>
+                          <h3 className="text-2xl font-black relative z-10 pt-8 text-zinc-900 dark:text-white">
+                            {category}
+                          </h3>
                         </div>
-
-                        {/* Skill count badge */}
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full mb-6">
-                          <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                            {categorySkills.length} skills
-                          </span>
-                        </div>
-
-                        {/* Skills preview or full list */}
                         <div
-                          className={`transition-all duration-500 ${
-                            isActive
-                              ? "max-h-[500px] opacity-100"
-                              : "max-h-20 opacity-60"
-                          } overflow-hidden`}
+                          className={`w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center transition-all duration-300 ${
+                            isActive ? "rotate-180 bg-red-600 border-red-600" : ""
+                          }`}
                         >
-                          <div className="space-y-2">
-                            {categorySkills.map((skill, idx) => (
-                              <div
-                                key={skill}
-                                className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 group/skill"
-                                style={{
-                                  transitionDelay: isActive
-                                    ? `${idx * 30}ms`
-                                    : "0ms",
-                                }}
-                              >
-                                <div className="w-1 h-1 rounded-full bg-red-600 group-hover/skill:scale-150 transition-transform" />
-                                <span className="group-hover/skill:text-red-600 transition-colors">
-                                  {skill}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
+                          <svg
+                            className={`w-5 h-5 ${isActive ? "text-white" : "text-zinc-400"}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
                         </div>
                       </div>
 
-                      {/* Bottom accent */}
+                      {/* UPDATED: Skill badge colors */}
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-6">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                        <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                          {categorySkills.length} skills
+                        </span>
+                      </div>
+
                       <div
-                        className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
-                          isActive ? "opacity-100" : "opacity-0"
-                        }`}
-                      />
+                        className={`transition-all duration-500 ${
+                          isActive ? "max-h-[500px] opacity-100" : "max-h-20 opacity-40"
+                        } overflow-hidden`}
+                      >
+                        <div className="space-y-3">
+                          {categorySkills.map((skill) => (
+                            <div key={skill} className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 group/skill">
+                              <div className="w-1 h-1 rounded-full bg-red-600/40 group-hover/skill:bg-red-600 transition-colors" />
+                              <span className="group-hover/skill:text-red-600 transition-colors font-medium">{skill}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
+
+                    <div
+                      className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
                   </div>
                 </div>
-              );
-            }
-          )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

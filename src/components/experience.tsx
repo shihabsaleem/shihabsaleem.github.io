@@ -51,7 +51,7 @@ const Experience = ({ data = assetData.experience }) => {
   return (
     <section
       ref={sectionRef}
-      className="bg-white dark:bg-[#050505] text-black dark:text-white py-12 md:py-24 px-5 md:px-12 lg:px-20 transition-colors"
+      className=" text-black dark:text-white py-12 md:py-24 px-5 md:px-12 lg:px-20 transition-colors"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}

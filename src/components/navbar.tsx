@@ -13,15 +13,12 @@ const Navbar = () => {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check initial theme
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
 
-    // GSAP entrance animation
     const ctx = gsap.context(() => {
       gsap.fromTo(
         navRef.current,
@@ -60,36 +57,12 @@ const Navbar = () => {
     }
   };
 
-  const handleLogoHover = () => {
-    gsap.to(logoRef.current, {
-      scale: 1.05,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
-  const handleLogoLeave = () => {
-    gsap.to(logoRef.current, {
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  };
-
   const handleLinkHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    gsap.to(e.currentTarget, {
-      y: -2,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+    gsap.to(e.currentTarget, { y: -2, duration: 0.3, ease: "power2.out" });
   };
 
   const handleLinkLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    gsap.to(e.currentTarget, {
-      y: 0,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+    gsap.to(e.currentTarget, { y: 0, duration: 0.3, ease: "power2.out" });
   };
 
   useEffect(() => {
@@ -105,83 +78,57 @@ const Navbar = () => {
   return (
     <nav 
       ref={navRef}
-      className="fixed z-50 w-full top-0 left-0 backdrop-blur-md bg-white/80 dark:bg-black/80"
+      /* UPDATED: Glass effect using Zinc palette */
+      className="fixed z-50 w-full top-0 left-0 backdrop-blur-md bg-white/70 dark:bg-[#050505]/70 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-500"
     >
       <div className="container mx-auto px-6 sm:px-8 py-4">
         <div className="flex items-center justify-between">
-          {/* Brand */}
           <Link 
             ref={logoRef}
             href="/" 
             className="flex items-center"
-            onMouseEnter={handleLogoHover}
-            onMouseLeave={handleLogoLeave}
           >
             <Image
               src={info.logo}
               alt={info.name}
               width={120}
               height={40}
-              className="h-8 w-auto"
+              className="h-8 w-auto dark:invert-0 transition-all"
             />
           </Link>
 
           {/* Desktop Menu */}
-          <div ref={linksRef} className="hidden md:flex items-center gap-8">
-            <Link 
-              href="/" 
-              className="nav-link text-sm font-medium uppercase tracking-wider hover:text-red-600 transition-colors"
-              onMouseEnter={handleLinkHover}
-              onMouseLeave={handleLinkLeave}
-            >
-              Work
-            </Link>
-            <Link 
-              href="/about" 
-              className="nav-link text-sm font-medium uppercase tracking-wider hover:text-red-600 transition-colors"
-              onMouseEnter={handleLinkHover}
-              onMouseLeave={handleLinkLeave}
-            >
-              About
-            </Link>
-            <Link 
-              href="/contact" 
-              className="nav-link text-sm font-medium uppercase tracking-wider hover:text-red-600 transition-colors"
-              onMouseEnter={handleLinkHover}
-              onMouseLeave={handleLinkLeave}
-            >
-              Contact
-            </Link>
+          <div className="hidden md:flex items-center gap-8">
+            {["Work", "About", "Contact"].map((item) => (
+              <Link 
+                key={item}
+                href={item === "Work" ? "/" : `/${item.toLowerCase()}`} 
+                className="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-600 transition-colors"
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}
+              >
+                {item}
+              </Link>
+            ))}
 
             {/* Theme Toggle - Desktop */}
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="nav-link relative w-14 h-7 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-black"
+              /* UPDATED: Zinc background for the toggle track */
+              className="nav-link relative w-12 h-6 bg-zinc-200 dark:bg-zinc-800 rounded-full transition-colors duration-300 focus:outline-none"
             >
               <span
-                className={`absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-900 rounded-full transition-transform duration-300 flex items-center justify-center ${
-                  theme === "dark" ? "translate-x-7" : "translate-x-0"
+                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-zinc-950 rounded-full transition-transform duration-300 flex items-center justify-center shadow-sm ${
+                  theme === "dark" ? "translate-x-6" : "translate-x-0"
                 }`}
               >
                 {theme === "dark" ? (
-                  <svg
-                    className="w-3 h-3 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      clipRule="evenodd"
-                    />
+                  <svg className="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
                   </svg>
                 ) : (
-                  <svg
-                    className="w-3 h-3 text-gray-700"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
+                  <svg className="w-3 h-3 text-zinc-600" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                   </svg>
                 )}
@@ -191,63 +138,22 @@ const Navbar = () => {
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-3 md:hidden">
-            {/* Theme Toggle - Mobile */}
             <button
               onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="relative w-12 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-300 focus:outline-none"
+              className="relative w-10 h-5 bg-zinc-200 dark:bg-zinc-800 rounded-full transition-colors"
             >
-              <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-gray-900 rounded-full transition-transform duration-300 flex items-center justify-center ${
-                  theme === "dark" ? "translate-x-6" : "translate-x-0"
-                }`}
-              >
-                {theme === "dark" ? (
-                  <svg
-                    className="w-3 h-3 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-3 h-3 text-gray-700"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </span>
+              <span className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white dark:bg-zinc-950 rounded-full transition-transform ${theme === "dark" ? "translate-x-5" : "translate-x-0"}`} />
             </button>
 
-            {/* Hamburger Menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              className="focus:outline-none p-2 rounded-lg"
               aria-label="Toggle Menu"
             >
-              <div className="w-6 h-5 flex flex-col justify-between">
-                <span
-                  className={`w-full h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                    isOpen ? "rotate-45 translate-y-2" : ""
-                  }`}
-                />
-                <span
-                  className={`w-full h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                    isOpen ? "opacity-0" : ""
-                  }`}
-                />
-                <span
-                  className={`w-full h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                    isOpen ? "-rotate-45 -translate-y-2" : ""
-                  }`}
-                />
+              <div className="w-5 h-4 flex flex-col justify-between">
+                <span className={`w-full h-0.5 bg-zinc-900 dark:bg-zinc-100 transition-all ${isOpen ? "rotate-45 translate-y-1.5" : ""}`} />
+                <span className={`w-full h-0.5 bg-zinc-900 dark:bg-zinc-100 transition-all ${isOpen ? "opacity-0" : ""}`} />
+                <span className={`w-full h-0.5 bg-zinc-900 dark:bg-zinc-100 transition-all ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
               </div>
             </button>
           </div>
@@ -256,32 +162,19 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-48 mt-4" : "max-h-0"
-          }`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 mt-4" : "max-h-0"}`}
         >
-          <div className="flex flex-col gap-1 py-2">
-            <Link
-              href="/"
-              className="mobile-link px-4 py-3 text-sm font-medium uppercase tracking-wider hover:text-red-600 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              Work
-            </Link>
-            <Link
-              href="/about"
-              className="mobile-link px-4 py-3 text-sm font-medium uppercase tracking-wider hover:text-red-600 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="mobile-link px-4 py-3 text-sm font-medium uppercase tracking-wider hover:text-red-600 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
+          <div className="flex flex-col gap-2 py-4 border-t border-zinc-100 dark:border-zinc-800">
+            {["Work", "About", "Contact"].map((item) => (
+              <Link
+                key={item}
+                href={item === "Work" ? "/" : `/${item.toLowerCase()}`}
+                className="mobile-link px-4 py-3 text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-red-600 transition-all"
+                onClick={() => setIsOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
