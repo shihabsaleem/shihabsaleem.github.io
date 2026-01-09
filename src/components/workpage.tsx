@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import data from "@/data/asset";
+import assetData from "@/data/asset"; // Standardizing the import name
 
 gsap.registerPlugin(ScrollTrigger);
 
-const { works } = data;
+const { works } = assetData; // Accessing works array
 
-// Helper function to convert work name to slug
+// Helper function to convert work name to slug for navigation
 function nameToSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, "-");
 }
@@ -20,12 +20,12 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Find the project based on ID
+  // Find the project based on ID or default to the first project
   const project = works.find((work) => work.id === projectId) || works[0];
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animation
+      // Hero entrance sequence
       const tl = gsap.timeline();
 
       tl.from(".hero-category", {
@@ -66,7 +66,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           "-=0.8"
         );
 
-      // Scroll-triggered animations
+      // Scroll-triggered animations for content sections
       gsap.from(".project-description", {
         scrollTrigger: {
           trigger: ".project-description",
@@ -130,11 +130,10 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
     return () => ctx.revert();
   }, [projectId]);
 
-  // Navigation functions
+  // Project navigation logic
   const currentIndex = works.findIndex((work) => work.id === project.id);
   const prevProject = currentIndex > 0 ? works[currentIndex - 1] : null;
-  const nextProject =
-    currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+  const nextProject = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
 
   const navigateToProject = (workName: string) => {
     const slug = nameToSlug(workName);
@@ -144,58 +143,47 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-white dark:bg-black text-black dark:text-white"
+      className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500"
     >
       {/* Hero Section */}
       <section className="px-6 md:px-12 lg:px-20 pt-20 pb-12">
         <div className="max-w-7xl mx-auto">
-          {/* Category */}
           <div className="hero-category mb-6">
-            <span className="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
               {project.shortdesc}
             </span>
           </div>
 
-          {/* Title */}
-          <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-light mb-8">
-            {project.name}
+          <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-zinc-900 dark:text-white">
+            {project.name}<span className="text-red-600">.</span>
           </h1>
 
-          {/* Meta Info */}
+          {/* Project Meta Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="hero-meta">
-              <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
-                Year
-              </div>
-              <div className="text-lg">{project.year}</div>
+              <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Year</div>
+              <div className="text-lg font-medium">{project.year}</div>
             </div>
             <div className="hero-meta">
-              <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
-                Client
-              </div>
-              <a href={project.clientLink} target="_blank" rel="noopener noreferrer">
-                <div className="text-lg">{project.client}</div>
+              <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Client</div>
+              <a href={project.clientLink} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+                <div className="text-lg font-medium">{project.client}</div>
               </a>
             </div>
             <div className="hero-meta">
-              <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
-                Role
-              </div>
-              <div className="text-lg">{project.role}</div>
+              <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Role</div>
+              <div className="text-lg font-medium">{project.role}</div>
             </div>
             <div className="hero-meta">
-              <div className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">
-                Duration
-              </div>
-              <div className="text-lg">{project.duration}</div>
+              <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Duration</div>
+              <div className="text-lg font-medium">{project.duration}</div>
             </div>
           </div>
 
-          {/* Hero Image */}
           <div className="hero-image">
-            <div className="relative w-full rounded-2xl overflow-hidden">
+            <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-zinc-900/5">
               <Image
-                src={project.images[0]}
+                src={project.images[0]} // Featured image
                 alt={project.name}
                 width={1200}
                 height={675}
@@ -209,49 +197,41 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
       </section>
 
       {/* Description Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20">
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
         <div className="max-w-4xl mx-auto">
           <div className="project-description">
-            <h2 className="text-3xl md:text-4xl font-light mb-6">Overview</h2>
-            <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-6">Overview</h2>
+            <p className="text-xl md:text-2xl leading-relaxed text-zinc-800 dark:text-zinc-200 font-light">
               {project.description}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Challenge & Solution */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-gray-50 dark:bg-gray-900">
+      {/* Challenge & Solution Grid */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 project-details">
-          <div className="project-details-item">
-            <h3 className="text-2xl md:text-3xl font-light mb-4">
-              The Challenge
-            </h3>
-            <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              {project.challenge}
-            </p>
+          <div className="project-details-item p-8 bg-white dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">The Challenge</h3>
+            <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">{project.challenge}</p>
           </div>
-          <div className="project-details-item">
-            <h3 className="text-2xl md:text-3xl font-light mb-4">
-              The Solution
-            </h3>
-            <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              {project.solution}
-            </p>
+          <div className="project-details-item p-8 bg-white dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">The Solution</h3>
+            <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">{project.solution}</p>
           </div>
         </div>
       </section>
 
-      {/* Image Gallery */}
-      <section className="px-6 md:px-12 lg:px-20 py-20">
+      {/* Gallery Grid */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
-                <div className="relative w-full rounded-2xl overflow-hidden">
+                <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
                   <Image
                     src={image}
-                    alt={`${project.name} screenshot ${index + 2}`}
+                    alt={`${project.name} preview ${index + 2}`}
                     width={800}
                     height={600}
                     className="w-full h-auto hover:scale-105 transition-transform duration-700"
@@ -264,35 +244,34 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 impact-section">
+      {/* Impact Section - Fixed Centering */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 impact-section bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-12">Impact</h2>
+          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-12">Measurable Impact</h2>
           <div className="space-y-6">
             {project.impact.map((item, index) => (
               <div
                 key={index}
-                className="impact-item flex items-start gap-4 text-lg md:text-xl"
+                /* items-center ensures the bullet is vertically centered with the text line */
+                className="impact-item flex items-center gap-4 text-xl md:text-2xl font-light"
               >
-                <span className="text-red-500 mt-1">•</span>
-                <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                <span className="text-red-600 font-black tracking-tighter">—</span>
+                <span className="text-zinc-800 dark:text-zinc-200 leading-tight">{item}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Tags */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 tags-section">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-8">
-            Technologies & Skills
-          </h2>
-          <div className="flex flex-wrap gap-3">
+      {/* Technologies Section */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 mb-8">Technologies & Expertise</h2>
+          <div className="flex flex-wrap justify-center gap-3">
             {project.tags.map((tag, index) => (
               <span
                 key={index}
-                className="tag-item px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm"
+                className="tag-item px-5 py-2.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest text-zinc-800 dark:text-zinc-200"
               >
                 {tag}
               </span>
@@ -301,28 +280,24 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-gray-200 dark:border-gray-800">
+      {/* Footer Navigation */}
+      <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {prevProject ? (
-            <button
-              onClick={() => navigateToProject(prevProject.name)}
-              className="text-lg hover:opacity-60 transition-opacity"
-            >
-              ← {prevProject.name}
+            <button onClick={() => navigateToProject(prevProject.name)} className="group flex flex-col items-start">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600 transition-colors">Previous</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">← {prevProject.name}</span>
             </button>
           ) : (
-            <div></div>
+            <div />
           )}
           {nextProject ? (
-            <button
-              onClick={() => navigateToProject(nextProject.name)}
-              className="text-lg hover:opacity-60 transition-opacity"
-            >
-              {nextProject.name} →
+            <button onClick={() => navigateToProject(nextProject.name)} className="group flex flex-col items-end text-right">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600 transition-colors">Next Project</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">{nextProject.name} →</span>
             </button>
           ) : (
-            <div></div>
+            <div />
           )}
         </div>
       </section>

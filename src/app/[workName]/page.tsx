@@ -13,7 +13,7 @@ function nameToSlug(name: string): string {
 
 // Helper function to find work by slug
 function findWorkBySlug(slug: string) {
-  return works.find(work => nameToSlug(work.name) === slug);
+  return works.find((work) => nameToSlug(work.name) === slug);
 }
 
 // Generate static params for all works
@@ -24,43 +24,43 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ workName: string }> 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ workName: string }>;
 }) {
   const { workName } = await params;
   const work = findWorkBySlug(workName);
-  
+
   if (!work) {
     return {
       title: "Project Not Found",
     };
   }
-  
+
   return {
     title: `${work.name} - Shihab Saleem`,
     description: work.description,
   };
 }
 
-export default async function Page({ 
-  params 
-}: { 
-  params: Promise<{ workName: string }> 
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ workName: string }>;
 }) {
   const { workName } = await params;
   const work = findWorkBySlug(workName);
-  
+
   // If work not found, show 404
   if (!work) {
     notFound();
   }
-  
+
   return (
     <div>
       <ProjectPage projectId={work.id} />
-      
+
       {/* Legal Links Footer */}
       <div className="my-4 px-6 md:px-12 lg:px-20">
         <LegalLinks />
