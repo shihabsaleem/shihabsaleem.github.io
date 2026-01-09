@@ -1,32 +1,38 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme tokens (Tailwind v4) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-montserrat);
-  --font-display: var(--font-stalinistOne);
+  --font-display: var(--font-sarina);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000;
-    --foreground: #ededed;
-  }
-}
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #fff;
-    --foreground: #000;
-  }
+/* Default (Light Mode) */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
 }
 
+/* Dark Mode */
+.dark {
+  --background: #000000;
+  --foreground: #ededed;
+}
+
+/* Base styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "montserrat", Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
 }
+
+/* Text selection */
 ::selection {
   background-color: oklch(57.7% 0.245 27.325);
-  /* background: linear-gradient(to right, #ef4444, #991b1b); */
   color: white;
 }

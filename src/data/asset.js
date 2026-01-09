@@ -121,7 +121,6 @@ const works = [
       "/assets/adovo-0.jpg",
       "/assets/adovo-1.jpg",
       "/assets/adovo-2.jpg",
-      // "/assets/adovo-4.jpg",
     ],
     tags: [
       "Brand Identity",
@@ -170,7 +169,7 @@ const works = [
     role: "Brand Designer",
     duration: "3 Weeks",
     description:
-      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company’s forward-thinking approach to IT development.",
+      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company's forward-thinking approach to IT development.",
     challenge:
       "Acuverse needed a brand identity that visually reflects its commitment to innovation, technological precision, and digital infrastructure. The challenge was to create a logo that is both minimal and highly symbolic, reinforcing trust and technical expertise.",
     solution:
@@ -190,102 +189,6 @@ const works = [
     ],
     tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
   },
-  // {
-  //   id: 6,
-  //   name: "Finance",
-  //   image: "/assets/finance.jpg",
-  //   shortdesc: "UI / UX Design",
-  //   year: "2024",
-  //   client: "Personal Project",
-  //   clientLink: "#",
-  //   role: "Product Designer",
-  //   duration: "2 weeks",
-  //   description:
-  //     "A minimal and intuitive UI/UX design for a mobile expense tracking app that helps users monitor their monthly spending, set limits, and view used vs. remaining budgets in real time. The goal is to promote smarter spending habits and avoid overspending through a clean, user-friendly experience.",
-  //   challenge:
-  //     "Many expense tracking apps overwhelm users with complex features and cluttered interfaces. The challenge was to create a simple, intuitive experience that makes financial tracking effortless while providing meaningful insights at a glance.",
-  //   solution:
-  //     "We designed a streamlined mobile interface with visual budget indicators, real-time spending updates, and smart categorization. The app uses progressive disclosure to keep the main interface clean while making detailed analytics accessible when needed.",
-  //   impact: [
-  //     "Simplified expense tracking process",
-  //     "Clear visualization of spending patterns",
-  //     "Real-time budget monitoring capabilities",
-  //     "Positive user feedback on ease of use",
-  //   ],
-  //   images: [
-  //     "/assets/finance.jpg",
-  //     "/assets/finance-2.jpg",
-  //     "/assets/finance-3.jpg",
-  //     "/assets/finance-4.jpg",
-  //   ],
-  //   tags: ["Mobile App", "UI Design", "UX Research", "Figma", "Prototyping"],
-  // },
-  // {
-  //   id: 7,
-  //   name: "Milkow",
-  //   image: "/assets/milkow.jpg",
-  //   clientLink: "#",
-  //   shortdesc: "Branding & Packaging",
-  //   year: "2023",
-  //   client: "Milkow Fresh",
-  //   role: "Brand & Packaging Designer",
-  //   duration: "1 week",
-  //   description:
-  //     "The Milkow Fresh logo features a friendly mascot combined with a clean wordmark, creating a memorable and approachable brand identity. Designed in solid black to contrast perfectly with the transparent milk bottles and the white milk inside, the minimalist abstract style ensures clarity and versatility, reflecting freshness and trust for our local unpasteurized cow milk.",
-  //   challenge:
-  //     "A local dairy needed a brand identity that would communicate freshness, quality, and trustworthiness while standing out on retail shelves. The design had to work perfectly with transparent packaging and appeal to health-conscious consumers.",
-  //   solution:
-  //     "We created a mascot-based logo system with a friendly cow character paired with clean typography. The solid black design was specifically chosen to create maximum contrast against transparent bottles and white milk, ensuring visibility and brand recognition.",
-  //   impact: [
-  //     "Strong shelf presence in retail environments",
-  //     "Increased brand recognition among local consumers",
-  //     "Positive association with quality and freshness",
-  //     "Successful packaging system across product line",
-  //   ],
-  //   images: [
-  //     "/assets/milkow.jpg",
-  //     "/assets/milkow-2.jpg",
-  //     "/assets/milkow-3.jpg",
-  //     "/assets/milkow-4.jpg",
-  //   ],
-  //   tags: [
-  //     "Branding",
-  //     "Packaging Design",
-  //     "Logo Design",
-  //     "Adobe Illustrator",
-  //     "Print Design",
-  //   ],
-  // },
-  // {
-  //   id: 8,
-  //   name: "Parrot Vacation",
-  //   image: "/assets/parrot.jpg",
-  //   shortdesc: "Branding",
-  //   year: "2023",
-  //   client: "Parrot Vacation",
-  //   clientLink: "#",
-  //   role: "Brand Designer",
-  //   duration: "1 weeks",
-  //   description:
-  //     "The Parrot Vacation logo blends a parrot, location pin, and the letter 'P' into a simple, modern mark. Inspired by parakeet colors, it reflects travel, freedom, and exploration with a clean, minimalist style.",
-  //   challenge:
-  //     "A travel agency needed a brand identity that would evoke feelings of adventure, freedom, and exotic destinations while remaining professional and trustworthy. The design needed to be memorable and work well across digital and print applications.",
-  //   solution:
-  //     "We developed a clever logomark that combines three elements: a parrot (representing exotic travel), a location pin (navigation/destination), and the letter 'P' (brand initial). The vibrant parakeet-inspired colors create an energetic, approachable identity.",
-  //   impact: [
-  //     "Distinctive brand presence in travel industry",
-  //     "Memorable logo with multiple symbolic meanings",
-  //     "Versatile identity across marketing materials",
-  //     "Enhanced brand recall among target audience",
-  //   ],
-  //   images: [
-  //     "/assets/parrot.jpg",
-  //     "/assets/parrot-2.jpg",
-  //     "/assets/parrot-3.jpg",
-  //     "/assets/parrot-4.jpg",
-  //   ],
-  //   tags: ["Branding", "Logo Design", "Visual Identity", "Adobe Illustrator"],
-  // },
 ];
 
 const info = [
@@ -293,6 +196,8 @@ const info = [
     name: "Shihab Saleem",
     title: "UI/UX Designer & Developer",
     logo: "/assets/shihab.svg",
+    pdesc:
+      "I design intuitive digital experiences by blending problem-solving and storytelling, always grounded in a deep understanding of users, their goals, and real-world needs.",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
     seoDesc:
       "Product Designer and Developer specializing in UI/UX design, user research, and frontend development. Crafting intuitive digital experiences with Figma, React, and modern design systems.",
@@ -304,12 +209,14 @@ const info = [
     email: "shihabrsaleem@gmail.com",
     linkedin: "linkedin.com/in/shihab-rahman",
     github: "github.com/shihabsaleem",
+    behance: "behance.net/shihabrsaleem",
     insta: "instagram.com/shihabrsaleem",
     twitter: "@shihabrsaleem",
     cv: "/assets/shihab.pdf",
     location: "Kerala, India",
   },
 ];
+
 const education = [
   {
     id: 1,
@@ -360,6 +267,52 @@ const experience = [
   },
 ];
 
+// Categorized skills for better organization
+const skillCategories = {
+  "Design & UX": [
+    "UI/UX Design",
+    "User Research",
+    "Design Thinking",
+    "Wireframing & Prototyping",
+    "Usability Testing",
+    "A/B Testing",
+    "Accessibility (WCAG Principles)",
+    "Interaction Design (IxD)",
+    "Information Architecture",
+    "Microinteractions & UX Animation",
+    "Responsive & Adaptive Design",
+  ],
+  "Visual Design": [
+    "Visual Design",
+    "Typography for UI",
+    "Color Theory & Design Systems",
+  ],
+  "Design Tools": [
+    "Figma",
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Miro / FigJam",
+  ],
+  Development: [
+    "HTML & CSS",
+    "TailwindCSS",
+    "Bootstrap",
+    "JavaScript",
+    "ReactJS",
+    "Angular",
+    "Git & GitHub",
+  ],
+  "CMS & Builders": ["WordPress", "Beaver Builder", "Elementor"],
+  "Soft Skills": [
+    "Problem Solving",
+    "Collaboration with Developers",
+    "Communication",
+    "Attention to Detail",
+    "Time Management",
+  ],
+};
+
+// Legacy flat skills array (for backward compatibility)
 const skills = [
   "UI/UX Design",
   "User Research",
@@ -396,6 +349,13 @@ const skills = [
   "Time Management",
 ];
 
-const assetData = { works, info, education, experience, skills };
+const assetData = {
+  works,
+  info,
+  education,
+  experience,
+  skills,
+  skillCategories,
+};
 
 export default assetData;

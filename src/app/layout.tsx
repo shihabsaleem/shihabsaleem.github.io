@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat, Stalinist_One } from "next/font/google";
+import { Montserrat, Sarina } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import data from "@/data/asset";
 
-const stalinistOne = Stalinist_One({
-  variable: "--font-stalinistOne",
+const sarina = Sarina({
+  variable: "--font-sarina",
   subsets: ["latin"],
   weight: "400",
 });
@@ -42,14 +42,12 @@ export const metadata: Metadata = {
   authors: [{ name: info.name }],
   creator: info.name,
 
-  /** ✅ FAVICON & ICONS (IMPORTANT FOR GOOGLE) */
   icons: {
-    icon: "/favicon.ico", // ≥48x48 (Google)
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/assets/apple-touch-icon.png", // 180x180
+    apple: "/assets/apple-touch-icon.png",
   },
 
-  /** Open Graph */
   openGraph: {
     title: `${info.name} - ${info.title}`,
     description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
@@ -67,7 +65,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 
-  /** Twitter */
   twitter: {
     card: "summary_large_image",
     title: `${info.name} - ${info.title}`,
@@ -76,7 +73,6 @@ export const metadata: Metadata = {
     images: ["/assets/og-shihab.jpg"],
   },
 
-  /** Robots */
   robots: {
     index: true,
     follow: true,
@@ -89,7 +85,6 @@ export const metadata: Metadata = {
     },
   },
 
-  /** Google Search Console verification */
   verification: {
     google: "CSdXRkDwL9W7wsQUQPz9VwJY4xuD2Ni4RSnXbdqz5F4",
   },
@@ -101,11 +96,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${stalinistOne.variable} ${montserrat.variable} antialiased`}
-        suppressHydrationWarning
-      >
+    <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function () {
+  try {
+    const stored = localStorage.getItem("theme");
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (stored === "dark" || (!stored && systemDark)) {
+      document.documentElement.classList.add("dark");
+    }
+  } catch {}
+})();
+            `,
+          }}
+        />
+      </head>
+      <body className={`${sarina.variable} ${montserrat.variable} antialiased`}>
         <Navbar />
         <main>{children}</main>
       </body>
