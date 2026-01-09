@@ -76,13 +76,8 @@ const Education = ({ data = assetData.education }) => {
   return (
     <section
       ref={sectionRef}
-      className="relative px-6 md:px-12 lg:px-20 py-24 bg-gray-50 dark:bg-zinc-950 text-black dark:text-white overflow-hidden"
+      className="relative px-6 md:px-12 lg:px-20 py-24 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-red-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 right-20 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
-
       <div className="max-w-7xl mx-auto">
         <h2 className="edu-heading text-3xl md:text-5xl font-display mb-16 relative inline-block">
           Education<span className="text-red-600">.</span>
@@ -97,14 +92,11 @@ const Education = ({ data = assetData.education }) => {
               onMouseEnter={handleItemHover}
               onMouseLeave={handleItemLeave}
             >
-              <div className="relative h-full bg-white dark:bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 hover:border-red-600/50 dark:hover:border-red-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/10 overflow-hidden">
+              <div className="relative h-full bg-gray-50 dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800 hover:border-red-600/50 dark:hover:border-red-600/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/10 overflow-hidden">
                 {/* Card number */}
                 <div className="absolute top-4 right-4 text-5xl font-bold text-gray-100 dark:text-gray-900 select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>
-
-                {/* Top accent dot */}
-                {/* <div className="absolute top-0 left-8 w-2 h-2 bg-red-600 rounded-full" /> */}
 
                 <div className="relative z-10">
                   <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-zinc-800 rounded-full mb-4">
@@ -125,7 +117,7 @@ const Education = ({ data = assetData.education }) => {
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="edu-line absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-red-400 to-purple-600 transform scale-x-0 origin-left" />
+                <div className="edu-line absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-transparent transform scale-x-0 origin-left" />
               </div>
             </div>
           ))}

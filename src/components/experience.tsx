@@ -180,7 +180,7 @@ const Experience = ({ data = assetData.experience }) => {
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="exp-line absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-red-400 to-purple-600 transform scale-x-0 origin-left" />
+                <div className="exp-line absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-transparent transform scale-x-0 origin-left" />
               </div>
             </div>
           ))}

@@ -66,7 +66,9 @@ const Skill = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(220, 38, 38, ${0.1 * (1 - distance / 120)})`;
+            ctx.strokeStyle = `rgba(220, 38, 38, ${
+              0.1 * (1 - distance / 120)
+            })`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -106,7 +108,7 @@ const Skill = () => {
 
       gsap.fromTo(
         ".category-card",
-        { 
+        {
           scale: 0.8,
           opacity: 0,
           rotationY: -15,
@@ -178,109 +180,129 @@ const Skill = () => {
         className="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none"
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="skill-heading text-5xl md:text-7xl font-display inline-block perspective-1000">
-            <span className="inline-block">Skills</span>
-            <span className="text-red-600">.</span>
-          </h2>
-          <p className="text-gray-500 dark:text-gray-500 mt-4 text-sm tracking-widest uppercase">
-            Click to expand
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto">
+        <h2 className="skill-heading text-3xl md:text-5xl font-display mb-16 relative inline-block">
+          Skills<span className="text-red-600">.</span>
+          <div className="absolute -bottom-2 left-0 w-24 h-1 bg-red-600" />
+        </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Object.entries(skillCategories).map(([category, categorySkills], index) => {
-            const isActive = activeCategory === category;
-            
-            return (
-              <div
-                key={category}
-                className="category-card perspective-1000"
-                style={{ transformStyle: "preserve-3d" }}
-              >
+          {Object.entries(skillCategories).map(
+            ([category, categorySkills], index) => {
+              const isActive = activeCategory === category;
+
+              return (
                 <div
-                  className={`relative cursor-pointer transition-all duration-500 ${
-                    isActive ? "row-span-2" : ""
-                  }`}
-                  onClick={() => handleCardClick(category)}
-                  onMouseEnter={handleCardHover}
-                  onMouseMove={handleCardMove}
-                  onMouseLeave={handleCardLeave}
+                  key={category}
+                  className="category-card perspective-1000"
                   style={{ transformStyle: "preserve-3d" }}
                 >
-                  <div className={`relative bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden transition-all duration-500 ${
-                    isActive ? "shadow-2xl shadow-red-600/20" : "hover:shadow-xl"
-                  }`}>
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className="relative p-8">
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="relative">
-                          <div className="absolute -left-2 -top-2 text-6xl font-bold text-red-600/10 dark:text-red-600/20">
-                            {String(index + 1).padStart(2, "0")}
-                          </div>
-                          <h3 className="text-2xl font-semibold relative z-10 pt-8">
-                            {category}
-                          </h3>
-                        </div>
-                        <div className={`w-10 h-10 rounded-full border-2 border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all duration-300 ${
-                          isActive ? "rotate-180 border-red-600 bg-red-600" : ""
-                        }`}>
-                          <svg
-                            className={`w-5 h-5 transition-colors ${isActive ? "text-white" : "text-gray-400"}`}
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      </div>
+                  <div
+                    className={`relative cursor-pointer transition-all duration-500 ${
+                      isActive ? "row-span-2" : ""
+                    }`}
+                    onClick={() => handleCardClick(category)}
+                    onMouseEnter={handleCardHover}
+                    onMouseMove={handleCardMove}
+                    onMouseLeave={handleCardLeave}
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    <div
+                      className={`relative bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden transition-all duration-500 ${
+                        isActive
+                          ? "shadow-2xl shadow-red-600/20"
+                          : "hover:shadow-xl"
+                      }`}
+                    >
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
 
-                      {/* Skill count badge */}
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full mb-6">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-                        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                          {categorySkills.length} skills
-                        </span>
-                      </div>
-
-                      {/* Skills preview or full list */}
-                      <div className={`transition-all duration-500 ${isActive ? "max-h-[500px] opacity-100" : "max-h-20 opacity-60"} overflow-hidden`}>
-                        <div className="space-y-2">
-                          {categorySkills.map((skill, idx) => (
-                            <div
-                              key={skill}
-                              className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 group/skill"
-                              style={{
-                                transitionDelay: isActive ? `${idx * 30}ms` : "0ms",
-                              }}
-                            >
-                              <div className="w-1 h-1 rounded-full bg-red-600 group-hover/skill:scale-150 transition-transform" />
-                              <span className="group-hover/skill:text-red-600 transition-colors">
-                                {skill}
-                              </span>
+                      <div className="relative p-8">
+                        {/* Header */}
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="relative">
+                            <div className="absolute -left-2 -top-2 text-6xl font-bold text-red-600/10 dark:text-red-600/20">
+                              {String(index + 1).padStart(2, "0")}
                             </div>
-                          ))}
+                            <h3 className="text-2xl font-semibold relative z-10 pt-8">
+                              {category}
+                            </h3>
+                          </div>
+                          <div
+                            className={`w-10 h-10 rounded-full border-2 border-gray-300 dark:border-gray-700 flex items-center justify-center transition-all duration-300 ${
+                              isActive
+                                ? "rotate-180 border-red-600 bg-red-600"
+                                : ""
+                            }`}
+                          >
+                            <svg
+                              className={`w-5 h-5 transition-colors ${
+                                isActive ? "text-white" : "text-gray-400"
+                              }`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+
+                        {/* Skill count badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full mb-6">
+                          <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                          <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                            {categorySkills.length} skills
+                          </span>
+                        </div>
+
+                        {/* Skills preview or full list */}
+                        <div
+                          className={`transition-all duration-500 ${
+                            isActive
+                              ? "max-h-[500px] opacity-100"
+                              : "max-h-20 opacity-60"
+                          } overflow-hidden`}
+                        >
+                          <div className="space-y-2">
+                            {categorySkills.map((skill, idx) => (
+                              <div
+                                key={skill}
+                                className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 group/skill"
+                                style={{
+                                  transitionDelay: isActive
+                                    ? `${idx * 30}ms`
+                                    : "0ms",
+                                }}
+                              >
+                                <div className="w-1 h-1 rounded-full bg-red-600 group-hover/skill:scale-150 transition-transform" />
+                                <span className="group-hover/skill:text-red-600 transition-colors">
+                                  {skill}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Bottom accent */}
-                    <div className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
-                      isActive ? "opacity-100" : "opacity-0"
-                    }`} />
+                      {/* Bottom accent */}
+                      <div
+                        className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
+                          isActive ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
         </div>
-
-
       </div>
     </section>
   );
