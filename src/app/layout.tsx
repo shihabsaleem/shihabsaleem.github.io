@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Sarina } from "next/font/google";
-import Script from "next/script"; // ✅ ADD THIS
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import data from "@/data/asset";
@@ -116,7 +116,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* ✅ Google Analytics */}
+        {/*  Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-901BG54SSM"
           strategy="afterInteractive"
