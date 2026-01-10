@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Sarina } from "next/font/google";
+import Script from "next/script"; // ✅ ADD THIS
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import data from "@/data/asset";
@@ -98,6 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Dark mode script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -113,7 +115,25 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* ✅ Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-901BG54SSM"
+          strategy="afterInteractive"
+        />
+
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-901BG54SSM', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </head>
+
       <body className={`${sarina.variable} ${montserrat.variable} antialiased`}>
         <Navbar />
         <main>{children}</main>
