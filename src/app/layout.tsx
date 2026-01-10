@@ -3,6 +3,7 @@ import { Montserrat, Sarina } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import CookieBanner from "@/components/cookie-banner";
 import data from "@/data/asset";
 
 const sarina = Sarina({
@@ -21,14 +22,8 @@ const info = data.info[0];
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shihabsaleem.site"),
-
   title: `${info.name} - ${info.title}`,
-  description: `${
-    info.name
-  } | UI/UX Designer, Developer & Branding Specialist in ${
-    info.location
-  }. ${info.desc.substring(0, 150)}...`,
-
+  description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. ${info.desc.substring(0, 150)}...`,
   keywords: [
     "UI/UX Designer",
     "Product Designer",
@@ -39,16 +34,13 @@ export const metadata: Metadata = {
     "Figma Designer",
     "Branding Specialist",
   ],
-
   authors: [{ name: info.name }],
   creator: info.name,
-
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/assets/apple-touch-icon.png",
   },
-
   openGraph: {
     title: `${info.name} - ${info.title}`,
     description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
@@ -65,7 +57,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: `${info.name} - ${info.title}`,
@@ -73,7 +64,6 @@ export const metadata: Metadata = {
     creator: "@shihabrsaleem",
     images: ["/assets/og-shihab.jpg"],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -85,7 +75,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   verification: {
     google: "CSdXRkDwL9W7wsQUQPz9VwJY4xuD2Ni4RSnXbdqz5F4",
   },
@@ -99,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Dark mode script */}
+        {/* Dark mode script - Runs immediately to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -116,27 +105,36 @@ export default function RootLayout({
           }}
         />
 
-        {/*  Google Analytics */}
+        {/* Conditional Google Analytics - Only loads if consent is 'accepted' */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-901BG54SSM"
+          id="gtag-base"
           strategy="afterInteractive"
-        />
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (localStorage.getItem('cookie-consent') === 'accepted') {
+                const script = document.createElement('script');
+                script.src = "https://www.googletagmanager.com/gtag/js?id=G-901BG54SSM";
+                script.async = true;
+                document.head.appendChild(script);
 
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-901BG54SSM', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-901BG54SSM', {
+                  page_path: window.location.pathname,
+                });
+              }
+            `,
+          }}
+        />
       </head>
 
-      <body className={`${sarina.variable} ${montserrat.variable} antialiased`}>
+      <body className={`${sarina.variable} ${montserrat.variable} antialiased selection:bg-red-600 selection:text-white`}>
         <Navbar />
         <main>{children}</main>
+        
+        {/* Cookie Consent Banner */}
+        <CookieBanner />
       </body>
     </html>
   );
