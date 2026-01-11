@@ -27,11 +27,12 @@ export default function Home() {
           { clipPath: "inset(0 0 100% 0)" },
           {
             clipPath: "inset(0 0 0% 0)",
-            duration: 1.2,
+            duration: 1,
             ease: "power4.inOut",
             scrollTrigger: {
               trigger: `.work-${work.id}`,
-              start: "top 80%",
+              start: "top 50%",
+              markers: true,
             },
           }
         );

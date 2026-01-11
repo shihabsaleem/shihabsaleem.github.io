@@ -37,7 +37,7 @@ const CookieBanner = () => {
               I use Google Analytics to understand how you interact with my
               work. You can read more in the{" "}
               <Link
-                href="/privacy-policy"
+                href="/privacy"
                 className="text-zinc-900 dark:text-white underline underline-offset-4 hover:text-red-600 transition-colors"
               >
                 Privacy Policy
