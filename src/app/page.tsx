@@ -32,7 +32,6 @@ export default function Home() {
             scrollTrigger: {
               trigger: `.work-${work.id}`,
               start: "top 50%",
-              markers: true,
             },
           }
         );
