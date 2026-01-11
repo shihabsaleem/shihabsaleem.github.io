@@ -10,7 +10,8 @@ import assetData from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const works = assetData.works;
+// 1. Sort the works descending (ID 7 to ID 1)
+const sortedWorks = [...assetData.works].sort((a, b) => b.id - a.id);
 const info = assetData.info[0];
 
 export default function Home() {
@@ -21,7 +22,8 @@ export default function Home() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      works.forEach((work) => {
+      // 2. Use sortedWorks for animations
+      sortedWorks.forEach((work) => {
         gsap.fromTo(
           `.work-${work.id} .work-image-container`,
           { clipPath: "inset(0 0 100% 0)" },
@@ -99,7 +101,8 @@ export default function Home() {
 
         {/* WORKS LIST */}
         <section className="border-t border-black/10 dark:border-white/10">
-          {works.map((work) => (
+          {/* 3. Map through sortedWorks instead of original works */}
+          {sortedWorks.map((work) => (
             <div
               key={work.id}
               className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
@@ -183,7 +186,6 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* CV & WhatsApp Column - Refined Alignment */}
               <div className="md:text-right flex flex-col gap-6 items-start md:items-end">
                 <div className="space-y-1">
                   <p className="font-mono text-[9px] text-gray-400 dark:text-gray-500 uppercase tracking-widest">

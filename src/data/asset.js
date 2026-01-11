@@ -31,36 +31,6 @@ const works = [
   },
   {
     id: 2,
-    name: "Adil Rafeeque",
-    image: "/assets/adil.jpg",
-    clientLink: "https://adilrafeeque.com/",
-    shortdesc: "Personal Brand Identity",
-    year: "2025",
-    client: "Adil Rafeeque",
-    role: "Brand Designer",
-    duration: "2 Weeks",
-    description:
-      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
-    challenge:
-      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
-    solution:
-      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
-    impact: [
-      "A recognizable and scalable personal brand identity",
-      "Professional digital presence across platforms",
-      "Clear association with growth and performance analytics",
-      "Strong visual system with a versatile icon",
-    ],
-    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
-    tags: [
-      "Personal Branding",
-      "Logo Design",
-      "Wordmark Design",
-      "Digital Marketing Identity",
-    ],
-  },
-  {
-    id: 3,
     name: "Custom ERP",
     image: "/assets/erp.jpg",
     shortdesc: "UI/UX Design",
@@ -96,7 +66,105 @@ const works = [
     ],
   },
   {
+    id: 3,
+    name: "Acuverse",
+    image: "/assets/acuverse.jpg",
+    clientLink: "#",
+    shortdesc: "Branding",
+    year: "2024",
+    client: "Acuverse",
+    role: "Brand Designer",
+    duration: "3 Weeks",
+    description:
+      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company's forward-thinking approach to IT development.",
+    challenge:
+      "Acuverse needed a brand identity that visually reflects its commitment to innovation, technological precision, and digital infrastructure. The challenge was to create a logo that is both minimal and highly symbolic, reinforcing trust and technical expertise.",
+    solution:
+      "We developed a geometric, interconnected monogram that forms an abstract 'A.' Its symmetrical construction and precise linework symbolize structured systems, seamless connectivity, and modern digital architecture. The simplified yet bold aesthetic ensures strong brand recognition across platforms.",
+    impact: [
+      "A modern and memorable visual identity",
+      "Clear association with digital connectivity and innovation",
+      "Scalable geometric logo adaptable to various digital environments",
+      "Strengthened brand presence within the IT development sector",
+    ],
+    images: [
+      "/assets/acuverse-0.jpg",
+      "/assets/acuverse-1.jpg",
+      "/assets/acuverse-2.jpg",
+      "/assets/acuverse-3.jpg",
+      "/assets/acuverse-4.jpg",
+    ],
+    tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
+  },
+  {
     id: 4,
+    name: "Diet",
+    image: "/assets/diet.jpg",
+    shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Jadbery",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "2 Weeks",
+    description:
+      "Diet+ is a mobile application designed to help users manually track their daily calorie intake and calories burned. The project focuses on delivering a clean and intuitive UI/UX that simplifies health tracking through minimal interactions, clear visual feedback, and an easy-to-understand interface that encourages consistent daily use.",
+    challenge:
+      "Many calorie tracking applications overwhelm users with complex data entry flows and cluttered interfaces. The challenge was to design an experience that allows quick and effortless manual logging while still providing meaningful insights into daily calorie consumption and activity.",
+    solution:
+      "We designed a mobile-first interface with simplified logging flows, clear visual hierarchy, and intuitive progress indicators. By breaking actions into small, manageable steps and prioritizing essential information, the design reduces friction and cognitive load during daily tracking.",
+    impact: [
+      "Simplified daily calorie tracking experience",
+      "Reduced effort required for manual calorie logging",
+      "Improved clarity through clean and focused UI",
+      "Encouraged consistent user engagement",
+    ],
+    images: [
+      "/assets/diet-0.jpg",
+      "/assets/diet-1.jpg",
+      "/assets/diet-2.jpg",
+      "/assets/diet-3.jpg",
+    ],
+    tags: [
+      "UI Design",
+      "UX Design",
+      "Mobile App Design",
+      "Health & Fitness App",
+      "Figma",
+      "Prototyping",
+    ],
+  },
+  {
+    id: 5,
+    name: "Adil Rafeeque",
+    image: "/assets/adil.jpg",
+    clientLink: "https://adilrafeeque.com/",
+    shortdesc: "Personal Brand Identity",
+    year: "2025",
+    client: "Adil Rafeeque",
+    role: "Brand Designer",
+    duration: "2 Weeks",
+    description:
+      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
+    challenge:
+      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
+    solution:
+      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
+    impact: [
+      "A recognizable and scalable personal brand identity",
+      "Professional digital presence across platforms",
+      "Clear association with growth and performance analytics",
+      "Strong visual system with a versatile icon",
+    ],
+    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
+    tags: [
+      "Personal Branding",
+      "Logo Design",
+      "Wordmark Design",
+      "Digital Marketing Identity",
+    ],
+  },
+  {
+    id: 6,
     name: "ADOVO",
     image: "/assets/adovo.jpg",
     clientLink: "#",
@@ -130,7 +198,7 @@ const works = [
     ],
   },
   {
-    id: 5,
+    id: 7,
     name: "Jadbery",
     image: "/assets/jadbery.jpg",
     shortdesc: "UI / UX Design",
@@ -158,38 +226,9 @@ const works = [
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
-  {
-    id: 6,
-    name: "Acuverse",
-    image: "/assets/acuverse.jpg",
-    clientLink: "#",
-    shortdesc: "Branding",
-    year: "2024",
-    client: "Acuverse",
-    role: "Brand Designer",
-    duration: "3 Weeks",
-    description:
-      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company's forward-thinking approach to IT development.",
-    challenge:
-      "Acuverse needed a brand identity that visually reflects its commitment to innovation, technological precision, and digital infrastructure. The challenge was to create a logo that is both minimal and highly symbolic, reinforcing trust and technical expertise.",
-    solution:
-      "We developed a geometric, interconnected monogram that forms an abstract 'A.' Its symmetrical construction and precise linework symbolize structured systems, seamless connectivity, and modern digital architecture. The simplified yet bold aesthetic ensures strong brand recognition across platforms.",
-    impact: [
-      "A modern and memorable visual identity",
-      "Clear association with digital connectivity and innovation",
-      "Scalable geometric logo adaptable to various digital environments",
-      "Strengthened brand presence within the IT development sector",
-    ],
-    images: [
-      "/assets/acuverse-0.jpg",
-      "/assets/acuverse-1.jpg",
-      "/assets/acuverse-2.jpg",
-      "/assets/acuverse-3.jpg",
-      "/assets/acuverse-4.jpg",
-    ],
-    tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
-  },
 ];
+
+
 
 const info = [
   {

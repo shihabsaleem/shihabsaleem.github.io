@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import assetData from "@/data/asset"; // Standardizing the import name
+import assetData from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const { works } = assetData; // Accessing works array
+// Sort globally for this component: 7, 6, 5...
+const sortedWorks = [...assetData.works].sort((a, b) => b.id - a.id);
 
-// Helper function to convert work name to slug for navigation
 function nameToSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, "-");
 }
@@ -20,145 +20,63 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Find the project based on ID or default to the first project
-  const project = works.find((work) => work.id === projectId) || works[0];
+  const project = sortedWorks.find((work) => work.id === projectId) || sortedWorks[0];
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero entrance sequence
       const tl = gsap.timeline();
+      tl.from(".hero-category", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" })
+        .from(".hero-title", { opacity: 0, y: 50, duration: 1, ease: "power3.out" }, "-=0.4")
+        .from(".hero-meta", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out", stagger: 0.1 }, "-=0.6")
+        .from(".hero-image", { opacity: 0, scale: 0.95, duration: 1.2, ease: "power3.out" }, "-=0.8");
 
-      tl.from(".hero-category", {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-      })
-        .from(
-          ".hero-title",
-          {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power3.out",
-          },
-          "-=0.4"
-        )
-        .from(
-          ".hero-meta",
-          {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: "power3.out",
-            stagger: 0.1,
-          },
-          "-=0.6"
-        )
-        .from(
-          ".hero-image",
-          {
-            opacity: 0,
-            scale: 0.95,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          "-=0.8"
-        );
-
-      // Scroll-triggered animations for content sections
       gsap.from(".project-description", {
-        scrollTrigger: {
-          trigger: ".project-description",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
+        scrollTrigger: { trigger: ".project-description", start: "top 80%" },
+        opacity: 0, y: 50, duration: 1, ease: "power3.out",
       });
 
       gsap.from(".project-details-item", {
-        scrollTrigger: {
-          trigger: ".project-details",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 30,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
+        scrollTrigger: { trigger: ".project-details", start: "top 80%" },
+        opacity: 0, y: 30, stagger: 0.15, duration: 0.8, ease: "power3.out",
       });
 
       ScrollTrigger.batch(".gallery-image", {
-        onEnter: (batch) =>
-          gsap.from(batch, {
-            opacity: 0,
-            y: 60,
-            stagger: 0.2,
-            duration: 1,
-            ease: "power3.out",
-          }),
+        onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 60, stagger: 0.2, duration: 1, ease: "power3.out" }),
         start: "top 85%",
       });
 
       gsap.from(".impact-item", {
-        scrollTrigger: {
-          trigger: ".impact-section",
-          start: "top 80%",
-        },
-        opacity: 0,
-        x: -30,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
+        scrollTrigger: { trigger: ".impact-section", start: "top 80%" },
+        opacity: 0, x: -30, stagger: 0.1, duration: 0.8, ease: "power3.out",
       });
 
       gsap.from(".tag-item", {
-        scrollTrigger: {
-          trigger: ".tags-section",
-          start: "top 85%",
-        },
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.05,
-        duration: 0.5,
-        ease: "back.out(1.7)",
+        scrollTrigger: { trigger: ".tags-section", start: "top 85%" },
+        opacity: 0, scale: 0.8, stagger: 0.05, duration: 0.5, ease: "back.out(1.7)",
       });
     }, containerRef);
-
     return () => ctx.revert();
   }, [projectId]);
 
-  // Project navigation logic
-  const currentIndex = works.findIndex((work) => work.id === project.id);
-  const prevProject = currentIndex > 0 ? works[currentIndex - 1] : null;
-  const nextProject = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+  // Navigation logic using descending order
+  const currentIndex = sortedWorks.findIndex((work) => work.id === project.id);
+  const prevProject = currentIndex > 0 ? sortedWorks[currentIndex - 1] : null;
+  const nextProject = currentIndex < sortedWorks.length - 1 ? sortedWorks[currentIndex + 1] : null;
 
   const navigateToProject = (workName: string) => {
-    const slug = nameToSlug(workName);
-    router.push(`/${slug}`);
+    router.push(`/${nameToSlug(workName)}`);
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500"
-    >
-      {/* Hero Section */}
+    <div ref={containerRef} className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
       <section className="px-6 md:px-12 lg:px-20 pt-20 pb-12">
         <div className="max-w-7xl mx-auto">
           <div className="hero-category mb-6">
-            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-              {project.shortdesc}
-            </span>
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-400">{project.shortdesc}</span>
           </div>
-
           <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-zinc-900 dark:text-white">
             {project.name}<span className="text-red-600">.</span>
           </h1>
-
-          {/* Project Meta Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="hero-meta">
               <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Year</div>
@@ -179,36 +97,23 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
               <div className="text-lg font-medium">{project.duration}</div>
             </div>
           </div>
-
           <div className="hero-image">
             <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-zinc-900/5">
-              <Image
-                src={project.images[0]} // Featured image
-                alt={project.name}
-                width={1200}
-                height={675}
-                className="w-full h-auto"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                priority
-              />
+              <Image src={project.images[0]} alt={project.name} width={1200} height={675} className="w-full h-auto" priority />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Description Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto">
           <div className="project-description">
             <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-6">Overview</h2>
-            <p className="text-xl md:text-2xl leading-relaxed text-zinc-800 dark:text-zinc-200 font-light">
-              {project.description}
-            </p>
+            <p className="text-xl md:text-2xl leading-relaxed font-light">{project.description}</p>
           </div>
         </div>
       </section>
 
-      {/* Challenge & Solution Grid */}
       <section className="px-6 md:px-12 lg:px-20 py-24 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 project-details">
           <div className="project-details-item p-8 bg-white dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
@@ -222,21 +127,13 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Gallery Grid */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
                 <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
-                  <Image
-                    src={image}
-                    alt={`${project.name} preview ${index + 2}`}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  <Image src={image} alt={`${project.name} ${index}`} width={800} height={600} className="w-full h-auto hover:scale-105 transition-transform duration-700" />
                 </div>
               </div>
             ))}
@@ -244,17 +141,12 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Impact Section - Fixed Centering */}
       <section className="px-6 md:px-12 lg:px-20 py-20 impact-section bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-12">Measurable Impact</h2>
           <div className="space-y-6">
             {project.impact.map((item, index) => (
-              <div
-                key={index}
-                /* items-center ensures the bullet is vertically centered with the text line */
-                className="impact-item flex items-center gap-4 text-xl md:text-2xl font-light"
-              >
+              <div key={index} className="impact-item flex items-center gap-4 text-xl md:text-2xl font-light">
                 <span className="text-red-600 font-black tracking-tighter">—</span>
                 <span className="text-zinc-800 dark:text-zinc-200 leading-tight">{item}</span>
               </div>
@@ -263,16 +155,12 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 transition-colors">
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 mb-8">Technologies & Expertise</h2>
+          <h2 className="text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 mb-8">Technologies</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {project.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="tag-item px-5 py-2.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest text-zinc-800 dark:text-zinc-200"
-              >
+              <span key={index} className="tag-item px-5 py-2.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-bold uppercase tracking-widest">
                 {tag}
               </span>
             ))}
@@ -280,25 +168,20 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      {/* Footer Navigation */}
       <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {prevProject ? (
             <button onClick={() => navigateToProject(prevProject.name)} className="group flex flex-col items-start">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600 transition-colors">Previous</span>
-              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">← {prevProject.name}</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Previous</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">← {prevProject.name}</span>
             </button>
-          ) : (
-            <div />
-          )}
+          ) : <div />}
           {nextProject ? (
             <button onClick={() => navigateToProject(nextProject.name)} className="group flex flex-col items-end text-right">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600 transition-colors">Next Project</span>
-              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">{nextProject.name} →</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Next Project</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">{nextProject.name} →</span>
             </button>
-          ) : (
-            <div />
-          )}
+          ) : <div />}
         </div>
       </section>
     </div>

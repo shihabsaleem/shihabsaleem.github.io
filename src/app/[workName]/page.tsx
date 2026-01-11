@@ -4,21 +4,22 @@ import LegalLinks from "@/components/legal";
 import data from "@/data/asset";
 import { notFound } from "next/navigation";
 
-const { works } = data;
+// Create the sorted list (Newest/Highest ID first)
+const sortedWorks = [...data.works].sort((a, b) => b.id - a.id);
 
 // Helper function to convert work name to slug
 function nameToSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, "-");
 }
 
-// Helper function to find work by slug
+// Helper function to find work by slug in the sorted list
 function findWorkBySlug(slug: string) {
-  return works.find((work) => nameToSlug(work.name) === slug);
+  return sortedWorks.find((work) => nameToSlug(work.name) === slug);
 }
 
-// Generate static params for all works
+// Generate static params in the descending order
 export async function generateStaticParams() {
-  return works.map((work) => ({
+  return sortedWorks.map((work) => ({
     workName: nameToSlug(work.name),
   }));
 }
@@ -33,9 +34,7 @@ export async function generateMetadata({
   const work = findWorkBySlug(workName);
 
   if (!work) {
-    return {
-      title: "Project Not Found",
-    };
+    return { title: "Project Not Found" };
   }
 
   return {
@@ -52,7 +51,6 @@ export default async function Page({
   const { workName } = await params;
   const work = findWorkBySlug(workName);
 
-  // If work not found, show 404
   if (!work) {
     notFound();
   }
@@ -60,8 +58,6 @@ export default async function Page({
   return (
     <div>
       <ProjectPage projectId={work.id} />
-
-      {/* Legal Links Footer */}
       <div className="my-4 px-6 md:px-12 lg:px-20">
         <LegalLinks />
       </div>
