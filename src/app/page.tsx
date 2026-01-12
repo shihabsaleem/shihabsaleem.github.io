@@ -100,9 +100,10 @@ export default function Home() {
         </section>
 
         {/* WORKS LIST */}
+        {/* WORKS LIST */}
         <section className="border-t border-black/10 dark:border-white/10">
-          {/* 3. Map through sortedWorks instead of original works */}
-          {sortedWorks.map((work) => (
+          {/* Add 'index' to the map function */}
+          {sortedWorks.map((work, index) => (
             <div
               key={work.id}
               className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
@@ -114,9 +115,11 @@ export default function Home() {
             >
               <div className="px-6 md:px-12 lg:px-20 py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
                 <div className="col-span-12 lg:col-span-4">
+                  {/* Change: Use (index + 1) instead of work.id */}
                   <span className="font-mono text-red-600 text-xs mb-4 block">
-                    [{String(work.id).padStart(2, "0")}]
+                    [{String(index + 1).padStart(2, "0")}]
                   </span>
+
                   <h2 className="text-5xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
                     {work.name}
                   </h2>
@@ -124,6 +127,7 @@ export default function Home() {
                     {work.shortdesc}
                   </p>
                 </div>
+
                 <div className="col-span-12 lg:col-span-8">
                   <div className="work-image-container relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                     <Image
