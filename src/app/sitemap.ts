@@ -25,19 +25,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/about`,
+      url: `${BASE_URL}/about/`,
       lastModified: staticLastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/contact`,
+      url: `${BASE_URL}/contact/`,
       lastModified: staticLastModified,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/privacy`,
+      url: `${BASE_URL}/privacy/`,
       lastModified: staticLastModified,
       changeFrequency: "yearly",
       priority: 0.3,
@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Your portfolio work pages (e.g., /inventory, /adil-rafeeque, /custom-erp, etc.)
   const workPages: MetadataRoute.Sitemap = works.map((work) => ({
-    url: `${BASE_URL}/${nameToSlug(work.name)}`,
+    url: `${BASE_URL}/${nameToSlug(work.name)}/`,
     lastModified: staticLastModified,
     changeFrequency: "monthly",
     priority: 0.9, // High priority - these are your main showcase pieces
