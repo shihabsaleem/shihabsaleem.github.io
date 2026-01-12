@@ -1,23 +1,10 @@
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import assetData from "@/data/asset";
-import { Metadata } from "next";
 
 const info = assetData.info[0];
-
-
-
-
-export const metadata: Metadata= {
-  title: `About ${info.name} | UI/UX Designer & Developer`,
-  description: info.seoContactDesc, 
-  openGraph: {
-    title: `About ${info.name}`,
-    description: info.seoAboutDesc,
-    images: [info.ogImage],
-  },
-};
 
 const Contact = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,7 +12,6 @@ const Contact = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  // Particle animation background - Updated for theme awareness
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -57,7 +43,6 @@ const Contact = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Check for theme to adjust particle opacity
       const isDark = document.documentElement.classList.contains("dark");
       const particleOpacity = isDark ? 0.3 : 0.5;
       const lineOpacityBase = isDark ? 0.15 : 0.25;
@@ -85,7 +70,9 @@ const Contact = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(220, 38, 38, ${lineOpacityBase * (1 - dist / 150)})`;
+            ctx.strokeStyle = `rgba(220, 38, 38, ${
+              lineOpacityBase * (1 - dist / 150)
+            })`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -106,7 +93,6 @@ const Contact = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Custom cursor
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
@@ -124,7 +110,6 @@ const Contact = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Entrance animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
@@ -197,18 +182,21 @@ const Contact = () => {
     { name: "GH", full: "GitHub", url: `https://${info.github}` },
     { name: "BE", full: "Behance", url: `https://${info.behance}` },
     { name: "IG", full: "Instagram", url: `https://${info.insta}` },
-    { name: "TW", full: "Twitter", url: `https://twitter.com/${info.twitter.replace("@", "")}` },
+    {
+      name: "TW",
+      full: "Twitter",
+      url: `https://twitter.com/${info.twitter.replace("@", "")}`,
+    },
   ];
 
   return (
     <div
       ref={containerRef}
-      /* FIXED: bg-white dark:bg-black and text-zinc-900 dark:text-white */
       className="relative min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white px-6 md:px-12 lg:px-20 py-24 overflow-hidden transition-colors duration-300"
       style={{ perspective: "1000px" }}
     >
       <h1 className="sr-only">
-        {info.name} - UI/UX Designer in {info.location}
+        Contact {info.name} - UI/UX Designer & Developer in {info.location}
       </h1>
 
       <canvas
@@ -229,7 +217,9 @@ const Contact = () => {
           <div className="inline-block mb-8">
             <div className="flex items-center gap-3 px-4 py-2 border border-red-600/30 rounded-full backdrop-blur-sm bg-red-600/5 dark:bg-red-600/10">
               <span className="w-2 h-2 bg-red-600 rounded-full animate-ping" />
-              <span className="text-sm tracking-wider font-medium">AVAILABLE FOR WORK</span>
+              <span className="text-sm tracking-wider font-medium">
+                AVAILABLE FOR WORK
+              </span>
             </div>
           </div>
 
@@ -240,12 +230,12 @@ const Contact = () => {
           </h2>
 
           <p className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 font-light max-w-2xl mx-auto">
-            Ready to bring your ideas to life with exceptional design and development
+            Ready to bring your ideas to life with exceptional design and
+            development
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {/* Email Card */}
           <div
             className="contact-card cursor-pointer"
             onMouseEnter={handleCardHover}
@@ -257,9 +247,15 @@ const Contact = () => {
             <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
               <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
-                <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">01</span>
-                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">Email Address</h3>
-                <p className="text-2xl md:text-3xl font-light mb-6 break-all">{info.email}</p>
+                <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
+                  01
+                </span>
+                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                  Email Address
+                </h3>
+                <p className="text-2xl md:text-3xl font-light mb-6 break-all">
+                  {info.email}
+                </p>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-600/30 rounded-full text-sm">
                   {copiedEmail ? "✓ Copied" : "Click to copy"}
                 </div>
@@ -267,7 +263,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Phone Card */}
           <div
             className="contact-card"
             onMouseEnter={handleCardHover}
@@ -279,16 +274,23 @@ const Contact = () => {
               <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
                 <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
-                  <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">02</span>
-                  <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">Phone Number</h3>
-                  <p className="text-2xl md:text-3xl font-light mb-6">{info.phone}</p>
-                  <div className="text-red-600 text-sm font-medium">Call now →</div>
+                  <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
+                    02
+                  </span>
+                  <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                    Phone Number
+                  </h3>
+                  <p className="text-2xl md:text-3xl font-light mb-6">
+                    {info.phone}
+                  </p>
+                  <div className="text-red-600 text-sm font-medium">
+                    Call now →
+                  </div>
                 </div>
               </div>
             </a>
           </div>
 
-          {/* Location Card */}
           <div
             className="contact-card"
             onMouseEnter={handleCardHover}
@@ -299,15 +301,20 @@ const Contact = () => {
             <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
               <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
-                <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">03</span>
-                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">Based In</h3>
-                <p className="text-2xl md:text-3xl font-light mb-6">{info.location}</p>
+                <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
+                  03
+                </span>
+                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                  Based In
+                </h3>
+                <p className="text-2xl md:text-3xl font-light mb-6">
+                  {info.location}
+                </p>
                 <div className="text-zinc-400 text-sm">Open to remote work</div>
               </div>
             </div>
           </div>
 
-          {/* CV Download Card */}
           <div
             className="contact-card"
             onMouseEnter={handleCardHover}
@@ -315,14 +322,25 @@ const Contact = () => {
             onMouseLeave={handleCardLeave}
             style={{ transformStyle: "preserve-3d" }}
           >
-            <a href={info.cv} target="_blank" rel="noopener noreferrer" className="block h-full">
+            <a
+              href={info.cv}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-full"
+            >
               <div className="relative h-full bg-red-600 border border-red-500 rounded-3xl p-8 md:p-12 overflow-hidden group text-white">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 <div className="relative z-10">
                   <span className="text-xs tracking-widest opacity-70">04</span>
-                  <h3 className="text-sm uppercase tracking-widest opacity-70 mt-8 mb-4">Resume / CV</h3>
-                  <p className="text-2xl md:text-3xl font-light mb-6">Download My CV</p>
-                  <div className="text-white text-sm font-medium">Get PDF →</div>
+                  <h3 className="text-sm uppercase tracking-widest opacity-70 mt-8 mb-4">
+                    Resume / CV
+                  </h3>
+                  <p className="text-2xl md:text-3xl font-light mb-6">
+                    Download My CV
+                  </p>
+                  <div className="text-white text-sm font-medium">
+                    Get PDF →
+                  </div>
                 </div>
               </div>
             </a>
@@ -335,10 +353,18 @@ const Contact = () => {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             {socialLinks.map((social) => (
-              <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="social-link group">
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link group"
+              >
                 <div className="relative">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-red-600/20 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
-                    <span className="text-xl md:text-2xl font-bold group-hover:text-white transition-colors">{social.name}</span>
+                    <span className="text-xl md:text-2xl font-bold group-hover:text-white transition-colors">
+                      {social.name}
+                    </span>
                   </div>
                 </div>
               </a>

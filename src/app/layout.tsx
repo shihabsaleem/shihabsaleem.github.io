@@ -22,8 +22,11 @@ const info = data.info[0];
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shihabsaleem.site"),
-  title: `${info.name} - ${info.title}`,
-  description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. ${info.desc.substring(0, 150)}...`,
+  title: {
+    default: `${info.name} - UI/UX Designer & Developer`,
+    template: `%s | ${info.name}`,
+  },
+  description: `${info.name} is a UI/UX Designer, Developer & Branding Specialist based in Kerala, India. Specializing in user-centered design, product design, and frontend development with React, Next.js, and Figma.`,
   keywords: [
     "UI/UX Designer",
     "Product Designer",
@@ -31,27 +34,39 @@ export const metadata: Metadata = {
     "Shihab Saleem",
     "Kerala UI UX Designer",
     "React Developer",
+    "Next.js Developer",
     "Figma Designer",
     "Branding Specialist",
+    "Web Designer Kerala",
+    "User Experience Design",
+    "Interface Design",
+    "Design Systems",
+    "Responsive Design",
   ],
-  authors: [{ name: info.name }],
+  authors: [{ name: info.name, url: "https://shihabsaleem.site" }],
   creator: info.name,
+  publisher: info.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/assets/apple-touch-icon.png",
   },
   openGraph: {
-    title: `${info.name} - ${info.title}`,
-    description: `${info.name} | UI/UX Designer, Developer & Branding Specialist in ${info.location}. Crafting seamless digital experiences.`,
+    title: `${info.name} - UI/UX Designer & Developer`,
+    description: `UI/UX Designer, Developer & Branding Specialist based in Kerala, India. Creating intuitive digital experiences through user-centered design and modern web technologies.`,
     url: "https://shihabsaleem.site",
-    siteName: `${info.name} Portfolio`,
+    siteName: `${info.name} - Portfolio`,
     images: [
       {
         url: "/assets/og-shihab.jpg",
         width: 1200,
         height: 630,
-        alt: `${info.name} - UI/UX Designer`,
+        alt: `${info.name} - UI/UX Designer & Developer Portfolio`,
       },
     ],
     locale: "en_US",
@@ -59,8 +74,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${info.name} - ${info.title}`,
-    description: `UI/UX Designer, Developer & Branding Specialist in ${info.location}.`,
+    title: `${info.name} - UI/UX Designer & Developer`,
+    description: `UI/UX Designer, Developer & Branding Specialist in Kerala, India. Crafting seamless digital experiences.`,
     creator: "@shihabrsaleem",
     images: ["/assets/og-shihab.jpg"],
   },
@@ -78,6 +93,10 @@ export const metadata: Metadata = {
   verification: {
     google: "CSdXRkDwL9W7wsQUQPz9VwJY4xuD2Ni4RSnXbdqz5F4",
   },
+  alternates: {
+    canonical: "https://shihabsaleem.site",
+  },
+  category: "Design & Development",
 };
 
 export default function RootLayout({
@@ -88,7 +107,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Dark mode script - Runs immediately to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -105,7 +123,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* Conditional Google Analytics - Only loads if consent is 'accepted' */}
         <Script
           id="gtag-base"
           strategy="afterInteractive"
@@ -127,13 +144,52 @@ export default function RootLayout({
             `,
           }}
         />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: info.name,
+              url: "https://shihabsaleem.site",
+              image: "https://shihabsaleem.site/assets/og-shihab.jpg",
+              jobTitle: "UI/UX Designer & Developer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Jadbery Digital",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Kerala",
+                addressCountry: "India",
+              },
+              sameAs: [
+                `https://${info.linkedin}`,
+                `https://${info.github}`,
+                `https://${info.behance}`,
+                `https://${info.insta}`,
+                `https://twitter.com/${info.twitter.replace("@", "")}`,
+              ],
+              knowsAbout: [
+                "UI/UX Design",
+                "Product Design",
+                "Frontend Development",
+                "React",
+                "Next.js",
+                "Figma",
+                "Branding",
+              ],
+            }),
+          }}
+        />
       </head>
 
-      <body className={`${sarina.variable} ${montserrat.variable} antialiased selection:bg-red-600 selection:text-white`}>
+      <body
+        className={`${sarina.variable} ${montserrat.variable} antialiased selection:bg-red-600 selection:text-white`}
+      >
         <Navbar />
         <main>{children}</main>
-        
-        {/* Cookie Consent Banner */}
         <CookieBanner />
       </body>
     </html>
