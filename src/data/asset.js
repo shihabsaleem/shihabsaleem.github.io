@@ -1,6 +1,41 @@
 const works = [
   {
     id: 1,
+    name: "Parrot Vacation",
+    image: "/assets/parrot.jpg",
+    shortdesc: "Branding",
+    year: "2025",
+    client: "Parrot Vacation",
+    clientLink: "#",
+    role: "Brand Designer",
+    duration: "1 Week",
+    description:
+      "The Parrot Vacation logo is a modern, minimalist brand mark that seamlessly combines a parrot, a location pin, and the letter ‘P’ into a single cohesive symbol. Inspired by vibrant parakeet colors, the identity captures the essence of travel, freedom, and exploration while maintaining a clean, contemporary aesthetic suited for digital-first platforms.",
+    challenge:
+      "The challenge was to create a distinctive travel brand identity that feels playful yet professional, while clearly communicating movement, destinations, and a sense of adventure in a simple visual form.",
+    solution:
+      "We designed a unified symbol that merges meaningful elements into a compact, recognizable mark. A fresh color palette inspired by parakeets enhances visual appeal, while the minimalist form ensures clarity, scalability, and versatility across digital and print touchpoints.",
+    impact: [
+      "Distinct and memorable travel brand identity",
+      "Clear visual association with travel and exploration",
+      "Scalable logo adaptable across platforms",
+      "Strong brand recall through symbolic design",
+    ],
+    images: [
+      "/assets/parrot-0.jpg",
+      "/assets/parrot-1.jpg",
+      "/assets/parrot-2.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Travel Branding",
+      "Minimal Design",
+      "Adobe Illustrator",
+    ],
+  },
+  {
+    id: 2,
     name: "Inventory",
     image: "/assets/inventory.jpg",
     shortdesc: "UI / UX Design",
@@ -30,7 +65,7 @@ const works = [
     tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
   },
   {
-    id: 2,
+    id: 3,
     name: "Custom ERP",
     image: "/assets/erp.jpg",
     shortdesc: "UI/UX Design",
@@ -66,7 +101,7 @@ const works = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     name: "Acuverse",
     image: "/assets/acuverse.jpg",
     clientLink: "#",
@@ -97,7 +132,7 @@ const works = [
     tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Diet",
     image: "/assets/diet.jpg",
     shortdesc: "UI / UX Design",
@@ -134,7 +169,7 @@ const works = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "Adil Rafeeque",
     image: "/assets/adil.jpg",
     clientLink: "https://adilrafeeque.com/",
@@ -164,7 +199,7 @@ const works = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "ADOVO",
     image: "/assets/adovo.jpg",
     clientLink: "#",
@@ -198,7 +233,7 @@ const works = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     name: "Jadbery",
     image: "/assets/jadbery.jpg",
     shortdesc: "UI / UX Design",
