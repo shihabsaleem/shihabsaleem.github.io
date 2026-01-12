@@ -10,7 +10,7 @@ import assetData from "@/data/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Sort the works descending (ID 7 to ID 1)
+// 1. Sort the works descending (ID 8 to ID 1)
 const sortedWorks = [...assetData.works].sort((a, b) => b.id - a.id);
 const info = assetData.info[0];
 
