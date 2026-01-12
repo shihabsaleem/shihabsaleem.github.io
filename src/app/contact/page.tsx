@@ -3,8 +3,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import assetData from "@/data/asset";
+import { Metadata } from "next";
 
 const info = assetData.info[0];
+
+
+
+
+export const metadata: Metadata= {
+  title: `About ${info.name} | UI/UX Designer & Developer`,
+  description: info.seoContactDesc, 
+  openGraph: {
+    title: `About ${info.name}`,
+    description: info.seoAboutDesc,
+    images: [info.ogImage],
+  },
+};
 
 const Contact = () => {
   const containerRef = useRef<HTMLDivElement>(null);

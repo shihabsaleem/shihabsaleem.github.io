@@ -228,8 +228,6 @@ const works = [
   },
 ];
 
-
-
 const info = [
   {
     name: "Shihab Saleem",
@@ -240,6 +238,10 @@ const info = [
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
     seoDesc:
       "Product Designer and Developer specializing in UI/UX design, user research, and frontend development. Crafting intuitive digital experiences with Figma, React, and modern design systems.",
+    seoAboutDesc:
+      "Explore the professional journey of Shihab Saleem, a Product Designer and Developer based in Kerala. Specializing in UI/UX design, branding, and frontend development with expertise in Figma, React, and Next.js.",
+    seoContactDesc:
+      "Get in touch with Shihab Saleem for UI/UX design, branding, or web development projects. Available for collaborations and freelance inquiries in Kerala and remotely.",
     dpDark: "/assets/shihab.png",
     dpLight: "/assets/shihab-Light.png",
     ogImage: "/assets/og-shihab.jpg",

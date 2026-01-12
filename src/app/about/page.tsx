@@ -5,8 +5,19 @@ import Experience from "@/components/experience";
 import Skill from "@/components/skill";
 import LegalLinks from "@/components/legal";
 import assetData from "@/data/asset";
+import { Metadata } from "next";
 
 const info = assetData.info[0];
+
+export const metadata: Metadata = {
+  title: `About ${info.name} | UI/UX Designer & Developer`,
+  description: info.seoAboutDesc,
+  openGraph: {
+    title: `About ${info.name}`,
+    description: info.seoAboutDesc,
+    images: [info.ogImage],
+  },
+};
 
 const About = () => {
   return (
