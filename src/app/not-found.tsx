@@ -26,7 +26,9 @@ export default function NotFound() {
         repeat: 5,
         yoyo: true,
         paused: true,
-        onComplete: () => gsap.set(textRef.current, { skewX: 0 }),
+        onComplete: () => {
+          gsap.set(textRef.current, { skewX: 0 });
+        },
       });
     }, containerRef);
 
@@ -45,17 +47,18 @@ export default function NotFound() {
         <span className="font-mono text-red-600 text-sm mb-4 block tracking-[0.3em]">
           ERROR_CODE: 404
         </span>
-        
-        <h1 
+
+        <h1
           ref={textRef}
           className="text-[15vw] md:text-[12vw] font-black leading-none tracking-tighter uppercase mb-8"
         >
-          Lost in <br /> 
+          Lost in <br />
           <span className="text-red-600">Space.</span>
         </h1>
 
         <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-md mb-12 uppercase tracking-widest leading-relaxed">
-          The page you are looking for has been moved, deleted, or never existed in this dimension.
+          The page you are looking for has been moved, deleted, or never existed
+          in this dimension.
         </p>
 
         <Link
