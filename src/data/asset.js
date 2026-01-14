@@ -37,7 +37,7 @@ const works = [
   {
   id: 2, 
   name: "Milkow",
-  image: "/assets/milkow.jpg",
+  image: "/assets/Milkow.jpg",
   shortdesc: "Branding & Packaging",
   year: "2023",
   client: "Milkow Fresh",
@@ -57,9 +57,9 @@ const works = [
     "Versatile logo system suitable for packaging and promotion",
   ],
   images: [
-    "/assets/milkow-0.jpg",
-    "/assets/milkow-1.jpg",
-    "/assets/milkow-2.jpg",
+    "/assets/Milkow-0.jpg",
+    "/assets/Milkow-1.jpg",
+    "/assets/Milkow-2.jpg",
   ],
   tags: [
     "Brand Identity",
