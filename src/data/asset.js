@@ -37,7 +37,7 @@ const works = [
   {
     id: 2,
     name: "Milkow",
-    image: "/assets/Milkow.jpg",
+    image: "/assets/milkow.jpg",
     shortdesc: "Branding & Packaging",
     year: "2023",
     client: "Milkow Fresh",
