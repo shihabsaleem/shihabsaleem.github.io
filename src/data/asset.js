@@ -35,40 +35,40 @@ const works = [
     ],
   },
   {
-  id: 2, 
-  name: "Milkow",
-  image: "/assets/Milkow.jpg",
-  shortdesc: "Branding & Packaging",
-  year: "2023",
-  client: "Milkow Fresh",
-  clientLink: "#",
-  role: "Brand & Packaging Designer",
-  duration: "1 Week",
-  description:
-    "Milkow is a branding and packaging identity created for a local fresh milk brand. The logo combines a friendly mascot with a clean wordmark, resulting in an approachable and memorable visual identity. Designed in solid black, the mark contrasts effectively against transparent milk bottles and the natural white of the milk, reinforcing clarity, freshness, and trust through a minimal and versatile aesthetic.",
-  challenge:
-    "The challenge was to create a brand identity that communicates freshness, hygiene, and trust while standing out on transparent packaging. The design needed to feel friendly and local, yet clean and professional enough to build confidence in an unpasteurized milk product.",
-  solution:
-    "We developed a mascot-led logo paired with a minimal wordmark, using a solid black color palette to ensure strong visibility and contrast on clear packaging. The simplified, abstract approach allows the identity to remain versatile, legible, and effective across bottles, labels, and marketing materials.",
-  impact: [
-    "Memorable and approachable local brand identity",
-    "Strong visual contrast on transparent packaging",
-    "Clear communication of freshness and trust",
-    "Versatile logo system suitable for packaging and promotion",
-  ],
-  images: [
-    "/assets/Milkow-0.jpg",
-    "/assets/Milkow-1.jpg",
-    "/assets/Milkow-2.jpg",
-  ],
-  tags: [
-    "Brand Identity",
-    "Packaging Design",
-    "Logo Design",
-    "Food & Beverage Branding",
-    "Adobe Illustrator",
-  ],
-},
+    id: 2,
+    name: "Milkow",
+    image: "/assets/Milkow.jpg",
+    shortdesc: "Branding & Packaging",
+    year: "2023",
+    client: "Milkow Fresh",
+    clientLink: "https://www.instagram.com/milkow_fresh/",
+    role: "Brand & Packaging Designer",
+    duration: "1 Week",
+    description:
+      "Milkow is a branding and packaging identity created for a local fresh milk brand. The logo combines a friendly mascot with a clean wordmark, resulting in an approachable and memorable visual identity. Designed in solid black, the mark contrasts effectively against transparent milk bottles and the natural white of the milk, reinforcing clarity, freshness, and trust through a minimal and versatile aesthetic.",
+    challenge:
+      "The challenge was to create a brand identity that communicates freshness, hygiene, and trust while standing out on transparent packaging. The design needed to feel friendly and local, yet clean and professional enough to build confidence in an unpasteurized milk product.",
+    solution:
+      "We developed a mascot-led logo paired with a minimal wordmark, using a solid black color palette to ensure strong visibility and contrast on clear packaging. The simplified, abstract approach allows the identity to remain versatile, legible, and effective across bottles, labels, and marketing materials.",
+    impact: [
+      "Memorable and approachable local brand identity",
+      "Strong visual contrast on transparent packaging",
+      "Clear communication of freshness and trust",
+      "Versatile logo system suitable for packaging and promotion",
+    ],
+    images: [
+      "/assets/Milkow-0.jpg",
+      "/assets/Milkow-1.jpg",
+      "/assets/Milkow-2.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Packaging Design",
+      "Logo Design",
+      "Food & Beverage Branding",
+      "Adobe Illustrator",
+    ],
+  },
   {
     id: 3,
     name: "Inventory",
