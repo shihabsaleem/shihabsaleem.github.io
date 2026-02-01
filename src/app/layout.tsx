@@ -23,15 +23,19 @@ const info = data.info[0];
 export const metadata: Metadata = {
   metadataBase: new URL("https://shihabsaleem.site"),
   title: {
-    default: `${info.name} - UI/UX Designer & Developer`,
-    template: `%s | ${info.name}`,
+    default: `${info.name} | Product Designer & UI Specialist`,
+    template: `%s | Product Designer & UI Specialist`,
   },
-  description: `${info.name} is a UI/UX Designer, Developer & Branding Specialist based in Kerala, India. Specializing in user-centered design, product design, and frontend development with React, Next.js, and Figma.`,
+  description: `Shihab Saleem is a Product Designer & UI Specialist based in Kerala, India. Expert in SaaS product design, mobile app UI, and user-centered digital experiences using React, Next.js, and Figma.`,
   applicationName: "Shihab Saleem",
   referrer: "origin-when-cross-origin",
   keywords: [
-    "UI/UX Designer",
     "Product Designer",
+    "UI Designer",
+    "UX Specialist",
+    "Freelance Product Designer",
+    "SaaS Product Design",
+    "Mobile App UI Design",
     "Frontend Developer",
     "Shihab Saleem",
     "Kerala UI UX Designer",
