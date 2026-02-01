@@ -4,7 +4,7 @@ import assetData from "@/data/asset";
 export const dynamic = "force-static";
 
 // Always use your production domain in sitemap
-const BASE_URL = "https://www.shihabsaleem.site";
+const BASE_URL = "https://shihabsaleem.site";
 
 // MUST match your page.tsx logic
 function nameToSlug(name: string): string {
@@ -13,7 +13,7 @@ function nameToSlug(name: string): string {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const { works } = assetData;
-  
+
   // Set realistic dates - update this when you modify pages
   const staticLastModified = new Date("2025-01-04");
 

@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     template: `%s | ${info.name}`,
   },
   description: `${info.name} is a UI/UX Designer, Developer & Branding Specialist based in Kerala, India. Specializing in user-centered design, product design, and frontend development with React, Next.js, and Figma.`,
+  applicationName: "Shihab Saleem",
+  referrer: "origin-when-cross-origin",
   keywords: [
     "UI/UX Designer",
     "Product Designer",
@@ -55,6 +57,11 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/assets/apple-touch-icon.png",
+  },
+  other: {
+    "geo.region": "IN-KL",
+    "geo.placename": "Kerala",
+    "ICBM": "10.690639, 76.652694",
   },
   openGraph: {
     title: `${info.name} - UI/UX Designer & Developer`,
@@ -94,7 +101,7 @@ export const metadata: Metadata = {
     google: "CSdXRkDwL9W7wsQUQPz9VwJY4xuD2Ni4RSnXbdqz5F4",
   },
   alternates: {
-    canonical: "https://shihabsaleem.site",
+    canonical: "./",
   },
   category: "Design & Development",
 };
@@ -148,39 +155,57 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: info.name,
-              url: "https://shihabsaleem.site",
-              image: "https://shihabsaleem.site/assets/og-shihab.jpg",
-              jobTitle: "UI/UX Designer & Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "Jadbery Digital",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: `${info.name} - Portfolio`,
+                url: "https://shihabsaleem.site",
+                author: {
+                  "@type": "Person",
+                  name: info.name,
+                },
               },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Kerala",
-                addressCountry: "India",
-              },
-              sameAs: [
-                `https://${info.linkedin}`,
-                `https://${info.github}`,
-                `https://${info.behance}`,
-                `https://${info.insta}`,
-                `https://twitter.com/${info.twitter.replace("@", "")}`,
-              ],
-              knowsAbout: [
-                "UI/UX Design",
-                "Product Design",
-                "Frontend Development",
-                "React",
-                "Next.js",
-                "Figma",
-                "Branding",
-              ],
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: info.name,
+                url: "https://shihabsaleem.site",
+                image: "https://shihabsaleem.site/assets/og-shihab.jpg",
+                jobTitle: "UI/UX Designer & Developer",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Jadbery Digital",
+                },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Kerala",
+                  addressCountry: "India",
+                },
+                sameAs: [
+                  `https://${info.linkedin}`,
+                  `https://${info.github}`,
+                  `https://${info.behance}`,
+                  `https://${info.insta}`,
+                  `https://twitter.com/${info.twitter.replace("@", "")}`,
+                ],
+                knowsAbout: [
+                  "UI/UX Design",
+                  "Product Design",
+                  "Frontend Development",
+                  "React",
+                  "Next.js",
+                  "Figma",
+                  "Branding",
+                  "Web Design",
+                  "User Experience Design",
+                  "Interface Design",
+                  "Design Systems",
+                  "Responsive Design",
+                  "Graphic Design"
+                ],
+              }
+            ]),
           }}
         />
       </head>
