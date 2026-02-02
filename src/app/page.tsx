@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
@@ -84,9 +85,8 @@ export default function Home() {
       {/* Cursor */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${
-          activeCursor ? "scale-[6]" : "scale-100"
-        }`}
+        className={`fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${activeCursor ? "scale-[6]" : "scale-100"
+          }`}
       />
 
       <main className="relative z-10 pt-20">
@@ -104,14 +104,12 @@ export default function Home() {
         <section className="border-t border-black/10 dark:border-white/10">
           {/* Add 'index' to the map function */}
           {sortedWorks.map((work, index) => (
-            <div
+            <Link
               key={work.id}
-              className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
+              href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
+              className={`work-${work.id} block group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
               onMouseEnter={() => setActiveCursor(true)}
               onMouseLeave={() => setActiveCursor(false)}
-              onClick={() =>
-                router.push(`/${work.name.toLowerCase().replace(/\s+/g, "-")}`)
-              }
             >
               <div className="px-6 md:px-12 lg:px-20 py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
                 <div className="col-span-12 lg:col-span-4">
@@ -140,7 +138,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </section>
 

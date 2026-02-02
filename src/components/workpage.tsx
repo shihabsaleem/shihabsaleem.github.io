@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,7 +17,7 @@ function nameToSlug(name: string): string {
 }
 
 export default function ProjectPage({ projectId }: { projectId: number }) {
-  const router = useRouter();
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const project = sortedWorks.find((work) => work.id === projectId) || sortedWorks[0];
@@ -63,9 +63,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
   const prevProject = currentIndex > 0 ? sortedWorks[currentIndex - 1] : null;
   const nextProject = currentIndex < sortedWorks.length - 1 ? sortedWorks[currentIndex + 1] : null;
 
-  const navigateToProject = (workName: string) => {
-    router.push(`/${nameToSlug(workName)}`);
-  };
+
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
@@ -171,16 +169,16 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
       <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {prevProject ? (
-            <button onClick={() => navigateToProject(prevProject.name)} className="group flex flex-col items-start">
+            <Link href={`/${nameToSlug(prevProject.name)}`} className="group flex flex-col items-start">
               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Previous</span>
               <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">← {prevProject.name}</span>
-            </button>
+            </Link>
           ) : <div />}
           {nextProject ? (
-            <button onClick={() => navigateToProject(nextProject.name)} className="group flex flex-col items-end text-right">
+            <Link href={`/${nameToSlug(nextProject.name)}`} className="group flex flex-col items-end text-right">
               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Next Project</span>
               <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">{nextProject.name} →</span>
-            </button>
+            </Link>
           ) : <div />}
         </div>
       </section>

@@ -4,7 +4,7 @@ import assetData from "@/data/asset";
 export const dynamic = "force-static";
 
 // Always use your production domain in sitemap
-const BASE_URL = "https://shihabsaleem.site";
+const BASE_URL = "https://www.shihabsaleem.site";
 
 // MUST match your page.tsx logic
 function nameToSlug(name: string): string {
@@ -44,12 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Your portfolio work pages (e.g., /inventory, /adil-rafeeque, /custom-erp, etc.)
+
   const workPages: MetadataRoute.Sitemap = works.map((work) => ({
     url: `${BASE_URL}/${nameToSlug(work.name)}/`,
     lastModified: staticLastModified,
     changeFrequency: "monthly",
-    priority: 0.9, // High priority - these are your main showcase pieces
+    priority: 0.9, 
   }));
 
   return [...staticPages, ...workPages];
