@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     google: "CSdXRkDwL9W7wsQUQPz9VwJY4xuD2Ni4RSnXbdqz5F4",
   },
   alternates: {
-    canonical: "./",
+    canonical: "https://shihabsaleem.site",
   },
   category: "Design & Development",
 };

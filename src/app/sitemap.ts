@@ -4,7 +4,7 @@ import assetData from "@/data/asset";
 export const dynamic = "force-static";
 
 // Always use your production domain in sitemap
-const BASE_URL = "https://www.shihabsaleem.site";
+const BASE_URL = "https://shihabsaleem.site";
 
 // MUST match your page.tsx logic
 function nameToSlug(name: string): string {
@@ -19,25 +19,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${BASE_URL}/`,
+      url: `${BASE_URL}`,
       lastModified: staticLastModified,
       changeFrequency: "weekly", // Portfolio homepage - update more frequently
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/about/`,
+      url: `${BASE_URL}/about`,
       lastModified: staticLastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/contact/`,
+      url: `${BASE_URL}/contact`,
       lastModified: staticLastModified,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/privacy/`,
+      url: `${BASE_URL}/privacy`,
       lastModified: staticLastModified,
       changeFrequency: "yearly",
       priority: 0.3,
@@ -46,10 +46,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 
   const workPages: MetadataRoute.Sitemap = works.map((work) => ({
-    url: `${BASE_URL}/${nameToSlug(work.name)}/`,
+    url: `${BASE_URL}/${nameToSlug(work.name)}`,
     lastModified: staticLastModified,
     changeFrequency: "monthly",
-    priority: 0.9, 
+    priority: 0.9,
   }));
 
   return [...staticPages, ...workPages];

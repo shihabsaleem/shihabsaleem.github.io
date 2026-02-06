@@ -296,6 +296,42 @@ const works = [
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
+  // {
+  //   id: 10,
+  //   name: "Invoice by Jadbery",
+  //   image: "/assets/invoice.jpg",
+  //   shortdesc: "UI / UX Design & Development",
+  //   year: "2026",
+  //   client: "Jadbery",
+  //   clientLink: "https://invoice.shihabsaleem.site/",
+  //   role: "Designer & Developer",
+  //   duration: "2 Months",
+  //   description:
+  //     "Invoice by Jadbery is a free, simple, and intuitive invoice generator designed to run entirely on the client side without any backend dependency. Built for speed and accessibility, the application allows users to create and export invoices instantly without signup or login. The product is available both as a web application and a Chrome extension, ensuring flexibility across platforms.",
+  //   challenge:
+  //     "Most invoice tools require user accounts, backend storage, or paid subscriptions, creating friction for users who need quick, one-time invoicing. The challenge was to design and develop a lightweight solution that works instantly while maintaining a clean and professional user experience.",
+  //   solution:
+  //     "We designed a minimal UI with a focus on clarity and ease of use, paired with a fully client-side architecture using Next.js. All data processing and rendering happen in the browser, ensuring privacy, speed, and zero dependency on servers. The same design system was adapted seamlessly for both the web app and Chrome extension.",
+  //   impact: [
+  //     "Instant invoice generation without signup or login",
+  //     "100% client-side rendering with no backend dependency",
+  //     "Consistent experience across web and Chrome extension",
+  //     "Fast, accessible, and privacy-focused invoicing solution",
+  //   ],
+  //   images: [
+  //     "/assets/invoice-0.jpg",
+  //     "/assets/invoice-1.jpg",
+  //     "/assets/invoice-2.jpg",
+  //   ],
+  //   tags: [
+  //     "UI/UX Design",
+  //     "Frontend Development",
+  //     "Next.js",
+  //     "Figma",
+  //     "Client-Side Rendering",
+  //     "Product Design",
+  //   ],
+  // },
 ];
 
 const info = [
