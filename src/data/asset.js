@@ -323,6 +323,7 @@ const works = [
       "/assets/invoice-1.jpg",
       "/assets/invoice-2.jpg",
       "/assets/invoice-3.jpg",
+      "/assets/invoice-4.jpg",
     ],
     tags: [
       "UI/UX Design",
