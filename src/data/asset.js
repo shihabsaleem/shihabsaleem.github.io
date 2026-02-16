@@ -340,10 +340,10 @@ const works = [
     image: "/assets/archimud/archimud.jpg",
     shortdesc: "Brand Identity",
     year: "2026",
-    client: "Archimud",
-    clientLink: "#",
+    client: "Archimud / brandbab",
+    clientLink: "https://brandbab.in/",
     role: "Brand Designer",
-    duration: "3 Weeks",
+    duration: "6 Weeks",
     description:
       "Archimud is a home décor brand rooted in craftsmanship, culture, and authentic artistry. The project focused on building a warm, modern, and culturally rich brand identity that reflects handmade quality, natural materials, and human-centered design. The identity balances contemporary minimalism with traditional inspiration, creating a timeless visual system grounded in heritage.",
     challenge:
