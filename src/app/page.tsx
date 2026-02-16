@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -15,26 +15,82 @@ gsap.registerPlugin(ScrollTrigger);
 const sortedWorks = [...assetData.works].sort((a, b) => b.id - a.id);
 const info = assetData.info[0];
 
+const CATEGORIES = ["All", "UI/UX Design", "Branding", "Development"];
+
 export default function Home() {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const [activeCursor, setActiveCursor] = useState(false);
+  const [activeTag, setActiveTag] = useState("All");
+
+  // Filter works based on generalized categories
+  const filteredWorks = useMemo(() => {
+    if (activeTag === "All") return sortedWorks;
+
+    return sortedWorks.filter((work) => {
+      // Check if any of the project's tags match the selected category
+      // We do a loose check: if the project tags contain words related to the category
+      // or if we strictly map them.
+
+      const tags = work.tags.map(t => t.toLowerCase());
+
+      if (activeTag === "UI/UX Design") {
+        return tags.some(t =>
+          t.includes("ui") ||
+          t.includes("ux") ||
+          t.includes("web") ||
+          t.includes("mobile") ||
+          t.includes("product") ||
+          t.includes("erp") ||
+          t.includes("dashboard")
+        );
+      }
+
+      if (activeTag === "Branding") {
+        return tags.some(t =>
+          t.includes("brand") ||
+          t.includes("logo") ||
+          t.includes("packaging") ||
+          t.includes("visual") ||
+          t.includes("identity") ||
+          t.includes("typography")
+        );
+      }
+
+      if (activeTag === "Development") {
+        return tags.some(t =>
+          t.includes("dev") ||
+          t.includes("code") ||
+          t.includes("react") ||
+          t.includes("next") ||
+          t.includes("html") ||
+          t.includes("css") ||
+          t.includes("system integration")
+        );
+      }
+
+      return false;
+    });
+  }, [activeTag]);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // 2. Use sortedWorks for animations
-      sortedWorks.forEach((work) => {
+      // Refresh ScrollTrigger when filtered works change
+      ScrollTrigger.refresh();
+
+      // Animate works list items
+      filteredWorks.forEach((work) => {
         gsap.fromTo(
           `.work-${work.id} .work-image-container`,
           { clipPath: "inset(0 0 100% 0)" },
           {
             clipPath: "inset(0 0 0% 0)",
-            duration: 1,
-            ease: "power4.inOut",
+            duration: 1.2,
+            ease: "expo.out",
             scrollTrigger: {
               trigger: `.work-${work.id}`,
-              start: "top 50%",
+              start: "top 75%",
             },
           }
         );
@@ -54,7 +110,7 @@ export default function Home() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [filteredWorks]); // Re-run effect when list changes
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -82,16 +138,16 @@ export default function Home() {
       {/* Texture Overlay */}
       <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      {/* Cursor */}
+      {/* Cursor - HIDDEN ON TOUCH DEVICES */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${activeCursor ? "scale-[6]" : "scale-100"
+        className={`hidden md:block fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${activeCursor ? "scale-[6]" : "scale-100"
           }`}
       />
 
       <main className="relative z-10 pt-20">
         {/* HERO */}
-        <section className=" h-[30vh] md:h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20">
+        <section className=" h-[30vh] md:h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-6 md:pb-10">
           <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
             Selected
             <br />
@@ -99,11 +155,28 @@ export default function Home() {
           </h2>
         </section>
 
+        {/* COMPONENT: TAGS FILTER */}
+        <section className="px-6 md:px-12 lg:px-20 pb-6 md:pb-10 overflow-x-auto no-scrollbar">
+          <div className="flex space-x-4 min-w-max">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveTag(category)}
+                className={`px-4 py-2 rounded-full text-xs font-normal uppercase tracking-widest transition-all duration-300 ${activeTag === category
+                  ? "bg-black text-white dark:bg-white dark:text-black"
+                  : "bg-gray-100 text-gray-500 hover:bg-gray-200 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* WORKS LIST */}
-        {/* WORKS LIST */}
-        <section className="border-t border-black/10 dark:border-white/10">
+        <section className="border-t border-black/10 dark:border-white/10 min-h-[50vh]">
           {/* Add 'index' to the map function */}
-          {sortedWorks.map((work, index) => (
+          {filteredWorks.map((work, index) => (
             <Link
               key={work.id}
               href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
@@ -111,14 +184,14 @@ export default function Home() {
               onMouseEnter={() => setActiveCursor(true)}
               onMouseLeave={() => setActiveCursor(false)}
             >
-              <div className="px-6 md:px-12 lg:px-20 py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
+              <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
                 <div className="col-span-12 lg:col-span-4">
                   {/* Change: Use (index + 1) instead of work.id */}
                   <span className="font-mono text-red-600 text-xs mb-4 block">
                     [{String(index + 1).padStart(2, "0")}]
                   </span>
 
-                  <h2 className="text-5xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
+                  <h2 className="text-4xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
                     {work.name}
                   </h2>
                   <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs uppercase tracking-widest">
@@ -140,6 +213,11 @@ export default function Home() {
               </div>
             </Link>
           ))}
+          {filteredWorks.length === 0 && (
+            <div className="py-32 text-center text-gray-500">
+              <p className="text-xl uppercase tracking-widest">No projects found for "{activeTag}"</p>
+            </div>
+          )}
         </section>
 
         {/* FOOTER */}
