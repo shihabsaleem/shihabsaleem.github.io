@@ -2,7 +2,7 @@ const works = [
   {
     id: 1,
     name: "Parrot Vacation",
-    image: "/assets/parrot.jpg",
+    image: "/assets/parrot/parrot.jpg",
     shortdesc: "Branding",
     year: "2025",
     client: "Parrot Vacation",
@@ -22,9 +22,9 @@ const works = [
       "Strong brand recall through symbolic design",
     ],
     images: [
-      "/assets/parrot-0.jpg",
-      "/assets/parrot-1.jpg",
-      "/assets/parrot-2.jpg",
+      "/assets/parrot/parrot-0.jpg",
+      "/assets/parrot/parrot-1.jpg",
+      "/assets/parrot/parrot-2.jpg",
     ],
     tags: [
       "Brand Identity",
@@ -37,7 +37,7 @@ const works = [
   {
     id: 2,
     name: "Milkow",
-    image: "/assets/milkow.jpg",
+    image: "/assets/milkow/Milkow.jpg",
     shortdesc: "Branding & Packaging",
     year: "2023",
     client: "Milkow Fresh",
@@ -57,9 +57,9 @@ const works = [
       "Versatile logo system suitable for packaging and promotion",
     ],
     images: [
-      "/assets/Milkow-0.jpg",
-      "/assets/Milkow-1.jpg",
-      "/assets/Milkow-2.jpg",
+      "/assets/milkow/Milkow-0.jpg",
+      "/assets/milkow/Milkow-1.jpg",
+      "/assets/milkow/Milkow-2.jpg",
     ],
     tags: [
       "Brand Identity",
@@ -72,7 +72,7 @@ const works = [
   {
     id: 3,
     name: "Inventory",
-    image: "/assets/inventory.jpg",
+    image: "/assets/inventory/inventory.jpg",
     shortdesc: "UI / UX Design",
     year: "2024",
     client: "Jadbery.",
@@ -92,17 +92,17 @@ const works = [
       "Faster onboarding for new employees",
     ],
     images: [
-      "/assets/inventory-0.jpg",
-      "/assets/inventory-1.jpg",
-      "/assets/inventory-2.jpg",
-      "/assets/inventory-3.jpg",
+      "/assets/inventory/inventory-0.jpg",
+      "/assets/inventory/inventory-1.jpg",
+      "/assets/inventory/inventory-2.jpg",
+      "/assets/inventory/inventory-3.jpg",
     ],
     tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
   },
   {
     id: 4,
     name: "Custom ERP",
-    image: "/assets/erp.jpg",
+    image: "/assets/erp/erp.jpg",
     shortdesc: "UI/UX Design",
     year: "2024",
     client: "Jadbery.",
@@ -122,10 +122,10 @@ const works = [
       "Reduced manual data entry errors by 65%",
     ],
     images: [
-      "/assets/erp-0.jpg",
-      "/assets/erp-1.jpg",
-      "/assets/erp-2.jpg",
-      "/assets/erp-3.jpg",
+      "/assets/erp/erp-0.jpg",
+      "/assets/erp/erp-1.jpg",
+      "/assets/erp/erp-2.jpg",
+      "/assets/erp/erp-3.jpg",
     ],
     tags: [
       "ERP Design",
@@ -138,7 +138,7 @@ const works = [
   {
     id: 5,
     name: "Acuverse",
-    image: "/assets/acuverse.jpg",
+    image: "/assets/acuverse/acuverse.jpg",
     clientLink: "#",
     shortdesc: "Branding",
     year: "2024",
@@ -158,18 +158,18 @@ const works = [
       "Strengthened brand presence within the IT development sector",
     ],
     images: [
-      "/assets/acuverse-0.jpg",
-      "/assets/acuverse-1.jpg",
-      "/assets/acuverse-2.jpg",
-      "/assets/acuverse-3.jpg",
-      "/assets/acuverse-4.jpg",
+      "/assets/acuverse/acuverse-0.jpg",
+      "/assets/acuverse/acuverse-1.jpg",
+      "/assets/acuverse/acuverse-2.jpg",
+      "/assets/acuverse/acuverse-3.jpg",
+      "/assets/acuverse/acuverse-4.jpg",
     ],
     tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
   },
   {
     id: 6,
     name: "Diet",
-    image: "/assets/diet.jpg",
+    image: "/assets/diet/diet.jpg",
     shortdesc: "UI / UX Design",
     year: "2024",
     client: "Jadbery",
@@ -189,10 +189,10 @@ const works = [
       "Encouraged consistent user engagement",
     ],
     images: [
-      "/assets/diet-0.jpg",
-      "/assets/diet-1.jpg",
-      "/assets/diet-2.jpg",
-      "/assets/diet-3.jpg",
+      "/assets/diet/diet-0.jpg",
+      "/assets/diet/diet-1.jpg",
+      "/assets/diet/diet-2.jpg",
+      "/assets/diet/diet-3.jpg",
     ],
     tags: [
       "UI Design",
@@ -206,7 +206,7 @@ const works = [
   {
     id: 7,
     name: "Adil Rafeeque",
-    image: "/assets/adil.jpg",
+    image: "/assets/adil/adil.jpg",
     clientLink: "https://adilrafeeque.com/",
     shortdesc: "Personal Brand Identity",
     year: "2025",
@@ -225,7 +225,7 @@ const works = [
       "Clear association with growth and performance analytics",
       "Strong visual system with a versatile icon",
     ],
-    images: ["/assets/adil-0.jpg", "/assets/adil-1.jpg", "/assets/adil-2.jpg"],
+    images: ["/assets/adil/adil-0.jpg", "/assets/adil/adil-1.jpg", "/assets/adil/adil-2.jpg"],
     tags: [
       "Personal Branding",
       "Logo Design",
@@ -236,7 +236,7 @@ const works = [
   {
     id: 8,
     name: "ADOVO",
-    image: "/assets/adovo.jpg",
+    image: "/assets/adovo/adovo.jpg",
     clientLink: "#",
     shortdesc: "Branding",
     year: "2025",
@@ -256,9 +256,9 @@ const works = [
       "Positive client feedback on brand perception",
     ],
     images: [
-      "/assets/adovo-0.jpg",
-      "/assets/adovo-1.jpg",
-      "/assets/adovo-2.jpg",
+      "/assets/adovo/adovo-0.jpg",
+      "/assets/adovo/adovo-1.jpg",
+      "/assets/adovo/adovo-2.jpg",
     ],
     tags: [
       "Brand Identity",
@@ -270,7 +270,7 @@ const works = [
   {
     id: 9,
     name: "Jadbery",
-    image: "/assets/jadbery.jpg",
+    image: "/assets/jadbery/jadbery.jpg",
     shortdesc: "UI / UX Design",
     year: "2025",
     client: "Jadbery",
@@ -290,16 +290,16 @@ const works = [
       "Enhanced brand perception as a modern IT partner",
     ],
     images: [
-      "/assets/jadbery-0.jpg",
-      "/assets/jadbery-1.jpg",
-      "/assets/jadbery-2.jpg",
+      "/assets/jadbery/jadbery-0.jpg",
+      "/assets/jadbery/jadbery-1.jpg",
+      "/assets/jadbery/jadbery-2.jpg",
     ],
     tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
   },
   {
     id: 10,
     name: "Invoice",
-    image: "/assets/invoice.jpg",
+    image: "/assets/invoice/invoice.jpg",
     shortdesc: "UI / UX Design & Development",
     year: "2026",
     client: "Jadbery",
@@ -319,11 +319,11 @@ const works = [
       "Fast, accessible, and privacy-focused invoicing solution",
     ],
     images: [
-      "/assets/invoice-0.jpg",
-      "/assets/invoice-1.jpg",
-      "/assets/invoice-2.jpg",
-      "/assets/invoice-3.jpg",
-      "/assets/invoice-4.jpg",
+      "/assets/invoice/invoice-0.jpg",
+      "/assets/invoice/invoice-1.jpg",
+      "/assets/invoice/invoice-2.jpg",
+      "/assets/invoice/invoice-3.jpg",
+      "/assets/invoice/invoice-4.jpg",
     ],
     tags: [
       "UI/UX Design",
@@ -334,6 +334,45 @@ const works = [
       "Product Design",
     ],
   },
+  {
+    id: 11,
+    name: "Archimud",
+    image: "/assets/archimud/archimud.jpg",
+    shortdesc: "Brand Identity",
+    year: "2026",
+    client: "Archimud",
+    clientLink: "#",
+    role: "Brand Designer",
+    duration: "3 Weeks",
+    description:
+      "Archimud is a home décor brand rooted in craftsmanship, culture, and authentic artistry. The project focused on building a warm, modern, and culturally rich brand identity that reflects handmade quality, natural materials, and human-centered design. The identity balances contemporary minimalism with traditional inspiration, creating a timeless visual system grounded in heritage.",
+    challenge:
+      "The challenge was to create a cohesive identity that feels modern and refined while staying deeply connected to traditional craftsmanship. The brand needed to communicate authenticity, warmth, and cultural depth without appearing rustic or outdated.",
+    solution:
+      "We created a complete brand identity inspired by pottery, textiles, masks, frames, and traditional stitch patterns. The logo’s stylized “U” forms a bowl and a subtle smile, symbolizing warmth, joy, and handcrafted care. An earthy palette drawn from clay, soil, sand, and stone grounds the brand in nature, while Urbanist and Merriweather balance modern clarity with cultural depth.",
+    impact: [
+      "Strong and emotionally resonant home décor brand identity",
+      "Clear visual connection to craftsmanship and heritage",
+      "Scalable logo system with defined usage guidelines",
+      "Consistent visual language across print and digital platforms",
+    ],
+    images: [
+      "/assets/archimud/archimud-0.jpg",
+      "/assets/archimud/archimud-1.jpg",
+      "/assets/archimud/archimud-2.jpg",
+      "/assets/archimud/archimud-3.jpg",
+      "/assets/archimud/archimud-4.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Typography System",
+      "Color System",
+      "Home Décor Branding",
+      "Adobe Illustrator",
+      "Figma",
+    ],
+  }
 ];
 
 const info = [
