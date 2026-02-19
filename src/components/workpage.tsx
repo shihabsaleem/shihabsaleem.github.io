@@ -82,9 +82,13 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             </div>
             <div className="hero-meta">
               <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Client</div>
-              <a href={project.clientLink} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+              {project.clientLink ? (
+                <a href={project.clientLink} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+                  <div className="text-lg font-medium">{project.client}</div>
+                </a>
+              ) : (
                 <div className="text-lg font-medium">{project.client}</div>
-              </a>
+              )}
             </div>
             <div className="hero-meta">
               <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">Role</div>

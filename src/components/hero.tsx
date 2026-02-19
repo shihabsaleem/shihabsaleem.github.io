@@ -298,7 +298,7 @@ const Hero = () => {
             { label: "Instagram", url: info.insta },
             { label: "Linkedin", url: info.linkedin },
             { label: "Github", url: info.github },
-            { label: "Behance", url: "#" },
+            { label: "Behance", url: info.behance },
           ].map((s) => (
             <a
               key={s.label}

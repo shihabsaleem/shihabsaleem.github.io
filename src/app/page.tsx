@@ -220,6 +220,23 @@ export default function Home() {
           )}
         </section>
 
+        {/* ABOUT SECTION - Added for SEO & Content Depth */}
+        <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-black/10 dark:border-white/10">
+          <div className="max-w-4xl">
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-8">
+              About
+            </h2>
+            <div className="prose dark:prose-invert max-w-none">
+              <p className="text-xl md:text-3xl font-light leading-relaxed mb-8">
+                {info.desc}
+              </p>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                {info.pdesc}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FOOTER */}
         <footer className="cta-section pt-40 pb-20 px-6 border-t border-black/10 dark:border-white/10">
           <div className="max-w-7xl mx-auto footer-content">
