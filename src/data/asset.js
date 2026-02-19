@@ -370,7 +370,6 @@ const works = [
       "Color System",
       "Home Décor Branding",
       "Adobe Illustrator",
-      "Figma",
     ],
   }
 ];
