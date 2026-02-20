@@ -220,8 +220,8 @@ export default function Home() {
           )}
         </section>
 
-        {/* ABOUT SECTION - Added for SEO & Content Depth */}
-        <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-black/10 dark:border-white/10">
+        {/* ABOUT SECTION - Added for SEO & Content Depth */}<section className="sr-only">
+        {/* <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-black/10 dark:border-white/10"> */}
           <div className="max-w-4xl">
             <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-8">
               About
