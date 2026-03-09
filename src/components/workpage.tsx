@@ -101,7 +101,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           </div>
           <div className="hero-image">
             <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-zinc-900/5">
-              <Image src={project.images[0]} alt={project.name} width={1200} height={675} className="w-full h-auto" priority />
+              <Image src={project.images[0]} alt={`${project.name} - UI UX Design Case Study Main Interface`} width={1200} height={675} className="w-full h-auto" priority />
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
                 <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
-                  <Image src={image} alt={`${project.name} ${index}`} width={800} height={600} className="w-full h-auto hover:scale-105 transition-transform duration-700" />
+                  <Image src={image} alt={`${project.name} - ${project.shortdesc} UI Design Screenshot ${index + 1}`} width={800} height={600} className="w-full h-auto hover:scale-105 transition-transform duration-700" />
                 </div>
               </div>
             ))}
@@ -173,15 +173,21 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
       <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {prevProject ? (
-            <Link href={`/${nameToSlug(prevProject.name)}`} className="group flex flex-col items-start">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Previous</span>
-              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">← {prevProject.name}</span>
+            <Link href={`/${nameToSlug(prevProject.name)}`} className="group flex flex-col items-start translate-y-0 hover:-translate-y-1 transition-transform">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Previous Project</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">← {prevProject.name}</span>
             </Link>
           ) : <div />}
+
+          <Link href="/" className="hidden md:flex flex-col items-center group">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Portfolio</span>
+            <span className="text-sm font-bold uppercase tracking-[0.3em] transition-all group-hover:tracking-[0.5em]">View All<span className="text-red-600">.</span></span>
+          </Link>
+
           {nextProject ? (
-            <Link href={`/${nameToSlug(nextProject.name)}`} className="group flex flex-col items-end text-right">
+            <Link href={`/${nameToSlug(nextProject.name)}`} className="group flex flex-col items-end text-right translate-y-0 hover:-translate-y-1 transition-transform">
               <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">Next Project</span>
-              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic">{nextProject.name} →</span>
+              <span className="text-xl md:text-2xl font-black tracking-tighter group-hover:italic transition-all">{nextProject.name} →</span>
             </Link>
           ) : <div />}
         </div>

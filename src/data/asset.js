@@ -8,7 +8,7 @@ const works = [
     client: "Parrot Vacation",
     clientLink: "",
     role: "Brand Designer",
-    duration: "1 Week",
+    duration: "2 Week",
     description:
       "The Parrot Vacation logo is a modern, minimalist brand mark that seamlessly combines a parrot, a location pin, and the letter ‘P’ into a single cohesive symbol. Inspired by vibrant parakeet colors, the identity captures the essence of travel, freedom, and exploration while maintaining a clean, contemporary aesthetic suited for digital-first platforms.",
     challenge:
@@ -25,6 +25,7 @@ const works = [
       "/assets/parrot/parrot-0.jpg",
       "/assets/parrot/parrot-1.jpg",
       "/assets/parrot/parrot-2.jpg",
+      "/assets/parrot/parrot-3.jpg",
     ],
     tags: [
       "Brand Identity",
@@ -43,7 +44,7 @@ const works = [
     client: "Milkow Fresh",
     clientLink: "https://www.instagram.com/milkow_fresh/",
     role: "Brand & Packaging Designer",
-    duration: "1 Week",
+    duration: "2 Week",
     description:
       "Milkow is a branding and packaging identity created for a local fresh milk brand. The logo combines a friendly mascot with a clean wordmark, resulting in an approachable and memorable visual identity. Designed in solid black, the mark contrasts effectively against transparent milk bottles and the natural white of the milk, reinforcing clarity, freshness, and trust through a minimal and versatile aesthetic.",
     challenge:

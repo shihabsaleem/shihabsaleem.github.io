@@ -15,31 +15,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const { works } = assetData;
 
   // Set realistic dates - update this when you modify pages
-  const staticLastModified = new Date("2025-01-04");
+  const staticLastModified = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}`,
       lastModified: staticLastModified,
-      changeFrequency: "weekly", // Portfolio homepage - update more frequently
+      changeFrequency: "daily", // Portfolio homepage - update more frequently
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/about`,
       lastModified: staticLastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/contact`,
       lastModified: staticLastModified,
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/privacy`,
       lastModified: staticLastModified,
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 0.3,
     },
   ];
@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const workPages: MetadataRoute.Sitemap = works.map((work) => ({
     url: `${BASE_URL}/${nameToSlug(work.name)}`,
     lastModified: staticLastModified,
-    changeFrequency: "monthly",
+    changeFrequency: "weekly",
     priority: 0.9,
   }));
 

@@ -38,8 +38,29 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${work.name} - Shihab Saleem`,
+    title: `${work.name} | UI UX Design Project by Shihab Saleem`,
     description: work.description,
+    openGraph: {
+      title: `${work.name} | UI UX Design Project`,
+      description: work.description,
+      images: [
+        {
+          url: work.image,
+          width: 1200,
+          height: 675,
+          alt: `${work.name} - UI UX Design Case Study`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${work.name} | UI UX Design by Shihab Saleem`,
+      description: work.description,
+      images: [work.image],
+    },
+    alternates: {
+      canonical: `https://shihabsaleem.site/${workName}`,
+    },
   };
 }
 
@@ -57,6 +78,28 @@ export default async function Page({
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": work.name,
+            "description": work.description,
+            "image": `https://shihabsaleem.site${work.image}`,
+            "author": {
+              "@type": "Person",
+              "name": "Shihab Saleem"
+            },
+            "creator": {
+              "@type": "Person",
+              "name": "Shihab Saleem"
+            },
+            "inLanguage": "en-US",
+            "keywords": work.tags.join(", ")
+          })
+        }}
+      />
       <ProjectPage projectId={work.id} />
       <div className="my-4 px-6 md:px-12 lg:px-20">
         <LegalLinks />

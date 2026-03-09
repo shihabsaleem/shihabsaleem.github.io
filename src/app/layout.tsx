@@ -23,31 +23,29 @@ const info = data.info[0];
 export const metadata: Metadata = {
   metadataBase: new URL("https://shihabsaleem.site"),
   title: {
-    default: `${info.name} | Product Designer & UI Specialist`,
-    template: `%s | Product Designer & UI Specialist`,
+    default: `UI UX Designer in Kerala | ${info.name} | Product Designer Portfolio`,
+    template: `%s | ${info.name} | UI UX Designer Kerala`,
   },
-  description: `Shihab Saleem is a Product Designer & UI Specialist based in Kerala, India. Expert in SaaS product design, mobile app UI, and user-centered digital experiences using React, Next.js, and Figma.`,
-  applicationName: "Shihab Saleem",
+  description: `Shihab Saleem is a UI UX Designer and Product Designer in Kerala, specializing in SaaS dashboard design, mobile app UI, and user-centered digital experiences. View my portfolio for expert design solutions.`,
+  applicationName: "Shihab Saleem Portfolio",
   referrer: "origin-when-cross-origin",
   keywords: [
-    "Product Designer",
-    "UI Designer",
-    "UX Specialist",
-    "Freelance Product Designer",
-    "SaaS Product Design",
+    "UI UX Designer in Kerala",
+    "Product Designer Kerala",
     "Mobile App UI Design",
-    "Frontend Developer",
-    "Shihab Saleem",
-    "Kerala UI UX Designer",
-    "React Developer",
-    "Next.js Developer",
-    "Figma Designer",
-    "Branding Specialist",
+    "SaaS UI Designer",
+    "Digital Product Designer",
     "Web Designer Kerala",
-    "User Experience Design",
-    "Interface Design",
-    "Design Systems",
-    "Responsive Design",
+    "Shihab Saleem",
+    "User Experience Specialist",
+    "Freelance Designer Kerala",
+    "Modern Web Design India",
+    "Figma UI Design",
+    "React Frontend Designer",
+    "Next.js Developer Portfolio",
+    "Design Systems Kerala",
+    "Interface Design Specialist",
+    "Branding and UI UX",
   ],
   authors: [{ name: info.name, url: "https://shihabsaleem.site" }],
   creator: info.name,
@@ -68,16 +66,16 @@ export const metadata: Metadata = {
     "ICBM": "10.690639, 76.652694",
   },
   openGraph: {
-    title: `${info.name} - UI/UX Designer & Developer`,
-    description: `UI/UX Designer, Developer & Branding Specialist based in Kerala, India. Creating intuitive digital experiences through user-centered design and modern web technologies.`,
+    title: `UI UX Designer in Kerala | ${info.name} | Portfolio`,
+    description: `Expert UI UX Designer & Product Designer in Kerala. Designing premium digital experiences for SaaS, mobile apps, and enterprise solutions.`,
     url: "https://shihabsaleem.site",
-    siteName: `${info.name} - Portfolio`,
+    siteName: `${info.name} - UI UX Designer Kerala`,
     images: [
       {
         url: "/assets/og-shihab.jpg",
         width: 1200,
         height: 630,
-        alt: `${info.name} - UI/UX Designer & Developer Portfolio`,
+        alt: `Shihab Saleem - UI UX Designer & Product Designer Portfolio`,
       },
     ],
     locale: "en_US",
@@ -85,8 +83,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${info.name} - UI/UX Designer & Developer`,
-    description: `UI/UX Designer, Developer & Branding Specialist in Kerala, India. Crafting seamless digital experiences.`,
+    title: ` ${info.name} | UI UX & Branding Designer in Kerala `,
+    description: `Premium UI UX Designer in Kerala crafting seamless digital products and enterprise SaaS designs.`,
     creator: "@shihabrsaleem",
     images: ["/assets/og-shihab.jpg"],
   },
@@ -163,8 +161,9 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                name: `${info.name} - Portfolio`,
+                name: `${info.name} - UI UX Designer Portfolio`,
                 url: "https://shihabsaleem.site",
+                description: "Shihab Saleem, a UI UX Designer and Product Designer in Kerala, India.",
                 author: {
                   "@type": "Person",
                   name: info.name,
@@ -176,11 +175,8 @@ export default function RootLayout({
                 name: info.name,
                 url: "https://shihabsaleem.site",
                 image: "https://shihabsaleem.site/assets/og-shihab.jpg",
-                jobTitle: "UI/UX Designer & Developer",
-                worksFor: {
-                  "@type": "Organization",
-                  name: "Jadbery Digital",
-                },
+                jobTitle: "UI UX Designer & Product Designer",
+                description: info.desc,
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Kerala",
@@ -194,19 +190,17 @@ export default function RootLayout({
                   `https://twitter.com/${info.twitter.replace("@", "")}`,
                 ],
                 knowsAbout: [
-                  "UI/UX Design",
+                  "UI UX Design",
                   "Product Design",
+                  "SaaS Design",
+                  "Mobile App UI Design",
                   "Frontend Development",
                   "React",
                   "Next.js",
                   "Figma",
                   "Branding",
-                  "Web Design",
-                  "User Experience Design",
-                  "Interface Design",
                   "Design Systems",
-                  "Responsive Design",
-                  "Graphic Design"
+                  "User Experience Design",
                 ],
               }
             ]),
@@ -219,6 +213,16 @@ export default function RootLayout({
       >
         <Navbar />
         <main>{children}</main>
+
+        {/* Hidden Semantic SEO Content */}
+        <footer className="sr-only">
+          <p>
+            Shihab Saleem is a UI UX Designer and Product Designer in Kerala, India.
+            Specializing in SaaS design, mobile app interface design, and product strategy.
+            Providing premium design solutions for global clients using Figma, React, and Next.js.
+          </p>
+        </footer>
+
         <CookieBanner />
       </body>
     </html>

@@ -45,7 +45,7 @@ const Navbar = () => {
   const toggleTheme = () => {
     const html = document.documentElement;
     const isDark = html.classList.contains("dark");
-    
+
     if (isDark) {
       html.classList.remove("dark");
       setTheme("light");
@@ -76,21 +76,21 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav 
+    <nav
       ref={navRef}
       /* UPDATED: Glass effect using Zinc palette */
       className="fixed z-50 w-full top-0 left-0 backdrop-blur-md bg-white/70 dark:bg-[#050505]/70 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-500"
     >
       <div className="container mx-auto px-6 sm:px-8 py-4">
         <div className="flex items-center justify-between">
-          <Link 
+          <Link
             ref={logoRef}
-            href="/" 
+            href="/"
             className="flex items-center"
           >
             <Image
               src={info.logo}
-              alt={info.name}
+              alt="Shihab Saleem Logo - UI UX Designer Kerala"
               width={120}
               height={40}
               className="h-8 w-auto dark:invert-0 transition-all"
@@ -99,10 +99,12 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {["Work", "About", "Contact"].map((item) => (
-              <Link 
+            {["Work", "About", "Resume", "Contact"].map((item) => (
+              <Link
                 key={item}
-                href={item === "Work" ? "/" : `/${item.toLowerCase()}`} 
+                href={item === "Work" ? "/" : item === "Resume" ? info.cv : `/${item.toLowerCase()}`}
+                target={item === "Resume" ? "_blank" : undefined}
+                rel={item === "Resume" ? "noopener noreferrer" : undefined}
                 className="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-600 transition-colors"
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}
@@ -119,9 +121,8 @@ const Navbar = () => {
               className="nav-link relative w-12 h-6 bg-zinc-200 dark:bg-zinc-800 rounded-full transition-colors duration-300 focus:outline-none"
             >
               <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-zinc-950 rounded-full transition-transform duration-300 flex items-center justify-center shadow-sm ${
-                  theme === "dark" ? "translate-x-6" : "translate-x-0"
-                }`}
+                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-zinc-950 rounded-full transition-transform duration-300 flex items-center justify-center shadow-sm ${theme === "dark" ? "translate-x-6" : "translate-x-0"
+                  }`}
               >
                 {theme === "dark" ? (
                   <svg className="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -165,10 +166,12 @@ const Navbar = () => {
           className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 mt-4" : "max-h-0"}`}
         >
           <div className="flex flex-col gap-2 py-4 border-t border-zinc-100 dark:border-zinc-800">
-            {["Work", "About", "Contact"].map((item) => (
+            {["Work", "About", "Resume", "Contact"].map((item) => (
               <Link
                 key={item}
-                href={item === "Work" ? "/" : `/${item.toLowerCase()}`}
+                href={item === "Work" ? "/" : item === "Resume" ? info.cv : `/${item.toLowerCase()}`}
+                target={item === "Resume" ? "_blank" : undefined}
+                rel={item === "Resume" ? "noopener noreferrer" : undefined}
                 className="mobile-link px-4 py-3 text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-red-600 transition-all"
                 onClick={() => setIsOpen(false)}
               >

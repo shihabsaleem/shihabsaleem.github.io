@@ -80,12 +80,12 @@ const Hero = () => {
       >
         <div className="flex gap-48 z-20">
           <div className="stat-item text-center text-md md:text-xl font-normal">
-            <h2>3yr+</h2>
-            <p>Exp</p>
+            <p className="text-xl md:text-2xl font-bold">3yr+</p>
+            <p className="text-sm">Exp</p>
           </div>
           <div className="stat-item text-center text-md md:text-xl font-normal">
-            <h2>30+</h2>
-            <p>Projects</p>
+            <p className="text-xl md:text-2xl font-bold">30+</p>
+            <p className="text-sm">Projects</p>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ const Hero = () => {
             {/* Light mode image */}
             <Image
               src={info.dpLight}
-              alt={info.name}
+              alt={`${info.name} - UI UX Designer Portfolio Portrait`}
               fill
               className="object-contain block dark:hidden"
               priority
@@ -103,7 +103,7 @@ const Hero = () => {
             {/* Dark mode image */}
             <Image
               src={info.dpDark}
-              alt={info.name}
+              alt={`${info.name} - UI UX Designer Portfolio Portrait (Dark)`}
               fill
               className="object-contain hidden dark:block"
               priority
@@ -203,6 +203,7 @@ const Hero = () => {
               {info.name}
               <span className="text-red-600">.</span>
             </h2>
+            <p className="sr-only">Shihab Saleem is a Product Designer and Frontend Developer in Kerala.</p>
           </div>
         </div>
       </div>
@@ -233,7 +234,7 @@ const Hero = () => {
           {/* Light mode image */}
           <Image
             src={info.dpLight}
-            alt={info.name}
+            alt={`${info.name} - UI UX Designer Portfolio Mobile`}
             fill
             className="object-contain block dark:hidden"
             priority
@@ -242,7 +243,7 @@ const Hero = () => {
           {/* Dark mode image */}
           <Image
             src={info.dpDark}
-            alt={info.name}
+            alt={`${info.name} - UI UX Designer Portfolio Mobile (Dark)`}
             fill
             className="object-contain hidden dark:block"
             priority
