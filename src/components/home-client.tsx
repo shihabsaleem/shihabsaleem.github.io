@@ -198,6 +198,7 @@ export default function HomeClient() {
                                             width={1200}
                                             height={675}
                                             className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                                            priority={index === 0}
                                         />
                                     </div>
                                 </div>

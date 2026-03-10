@@ -23,7 +23,7 @@ const info = data.info[0];
 export const metadata: Metadata = {
   metadataBase: new URL("https://shihabsaleem.site"),
   title: {
-    default: `UI UX Designer in Kerala | ${info.name} | Product Designer Portfolio`,
+    default: `${info.name} | UI UX Designer & Product Designer in Kerala`,
     template: `%s | ${info.name} | UI UX Designer Kerala`,
   },
   description: `Shihab Saleem is a UI UX Designer and Product Designer in Kerala, specializing in SaaS dashboard design, mobile app UI, and user-centered digital experiences. View my portfolio for expert design solutions.`,
@@ -134,7 +134,7 @@ export default function RootLayout({
 
         <Script
           id="gtag-base"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               if (localStorage.getItem('cookie-consent') === 'accepted') {
