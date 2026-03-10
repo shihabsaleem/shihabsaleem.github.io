@@ -38,28 +38,28 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${work.name} | UI UX Design Project by Shihab Saleem`,
+    title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
     description: work.description,
     openGraph: {
-      title: `${work.name} | UI UX Design Project`,
+      title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
       description: work.description,
       images: [
         {
           url: work.image,
           width: 1200,
           height: 675,
-          alt: `${work.name} - UI UX Design Case Study`,
+          alt: `${work.name} - ${work.shortdesc}`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${work.name} | UI UX Design by Shihab Saleem`,
+      title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
       description: work.description,
       images: [work.image],
     },
     alternates: {
-      canonical: `https://shihabsaleem.site/${workName}`,
+      canonical: `/${workName}`,
     },
   };
 }

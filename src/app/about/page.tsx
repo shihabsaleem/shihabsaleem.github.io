@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `About Shihab Saleem | UI UX Designer & Product Designer`,
     description: `Professional background and skills of Shihab Saleem, a UI UX Designer specializing in user-centered digital products in Kerala, India.`,
-    url: "https://shihabsaleem.site/about",
+    url: "/about",
     type: "profile",
     images: [
       {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ["/assets/og-shihab.jpg"],
   },
   alternates: {
-    canonical: "https://shihabsaleem.site/about",
+    canonical: "/about",
   },
 };
 

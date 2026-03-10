@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Shihab Saleem | UI UX & Branding Designer in Kerala",
   description: "Portfolio of Shihab Saleem, a premium UI UX Designer and Product Designer in Kerala. Specializing in SaaS, mobile apps, and user-centered digital solutions.",
   alternates: {
-    canonical: "https://shihabsaleem.site",
+    canonical: "/",
   },
   openGraph: {
     title: "UI UX Designer in Kerala | Shihab Saleem Portfolio",
     description: "Premium UI UX Designer and Product Designer in Kerala crafting seamless digital experiences for SaaS and mobile apps.",
-    url: "https://shihabsaleem.site",
+    url: "/",
     siteName: "Shihab Saleem Portfolio",
     images: [
       {

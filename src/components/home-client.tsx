@@ -197,8 +197,10 @@ export default function HomeClient() {
                                             alt={`${work.name} - ${work.shortdesc} UI UX Design`}
                                             width={1200}
                                             height={675}
+                                            sizes="(max-width: 1024px) 100vw, 66vw"
+                                            quality={85}
                                             className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
-                                            priority={index === 0}
+                                            priority={index < 2}
                                         />
                                     </div>
                                 </div>
