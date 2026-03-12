@@ -86,7 +86,7 @@ export default async function Page({
             "@type": "CreativeWork",
             "name": work.name,
             "description": work.description,
-            "image": `https://shihabsaleem.site${work.image}`,
+            "image": `https://www.shihabsaleem.site${work.image}`,
             "author": {
               "@type": "Person",
               "name": "Shihab Saleem"

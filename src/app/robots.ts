@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "/",
         },
-        sitemap: "https://shihabsaleem.site/sitemap.xml",
+        sitemap: "https://www.shihabsaleem.site/sitemap.xml",
     };
 }

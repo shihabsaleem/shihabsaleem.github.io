@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 const info = data.info[0];
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shihabsaleem.site"),
+  metadataBase: new URL("https://www.shihabsaleem.site"),
   title: {
     default: `${info.name} | UI UX Designer & Product Designer in Kerala`,
     template: `%s | ${info.name} | UI UX Designer Kerala`,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "Interface Design Specialist",
     "Branding and UI UX",
   ],
-  authors: [{ name: info.name, url: "https://shihabsaleem.site" }],
+  authors: [{ name: info.name, url: "https://www.shihabsaleem.site" }],
   creator: info.name,
   publisher: info.name,
   formatDetection: {
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `UI UX Designer in Kerala | ${info.name} | Portfolio`,
     description: `Expert UI UX Designer & Product Designer in Kerala. Designing premium digital experiences for SaaS, mobile apps, and enterprise solutions.`,
-    url: "https://shihabsaleem.site",
+    url: "https://www.shihabsaleem.site",
     siteName: `${info.name} - UI UX Designer Kerala`,
     images: [
       {
@@ -162,7 +162,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 name: `${info.name} - UI UX Designer Portfolio`,
-                url: "https://shihabsaleem.site",
+                url: "https://www.shihabsaleem.site",
                 description: "Shihab Saleem, a UI UX Designer and Product Designer in Kerala, India.",
                 author: {
                   "@type": "Person",
@@ -173,8 +173,8 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Person",
                 name: info.name,
-                url: "https://shihabsaleem.site",
-                image: "https://shihabsaleem.site/assets/og-shihab.jpg",
+                url: "https://www.shihabsaleem.site",
+                image: "https://www.shihabsaleem.site/assets/og-shihab.jpg",
                 jobTitle: "UI UX Designer & Product Designer",
                 description: info.desc,
                 address: {
