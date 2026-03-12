@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ContactClient from "@/components/contact-client";
 
 export const metadata: Metadata = {
-  title: "Contact Shihab Saleem | UI UX Designer & Product Designer in Kerala",
+  title: "Contact",
   description: "Get in touch with Shihab Saleem, a premium UI UX Designer and Product Designer in Kerala. Available for freelance projects, SaaS design, and collaboration.",
   alternates: {
     canonical: "/contact",

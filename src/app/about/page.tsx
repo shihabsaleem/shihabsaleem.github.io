@@ -10,7 +10,7 @@ import assetData from "@/data/asset";
 const info = assetData.info[0];
 
 export const metadata: Metadata = {
-  title: "About Shihab Saleem | UI UX Designer & Product Designer Portfolio",
+  title: "About",
   description: `Discover the professional journey of Shihab Saleem, a UI UX Designer and Product Designer in Kerala. Over 3 years of experience in SaaS design, mobile apps, and frontend development.`,
   keywords: [
     "About Shihab Saleem",

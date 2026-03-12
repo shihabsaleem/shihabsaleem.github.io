@@ -2,7 +2,9 @@ import { Metadata } from "next";
 import HomeClient from "@/components/home-client";
 
 export const metadata: Metadata = {
-  title: "Shihab Saleem | UI UX & Branding Designer in Kerala",
+  title: {
+    absolute: "Shihab Saleem | UI UX & Branding Designer in Kerala",
+  },
   description: "Portfolio of Shihab Saleem, a premium UI UX Designer and Product Designer in Kerala. Specializing in SaaS, mobile apps, and user-centered digital solutions.",
   alternates: {
     canonical: "/",

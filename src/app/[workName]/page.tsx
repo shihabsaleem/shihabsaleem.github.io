@@ -38,10 +38,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
+    title: `${work.name}`,
     description: work.description,
     openGraph: {
-      title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
+      title: `${work.name} - ${work.shortdesc} by Shihab Saleem`,
       description: work.description,
       images: [
         {
@@ -54,7 +54,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${work.name} | ${work.shortdesc} by Shihab Saleem`,
+      title: `${work.name} - ${work.shortdesc} by Shihab Saleem`,
       description: work.description,
       images: [work.image],
     },
