@@ -1,0 +1,74 @@
+# Shihab Saleem
+
+> I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.
+
+**Title:** UI/UX Designer & Developer
+**Location:** Kerala, India
+**Email:** shihabrsaleem@gmail.com
+**Website:** https://www.shihabsaleem.site
+
+## 🔗 Digital Footprint
+- **LinkedIn:** https://linkedin.com/in/shihab-rahman
+- **GitHub:** https://github.com/shihabsaleem
+- **Behance:** https://behance.net/shihabrsaleem
+- **Twitter / X:** https://twitter.com/shihabrsaleem
+
+## 🛠 Skills & Expertise
+- **Design & UX:** UI/UX Design, User Research, Design Thinking, Wireframing & Prototyping, Usability Testing, A/B Testing, Accessibility (WCAG Principles), Interaction Design (IxD), Information Architecture, Microinteractions & UX Animation, Responsive & Adaptive Design
+- **Visual Design:** Visual Design, Typography for UI, Color Theory & Design Systems
+- **Design Tools:** Figma, Adobe Photoshop, Adobe Illustrator, Miro / FigJam
+- **Development:** HTML & CSS, TailwindCSS, Bootstrap, JavaScript, ReactJS, Angular, Git & GitHub
+- **CMS & Builders:** WordPress, Beaver Builder, Elementor
+- **Soft Skills:** Problem Solving, Collaboration with Developers, Communication, Attention to Detail, Time Management
+
+## 💼 Selected Projects
+
+### 1. Invoice
+- **Year:** 2026
+- **Category:** UI / UX Design & Development
+- **Role:** Designer & Developer
+- **Description:** Invoice by Jadbery is a free, simple, and intuitive invoice generator designed to run entirely on the client side without any backend dependency. Built for speed and accessibility, the application allows users to create and export invoices instantly without signup or login. The product is available both as a web application and a Chrome extension, ensuring flexibility across platforms.
+- **Impact:** Instant invoice generation without signup or login, 100% client-side rendering with no backend dependency, Consistent experience across web and Chrome extension, Fast, accessible, and privacy-focused invoicing solution
+- **Tags:** UI/UX Design, Frontend Development, Next.js, Figma, Client-Side Rendering, Product Design
+- **Link:** https://www.shihabsaleem.site/invoice
+
+### 2. Jadbery
+- **Year:** 2025
+- **Category:** UI / UX Design
+- **Role:** UI/UX Designer
+- **Description:** Jadbery is a minimalist website design created for an IT service company portfolio. Focused on clean layouts and simple navigation, the design highlights services, expertise, and case studies with clarity and professionalism, reflecting the brand's modern and reliable approach to technology solutions.
+- **Impact:** 45% increase in client inquiries, Improved engagement metrics across all pages, Reduced bounce rate by 30%, Enhanced brand perception as a modern IT partner
+- **Tags:** Web Design, UI/UX, Responsive Design, Figma, HTML/CSS
+- **Link:** https://www.shihabsaleem.site/jadbery
+
+### 3. Diet
+- **Year:** 2024
+- **Category:** UI / UX Design
+- **Role:** UI/UX Designer
+- **Description:** Diet+ is a mobile application designed to help users manually track their daily calorie intake and calories burned. The project focuses on delivering a clean and intuitive UI/UX that simplifies health tracking through minimal interactions, clear visual feedback, and an easy-to-understand interface that encourages consistent daily use.
+- **Tags:** UI Design, UX Design, Mobile App Design, Health & Fitness App, Figma, Prototyping
+- **Link:** https://www.shihabsaleem.site/diet
+
+### 4. Custom ERP
+- **Year:** 2024
+- **Category:** UI/UX Design
+- **Role:** UI/UX Designer
+- **Description:** A clean and functional UI/UX design for an ERP product tailored to the needs of the snack manufacturing industry. The system streamlines and manages production, sales, storage, and distribution through an intuitive, user-friendly interface — helping businesses improve efficiency, visibility, and operational control across all departments.
+- **Link:** https://www.shihabsaleem.site/custom-erp
+
+### 5. Archimud
+- **Year:** 2026
+- **Category:** Brand Identity
+- **Role:** Brand Designer
+- **Description:** Archimud is a home décor brand rooted in craftsmanship, culture, and authentic artistry. The project focused on building a warm, modern, and culturally rich brand identity that reflects handmade quality, natural materials, and human-centered design. The identity balances contemporary minimalism with traditional inspiration, creating a timeless visual system grounded in heritage.
+- **Link:** https://www.shihabsaleem.site/archimud
+
+## 📚 Education
+- B. Tech in Computer Science and Engineering, College of Engineering, Munnar (2020 - 2023)
+- Diploma in Computer Engineering, St.Marys Polytechnic College, Palakkad (2015 - 2018)
+
+## 🏢 Experience
+- Product Designer / Dev at Jadbery Digital (Apr 2024 - Present)
+- Frontend Developer at Saasyway (Jan 2025 - Jun 2025)
+- Angular Developer Intern at PDS - EY GDS (Mar 2024 - Aug 2024)
+- Web Designer at GJ Infotech p Ltd (May 2018 - Jun 2019)

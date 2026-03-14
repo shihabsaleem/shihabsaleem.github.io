@@ -96,7 +96,10 @@ export default async function Page({
               "name": "Shihab Saleem"
             },
             "inLanguage": "en-US",
-            "keywords": work.tags.join(", ")
+            "keywords": work.tags.join(", "),
+            "datePublished": work.year,
+            "genre": work.shortdesc,
+            "mainEntityOfPage": `https://www.shihabsaleem.site/${workName}`
           })
         }}
       />
