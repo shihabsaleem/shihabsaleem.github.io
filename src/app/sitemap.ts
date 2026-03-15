@@ -45,12 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
 
-  const workPages: MetadataRoute.Sitemap = works.map((work) => ({
-    url: `${BASE_URL}/${nameToSlug(work.name)}`,
-    lastModified: staticLastModified,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  const workPages: MetadataRoute.Sitemap = works
+    .map((work) => ({
+      url: `${BASE_URL}/${nameToSlug(work.name)}`,
+      lastModified: staticLastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    }));
 
   return [...staticPages, ...workPages];
 }

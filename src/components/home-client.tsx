@@ -74,20 +74,26 @@ export default function HomeClient() {
             ScrollTrigger.refresh();
 
             // Animate works list items
-            filteredWorks.forEach((work) => {
-                gsap.fromTo(
-                    `.work-${work.id} .work-image-container`,
-                    { clipPath: "inset(0 0 100% 0)" },
-                    {
-                        clipPath: "inset(0 0 0% 0)",
-                        duration: 1.2,
-                        ease: "expo.out",
-                        scrollTrigger: {
-                            trigger: `.work-${work.id}`,
-                            start: "top 75%",
+            sortedWorks.forEach((work) => {
+                // Only animate if the item is visible
+                const isMatch = filteredWorks.includes(work);
+                if (isMatch) {
+                    gsap.fromTo(
+                        `.work-${work.id} .work-image-container`,
+                        {
+                            clipPath: "inset(0 100% 0 0)"
                         },
-                    }
-                );
+                        {
+                            clipPath: "inset(0% 0% 0% 0%)",
+                            duration: 0.7,
+                            ease: "expo.in",
+                            scrollTrigger: {
+                                trigger: `.work-${work.id}`,
+                                start: "top 85%",
+                            },
+                        }
+                    );
+                }
             });
 
             gsap.from(".footer-content > *", {
@@ -125,7 +131,9 @@ export default function HomeClient() {
         >
             {/* Hero Section */}
             <h1 className="sr-only">
-                Shihab Saleem - UI UX Designer & Product Designer in Kerala, India
+                Shihab Saleem - UI/UX Designer & Product Designer based in Kerala, India.
+                Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
+                Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
             </h1>
 
             {/* Texture Overlay */}
@@ -168,45 +176,49 @@ export default function HomeClient() {
 
                 {/* WORKS LIST */}
                 <section className="border-t border-black/10 dark:border-white/10 min-h-[50vh]">
-                    {filteredWorks.map((work, index) => (
-                        <Link
-                            key={work.id}
-                            href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
-                            className={`work-${work.id} block group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors`}
-                            onMouseEnter={() => setActiveCursor(true)}
-                            onMouseLeave={() => setActiveCursor(false)}
-                        >
-                            <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
-                                <div className="col-span-12 lg:col-span-4">
-                                    <span className="font-mono text-red-600 text-xs mb-4 block">
-                                        [{String(index + 1).padStart(2, "0")}]
-                                    </span>
+                    {sortedWorks.map((work, index) => {
+                        const isVisible = filteredWorks.some((w) => w.id === work.id);
 
-                                    <h2 className="text-4xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
-                                        {work.name}
-                                    </h2>
-                                    <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs uppercase tracking-widest">
-                                        {work.shortdesc}
-                                    </p>
-                                </div>
+                        return (
+                            <Link
+                                key={work.id}
+                                href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
+                                className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors ${isVisible ? "block" : "hidden"}`}
+                                onMouseEnter={() => setActiveCursor(true)}
+                                onMouseLeave={() => setActiveCursor(false)}
+                            >
+                                <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
+                                    <div className="col-span-12 lg:col-span-4">
+                                        <span className="font-mono text-red-600 text-xs mb-4 block">
+                                            [{String(index + 1).padStart(2, "0")}]
+                                        </span>
 
-                                <div className="col-span-12 lg:col-span-8">
-                                    <div className="work-image-container relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                                        <Image
-                                            src={work.image}
-                                            alt={`${work.name} - ${work.shortdesc} UI UX Design`}
-                                            width={1200}
-                                            height={675}
-                                            sizes="(max-width: 1024px) 100vw, 66vw"
-                                            quality={85}
-                                            className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
-                                            priority={index < 2}
-                                        />
+                                        <h2 className="text-4xl md:text-7xl font-bold mb-6 group-hover:italic transition-all">
+                                            {work.name}
+                                        </h2>
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs uppercase tracking-widest">
+                                            {work.shortdesc}
+                                        </p>
+                                    </div>
+
+                                    <div className="col-span-12 lg:col-span-8">
+                                        <div className="work-image-container relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                                            <Image
+                                                src={work.image}
+                                                alt={`${work.name} - ${work.shortdesc} UI UX Design`}
+                                                width={1200}
+                                                height={675}
+                                                sizes="(max-width: 1024px) 100vw, 66vw"
+                                                quality={100}
+                                                className="w-full h-auto transform scale-100 group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                                                priority={index < 2}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        );
+                    })}
                     {filteredWorks.length === 0 && (
                         <div className="py-32 text-center text-gray-500">
                             <p className="text-xl uppercase tracking-widest">No projects found for "{activeTag}"</p>
