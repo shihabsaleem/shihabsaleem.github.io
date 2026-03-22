@@ -1,6 +1,9 @@
 const nextConfig = {
   output: "export", // for static export
-  images: { unoptimized: true }, // for static export
+  images: { 
+    unoptimized: true, // for static export
+    qualities: [75, 100]
+  },
   // basePath: "", // for static export
   // trailingSlash: true,
 

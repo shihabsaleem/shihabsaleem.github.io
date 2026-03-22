@@ -99,10 +99,15 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {["Work", "About", "Resume", "Contact"].map((item) => (
+            {["Home", "process", "About", "Resume", "Contact"].map((item) => (
               <Link
                 key={item}
-                href={item === "Work" ? "/" : item === "Resume" ? info.cv : `/${item.toLowerCase()}`}
+                href={
+                  item === "Home" ? "/" :
+                    item === "process" ? "/process" :
+                      item === "Resume" ? info.cv :
+                        `/${item.toLowerCase()}`
+                }
                 target={item === "Resume" ? "_blank" : undefined}
                 rel={item === "Resume" ? "noopener noreferrer" : undefined}
                 className="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-600 transition-colors"
@@ -166,10 +171,15 @@ const Navbar = () => {
           className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 mt-4" : "max-h-0"}`}
         >
           <div className="flex flex-col gap-2 py-4 border-t border-zinc-100 dark:border-zinc-800">
-            {["Work", "About", "Resume", "Contact"].map((item) => (
+            {["Home", "process", "About", "Resume", "Contact"].map((item) => (
               <Link
                 key={item}
-                href={item === "Work" ? "/" : item === "Resume" ? info.cv : `/${item.toLowerCase()}`}
+                href={
+                  item === "Home" ? "/" :
+                    item === "process" ? "/process" :
+                      item === "Resume" ? info.cv :
+                        `/${item.toLowerCase()}`
+                }
                 target={item === "Resume" ? "_blank" : undefined}
                 rel={item === "Resume" ? "noopener noreferrer" : undefined}
                 className="mobile-link px-4 py-3 text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-red-600 transition-all"

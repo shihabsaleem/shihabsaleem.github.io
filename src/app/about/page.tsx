@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: "profile",
     images: [
       {
-        url: "/assets/og-shihab.jpg",
+        url: "/assets/og.jpg",
         width: 1200,
         height: 630,
         alt: `About Shihab Saleem - UI UX Designer Portfolio`,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `About Shihab Saleem | UI UX Designer Kerala`,
     description: `Learn about Shihab Saleem's expertise in UI UX design, product strategy, and frontend development.`,
-    images: ["/assets/og-shihab.jpg"],
+    images: ["/assets/og.jpg"],
   },
   alternates: {
     canonical: "/about",

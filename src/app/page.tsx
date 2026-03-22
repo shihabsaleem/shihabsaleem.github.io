@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Shihab Saleem Portfolio",
     images: [
       {
-        url: "/assets/og-shihab.jpg",
+        url: "/assets/og.jpg",
         width: 1200,
         height: 630,
         alt: "Shihab Saleem - UI UX Designer Portfolio",

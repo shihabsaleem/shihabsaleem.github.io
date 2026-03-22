@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import assetData from "@/data/asset";
+import caseStudies from "@/data/casestudy";
 
 export const dynamic = "force-static";
 
@@ -31,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/process`,
+      lastModified: staticLastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/contact`,
       lastModified: staticLastModified,
       changeFrequency: "monthly",
@@ -44,7 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-
   const workPages: MetadataRoute.Sitemap = works
     .map((work) => ({
       url: `${BASE_URL}/${nameToSlug(work.name)}`,
@@ -53,5 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     }));
 
-  return [...staticPages, ...workPages];
+  const processPages: MetadataRoute.Sitemap = caseStudies.map((study) => ({
+    url: `${BASE_URL}/process/${study.slug}`,
+    lastModified: staticLastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...workPages, ...processPages];
 }

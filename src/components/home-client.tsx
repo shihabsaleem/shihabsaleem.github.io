@@ -89,7 +89,8 @@ export default function HomeClient() {
                             ease: "expo.in",
                             scrollTrigger: {
                                 trigger: `.work-${work.id}`,
-                                start: "top 85%",
+                                start: "top 95%",
+                                // markers: true
                             },
                         }
                     );
@@ -105,6 +106,7 @@ export default function HomeClient() {
                 scrollTrigger: {
                     trigger: ".cta-section",
                     start: "top 80%",
+                    // markers: true
                 },
             });
         }, containerRef);
@@ -134,6 +136,11 @@ export default function HomeClient() {
                 Shihab Saleem - UI/UX Designer & Product Designer based in Kerala, India.
                 Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
                 Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
+                <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
+                    <a href={info.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
+                    <a href={info.github} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
+                    <a href={info.insta} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
+                </div>
             </h1>
 
             {/* Texture Overlay */}

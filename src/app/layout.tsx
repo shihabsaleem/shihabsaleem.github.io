@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     siteName: `${info.name} - UI UX Designer Kerala`,
     images: [
       {
-        url: "/assets/og-shihab.jpg",
+        url: "/assets/og.jpg",
         width: 1200,
         height: 630,
         alt: `Shihab Saleem - UI UX Designer & Product Designer Portfolio`,
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: ` ${info.name} | UI UX & Branding Designer in Kerala `,
     description: `Premium UI UX Designer in Kerala crafting seamless digital products and enterprise SaaS designs.`,
     creator: "@shihabrsaleem",
-    images: ["/assets/og-shihab.jpg"],
+    images: ["/assets/og.jpg"],
   },
   robots: {
     index: true,
@@ -174,7 +174,7 @@ export default function RootLayout({
                 "@type": "Person",
                 name: info.name,
                 url: "https://www.shihabsaleem.site",
-                image: "https://www.shihabsaleem.site/assets/og-shihab.jpg",
+                image: "https://www.shihabsaleem.site/assets/og.jpg",
                 jobTitle: "UI UX Designer & Product Designer",
                 description: info.desc,
                 address: {

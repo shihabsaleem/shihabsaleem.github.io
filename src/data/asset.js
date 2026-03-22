@@ -381,7 +381,7 @@ const info = [
     title: "UI/UX Designer & Developer",
     logo: "/assets/shihab.svg",
     pdesc:
-      "I design intuitive digital experiences by blending problem-solving and storytelling, always grounded in a deep understanding of users, their goals, and real-world needs.",
+      "Design intuitive digital experiences by blending problem-solving and storytelling, always grounded in a deep understanding of users, their goals, and real-world needs.",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
     seoDesc:
       "Product Designer and Developer specializing in UI/UX design, user research, and frontend development. Crafting intuitive digital experiences with Figma, React, and modern design systems.",
@@ -391,7 +391,7 @@ const info = [
       "Get in touch with Shihab Saleem for UI/UX design, branding, or web development projects. Available for collaborations and freelance inquiries in Kerala and remotely.",
     dpDark: "/assets/shihab.png",
     dpLight: "/assets/shihab-Light.png",
-    ogImage: "/assets/og-shihab.jpg",
+    ogImage: "/assets/og.jpg",
     siteUrl: "https://www.shihabsaleem.site",
     phone: "+917907689743",
     email: "shihabrsaleem@gmail.com",

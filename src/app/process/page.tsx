@@ -1,0 +1,62 @@
+import Link from "next/link";
+import Image from "next/image";
+import caseStudies from "@/data/casestudy";
+import LegalLinks from "@/components/legal";
+
+export const metadata = {
+  title: "Shihab Saleem - Research Process",
+  description: "Explore in-depth design and development case studies by Shihab Saleem.",
+};
+
+export default function CaseStudiesPage() {
+  return (
+    <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white transition-colors duration-500 pt-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-20">
+        <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter leading-none">
+          Process<span className="text-red-600">.</span>
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+          Look into my design and development process.
+        </p>
+      </div>
+
+      {/* <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {caseStudies.map((study, index) => (
+          <Link
+            key={study.id}
+            href={`/process/${study.slug}`}
+            className="group block cursor-pointer"
+          >
+            <div className="relative w-full aspect-square overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
+              <Image
+                src={study.heroImage}
+                alt={study.name}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+              />
+            </div>
+            <h2 className="text-2xl font-bold mb-2 group-hover:italic transition-all duration-300">
+              {study.name}
+            </h2>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {study.tags.slice(0, 3).map((tag, i) => (
+                <span key={i} className="text-xs font-mono uppercase tracking-widest text-gray-500">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Link>
+        ))}
+      </div> */}
+
+      <h2 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter text-center leading-none">
+        Curating the chaos.<span className="text-red-600">.</span>
+      </h2>
+
+      <div className="py-12 px-6 md:px-12 lg:px-20">
+        <LegalLinks />
+      </div>
+    </div>
+  );
+}
