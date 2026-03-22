@@ -1,5 +1,5 @@
 const nextConfig = {
-  output: "export", // for static export
+  output: process.env.NODE_ENV === "development" ? undefined : "export", // bypass dev mode static param crash
   images: { 
     unoptimized: true, // for static export
     qualities: [75, 100]

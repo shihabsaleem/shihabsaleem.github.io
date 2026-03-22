@@ -4,6 +4,8 @@ import LegalLinks from "@/components/legal";
 import data from "@/data/asset";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = false;
+
 // Create the sorted list (Newest/Highest ID first)
 const sortedWorks = [...data.works].sort((a, b) => b.id - a.id);
 

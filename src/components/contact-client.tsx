@@ -289,7 +289,7 @@ export default function ContactClient() {
                                 <p className="text-2xl md:text-3xl font-light mb-6">
                                     {info.location}
                                 </p>
-                                <div className="text-zinc-400 text-sm">Open to remote work</div>
+                                <div className="text-zinc-400 text-sm">Open to work</div>
                             </div>
                         </div>
                     </div>

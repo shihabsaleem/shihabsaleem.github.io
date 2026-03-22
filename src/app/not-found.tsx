@@ -19,17 +19,28 @@ export default function NotFound() {
         ease: "power4.out",
       });
 
-      // Subtle glitch effect on the 404 text
+      // Subtle infinite glitch effect on the 404 text
       gsap.to(textRef.current, {
-        skewX: 20,
-        duration: 0.1,
+        skewX: 15,
+        x: () => Math.random() * 10 - 5,
+        duration: 0.08,
         repeat: 5,
         yoyo: true,
-        paused: true,
+        repeatDelay: 3,
         onComplete: () => {
-          gsap.set(textRef.current, { skewX: 0 });
+          gsap.set(textRef.current, { skewX: 0, x: 0 });
         },
       });
+      
+      // Additional repeating timeline to re-trigger the glitch
+      gsap.timeline({ repeat: -1, repeatDelay: 4 })
+        .to(textRef.current, {
+          skewX: 20,
+          duration: 0.1,
+          repeat: 3,
+          yoyo: true,
+        })
+        .set(textRef.current, { skewX: 0 });
     }, containerRef);
 
     return () => ctx.revert();
