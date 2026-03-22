@@ -400,7 +400,7 @@ const info = [
     behance: "behance.net/shihabrsaleem",
     insta: "instagram.com/shihabrsaleem",
     twitter: "@shihabrsaleem",
-    cv: "/assets/shihab.pdf",
+    cv: "/assets/shihabrahman_ux.pdf",
     location: "Kerala, India",
   },
 ];
