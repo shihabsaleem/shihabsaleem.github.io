@@ -85,6 +85,6 @@ Licensed under the **MIT License**.
 
 **Shihab Saleem**
 [Portfolio](https://shihabsaleem.site)
-[LinkedIn](https://linkedin.com/in/shihab-rahman)
+[LinkedIn](https://linkedin.com/in/shihab-saleem)
 [GitHub](https://github.com/shihabsaleem)
 

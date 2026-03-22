@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: ` ${info.name} | UI UX & Branding Designer in Kerala `,
     description: `Premium UI UX Designer in Kerala crafting seamless digital products and enterprise SaaS designs.`,
     creator: "@shihabrsaleem",
-    images: ["/assets/og.jpg"],
+    images: [{ url: "/assets/og.jpg", alt: "Shihab Saleem - UI UX Designer & Product Designer Portfolio" }],
   },
   robots: {
     index: true,

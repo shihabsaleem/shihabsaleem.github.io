@@ -58,7 +58,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${work.name} - ${work.shortdesc} by Shihab Saleem`,
       description: work.description,
-      images: [work.image],
+      images: [{ url: work.image, alt: `${work.name} - ${work.shortdesc}` }],
     },
     alternates: {
       canonical: `/${workName}`,
