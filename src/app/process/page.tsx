@@ -11,7 +11,13 @@ export const metadata = {
 export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white transition-colors duration-500 pt-32">
-      {/* <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-20">
+
+      <main className="relative z-10 pt-20">
+        <div className="max-w-3xl px-6 md:px-12 lg:px-20 mb-20">
+          <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
+            Curating the chaos<span className="text-red-600">.</span>
+          </h2>
+        </div></main>{/* <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-20">
         <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter leading-none">
           Process<span className="text-red-600">.</span>
         </h1>
@@ -49,11 +55,7 @@ export default function CaseStudiesPage() {
           </Link>
         ))}
       </div> */}
-<div className="max-w-3xl min-h-72 mx-auto px-6 md:px-12 lg:px-20 mb-20">
-      <h2 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter text-center leading-none">
-        Curating the chaos<span className="text-red-600">.</span>
-      </h2>
-</div>
+
       <div className="py-12 px-6 md:px-12 lg:px-20">
         <LegalLinks />
       </div>

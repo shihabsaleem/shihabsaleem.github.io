@@ -18,8 +18,6 @@ const CATEGORIES = ["All", "UI/UX Design", "Branding", "Development"];
 
 export default function HomeClient() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const [activeCursor, setActiveCursor] = useState(false);
     const [activeTag, setActiveTag] = useState("All");
 
     // Filter works based on generalized categories
@@ -114,17 +112,7 @@ export default function HomeClient() {
         return () => ctx.revert();
     }, [filteredWorks]); // Re-run effect when list changes
 
-    useEffect(() => {
-        const moveCursor = (e: MouseEvent) => {
-            gsap.to(cursorRef.current, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-            });
-        };
-        window.addEventListener("mousemove", moveCursor);
-        return () => window.removeEventListener("mousemove", moveCursor);
-    }, []);
+
 
     return (
         <div
@@ -146,12 +134,7 @@ export default function HomeClient() {
             {/* Texture Overlay */}
             <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-            {/* Cursor - HIDDEN ON TOUCH DEVICES */}
-            <div
-                ref={cursorRef}
-                className={`hidden md:block fixed top-0 left-0 w-4 h-4 bg-black dark:bg-white rounded-full z-[9999] pointer-events-none mix-blend-difference transition-transform duration-500 ${activeCursor ? "scale-[6]" : "scale-100"
-                    }`}
-            />
+
 
             <main className="relative z-10 pt-20">
                 {/* HERO */}
@@ -191,8 +174,6 @@ export default function HomeClient() {
                                 key={work.id}
                                 href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
                                 className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors ${isVisible ? "block" : "hidden"}`}
-                                onMouseEnter={() => setActiveCursor(true)}
-                                onMouseLeave={() => setActiveCursor(false)}
                             >
                                 <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
                                     <div className="col-span-12 lg:col-span-4">

@@ -9,7 +9,6 @@ const info = assetData.info[0];
 export default function ContactClient() {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const cursorRef = useRef<HTMLDivElement>(null);
     const [copiedEmail, setCopiedEmail] = useState(false);
 
     useEffect(() => {
@@ -92,22 +91,7 @@ export default function ContactClient() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    useEffect(() => {
-        const cursor = cursorRef.current;
-        if (!cursor) return;
 
-        const handleMouseMove = (e: MouseEvent) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.3,
-                ease: "power2.out",
-            });
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -203,11 +187,7 @@ export default function ContactClient() {
                 className="absolute inset-0 opacity-40 pointer-events-none"
             />
 
-            <div
-                ref={cursorRef}
-                className="fixed w-8 h-8 border-2 border-red-600 rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block"
-                style={{ transform: "translate(-50%, -50%)" }}
-            />
+
 
             <div className="absolute top-20 left-20 w-96 h-96 bg-red-600/10 dark:bg-red-600/20 rounded-full blur-3xl animate-pulse" />
 
