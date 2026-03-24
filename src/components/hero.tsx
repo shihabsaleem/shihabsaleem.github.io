@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import assetData from "@/data/asset";
+import { IoLogoWhatsapp, IoMail, IoClose } from "react-icons/io5";
 
 const info = assetData.info[0];
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -71,7 +73,93 @@ const Hero = () => {
     return () => ctx.revert();
   }, [isMobile]);
 
-  // Desktop Layout - Keep original design
+  useEffect(() => {
+    if (showPopup) {
+      gsap.fromTo(
+        ".popup-content",
+        { scale: 0.9, opacity: 0, y: 20 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }
+      );
+      gsap.fromTo(
+        ".popup-backdrop",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3 }
+      );
+    }
+  }, [showPopup]);
+  // Common Popup Component
+  const ContactModal = () => (
+    <div 
+      className="popup-backdrop fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) setShowPopup(false);
+      }}
+    >
+      <div 
+        className="popup-content relative w-full max-w-sm bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-3xl p-8 shadow-2xl"
+      >
+        <button 
+          onClick={() => setShowPopup(false)}
+          className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-full transition-colors"
+        >
+          <IoClose size={24} />
+        </button>
+
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-display mb-2">Let's work together</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
+            Choose your preferred way to contact me
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <a
+            href={`https://wa.me/${info.phone.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between w-full p-4 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-2xl transition-all group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-green-500 rounded-xl text-white">
+                <IoLogoWhatsapp size={20} />
+              </div>
+              <div className="text-left">
+                <p className="font-medium text-green-600 dark:text-green-400">WhatsApp</p>
+                <p className="text-xs text-gray-500">Instant response</p>
+              </div>
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-green-500/20 group-hover:bg-green-500 group-hover:text-white transition-all">
+              →
+            </div>
+          </a>
+
+          <a
+            href={`mailto:${info.email}`}
+            className="flex items-center justify-between w-full p-4 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-2xl transition-all group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-red-600 rounded-xl text-white">
+                <IoMail size={20} />
+              </div>
+              <div className="text-left">
+                <p className="font-medium text-red-600 dark:text-red-400">Email</p>
+                <p className="text-xs text-gray-500">Professional inquiries</p>
+              </div>
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center rounded-full border border-red-500/20 group-hover:bg-red-600 group-hover:text-white transition-all">
+              →
+            </div>
+          </a>
+        </div>
+
+        <p className="mt-8 text-center text-xs text-gray-400">
+          Typical response time: <span className="text-gray-600 dark:text-gray-300">Within 24 hours</span>
+        </p>
+      </div>
+    </div>
+  );
+
+  // Desktop Layout
   if (!isMobile) {
     return (
       <div
@@ -91,7 +179,6 @@ const Hero = () => {
 
         <div className="portrait-img absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
           <div className="relative w-full max-w-lg aspect-square">
-            {/* Light mode image */}
             <Image
               src={info.dpLight}
               alt={`${info.name} - UI UX Designer Portfolio Portrait`}
@@ -99,8 +186,6 @@ const Hero = () => {
               className="object-contain block dark:hidden"
               priority
             />
-
-            {/* Dark mode image */}
             <Image
               src={info.dpDark}
               alt={`${info.name} - UI UX Designer Portfolio Portrait (Dark)`}
@@ -117,27 +202,36 @@ const Hero = () => {
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
               {info.pdesc}
             </p>
-            <div
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm cursor-pointer transition-colors hover:border-red-600 dark:hover:border-red-600"
-              onMouseMove={(e) => {
-                const r = e.currentTarget.getBoundingClientRect();
-                gsap.to(e.currentTarget, {
-                  x: (e.clientX - r.left - r.width / 2) * 0.3,
-                  y: (e.clientY - r.top - r.height / 2) * 0.3,
-                  duration: 0.1,
-                });
-              }}
-              onMouseLeave={(e) =>
-                gsap.to(e.currentTarget, {
-                  x: 0,
-                  y: 0,
-                  duration: 0.5,
-                  ease: "elastic.out(1, 0.5)",
-                })
-              }
-            >
-              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse shadow-sm" />
-              <span className="text-sm font-normal">Available for work</span>
+            <div className="flex items-center gap-3 mt-6">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm cursor-pointer transition-colors hover:border-red-600 dark:hover:border-red-600"
+                onMouseMove={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
+                  gsap.to(e.currentTarget, {
+                    x: (e.clientX - r.left - r.width / 2) * 0.3,
+                    y: (e.clientY - r.top - r.height / 2) * 0.3,
+                    duration: 0.1,
+                  });
+                }}
+                onMouseLeave={(e) =>
+                  gsap.to(e.currentTarget, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.5)",
+                  })
+                }
+              >
+                <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse shadow-sm" />
+                <span className="text-sm font-normal">Available for work</span>
+              </div>
+              
+              <button
+                onClick={() => setShowPopup(true)}
+                className="inline-flex items-center gap-2 px-6 py-2 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                Hire me
+              </button>
             </div>
           </div>
 
@@ -206,14 +300,14 @@ const Hero = () => {
             <p className="sr-only">Shihab Saleem is a Product Designer and Frontend Developer in Kerala.</p>
           </div>
         </div>
+        {showPopup && <ContactModal />}
       </div>
     );
   }
 
-  // Mobile Layout - Completely Independent Design
+  // Mobile Layout
   return (
     <div className="relative min-h-screen bg-white dark:bg-black text-black dark:text-white px-6 py-8 flex flex-col overflow-hidden font-sans">
-      {/* Mobile Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <span className="text-sm text-gray-500 block mb-1">Hi, i'm</span>
@@ -222,16 +316,22 @@ const Hero = () => {
             <span className="text-red-600">.</span>
           </h1>
         </div>
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm text-xs">
-          <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse" />
-          <span>Available</span>
+        <div className="flex flex-col gap-2 items-end">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-gray-200 dark:border-gray-800 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm text-xs">
+            <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse" />
+            <span>Available</span>
+          </div>
+          <button
+            onClick={() => setShowPopup(true)}
+            className="px-4 py-1.5 bg-black dark:bg-white text-white dark:text-black rounded-full text-xs font-medium cursor-pointer"
+          >
+            Hire me
+          </button>
         </div>
       </div>
 
-      {/* Portrait */}
       <div className="flex justify-center mb-8">
         <div className="relative w-64 h-64">
-          {/* Light mode image */}
           <Image
             src={info.dpLight}
             alt={`${info.name} - UI UX Designer Portfolio Mobile`}
@@ -239,8 +339,6 @@ const Hero = () => {
             className="object-contain block dark:hidden"
             priority
           />
-
-          {/* Dark mode image */}
           <Image
             src={info.dpDark}
             alt={`${info.name} - UI UX Designer Portfolio Mobile (Dark)`}
@@ -251,7 +349,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Roles */}
       <div className="mb-8">
         <h2 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
           What I Do
@@ -270,14 +367,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Bio */}
-      <div className="mb-8 hidden md:block">
-        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-          {info.pdesc}
-        </p>
-      </div>
-
-      {/* Stats */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div className="bg-gray-50 dark:bg-zinc-900 rounded-2xl p-4 text-center border border-gray-200 dark:border-gray-800">
           <div className="text-2xl font-bold mb-1">3yr+</div>
@@ -289,7 +378,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Social Links */}
       <div className="mt-auto pt-8 border-t border-gray-200 dark:border-gray-800">
         <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-3">
           Connect
@@ -312,6 +400,7 @@ const Hero = () => {
           ))}
         </div>
       </div>
+      {showPopup && <ContactModal />}
     </div>
   );
 };
