@@ -1,130 +1,123 @@
 const caseStudies = [
+
   {
-    id: 1,
-    slug: "inventory-dashboard-ux",
-    name: "Inventory Dashboard",
-    client: "Snack Manufacturing",
-    clientLink: "https://www.jadbery.com/",
-    year: "2024",
-    role: "Lead UI/UX Designer",
-    duration: "6 Weeks",
-    timeline: "Jan 2024 - Feb 2024",
-    platform: "Web Application (Desktop & Tablet)",
-    team: ["1 Product Manager", "1 Lead Designer", "2 Frontend Developers"],
-    tools: ["Figma", "Miro", "Notion", "React"],
-    
-    heroImage: "/assets/inventory/inventory.jpg",
-    overview: "A comprehensive B2B dashboard redesign that centralizes inventory tracking, production workflows, and distribution metrics. The new system replaces fragmented spreadsheets with a visual, intuitive interface—reducing cognitive load for factory floor managers and significantly cutting data entry errors.",
-    
-    // THE PROBLEM
-    theProblem: {
-      title: "Fragmented systems leading to costly fulfillment delays.",
-      description: "Jadbery's factory floor managers were relying on three different legacy systems and physical spreadsheets to track raw materials and final product stock. This disconnect caused a 25% error rate in daily inventory logs, leading to over-purchasing of raw materials and delayed fulfillment times.",
-      goals: [
-        "Unify inventory and production tracking into a single source of truth.",
-        "Reduce onboarding time for new factory floor managers.",
-        "Provide real-time low-stock alerts to the purchasing department."
+    "id": 1,
+    "slug": "invoice-case-study",
+    "name": "Invoice",
+    "client": "Jadbery",
+    "clientLink": "https://jadbery.com/",
+    "year": "2026",
+    "role": "UX Designer & Developer",
+    "duration": "3 weeks",
+    "timeline": "2025",
+    "platform": "Web Application + Chrome Extension",
+    "team": ["1 UX Designer, 1 Developer"],
+    "tools": ["Figma", "Nextjs", "Tailwind CSS", "PDF Generation"],
+
+    "heroImage": "/assets/invoice/invoice.jpg",
+    "overview": "A free, browser-native invoice generator that lets freelancers and small businesses create professional PDF invoices instantly — no account, no subscription, and no data ever leaving the user's device. The tool replaces overweight invoicing platforms with a focused, zero-friction experience built around a live preview and one-click PDF export.",
+
+    "theProblem": {
+      "title": "Invoicing platforms are overkill for freelancers who just need a PDF.",
+      "description": "Freelancers and micro-businesses are forced into subscription-based invoicing platforms designed for larger teams. These tools require account creation, expose sensitive financial data to cloud storage, and bury simple invoice creation behind complex onboarding flows. There was no fast, private, free option for users who only need to generate an occasional invoice.",
+      "goals": [
+        "Eliminate all friction — no sign-up, no payment, no onboarding required.",
+        "Keep all financial data local to the user's browser for complete privacy.",
+        "Deliver a live preview so users see exactly what they'll download before they download it."
       ]
     },
 
-    // RESEARCH & DISCOVERY
-    research: {
-      title: "Understanding the Factory Floor Reality",
-      description: "We started by shadowing shift managers during their daily routines. We discovered that speed and visibility were paramount. Managers couldn't afford to click through 4 layers of menus just to log a batch completion.",
-      insights: [
+    "research": {
+      "title": "Understanding the Freelancer Invoicing Workflow",
+      "description": "The target user is someone who invoices infrequently and values their time. Existing tools were audited alongside common freelancer complaints. The core finding was that users abandoned invoicing tools not because of missing features, but because of unnecessary steps before they could create their first invoice.",
+      "insights": [
         {
-          title: "Speed over Aesthetics",
-          text: "Users needed high-contrast, immediately readable data. Subtle gray text was useless under factory lighting."
+          "title": "Zero Patience for Onboarding",
+          "text": "Users want to create an invoice in under two minutes. Any friction before that — email verification, plan selection, tutorial flows — causes immediate drop-off."
         },
         {
-          title: "The Tablet is King",
-          text: "90% of data entry happened on iPads carried around the warehouse, making touch-friendly targets crucial."
+          "title": "Privacy is a Real Concern",
+          "text": "Freelancers enter sensitive client names, project amounts, and tax IDs. Knowing that data stays in the browser is a meaningful trust signal, not a marketing claim."
         },
         {
-          title: "Status Paralysis",
-          text: "Users couldn't quickly tell if a batch was delayed due to missing ingredients or machine failure without calling someone."
+          "title": "WYSIWYG is Non-Negotiable",
+          "text": "The 'download, check, adjust, repeat' loop is a major pain point. Users want to see the final invoice as they fill in the form."
         }
       ]
     },
 
-    // PERSONAS
-    personas: [
+    "personas": [
       {
-        name: "David, Warehouse Supervisor",
-        quote: "I just need to know what's running out today so the lines don't stop tomorrow.",
-        painPoints: [
-          "Hates manual data entry.",
-          "Frustrated by system timeouts.",
-          "Needs a high-level overview of critical shortages."
+        "name": "Amir, Freelance Developer",
+        "quote": "I invoice maybe five clients a month. I don't need accounting software, I just need a clean PDF fast.",
+        "painPoints": [
+          "Doesn't want to create yet another account for a tool he uses occasionally.",
+          "Frustrated by watermarks and branding on free-tier invoicing tools.",
+          "Wants his invoices to look professional without spending time on formatting."
         ]
       },
       {
-        name: "Sarah, Logistics Coordinator",
-        quote: "If the warehouse numbers are wrong, my delivery schedules are ruined.",
-        painPoints: [
-          "Wastes 2 hours a day cross-referencing spreadsheets.",
-          "Misses urgent dispatch windows due to delayed updates."
+        "name": "Priya, Independent Consultant",
+        "quote": "My clients expect a proper invoice with their details, my details, and a breakdown. That should take two minutes, not twenty.",
+        "painPoints": [
+          "Wastes time exporting and re-formatting PDFs from web-based tools.",
+          "Uncomfortable storing client financial details on third-party cloud platforms."
         ]
       }
     ],
 
-    // IDEATION & WIREFRAMING
-    ideation: {
-      title: "Mapping the New Workflow",
-      description: "We completely restructured the Information Architecture (IA). Instead of organizing by 'Department', we organized by 'Action State' (E.g., Needs Attention, In Production, Ready to Ship). We then moved into low-fidelity wireframing to test these concepts quickly with David and his team.",
-      image: "/assets/inventory/inventory-1.jpg" // You can replace with a sketch/wireframe image later
+    "ideation": {
+      "title": "Stripping the Flow to Its Essentials",
+      "description": "The information architecture was designed around a single linear flow: company details → client details → invoice metadata → line items → download. No menus, no dashboards, no settings pages. The left-right split layout — form on the left, live preview on the right — was chosen to collapse the feedback loop entirely, eliminating the need to navigate away to verify the output.",
+      "image": "/assets/invoice/invoice-1.jpg"
     },
 
-    // HIGH FIDELITY DESIGN
-    design: {
-      title: "Designing for Clarity and Speed",
-      description: "Moving into High-Fidelity, the focus shifted to a robust design system. We implemented a strict color-coding standard: Red for urgent low-stock blocks, Yellow for impending delays, and standard Black/White for nominal data. We ensured all primary actions were reachable with a single thumb tap on an iPad.",
-      features: [
+    "design": {
+      "title": "Designing for Speed and Professional Output",
+      "description": "The UI was kept intentionally minimal to keep focus on the invoice preview. Brand colour selection and logo upload were prioritised as early inputs so the live preview feels personalised from the first interaction. Global currency support and per-item tax fields were included to handle the edge cases that usually force freelancers back to spreadsheets.",
+      "features": [
         {
-          title: "The 'Glance' Dashboard",
-          text: "A modular home screen that immediately surfaces the top 5 urgent actions needed across the factory."
+          "title": "Live Invoice Preview",
+          "text": "A real-time preview renders alongside the form — every keystroke updates the invoice instantly, so the download is always exactly what the user sees."
         },
         {
-          title: "One-Tap Logging",
-          text: "A quick-action drawer that pulls up from the bottom of the screen, allowing users to log stock changes without leaving the current view."
+          "title": "One-Click PDF Export",
+          "text": "No email, no account, no confirmation step. The download button exports a print-ready PDF immediately."
         }
       ],
-      images: [
-        "/assets/inventory/inventory-2.jpg",
-        "/assets/inventory/inventory-3.jpg",
+      "images": [
+        "/assets/invoice/invoice-2.jpg",
+        "/assets/invoice/invoice-3.jpg"
       ]
     },
 
-    // TESTING & ITERATION
-    testing: {
-      title: "Usability Testing & Iteration",
-      description: "We conducted moderated usability tests with 5 warehouse managers. They were asked to log a new shipment of raw materials and check the status of 'Batch 4A'.",
-      feedback: "While logging materials was 60% faster, users struggled to read the 'Batch Status' table. The rows were too dense for quick scanning on a tablet.",
-      iteration: "We increased the row height by 24px, added alternating zebra-striping for contrast, and replaced text-based statuses with distinct recognizable icons."
+    "testing": {
+      "title": "Validation & Iteration",
+      "description": "Early users tested the flow by creating a real invoice for an actual client. The primary task was timed from page load to PDF download.",
+      "feedback": "Users completed the core task quickly but were initially confused about whether the currency selector affected only the symbol or also the number formatting.",
+      "iteration": "Currency labels were updated to show both the symbol and the full currency name (e.g., 'USD — US Dollar') to remove ambiguity. The 'Clear Client' button was made more prominent after users accidentally cleared their own company details instead."
     },
 
-    // OUTCOMES
-    outcomes: {
-      title: "Measurable Business Impact",
-      description: "The new dashboard system was rolled out across the main production facility over two weeks.",
-      metrics: [
-        "40% reduction in daily inventory processing time.",
-        "Inventory discrepancy errors dropped from 25% down to 3%.",
-        "New employee onboarding for the system reduced from 3 days to exactly 4 hours."
+    "outcomes": {
+      "title": "A Zero-Friction Tool That Earns Repeat Use",
+      "description": "Invoice Generator launched as a fully free, no-account tool available on the web and as a Chrome Extension.",
+      "metrics": [
+        "Invoice creation flow completable in under 2 minutes from a cold start.",
+        "Zero server-side data storage — 100% of financial data stays in the user's browser.",
+        "Chrome Extension published, reducing activation time to a single toolbar click."
       ],
-      takeaways: "This project reinforced that enterprise software shouldn't look boring—it should look clear. By designing for the specific physical environment (a brightly lit factory floor with tablets), we solved the actual user problems rather than just making a prettier spreadsheet."
+      "takeaways": "The strongest product decision was choosing to do less. By refusing to add account management, cloud sync, or a feature roadmap driven by enterprise needs, Invoice Generator remains genuinely faster and more private than any paid alternative for its target user. Simplicity, when it's intentional, is a competitive advantage."
     },
 
-    tags: ["UX Research", "UI Design", "Enterprise Dashboard", "Figma", "Usability Testing"],
-    
-    // Bottom Gallery
-    gallery: [
-      "/assets/inventory/inventory-0.jpg",
-      "/assets/inventory/inventory-1.jpg",
-      "/assets/inventory/inventory-2.jpg",
-      "/assets/inventory/inventory-3.jpg",
+    "tags": ["Product Design", "Web App", "Privacy-First", "Developer Tool", "Chrome Extension"],
+
+    "gallery": [
+      "/assets/invoice/invoice-0.jpg",
+      "/assets/invoice/invoice-1.jpg",
+      "/assets/invoice/invoice-2.jpg",
+      "/assets/invoice/invoice-3.jpg"
     ]
   }
-];
+]
 
 export default caseStudies;
