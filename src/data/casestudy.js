@@ -15,13 +15,15 @@ const caseStudies = [
     "tools": ["Figma", "Nextjs", "Tailwind CSS", "PDF Generation"],
 
     "heroImage": "/assets/invoice/invoice.jpg",
-    "overview": "A free, browser-native invoice generator that lets freelancers and small businesses create professional PDF invoices instantly — no account, no subscription, and no data ever leaving the user's device. The tool replaces overweight invoicing platforms with a focused, zero-friction experience built around a live preview and one-click PDF export.",
+    "overview": "A free, browser-native invoice generator built for global freelancers and small businesses who need speed, flexibility, and control. Users can create professional PDF invoices instantly — with any currency, custom branding, and zero sign-up. Unlike traditional invoicing platforms, all data stays on-device, eliminating friction, subscriptions, and privacy concerns.",
 
     "theProblem": {
-      "title": "Invoicing platforms are overkill for freelancers who just need a PDF.",
-      "description": "Freelancers and micro-businesses are forced into subscription-based invoicing platforms designed for larger teams. These tools require account creation, expose sensitive financial data to cloud storage, and bury simple invoice creation behind complex onboarding flows. There was no fast, private, free option for users who only need to generate an occasional invoice.",
+      "title": "Invoicing tools are restrictive, bloated, and not built for global freelancers.",
+      "description": "Freelancers and micro-businesses are forced into subscription-based invoicing platforms designed for larger teams. These tools require account creation, store sensitive financial data in the cloud, and limit flexibility in key areas like currency support and branding. Many platforms only support major currencies, creating friction for users working with local or less common currencies. There was no fast, private, and globally flexible option for users who just need to generate an invoice instantly.",
       "goals": [
         "Eliminate all friction — no sign-up, no payment, no onboarding required.",
+        "Support all global currencies, not just major ones.",
+        "Allow users to customize invoices with their own branding.",
         "Keep all financial data local to the user's browser for complete privacy.",
         "Deliver a live preview so users see exactly what they'll download before they download it."
       ]
@@ -38,6 +40,10 @@ const caseStudies = [
         {
           "title": "Privacy is a Real Concern",
           "text": "Freelancers enter sensitive client names, project amounts, and tax IDs. Knowing that data stays in the browser is a meaningful trust signal, not a marketing claim."
+        },
+        {
+          "title": "Currency Limitations Break Global Workflows",
+          "text": "Many tools only support major currencies like USD or EUR, forcing freelancers working with local or international clients to compromise or switch tools. Currency flexibility is not an edge case — it's a core requirement for global users."
         },
         {
           "title": "WYSIWYG is Non-Negotiable",
@@ -57,7 +63,7 @@ const caseStudies = [
         ]
       },
       {
-        "name": "Priya, Independent Consultant",
+        "name": "Priya, SEO Expert",
         "quote": "My clients expect a proper invoice with their details, my details, and a breakdown. That should take two minutes, not twenty.",
         "painPoints": [
           "Wastes time exporting and re-formatting PDFs from web-based tools.",
@@ -69,25 +75,28 @@ const caseStudies = [
     "ideation": {
       "title": "Stripping the Flow to Its Essentials",
       "description": "The information architecture was designed around a single linear flow: company details → client details → invoice metadata → line items → download. No menus, no dashboards, no settings pages. The left-right split layout — form on the left, live preview on the right — was chosen to collapse the feedback loop entirely, eliminating the need to navigate away to verify the output.",
-      "image": "/assets/invoice/invoice-1.jpg"
+      "image": "/assets/dummy.jpg"
     },
 
     "design": {
       "title": "Designing for Speed and Professional Output",
-      "description": "The UI was kept intentionally minimal to keep focus on the invoice preview. Brand colour selection and logo upload were prioritised as early inputs so the live preview feels personalised from the first interaction. Global currency support and per-item tax fields were included to handle the edge cases that usually force freelancers back to spreadsheets.",
+      "description": "The UI was kept intentionally minimal to maintain focus on the invoice preview. Brand customization (logo and colors) was prioritized early so users immediately see a personalized output. Full global currency support was introduced as a core feature, ensuring users are not restricted to major currencies. Clear currency labeling (symbol + full name) was designed to eliminate ambiguity and improve trust during invoice creation.",
       "features": [
         {
           "title": "Live Invoice Preview",
           "text": "A real-time preview renders alongside the form — every keystroke updates the invoice instantly, so the download is always exactly what the user sees."
+        }, {
+          "title": "Global Currency Support",
+          "text": "Users can select from all international currencies with clear labels and symbols, enabling seamless invoicing for global clients without workarounds."
         },
         {
           "title": "One-Click PDF Export",
           "text": "No email, no account, no confirmation step. The download button exports a print-ready PDF immediately."
-        }
+        },
       ],
       "images": [
-        "/assets/invoice/invoice-2.jpg",
-        "/assets/invoice/invoice-3.jpg"
+        "/assets/dummy.jpg",
+        "/assets/dummy.jpg"
       ]
     },
 
@@ -95,27 +104,28 @@ const caseStudies = [
       "title": "Validation & Iteration",
       "description": "Early users tested the flow by creating a real invoice for an actual client. The primary task was timed from page load to PDF download.",
       "feedback": "Users completed the core task quickly but were initially confused about whether the currency selector affected only the symbol or also the number formatting.",
-      "iteration": "Currency labels were updated to show both the symbol and the full currency name (e.g., 'USD — US Dollar') to remove ambiguity. The 'Clear Client' button was made more prominent after users accidentally cleared their own company details instead."
+      "iteration": "Currency selection was refined to display both symbol and full name (e.g., 'USD — US Dollar') to reduce ambiguity. This clarified whether formatting and symbol were linked. Additional microcopy was introduced to reinforce that all currencies are supported. The 'Clear Client' action was also redesigned to prevent accidental data loss."
     },
 
     "outcomes": {
       "title": "A Zero-Friction Tool That Earns Repeat Use",
-      "description": "Invoice Generator launched as a fully free, no-account tool available on the web and as a Chrome Extension.",
+      "description": "Invoice Generator launched as a fully free, no-account tool available on the web and as a Chrome Extension, positioned as a fast and globally flexible alternative to traditional invoicing platforms.",
       "metrics": [
         "Invoice creation flow completable in under 2 minutes from a cold start.",
+        "Supports all global currencies, removing a key limitation found in competing tools.",
         "Zero server-side data storage — 100% of financial data stays in the user's browser.",
         "Chrome Extension published, reducing activation time to a single toolbar click."
       ],
-      "takeaways": "The strongest product decision was choosing to do less. By refusing to add account management, cloud sync, or a feature roadmap driven by enterprise needs, Invoice Generator remains genuinely faster and more private than any paid alternative for its target user. Simplicity, when it's intentional, is a competitive advantage."
+      "takeaways": "The key product decision was focusing on real user constraints rather than feature parity. By removing friction (no sign-up), enabling global flexibility (currency support), and prioritizing ownership (custom branding and local data storage), the product solves practical problems that most invoicing tools overlook. Simplicity becomes a competitive advantage when it directly aligns with user needs."
     },
 
-    "tags": ["Product Design", "Web App", "Privacy-First", "Developer Tool", "Chrome Extension"],
+    "tags": ["Product Design", "Web App", "Privacy-First", "Social Good", "Developer Tool", "Chrome Extension"],
 
     "gallery": [
-      "/assets/invoice/invoice-0.jpg",
-      "/assets/invoice/invoice-1.jpg",
-      "/assets/invoice/invoice-2.jpg",
-      "/assets/invoice/invoice-3.jpg"
+      "/assets/dummy.jpg",
+      "/assets/dummy.jpg",
+      "/assets/dummy.jpg",
+      "/assets/dummy.jpg"
     ]
   }
 ]

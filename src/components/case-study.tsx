@@ -69,7 +69,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
     <div ref={containerRef} className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
 
       {/* ── HERO ── */}
-      <section className="px-6 md:px-12 lg:px-20 pt-32 pb-24">
+      <section className="px-6 md:px-12 lg:px-20 p-8">
         <div className="max-w-7xl mx-auto">
           {/* Back Link */}
           <div className="mb-12">
@@ -91,27 +91,27 @@ export default function CaseStudy({ slug }: { slug: string }) {
           </h1>
 
           {/* Overview */}
-          <p className="hero-overview text-xl md:text-2xl font-light text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl mb-16">
+          <p className="hero-overview text-md md:text-lg font-light text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-4xl mb-16">
             {caseStudy.overview}
           </p>
 
           {/* Meta grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-zinc-200 dark:border-zinc-800">
             <div className="hero-meta">
-              <div className="text-[9px] font-bold uppercase tracking-widest text-red-600  mb-2">Role</div>
-              <div className="text-lg font-medium">{caseStudy.role}</div>
+              <div className="text-xs font-normal uppercase tracking-widest text-red-600  mb-2">Role</div>
+              <div className="text-md md:text-lg font-medium">{caseStudy.role}</div>
             </div>
             <div className="hero-meta">
-              <div className="text-[9px] font-bold uppercase tracking-widest text-red-600 mb-2">Timeline</div>
-              <div className="text-lg font-medium">{caseStudy.timeline}</div>
+              <div className="text-xs font-normal uppercase tracking-widest text-red-600 mb-2">Timeline</div>
+              <div className="text-md md:text-lg font-medium">{caseStudy.timeline}</div>
             </div>
             <div className="hero-meta">
-              <div className="text-[9px] font-bold uppercase tracking-widest text-red-600 mb-2">Platform</div>
-              <div className="text-lg font-medium">{caseStudy.platform}</div>
+              <div className="text-xs font-normal uppercase tracking-widest text-red-600 mb-2">Platform</div>
+              <div className="text-md md:text-lg font-medium">{caseStudy.platform}</div>
             </div>
             <div className="hero-meta">
-              <div className="text-[9px] font-bold uppercase tracking-widest text-red-600 mb-2">Team</div>
-              <div className="text-lg font-medium">{caseStudy.team.join(", ")}</div>
+              <div className="text-xs font-normal uppercase tracking-widest text-red-600 mb-2">Team</div>
+              <div className="text-md md:text-lg font-medium">{caseStudy.team.join(", ")}</div>
             </div>
           </div>
         </div>
@@ -140,10 +140,10 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               01 — The Problem
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl font-black tracking-tighter leading-tight mb-8">
               {caseStudy.theProblem.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
+            <p className="reveal-up text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.theProblem.description}
             </p>
             <div className="reveal-up border-l-2 border-red-600 pl-8 space-y-4">
@@ -152,7 +152,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
               </div>
               <ul className="space-y-3">
                 {caseStudy.theProblem.goals.map((goal, i) => (
-                  <li key={i} className="flex items-start gap-4 text-lg font-medium">
+                  <li key={i} className="flex items-start gap-4 text-md md:text-lg font-medium">
                     <span className="text-red-600 font-black mt-0.5">—</span>
                     <span>{goal}</span>
                   </li>
@@ -168,10 +168,10 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               02 — Research & Discovery
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl  font-black tracking-tighter leading-tight mb-8">
               {caseStudy.research.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
+            <p className="reveal-up text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.research.description}
             </p>
             <div className="space-y-4">
@@ -183,8 +183,8 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   <span className="text-[9px] font-bold uppercase tracking-widest text-red-600 block mb-3">
                     Insight {idx + 1}
                   </span>
-                  <h4 className="text-xl font-black tracking-tight mb-3">{insight.title}</h4>
-                  <p className="text-lg font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <h4 className="text-md md:text-lg font-black tracking-tight mb-3">{insight.title}</h4>
+                  <p className="text-sm md:text-md font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {insight.text}
                   </p>
                 </div>
@@ -202,10 +202,10 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <div className="space-y-16">
               {caseStudy.personas.map((persona, idx) => (
                 <div key={idx} className="reveal-up pt-12 border-t border-zinc-200 dark:border-zinc-800">
-                  <h4 className="text-3xl md:text-4xl font-black tracking-tighter mb-6">
+                  <h4 className="text-lg md:text-xl font-black tracking-tighter mb-6">
                     {persona.name}
                   </h4>
-                  <p className="text-xl md:text-2xl font-light italic text-zinc-500 dark:text-zinc-400 mb-10 leading-relaxed">
+                  <p className="text-md md:text-lg font-light italic text-zinc-500 dark:text-zinc-400 mb-10 leading-relaxed">
                     "{persona.quote}"
                   </p>
                   <div>
@@ -214,7 +214,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
                     </div>
                     <ul className="space-y-3">
                       {persona.painPoints.map((pain, i) => (
-                        <li key={i} className="flex items-start gap-4 text-lg font-light text-zinc-700 dark:text-zinc-300">
+                        <li key={i} className="flex items-start gap-4 text-md md:text-lg font-light text-zinc-700 dark:text-zinc-300">
                           <span className="text-red-600 font-black mt-0.5">—</span>
                           {pain}
                         </li>
@@ -233,14 +233,14 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               04 — Ideation
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl font-black tracking-tighter leading-tight mb-8">
               {caseStudy.ideation.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
+            <p className="text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.ideation.description}
             </p>
             {caseStudy.ideation.image && (
-              <div className="reveal-up relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000">
+              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000">
                 <Image
                   src={caseStudy.ideation.image}
                   alt="Ideation Process"
@@ -258,33 +258,33 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               05 — Visual Design
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl font-black tracking-tighter leading-tight mb-8">
               {caseStudy.design.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
+            <p className="reveal-up text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.design.description}
             </p>
 
             {caseStudy.design.features && (
-              <div className="space-y-0 mb-16">
+              <div className="space-y-0 mb-12">
                 {caseStudy.design.features.map((feature, idx) => (
-                  <div key={idx} className="reveal-up py-10 border-t border-zinc-200 dark:border-zinc-800">
+                  <div key={idx} className="reveal-up py-8 border-t border-zinc-200 dark:border-zinc-800">
                     <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-3">
                       Feature {idx + 1}
                     </div>
-                    <h4 className="text-xl font-black tracking-tight leading-tight mb-3">{feature.title}</h4>
-                    <p className="text-lg font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">{feature.text}</p>
+                    <h4 className="text-md md:text-lg font-black tracking-tight leading-tight mb-3">{feature.title}</h4>
+                    <p className="text-sm md:text-md font-light text-zinc-600 dark:text-zinc-400 leading-relaxed">{feature.text}</p>
                   </div>
                 ))}
               </div>
             )}
 
             {caseStudy.design.images && (
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {caseStudy.design.images.map((img, idx) => (
                   <div
                     key={idx}
-                    className="reveal-up relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000"
+                    className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000"
                   >
                     <Image src={img} alt={`High Fidelity UI ${idx + 1}`} fill sizes="100vw" className="object-cover" />
                   </div>
@@ -300,18 +300,18 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               06 — Testing
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl font-black tracking-tighter leading-tight mb-8">
               {caseStudy.testing.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-16">
+            <p className="reveal-up text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.testing.description}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="reveal-up p-8 bg-white dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <div className=" gap-6">
+              <div className="reveal-up p-8 mb-6 bg-white dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                 <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">
                   Findings
                 </div>
-                <p className="text-lg font-light text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                <p className="text-md font-light text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {caseStudy.testing.feedback}
                 </p>
               </div>
@@ -319,7 +319,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
                 <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">
                   Iteration
                 </div>
-                <p className="text-lg font-light text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                <p className="text-md font-light text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {caseStudy.testing.iteration}
                 </p>
               </div>
@@ -333,22 +333,22 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               07 — Outcomes
             </span>
-            <h2 className="reveal-up text-3xl md:text-5xl font-black tracking-tighter leading-tight mb-8">
+            <h2 className="reveal-up text-xl md:text-3xl font-black tracking-tighter leading-tight mb-8">
               {caseStudy.outcomes.title}
             </h2>
-            <p className="reveal-up text-xl md:text-2xl font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-16">
+            <p className="reveal-up text-md md:text-lg font-light leading-relaxed text-zinc-700 dark:text-zinc-300 mb-12">
               {caseStudy.outcomes.description}
             </p>
 
             {/* Metrics */}
             {caseStudy.outcomes.metrics && (
-              <div className="mb-16">
+              <div className="mb-12">
                 <div className="reveal-up text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-8">
                   Measurable Impact
                 </div>
                 <div className="space-y-6">
                   {caseStudy.outcomes.metrics.map((metric, idx) => (
-                    <div key={idx} className="reveal-up flex items-center gap-4 text-xl md:text-2xl font-light">
+                    <div key={idx} className="reveal-up flex items-center gap-4 text-md md:text-lg font-light">
                       <span className="text-red-600 font-black tracking-tighter">—</span>
                       <span className="text-zinc-800 dark:text-zinc-200 leading-tight">{metric}</span>
                     </div>
@@ -376,9 +376,9 @@ export default function CaseStudy({ slug }: { slug: string }) {
       {caseStudy.gallery && caseStudy.gallery.length > 0 && (
         <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-12">
+            <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               Project Gallery
-            </div>
+            </span>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {caseStudy.gallery.map((img, idx) => (
                 <div
