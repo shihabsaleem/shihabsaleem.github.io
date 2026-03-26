@@ -132,7 +132,7 @@ export default function HomeClient() {
             </h1>
 
             {/* Texture Overlay */}
-            <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+            <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('/noise.svg')]" />
 
 
 

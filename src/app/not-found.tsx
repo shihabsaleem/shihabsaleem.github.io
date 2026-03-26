@@ -52,7 +52,7 @@ export default function NotFound() {
       className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white flex items-center px-6 md:px-12 lg:px-20 selection:bg-red-600 selection:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Texture Overlay (Consistent with Home) */}
-      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('/noise.svg')]" />
 
       <main className="relative z-10 not-found-content w-full">
         <span className="font-mono text-red-600 text-sm mb-4 block tracking-[0.3em]">
