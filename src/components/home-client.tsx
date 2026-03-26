@@ -125,9 +125,9 @@ export default function HomeClient() {
                 Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
                 Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
                 <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
-                    <a href={info.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
-                    <a href={info.github} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
-                    <a href={info.insta} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
+                    <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
+                    <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
+                    <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
                 </div>
             </h1>
 
@@ -257,10 +257,10 @@ export default function HomeClient() {
 
                             <div className="flex justify-center gap-8">
                                 {[
-                                    { label: "LI", url: info.linkedin },
-                                    { label: "GH", url: info.github },
-                                    { label: "BE", url: info.behance },
-                                    { label: "IN", url: info.insta },
+                                    { label: "LI", url: `https://${info.linkedin}` },
+                                    { label: "GH", url: `https://${info.github}` },
+                                    { label: "BE", url: `https://${info.behance}` },
+                                    { label: "IN", url: `https://${info.insta}` },
                                 ].map((social) => (
                                     <a
                                         key={social.label}

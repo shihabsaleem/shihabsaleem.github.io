@@ -242,10 +242,10 @@ const Hero = () => {
           <div className="flex flex-col items-center lg:items-end gap-8 w-full mt-auto pt-12 lg:pt-0">
             <div className="flex items-center gap-6 hero-content-reveal">
               {[
-                { label: "LinkedIn", url: info.linkedin },
-                { label: "GitHub", url: info.github },
-                { label: "Behance", url: info.behance },
-                { label: "Instagram", url: info.insta },
+                { label: "LinkedIn", url: `https://${info.linkedin}` },
+                { label: "GitHub", url: `https://${info.github}` },
+                { label: "Behance", url: `https://${info.behance}` },
+                { label: "Instagram", url: `https://${info.insta}` },
               ].map((s) => (
                 <a
                   key={s.label}
