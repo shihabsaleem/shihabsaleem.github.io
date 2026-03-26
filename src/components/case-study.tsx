@@ -1,17 +1,19 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import caseStudies from "@/data/casestudy";
 import LegalLinks from "@/components/legal";
+import Lightbox from "@/components/lightbox";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CaseStudy({ slug }: { slug: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const currentIndex = caseStudies.findIndex((cs) => cs.slug === slug);
   const caseStudy = caseStudies[currentIndex] || caseStudies[0];
@@ -49,21 +51,24 @@ export default function CaseStudy({ slug }: { slug: string }) {
         });
       });
 
-      // Gallery animations
-      ScrollTrigger.batch(".gallery-item", {
-        onEnter: (batch) => gsap.from(batch, {
-          opacity: 0,
-          y: 30,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        }),
-        start: "top 90%",
-      });
-
     }, containerRef);
     return () => ctx.revert();
   }, [slug]);
+
+  // Collect all viewable images into a single ordered array
+  const allImages = useMemo(() => {
+    const imgs: { src: string; alt: string }[] = [];
+    imgs.push({ src: caseStudy.heroImage, alt: `${caseStudy.name} Hero` });
+    if (caseStudy.ideation?.image) imgs.push({ src: caseStudy.ideation.image, alt: "Ideation Process" });
+    if (caseStudy.design?.images) caseStudy.design.images.forEach((img: string, i: number) => imgs.push({ src: img, alt: `High Fidelity UI ${i + 1}` }));
+    if (caseStudy.gallery) caseStudy.gallery.forEach((img: string, i: number) => imgs.push({ src: img, alt: `Gallery ${i + 1}` }));
+    return imgs;
+  }, [caseStudy]);
+
+  const openLightbox = (src: string) => {
+    const idx = allImages.findIndex((img) => img.src === src);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
@@ -126,7 +131,8 @@ export default function CaseStudy({ slug }: { slug: string }) {
             fill
             priority
             sizes="100vw"
-            className="object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100"
+            className="object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100 cursor-zoom-in"
+            onClick={() => openLightbox(caseStudy.heroImage)}
           />
         </div>
       </div>
@@ -245,7 +251,8 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   src={caseStudy.ideation.image}
                   alt="Ideation Process"
                   fill
-                  className="object-cover"
+                  className="object-cover cursor-zoom-in"
+                  onClick={() => openLightbox(caseStudy.ideation.image!)}
                 />
               </div>
             )}
@@ -284,9 +291,16 @@ export default function CaseStudy({ slug }: { slug: string }) {
                 {caseStudy.design.images.map((img, idx) => (
                   <div
                     key={idx}
-                    className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000"
+                    className="relative w-full aspect-square rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000"
                   >
-                    <Image src={img} alt={`High Fidelity UI ${idx + 1}`} fill sizes="100vw" className="object-cover" />
+                    <Image
+                      src={img}
+                      alt={`High Fidelity UI ${idx + 1}`}
+                      fill
+                      sizes="100vw"
+                      className="object-cover cursor-zoom-in"
+                      onClick={() => openLightbox(img)}
+                    />
                   </div>
                 ))}
               </div>
@@ -379,14 +393,21 @@ export default function CaseStudy({ slug }: { slug: string }) {
             <span className="reveal-up text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 block mb-6">
               Project Gallery
             </span>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {caseStudy.gallery.map((img, idx) => (
                 <div
                   key={idx}
-                  className={`gallery-item relative aspect-[16/10] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 transition-all duration-700 ${idx === 0 ? "md:col-span-2" : ""
+                  className={`gallery-item relative aspect-square overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 transition-all duration-700 ${idx === 0 ? "md:col-span-2 md:row-span-2" : ""
                     }`}
                 >
-                  <Image src={img} alt={`Gallery ${idx + 1}`} fill sizes="100vw" className="object-cover" />
+                  <Image
+                    src={img}
+                    alt={`Gallery ${idx + 1}`}
+                    fill
+                    sizes={idx === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
+                    className="object-cover cursor-zoom-in hover:scale-105 transition-transform duration-700"
+                    onClick={() => openLightbox(img)}
+                  />
                 </div>
               ))}
             </div>
@@ -432,11 +453,19 @@ export default function CaseStudy({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
       <div className="py-20 px-6 md:px-12 lg:px-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
         <LegalLinks />
       </div>
 
+      {/* ── LIGHTBOX ── */}
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={allImages}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }

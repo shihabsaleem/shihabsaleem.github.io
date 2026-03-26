@@ -1,11 +1,12 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import assetData from "@/data/asset";
+import Lightbox from "@/components/lightbox";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,7 @@ function nameToSlug(name: string): string {
 export default function ProjectPage({ projectId }: { projectId: number }) {
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const project = sortedWorks.find((work) => work.id === projectId) || sortedWorks[0];
 
@@ -57,6 +59,19 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
     }, containerRef);
     return () => ctx.revert();
   }, [projectId]);
+
+  // Collect all project images into a single array for lightbox navigation
+  const allImages = useMemo(() => {
+    return project.images.map((img: string, i: number) => ({
+      src: img,
+      alt: i === 0 ? `${project.name} Main Interface` : `${project.name} Gallery ${i}`,
+    }));
+  }, [project]);
+
+  const openLightbox = (src: string) => {
+    const idx = allImages.findIndex((img: { src: string }) => img.src === src);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+  };
 
   // Navigation logic using descending order
   const currentIndex = sortedWorks.findIndex((work) => work.id === project.id);
@@ -101,7 +116,15 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           </div>
           <div className="hero-image">
             <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-zinc-900/5">
-              <Image src={project.images[0]} alt={`${project.name} - UI UX Design Case Study Main Interface`} width={1200} height={675} className="w-full h-auto" priority />
+              <Image
+                src={project.images[0]}
+                alt={`${project.name} - UI UX Design Case Study Main Interface`}
+                width={1200}
+                height={675}
+                className="w-full h-auto cursor-zoom-in"
+                priority
+                onClick={() => openLightbox(project.images[0])}
+              />
             </div>
           </div>
         </div>
@@ -135,7 +158,14 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="gallery-image">
                 <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
-                  <Image src={image} alt={`${project.name} - ${project.shortdesc} UI Design Screenshot ${index + 1}`} width={800} height={600} className="w-full h-auto hover:scale-105 transition-transform duration-700" />
+                  <Image
+                    src={image}
+                    alt={`${project.name} - ${project.shortdesc} UI Design Screenshot ${index + 1}`}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto hover:scale-105 transition-transform duration-700 cursor-zoom-in"
+                    onClick={() => openLightbox(image)}
+                  />
                 </div>
               </div>
             ))}
@@ -192,6 +222,16 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
           ) : <div />}
         </div>
       </section>
+
+      {/* ── LIGHTBOX ── */}
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={allImages}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }

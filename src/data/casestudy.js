@@ -47,7 +47,7 @@ const caseStudies = [
         },
         {
           "title": "WYSIWYG is Non-Negotiable",
-          "text": "The 'download, check, adjust, repeat' loop is a major pain point. Users want to see the final invoice as they fill in the form."
+          "text": "The [ download - check - adjust - repeat ] loop is a major pain point. Users want to see the final invoice as they fill in the form."
         }
       ]
     },
@@ -75,7 +75,7 @@ const caseStudies = [
     "ideation": {
       "title": "Stripping the Flow to Its Essentials",
       "description": "The information architecture was designed around a single linear flow: company details → client details → invoice metadata → line items → download. No menus, no dashboards, no settings pages. The left-right split layout — form on the left, live preview on the right — was chosen to collapse the feedback loop entirely, eliminating the need to navigate away to verify the output.",
-      "image": "/assets/dummy.jpg"
+      "image": "/assets/case-study/invoice/invoice-cs-1.jpg"
     },
 
     "design": {
@@ -95,8 +95,8 @@ const caseStudies = [
         },
       ],
       "images": [
-        "/assets/dummy.jpg",
-        "/assets/dummy.jpg"
+        "/assets/case-study/invoice/invoice-gallery-1.jpg",
+        "/assets/case-study/invoice/invoice-gallery-2.jpg"
       ]
     },
 
@@ -122,10 +122,11 @@ const caseStudies = [
     "tags": ["Product Design", "Web App", "Privacy-First", "Social Good", "Developer Tool", "Chrome Extension"],
 
     "gallery": [
-      "/assets/dummy.jpg",
-      "/assets/dummy.jpg",
-      "/assets/dummy.jpg",
-      "/assets/dummy.jpg"
+      "/assets/case-study/invoice/invoice-gallery-1.jpg",
+      "/assets/case-study/invoice/invoice-gallery-2.jpg",
+      "/assets/case-study/invoice/invoice-gallery-3.jpg",
+      "/assets/case-study/invoice/invoice-gallery-4.jpg",
+      "/assets/case-study/invoice/invoice-gallery-5.jpg",
     ]
   }
 ]
