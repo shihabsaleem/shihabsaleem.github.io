@@ -78,8 +78,8 @@ export default function CaseStudy({ slug }: { slug: string }) {
         <div className="max-w-7xl mx-auto">
           {/* Back Link */}
           <div className="mb-12">
-            <Link href="/process" className="group inline-flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-red-600 transition-colors">
-              <span className="mr-3 transform transition-transform group-hover:-translate-x-1">←</span> Back to Process
+            <Link href="/case-studies" className="group inline-flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-red-600 transition-colors">
+              <span className="mr-3 transform transition-transform group-hover:-translate-x-1">←</span> Back to Case Studies
             </Link>
           </div>
 
@@ -420,7 +420,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
       <section className="px-6 md:px-12 lg:px-20 py-20 border-t border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-[#050505]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link
-            href={`/process/${prevStudy.slug}`}
+            href={`/case-studies/${prevStudy.slug}`}
             className="group flex flex-col items-start hover:-translate-y-1 transition-transform"
           >
             <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">
@@ -431,7 +431,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
             </span>
           </Link>
 
-          <Link href="/process" className="hidden md:flex flex-col items-center group">
+          <Link href="/case-studies" className="hidden md:flex flex-col items-center group">
             <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">
               Case Studies
             </span>
@@ -441,7 +441,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
           </Link>
 
           <Link
-            href={`/process/${nextStudy.slug}`}
+            href={`/case-studies/${nextStudy.slug}`}
             className="group flex flex-col items-end text-right hover:-translate-y-1 transition-transform"
           >
             <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 group-hover:text-red-600">

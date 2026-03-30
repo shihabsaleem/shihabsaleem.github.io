@@ -14,7 +14,7 @@ const caseStudies = [
     "team": ["1 UX Designer, 1 Developer"],
     "tools": ["Figma", "Nextjs", "Tailwind CSS", "PDF Generation"],
 
-    "heroImage": "/assets/invoice/invoice.jpg",
+    "heroImage": "/assets/case-study/invoice/invoice-cs-1.jpg",
     "overview": "A free, browser-native invoice generator built for global freelancers and small businesses who need speed, flexibility, and control. Users can create professional PDF invoices instantly — with any currency, custom branding, and zero sign-up. Unlike traditional invoicing platforms, all data stays on-device, eliminating friction, subscriptions, and privacy concerns.",
 
     "theProblem": {
@@ -205,8 +205,7 @@ const caseStudies = [
     "ideation": {
       "title": "From Complex Workflow to a Simple Loop",
       "description": "The product was designed around a single core loop: prompt → generate → refine → export. Instead of separating tools, Flow brings everything into one place. The idea was to reduce friction and make ad creation feel like an iterative conversation rather than a technical process.",
-      "image": "/assets/case-study/flow/flow-cs-1.jpg",
-      "image": "/assets/case-study/flow/flow-cs-2.jpg"
+      "image": "/assets/case-study/flow/Flow-cs-1.jpg"
     },
 
     "design": {
@@ -231,8 +230,8 @@ const caseStudies = [
         }
       ],
       "images": [
-        "/assets/case-study/flow/flow-cs-1.jpg",
-        "/assets/case-study/flow/flow-cs-2.jpg"
+        "/assets/case-study/flow/Flow-cs-1.jpg",
+        "/assets/case-study/flow/Flow-cs-2.jpg"
       ]
     },
 
@@ -258,9 +257,9 @@ const caseStudies = [
     "tags": ["AI Product", "UX Design", "Web App", "Creative Tools", "Marketing"],
 
     "gallery": [
-      "/assets/case-study/flow/flow-gallery-1.jpg",
-      "/assets/case-study/flow/flow-gallery-2.jpg",
-      "/assets/case-study/flow/flow-gallery-3.jpg",
+      "/assets/case-study/flow/Flow-gallery-1.jpg",
+      "/assets/case-study/flow/Flow-gallery-2.jpg",
+      "/assets/case-study/flow/Flow-gallery-3.jpg",
     ]
   }
 ]
