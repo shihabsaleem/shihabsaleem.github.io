@@ -6,6 +6,9 @@ import LegalLinks from "@/components/legal";
 export const metadata = {
   title: "Shihab Saleem - Research Process",
   description: "Explore in-depth design and development case studies by Shihab Saleem.",
+  alternates: {
+    canonical: "/process",
+  },
 };
 
 export default function CaseStudiesPage() {

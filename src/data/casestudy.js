@@ -134,7 +134,7 @@ const caseStudies = [
     "name": "Flow",
     "client": "Concept Project",
     "clientLink": "",
-    "year": "2026",
+    "year": "2025",
     "role": "UX Designer",
     "duration": "4 weeks",
     "timeline": "2025",
