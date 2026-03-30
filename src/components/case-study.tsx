@@ -124,14 +124,15 @@ export default function CaseStudy({ slug }: { slug: string }) {
 
       {/* ── HERO IMAGE ── */}
       <div className="hero-image-wrap w-full pb-0">
-        <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden shadow-2xl shadow-zinc-900/10">
+        <div className="relative w-full md:h-[80vh] overflow-hidden shadow-2xl shadow-zinc-900/10">
           <Image
             src={caseStudy.heroImage}
             alt={`${caseStudy.name} Hero`}
-            fill
+            width={1920}
+            height={1080}
             priority
             sizes="100vw"
-            className="object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100 cursor-zoom-in"
+            className="w-full h-auto md:h-full object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100 cursor-zoom-in"
             onClick={() => openLightbox(caseStudy.heroImage)}
           />
         </div>

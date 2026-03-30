@@ -27,23 +27,23 @@ export default function CaseStudiesPage() {
           Process<span className="text-red-600">.</span>
         </h1>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
-          Look into my design and development process.
+          Look into my design process.
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 grid grid-cols-1 md:grid-cols-2 gap-8">
         {caseStudies.map((study, index) => (
           <Link
             key={study.id}
             href={`/process/${study.slug}`}
             className="group block cursor-pointer"
           >
-            <div className="relative w-full aspect-square overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
+            <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
               <Image
                 src={study.heroImage}
                 alt={study.name}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
               />
             </div>

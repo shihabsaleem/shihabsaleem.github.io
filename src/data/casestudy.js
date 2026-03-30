@@ -128,6 +128,140 @@ const caseStudies = [
       "/assets/case-study/invoice/invoice-gallery-4.jpg",
       "/assets/case-study/invoice/invoice-gallery-5.jpg",
     ]
+  }, {
+    "id": 2,
+    "slug": "flow-case-study",
+    "name": "Flow",
+    "client": "Concept Project",
+    "clientLink": "",
+    "year": "2026",
+    "role": "UX Designer",
+    "duration": "4 weeks",
+    "timeline": "2025",
+    "platform": "Web Application",
+    "team": ["1 UX Designer"],
+    "tools": ["Figma", "AI Tools", "FigJam"],
+
+    "heroImage": "/assets/case-study/flow/flow.jpg",
+
+    "overview": "Flow is an AI-powered ad creation platform designed for small businesses, social media managers, and digital marketers who need to produce high-quality ads quickly. It combines prompt-based creative generation with performance insights, helping users move from idea to published ad without relying on designers or complex tools.",
+
+    "theProblem": {
+      "title": "Ad creation is time-consuming, fragmented, and often out of reach for small teams.",
+      "description": "Small businesses and marketers often juggle multiple tools to create ads — design software, copywriting tools, and ad managers. This process is slow, requires creative expertise, and makes it difficult to iterate quickly. Many users lack the time, budget, or skills to produce consistent, high-quality ad creatives, resulting in missed opportunities and underperforming campaigns.",
+      "goals": [
+        "Enable users to generate ad creatives and copy without design skills.",
+        "Reduce the time it takes to go from idea to live ad.",
+        "Centralize campaign insights and spending across platforms.",
+        "Provide inspiration and suggestions to improve ad performance.",
+        "Create a simple, no-code workflow powered by AI."
+      ]
+    },
+
+    "research": {
+      "title": "Understanding How Ads Are Actually Created",
+      "description": "I spoke with small business owners and marketers to understand how they currently create ads. I also reviewed existing tools like Canva and Meta Ads Manager. The biggest insight was that the problem isn’t a lack of tools — it’s the fragmentation between them.",
+      "insights": [
+        {
+          "title": "Too Many Steps, Too Many Tools",
+          "text": "Users switch between design tools, copywriting, and ad platforms. This breaks momentum and slows down iteration."
+        },
+        {
+          "title": "Creative Block is Real",
+          "text": "Users often don’t know what to create. They need inspiration just as much as they need tools."
+        },
+        {
+          "title": "Iteration Matters More Than Perfection",
+          "text": "Marketers care less about a perfect first ad and more about quickly testing multiple variations."
+        },
+        {
+          "title": "Data is Underused",
+          "text": "Campaign insights exist, but users don’t know how to act on them. Suggestions need to be clearer and more actionable."
+        }
+      ]
+    },
+
+    "personas": [
+      {
+        "name": "Sara, Social Media Manager",
+        "quote": "I manage multiple clients — I don’t have time to design every ad from scratch.",
+        "painPoints": [
+          "Switches between tools to design, write, and publish ads.",
+          "Struggles to generate fresh ideas for campaigns.",
+          "Needs to produce content quickly for multiple clients."
+        ]
+      },
+      {
+        "name": "Omar, Small Business Owner",
+        "quote": "I just want something that works. I’m not a designer or a marketer.",
+        "painPoints": [
+          "Lacks design skills and relies on templates.",
+          "Finds ad platforms confusing and overwhelming.",
+          "Needs affordable and fast solutions to promote products."
+        ]
+      }
+    ],
+
+    "ideation": {
+      "title": "From Complex Workflow to a Simple Loop",
+      "description": "The product was designed around a single core loop: prompt → generate → refine → export. Instead of separating tools, Flow brings everything into one place. The idea was to reduce friction and make ad creation feel like an iterative conversation rather than a technical process.",
+      "image": "/assets/case-study/flow/flow-cs-1.jpg",
+      "image": "/assets/case-study/flow/flow-cs-2.jpg"
+    },
+
+    "design": {
+      "title": "Designing for Clarity, Speed, and Creativity",
+      "description": "The interface uses a clean, modular layout to make complex functionality feel simple. A bento-style grid helps organize features like analytics, campaigns, and inspiration without overwhelming the user. The visual style is minimal, with strong use of white space and soft colors to keep the focus on content and output.",
+      "features": [
+        {
+          "title": "FlowGen (AI Ad Generator)",
+          "text": "Users can generate ad visuals and copy using prompts, then refine results by adjusting style, tone, or content in an iterative loop."
+        },
+        {
+          "title": "Smart Dashboard",
+          "text": "A centralized view of ad spend, performance, and platform comparisons, with suggestions like generating similar high-performing ads."
+        },
+        {
+          "title": "Inspiration Engine",
+          "text": "Curated ad examples help users overcome creative block, with one-click prompt generation based on selected ads."
+        },
+        {
+          "title": "Campaign Management",
+          "text": "A simple table view lets users track performance metrics and manage multiple campaigns without complexity."
+        }
+      ],
+      "images": [
+        "/assets/case-study/flow/flow-cs-1.jpg",
+        "/assets/case-study/flow/flow-cs-2.jpg"
+      ]
+    },
+
+    "testing": {
+      "title": "Validation & Iteration",
+      "description": "Users were asked to create an ad from scratch using Flow. The goal was to see how quickly they could go from idea to export.",
+      "feedback": "Users understood the generation flow quickly but sometimes hesitated when writing prompts, unsure what would produce the best results.",
+      "iteration": "Prompt suggestions and example-based generation were introduced to guide users. The inspiration feature was strengthened to reduce blank-page anxiety and help users start faster."
+    },
+
+    "outcomes": {
+      "title": "From Idea to Ad in Minutes",
+      "description": "Flow demonstrates how AI can simplify and accelerate ad creation by combining generation, inspiration, and analytics into one experience.",
+      "metrics": [
+        "Reduced ad creation time from hours to minutes.",
+        "Enabled non-designers to create professional-quality ads.",
+        "Improved iteration speed through prompt-based workflows.",
+        "Centralized creative and performance workflows into a single platform."
+      ],
+      "takeaways": "The biggest insight was that users don’t just need generation — they need guidance. By combining inspiration, suggestions, and iteration into one flow, the product supports both creativity and decision-making. Simplicity and direction are more valuable than raw power."
+    },
+
+    "tags": ["AI Product", "UX Design", "Web App", "Creative Tools", "Marketing"],
+
+    "gallery": [
+      "/assets/case-study/flow/flow-gallery-1.jpg",
+      "/assets/case-study/flow/flow-gallery-2.jpg",
+      "/assets/case-study/flow/flow-gallery-3.jpg",
+    ]
   }
 ]
 
