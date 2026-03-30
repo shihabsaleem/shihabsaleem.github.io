@@ -41,16 +41,16 @@ export default function CaseStudiesPage() {
             href={`/process/${study.slug}`}
             className="group block cursor-pointer"
           >
-            <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
+            <div className="relative w-full aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
               <Image
                 src={study.heroImage}
                 alt={study.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+                className="object-cover hover:grayscale group-hover:grayscale transition-all duration-700 ease-out group-hover:scale-105"
               />
             </div>
-            <h2 className="text-2xl font-bold mb-2 group-hover:italic transition-all duration-300">
+            <h2 className="text-2xl font-bold mb-2 transition-all duration-300">
               {study.name}
             </h2>
             <div className="flex flex-wrap gap-2 mb-4">
