@@ -172,7 +172,7 @@ export default function HomeClient() {
                         return (
                             <Link
                                 key={work.id}
-                                href={`/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
+                                href={`/work/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
                                 className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors ${isVisible ? "block" : "hidden"}`}
                             >
                                 <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">

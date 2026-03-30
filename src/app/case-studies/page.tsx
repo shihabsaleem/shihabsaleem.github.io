@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import caseStudies from "@/data/casestudy";
 import LegalLinks from "@/components/legal";
+import assetData from "@/data/asset";
+
+
+const info = assetData.info[0];
 
 export const metadata = {
   title: "Case Studies | Shihab Saleem",
@@ -13,26 +17,38 @@ export const metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white transition-colors duration-500 pt-32">
+    <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white overflow-x-hidden selection:bg-red-600 selection:text-white transition-colors duration-500"
+    >
+      {/* Hero Section */}
+      <h1 className="sr-only">
+        Shihab Saleem - UI/UX Designer & Product Designer based in Kerala, India.
+        Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
+        Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
+        <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
+          <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
+          <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
+          <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
+        </div>
+      </h1>
 
-      {caseStudies.length === 0 && (
-        <main className="relative z-10 pt-20">
-          <div className="max-w-3xl px-6 md:px-12 lg:px-20 mb-20">
-            <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
-              Curating the chaos<span className="text-red-600">.</span>
-            </h2>
-          </div>
-        </main>
-      )}
+      {/* Texture Overlay */}
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-[url('/noise.svg')]" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-20">
-        <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tighter leading-none">
-          Case Studies  <span className="text-red-600">.</span>
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
-          Look into my design process.
-        </p>
-      </div>
+
+
+      <main className="relative z-10 pt-20">
+        {/* HERO */}
+        <section className=" h-[30vh] md:h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-6 md:pb-10">
+          <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
+            Case
+            <br />
+            Studies<span className="text-red-600">.</span>
+          </h2><p className="text-gray-600 py-4 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+            Look into my design process.
+          </p>
+        </section>
+
+      </main>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 grid grid-cols-1 md:grid-cols-2 gap-8">
         {caseStudies.map((study, index) => (
@@ -67,6 +83,6 @@ export default function CaseStudiesPage() {
       <div className="py-12 px-6 md:px-12 lg:px-20">
         <LegalLinks />
       </div>
-    </div>
+    </div >
   );
 }
