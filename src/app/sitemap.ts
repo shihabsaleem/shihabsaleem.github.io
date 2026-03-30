@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}`,
       lastModified: staticLastModified,
-      changeFrequency: "daily", // Portfolio homepage - update more frequently
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {
@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/process`,
+      url: `${BASE_URL}/case-studies`,
       lastModified: staticLastModified,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -43,12 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    {
-      url: `${BASE_URL}/privacy`,
-      lastModified: staticLastModified,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
+
   ];
 
   const workPages: MetadataRoute.Sitemap = works
@@ -59,12 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     }));
 
-  const processPages: MetadataRoute.Sitemap = caseStudies.map((study) => ({
-    url: `${BASE_URL}/process/${study.slug}`,
+  const caseStudyPages: MetadataRoute.Sitemap = caseStudies.map((study) => ({
+    url: `${BASE_URL}/case-studies/${study.slug}`,
     lastModified: staticLastModified,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  return [...staticPages, ...workPages, ...processPages];
+  return [...staticPages, ...workPages, ...caseStudyPages];
 }

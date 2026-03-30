@@ -38,7 +38,7 @@ export async function generateMetadata({
       ],
     },
     alternates: {
-      canonical: `/process/${slug}`,
+      canonical: `/case-studies/${slug}`,
     },
   };
 }
@@ -78,7 +78,7 @@ export default async function CaseStudyPage({
             "inLanguage": "en-US",
             "datePublished": caseStudy.timeline,
             "genre": caseStudy.platform,
-            "mainEntityOfPage": `https://www.shihabsaleem.site/process/${slug}`
+            "mainEntityOfPage": `https://www.shihabsaleem.site/case-studies/${slug}`
           })
         }}
       />

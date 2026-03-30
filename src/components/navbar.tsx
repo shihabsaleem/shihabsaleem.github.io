@@ -101,7 +101,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {["Home", "process", "About", "Resume", "Contact"].map((item) => {
+            {["Home", "Case Studies", "About", "Resume", "Contact"].map((item) => {
               if (item === "Resume") {
                 return (
                   <a
@@ -122,8 +122,8 @@ const Navbar = () => {
                   key={item}
                   href={
                     item === "Home" ? "/" :
-                      item === "process" ? "/process" :
-                        `/${item.toLowerCase()}`
+                      item === "Case Studies" ? "/case-studies" :
+                        `/${item.toLowerCase().replace(/\s+/g, "")}`
                   }
                   className="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-600 transition-colors"
                   onMouseEnter={handleLinkHover}
@@ -187,7 +187,7 @@ const Navbar = () => {
           className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 mt-4" : "max-h-0"}`}
         >
           <div className="flex flex-col gap-2 py-4 border-t border-zinc-100 dark:border-zinc-800">
-            {["Home", "process", "About", "Resume", "Contact"].map((item) => {
+            {["Home", "Work", "About", "Resume", "Contact"].map((item) => {
               if (item === "Resume") {
                 return (
                   <a
@@ -207,8 +207,8 @@ const Navbar = () => {
                   key={item}
                   href={
                     item === "Home" ? "/" :
-                      item === "process" ? "/process" :
-                        `/${item.toLowerCase()}`
+                      item === "Work" ? "/case-studies" :
+                        `/${item.toLowerCase().replace(/\s+/g, "")}`
                   }
                   className="mobile-link px-4 py-3 text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-red-600 transition-all"
                   onClick={() => setIsOpen(false)}

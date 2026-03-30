@@ -7,7 +7,7 @@ export const metadata = {
   title: "Case Studies | Shihab Saleem",
   description: "Explore in-depth design and development case studies by Shihab Saleem.",
   alternates: {
-    canonical: "/process",
+    canonical: "/case-studies",
   },
 };
 
@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
         {caseStudies.map((study, index) => (
           <Link
             key={study.id}
-            href={`/process/${study.slug}`}
+            href={`/case-studies/${study.slug}`}
             className="group block cursor-pointer"
           >
             <div className="relative w-full aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
