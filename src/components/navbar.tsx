@@ -187,7 +187,7 @@ const Navbar = () => {
           className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 mt-4" : "max-h-0"}`}
         >
           <div className="flex flex-col gap-2 py-4 border-t border-zinc-100 dark:border-zinc-800">
-            {["Home", "Work", "About", "Resume", "Contact"].map((item) => {
+            {["Home", "Case Studies", "About", "Resume", "Contact"].map((item) => {
               if (item === "Resume") {
                 return (
                   <a
@@ -207,7 +207,7 @@ const Navbar = () => {
                   key={item}
                   href={
                     item === "Home" ? "/" :
-                      item === "Work" ? "/case-studies" :
+                      item === "Case Studies" ? "/case-studies" :
                         `/${item.toLowerCase().replace(/\s+/g, "")}`
                   }
                   className="mobile-link px-4 py-3 text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-red-600 transition-all"
