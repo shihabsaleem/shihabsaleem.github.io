@@ -14,7 +14,7 @@ const caseStudies = [
     "team": ["1 UX Designer, 1 Developer"],
     "tools": ["Figma", "Nextjs", "Tailwind CSS", "PDF Generation"],
 
-    "heroImage": "/assets/case-study/invoice/invoice-cs-1.jpg",
+    "heroImage": "/assets/invoice/invoice.jpg",
     "overview": "A free, browser-native invoice generator built for global freelancers and small businesses who need speed, flexibility, and control. Users can create professional PDF invoices instantly — with any currency, custom branding, and zero sign-up. Unlike traditional invoicing platforms, all data stays on-device, eliminating friction, subscriptions, and privacy concerns.",
 
     "theProblem": {
