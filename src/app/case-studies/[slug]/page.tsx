@@ -23,7 +23,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${caseStudy.name} UX Case Study - Shihab Saleem`,
+    title: `${caseStudy.name} UX Case Study`,
     description: caseStudy.overview,
     openGraph: {
       title: `${caseStudy.name} UX Case Study`,
