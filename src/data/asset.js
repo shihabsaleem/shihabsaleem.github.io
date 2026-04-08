@@ -394,7 +394,7 @@ const info = [
     ogImage: "/assets/og.jpg",
     siteUrl: "https://www.shihabsaleem.site",
     phone: "+917907689743",
-    email: "shihabrsaleem@gmail.com",
+    email: "hello@shihabsaleem.site",
     linkedin: "linkedin.com/in/shihab-saleem",
     github: "github.com/shihabsaleem",
     behance: "behance.net/shihabrsaleem",
