@@ -162,6 +162,7 @@ const Hero = () => {
               src={info.dpLight}
               alt={info.name}
               fill
+              sizes="(max-width: 1024px) 288px, 448px"
               className="object-contain block dark:hidden"
               priority
             />
@@ -169,6 +170,7 @@ const Hero = () => {
               src={info.dpDark}
               alt={info.name}
               fill
+              sizes="(max-width: 1024px) 288px, 448px"
               className="object-contain hidden dark:block"
               priority
             />

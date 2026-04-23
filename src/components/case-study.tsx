@@ -252,6 +252,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   src={caseStudy.ideation.image}
                   alt="Ideation Process"
                   fill
+                  sizes="(max-width: 896px) 100vw, 896px"
                   className="object-cover cursor-zoom-in"
                   onClick={() => openLightbox(caseStudy.ideation.image!)}
                 />
