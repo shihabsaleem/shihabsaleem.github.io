@@ -8,31 +8,39 @@ const Education = ({ data = assetData.education }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".edu-heading",
-        { x: -50, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-        }
-      );
+    if (!sectionRef.current) return;
 
-      gsap.fromTo(
-        ".edu-item",
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out",
-          delay: 0.3,
-        }
-      );
-    }, sectionRef);
+    const ctx = gsap.context(() => {
+      const heading = document.querySelector(".edu-heading");
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          { x: -50, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+          }
+        );
+      }
+
+      const items = gsap.utils.toArray(".edu-item");
+      if (items.length > 0) {
+        gsap.fromTo(
+          items,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.3,
+          }
+        );
+      }
+    }, sectionRef.current);
 
     return () => ctx.revert();
   }, []);

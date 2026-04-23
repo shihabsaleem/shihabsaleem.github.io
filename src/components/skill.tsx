@@ -76,19 +76,27 @@ const Skill = () => {
   }, []);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".skill-heading",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
+    if (!sectionRef.current) return;
 
-      gsap.fromTo(
-        ".category-card",
-        { scale: 0.9, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)", delay: 0.2 }
-      );
-    }, sectionRef);
+    const ctx = gsap.context(() => {
+      const heading = document.querySelector(".skill-heading");
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+      }
+
+      const cards = gsap.utils.toArray(".category-card");
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { scale: 0.9, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)", delay: 0.2 }
+        );
+      }
+    }, sectionRef.current);
 
     return () => ctx.revert();
   }, []);

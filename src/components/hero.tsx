@@ -21,35 +21,50 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: "expo.out", duration: 1.2 },
       });
 
-      tl.fromTo(
-        ".hero-bg-text",
-        { opacity: 0, scale: 0.8, y: 50 },
-        { opacity: 0.05, scale: 1, y: 0, duration: 1.5 },
-        0
-      )
-        .fromTo(
+      // Background Text
+      if (document.querySelector(".hero-bg-text")) {
+        tl.fromTo(
+          ".hero-bg-text",
+          { opacity: 0, scale: 0.8, y: 50 },
+          { opacity: 0.05, scale: 1, y: 0, duration: 1.5 },
+          0
+        );
+      }
+
+      // Main Portrait
+      if (document.querySelector(".main-portrait")) {
+        tl.fromTo(
           ".main-portrait",
           { opacity: 0, scale: 1.05, y: 30 },
           { opacity: 1, scale: 1, y: 0, duration: 1.2 },
           0.2
-        )
-        .fromTo(
-          ".floating-card",
+        );
+      }
+
+      // Floating Cards (only if they exist in DOM)
+      const floatingCards = gsap.utils.toArray(".floating-card");
+      if (floatingCards.length > 0) {
+        tl.fromTo(
+          floatingCards,
           { opacity: 0, y: 20, rotateX: -10 },
           { opacity: 1, y: 0, rotateX: 0, stagger: 0.15 },
           0.5
-        )
-        .fromTo(
-          ".hero-content-reveal",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, stagger: 0.08 },
-          0.7
-        )
+        );
+      }
+
+      tl.fromTo(
+        ".hero-content-reveal",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, stagger: 0.08 },
+        0.7
+      )
         .fromTo(
           ".role-tag",
           { opacity: 0, x: 20 },
@@ -69,19 +84,27 @@ const Hero = () => {
           const xPos = (clientX / window.innerWidth - 0.5) * 30;
           const yPos = (clientY / window.innerHeight - 0.5) * 30;
 
-          gsap.to(".main-portrait", { x: xPos * 0.4, y: yPos * 0.4, duration: 0.8 });
-          gsap.to(".hero-bg-text", { x: -xPos * 0.15, y: -yPos * 0.15, duration: 1.2 });
-          gsap.to(".floating-card", {
-            x: (i: number) => xPos * (i + 1) * 0.15,
-            y: (i: number) => yPos * (i + 1) * 0.15,
-            duration: 0.8
-          });
+          if (document.querySelector(".main-portrait")) {
+            gsap.to(".main-portrait", { x: xPos * 0.4, y: yPos * 0.4, duration: 0.8 });
+          }
+          if (document.querySelector(".hero-bg-text")) {
+            gsap.to(".hero-bg-text", { x: -xPos * 0.15, y: -yPos * 0.15, duration: 1.2 });
+          }
+
+          const cards = gsap.utils.toArray(".floating-card");
+          if (cards.length > 0) {
+            gsap.to(cards, {
+              x: (i: number) => xPos * (i + 1) * 0.15,
+              y: (i: number) => yPos * (i + 1) * 0.15,
+              duration: 0.8
+            });
+          }
         };
 
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
       }
-    }, containerRef);
+    }, containerRef.current);
 
     return () => ctx.revert();
   }, [isMobile]);
@@ -147,14 +170,14 @@ const Hero = () => {
     <div ref={containerRef} className="relative min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col overflow-hidden font-sans">
       {/* Background Large Text with Gradient */}
       <div className="hero-bg-text absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-        <h2 className="text-[18vw] font-display uppercase tracking-[-0.05em] opacity-[0.03] dark:opacity-[0.05] leading-none select-none">
+        <h2 className="text-[18vw] font-display tracking-[-0.05em] opacity-[0.03] dark:opacity-[0.05] leading-none select-none">
           {info.name.split(" ")[0]}
         </h2>
       </div>
 
       {/* Main Grid Layout */}
       <div className="relative flex-1 container mx-auto px-6 md:px-12 flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 items-center lg:items-stretch py-12 md:py-20 z-10">
-        
+
         {/* Portrait Image Section (Top on mobile/tablet) */}
         <div className="lg:col-span-4 relative flex items-center justify-center order-1 lg:order-2">
           <div className="main-portrait relative w-72 h-72 lg:w-full lg:max-w-md lg:aspect-[4/5] opacity-0">
@@ -196,7 +219,7 @@ const Hero = () => {
           <div className="hero-content-reveal">
             <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
               <span className="w-8 h-[1px] bg-red-600" />
-              <span className="text-red-600 font-semibold tracking-widest uppercase text-xs">Based in {info.location}</span>
+              <span className="text-red-600 font-semibold tracking-widest uppercase md:text-xs text-[10px]">Based in {info.location}</span>
             </div>
 
             <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base max-w-sm leading-relaxed mb-8">

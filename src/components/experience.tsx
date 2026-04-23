@@ -11,39 +11,46 @@ const Experience = ({ data = assetData.experience }) => {
   const sectionRef = useRef(null);
 
   useLayoutEffect(() => {
+    if (!sectionRef.current) return;
+
     const ctx = gsap.context(() => {
       // 1. Header Fade In
-      gsap.from(".exp-title", {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".exp-title",
-          start: "top 90%",
-        },
-      });
+      const title = document.querySelector(".exp-title");
+      if (title) {
+        gsap.from(title, {
+          opacity: 0,
+          y: 30,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 90%",
+          },
+        });
+      }
 
       // 2. Individual Row Fade In on Scroll
       const rows = gsap.utils.toArray(".exp-row");
-      rows.forEach((row: any) => {
-        gsap.fromTo(
-          row,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: row,
-              start: "top 85%", // Triggers when the top of the row hits 85% of viewport height
-              toggleActions: "play pause resume reset", 
-            },
-          }
-        );
-      });
-    }, sectionRef);
+      if (rows.length > 0) {
+        rows.forEach((row: any) => {
+          gsap.fromTo(
+            row,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: row,
+                start: "top 85%",
+                toggleActions: "play pause resume reset",
+              },
+            }
+          );
+        });
+      }
+    }, sectionRef.current);
 
     return () => ctx.revert();
   }, []);

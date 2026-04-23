@@ -21,25 +21,34 @@ const Navbar = () => {
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
 
+    if (!navRef.current) return;
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        navRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
+      if (navRef.current) {
+        gsap.fromTo(
+          navRef.current,
+          { y: -100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+      }
 
-      gsap.fromTo(
-        logoRef.current,
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "power3.out" }
-      );
+      if (logoRef.current) {
+        gsap.fromTo(
+          logoRef.current,
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "power3.out" }
+        );
+      }
 
-      gsap.fromTo(
-        ".nav-link",
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.5, ease: "power2.out" }
-      );
-    }, navRef);
+      const links = gsap.utils.toArray(".nav-link");
+      if (links.length > 0) {
+        gsap.fromTo(
+          links,
+          { y: -20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.5, ease: "power2.out" }
+        );
+      }
+    }, navRef.current);
 
     return () => ctx.revert();
   }, []);
