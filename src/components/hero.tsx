@@ -28,16 +28,6 @@ const Hero = () => {
         defaults: { ease: "expo.out", duration: 1.2 },
       });
 
-      // Background Text
-      if (document.querySelector(".hero-bg-text")) {
-        tl.fromTo(
-          ".hero-bg-text",
-          { opacity: 0, scale: 0.8, y: 50 },
-          { opacity: 0.05, scale: 1, y: 0, duration: 1.5 },
-          0
-        );
-      }
-
       // Main Portrait
       if (document.querySelector(".main-portrait")) {
         tl.fromTo(
@@ -86,9 +76,6 @@ const Hero = () => {
 
           if (document.querySelector(".main-portrait")) {
             gsap.to(".main-portrait", { x: xPos * 0.4, y: yPos * 0.4, duration: 0.8 });
-          }
-          if (document.querySelector(".hero-bg-text")) {
-            gsap.to(".hero-bg-text", { x: -xPos * 0.15, y: -yPos * 0.15, duration: 1.2 });
           }
 
           const cards = gsap.utils.toArray(".floating-card");
@@ -168,13 +155,6 @@ const Hero = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col overflow-hidden font-sans">
-      {/* Background Large Text with Gradient */}
-      <div className="hero-bg-text absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-        <h2 className="text-[18vw] font-display tracking-[-0.05em] opacity-[0.03] dark:opacity-[0.05] leading-none select-none">
-          {info.name.split(" ")[0]}
-        </h2>
-      </div>
-
       {/* Main Grid Layout */}
       <div className="relative flex-1 container mx-auto px-6 md:px-12 flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 items-center lg:items-stretch py-12 md:py-20 z-10">
 
