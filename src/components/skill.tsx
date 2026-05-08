@@ -106,6 +106,7 @@ const Skill = () => {
   };
 
   const handleCardHover = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) return;
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -121,6 +122,7 @@ const Skill = () => {
   };
 
   const handleCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) return;
     gsap.to(e.currentTarget, {
       rotationY: 0,
       rotationX: 0,
@@ -205,11 +207,11 @@ const Skill = () => {
                       </div>
 
                       <div
-                        className={`transition-all duration-500 ${
-                          isActive ? "max-h-[500px] opacity-100" : "max-h-20 opacity-40"
+                        className={`transition-all duration-700 ease-in-out ${
+                          isActive ? "max-h-[800px] opacity-100" : "max-h-[112px] opacity-50"
                         } overflow-hidden`}
                       >
-                        <div className="space-y-3">
+                        <div className="space-y-3 pb-4">
                           {categorySkills.map((skill) => (
                             <div key={skill} className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 group/skill">
                               <div className="w-1 h-1 rounded-full bg-red-600/40 group-hover/skill:bg-red-600 transition-colors" />

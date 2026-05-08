@@ -505,7 +505,7 @@ const skillCategories = {
     "Shopify",
     "Git & GitHub",
   ],
-  "Accessibility & Standards": [
+  "A11y & Standards": [
     "WCAG",
     "Inclusive Design",
     "Cross-Browser & Cross-Device Consistency",
