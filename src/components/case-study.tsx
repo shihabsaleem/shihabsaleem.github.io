@@ -392,7 +392,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
               {caseStudy.gallery.map((img: string, idx: number) => (
                 <div
                   key={idx}
-                  className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
+                  className="relative w-full aspect-video md:aspect-3/2 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
                 >
                   <MagnifiableImage
                     src={img}

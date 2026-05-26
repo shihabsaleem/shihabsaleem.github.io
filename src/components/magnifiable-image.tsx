@@ -93,7 +93,7 @@ export default function MagnifiableImage({ containerClassName = "", className, .
 
       {mounted && showMagnifier && srcString && createPortal(
         <div
-          className="pointer-events-none fixed z-[9990] bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-200/50 dark:border-zinc-800/50 rounded-xl overflow-hidden"
+          className="pointer-events-none fixed z-9990 bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-200/50 dark:border-zinc-800/50 rounded-xl overflow-hidden"
           style={{
             width: `${MAG_SIZE}px`,
             height: `${MAG_SIZE}px`,

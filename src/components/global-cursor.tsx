@@ -71,11 +71,11 @@ export default function GlobalCursor() {
             {/* Trailing Ring */}
             <div
                 ref={ringRef}
-                className="hidden md:flex items-center justify-center fixed top-0 left-0 w-10 h-10 rounded-full z-[9998] pointer-events-none"
+                className="hidden md:flex items-center justify-center fixed top-0 left-0 w-10 h-10 rounded-full z-9998 pointer-events-none"
                 style={{ marginLeft: "-20px", marginTop: "-20px" }}
             >
                 <div
-                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${
+                    className={`w-full h-full rounded-full transition-all duration-400 ease-out ${
                         hideCursor
                             ? "opacity-0 scale-0"
                             : activeCursor
@@ -88,11 +88,11 @@ export default function GlobalCursor() {
             {/* Primary Dot */}
             <div
                 ref={dotRef}
-                className="hidden md:flex items-center justify-center fixed top-0 left-0 w-2 h-2 rounded-full z-[9999] pointer-events-none"
+                className="hidden md:flex items-center justify-center fixed top-0 left-0 w-2 h-2 rounded-full z-9999 pointer-events-none"
                 style={{ marginLeft: "-4px", marginTop: "-4px" }}
             >
                 <div
-                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${
+                    className={`w-full h-full rounded-full transition-all duration-400 ease-out ${
                         hideCursor || activeCursor
                             ? "scale-0 opacity-0 bg-red-600"
                             : "scale-100 opacity-100 bg-red-600"
