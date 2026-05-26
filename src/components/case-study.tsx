@@ -388,18 +388,17 @@ export default function CaseStudy({ slug }: { slug: string }) {
         <section className="px-6 md:px-16 lg:px-24 py-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto">
             <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-red-600 mb-10">Project Gallery</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            <div className="flex flex-col gap-8 md:gap-12">
               {caseStudy.gallery.map((img: string, idx: number) => (
                 <div
                   key={idx}
-                  className={`relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 ${idx === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
-                    }`}
+                  className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
                 >
                   <MagnifiableImage
                     src={img}
                     alt={`Gallery ${idx + 1}`}
                     fill
-                    sizes={idx === 0 ? "50vw" : "25vw"}
+                    sizes="100vw"
                     className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>

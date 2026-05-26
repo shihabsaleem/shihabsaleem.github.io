@@ -8,6 +8,7 @@ export default function GlobalCursor() {
     const dotRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
     const [activeCursor, setActiveCursor] = useState(false);
+    const [hideCursor, setHideCursor] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -55,6 +56,10 @@ export default function GlobalCursor() {
             } else {
                 setActiveCursor(false);
             }
+
+            // Hide cursor completely over specific containers
+            const shouldHide = target.closest(".hide-global-cursor") !== null || target.classList.contains("hide-global-cursor");
+            setHideCursor(shouldHide);
         };
 
         window.addEventListener("mouseover", handleMouseOver);
@@ -70,10 +75,13 @@ export default function GlobalCursor() {
                 style={{ marginLeft: "-20px", marginTop: "-20px" }}
             >
                 <div
-                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${activeCursor
-                            ? "scale-[2.5] bg-transparent border-[0.5px] border-red-600/30 backdrop-blur-[.3px]"
-                            : "scale-100 bg-transparent border border-black/20 dark:border-white/20"
-                        }`}
+                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${
+                        hideCursor
+                            ? "opacity-0 scale-0"
+                            : activeCursor
+                            ? "scale-[2.5] bg-transparent border-[0.5px] border-red-600/30 backdrop-blur-[.3px] opacity-100"
+                            : "scale-100 bg-transparent border border-black/20 dark:border-white/20 opacity-100"
+                    }`}
                 />
             </div>
 
@@ -84,10 +92,11 @@ export default function GlobalCursor() {
                 style={{ marginLeft: "-4px", marginTop: "-4px" }}
             >
                 <div
-                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${activeCursor
+                    className={`w-full h-full rounded-full transition-all duration-[400ms] ease-out ${
+                        hideCursor || activeCursor
                             ? "scale-0 opacity-0 bg-red-600"
                             : "scale-100 opacity-100 bg-red-600"
-                        }`}
+                    }`}
                 />
             </div>
         </>
