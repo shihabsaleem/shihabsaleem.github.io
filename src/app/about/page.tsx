@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import Hero from "@/components/hero";
+import AboutHero from "@/components/about-hero";
 import Education from "@/components/education";
 import Experience from "@/components/experience";
 import Skill from "@/components/skill";
@@ -48,16 +48,18 @@ export const metadata: Metadata = {
 
 const About = () => {
   return (
-    <div className="min-h-screen px-6 md:px-12 lg:px-20 py-12">
+    <div className="min-h-screen">
       <h1 className="sr-only">
         About Shihab Saleem - UI UX Designer & Product Designer based in Kerala
       </h1>
-      <Hero />
-      <Education />
-      <Experience />
-      <Skill />
+      <AboutHero />
+      <div className="px-6 md:px-12 lg:px-20 py-12">
+        <Education />
+        <Experience />
+        <Skill />
+      </div>
 
-      <div className="mt-16">
+      <div className="mt-16 px-6 md:px-12 lg:px-20 py-12">
         <LegalLinks />
       </div>
     </div>

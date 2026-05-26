@@ -113,13 +113,13 @@ const Hero = () => {
 
   const ContactModal = () => (
     <div
-      className="popup-backdrop fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md"
+      className="popup-backdrop fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md"
       onClick={(e) => {
         if (e.target === e.currentTarget) setShowPopup(false);
       }}
     >
       <div className="popup-content relative w-full max-w-sm bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-3xl p-8 shadow-2xl overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-transparent opacity-50" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-red-600 to-transparent opacity-50" />
         <button onClick={() => setShowPopup(false)} className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-full transition-colors z-10">
           <IoClose size={24} />
         </button>
@@ -136,7 +136,7 @@ const Hero = () => {
                 <p className="text-xs text-gray-400 tracking-wide uppercase">Quickest Reply</p>
               </div>
             </div>
-            <div className="w-10 h-10 flex items-center justify-center rounded-full border border-green-500/10 group-hover:bg-green-500 group-hover:text-white transition-all transform group-hover:rotate-[-45deg]">→</div>
+            <div className="w-10 h-10 flex items-center justify-center rounded-full border border-green-500/10 group-hover:bg-green-500 group-hover:text-white transition-all transform group-hover:rotate-45">→</div>
           </a>
           <a href={`mailto:${info.email}`} className="flex items-center justify-between w-full p-5 bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 hover:border-red-500/30 rounded-2xl transition-all group active:scale-95">
             <div className="flex items-center gap-4">
@@ -146,7 +146,7 @@ const Hero = () => {
                 <p className="text-xs text-gray-400 tracking-wide uppercase">Formal Requests</p>
               </div>
             </div>
-            <div className="w-10 h-10 flex items-center justify-center rounded-full border border-red-500/10 group-hover:bg-red-600 group-hover:text-white transition-all transform group-hover:rotate-[-45deg]">→</div>
+            <div className="w-10 h-10 flex items-center justify-center rounded-full border border-red-500/10 group-hover:bg-red-600 group-hover:text-white transition-all transform group-hover:rotate-45deg">→</div>
           </a>
         </div>
       </div>
@@ -160,7 +160,7 @@ const Hero = () => {
 
         {/* Portrait Image Section (Top on mobile/tablet) */}
         <div className="lg:col-span-4 relative flex items-center justify-center order-1 lg:order-2">
-          <div className="main-portrait relative w-72 h-72 lg:w-full lg:max-w-md lg:aspect-[4/5] opacity-0">
+          <div className="main-portrait relative w-72 h-72 lg:w-full lg:max-w-md lg:aspect-4/5 opacity-0">
             <Image
               src={info.dpLight}
               alt={info.name}
@@ -198,7 +198,7 @@ const Hero = () => {
         <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1 mt-12 lg:mt-0 lg:pr-12 text-center lg:text-left items-center lg:items-start">
           <div className="hero-content-reveal">
             <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
-              <span className="w-8 h-[1px] bg-red-600" />
+              <span className="w-8 h-px bg-red-600" />
               <span className="text-red-600 font-semibold tracking-widest uppercase md:text-xs text-[10px]">Based in {info.location}</span>
             </div>
 
@@ -271,7 +271,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
         <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">Scroll</span>
-        <div className="w-[1px] h-6 bg-gradient-to-b from-red-600 to-transparent animate-pulse" />
+        <div className="w-px h-6 bg-linear-to-b from-red-600 to-transparent animate-pulse" />
       </div>
 
       {showPopup && <ContactModal />}

@@ -163,7 +163,7 @@ export default function HomeClient() {
                                 >
                                     {category}
                                     {isActive && (
-                                        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-red-600 translate-y-[1px]" />
+                                        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-red-600 translate-y-px" />
                                     )}
                                 </button>
                             );
