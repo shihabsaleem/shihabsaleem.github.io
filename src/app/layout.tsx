@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import CookieBanner from "@/components/cookie-banner";
 import GlobalCursor from "@/components/global-cursor";
+import SmoothScroll from "@/components/smooth-scroll";
 import data from "@/data/asset";
 
 const sarina = Sarina({
@@ -212,20 +213,22 @@ export default function RootLayout({
       <body
         className={`${sarina.variable} ${montserrat.variable} antialiased selection:bg-red-600 selection:text-white`}
       >
-        <GlobalCursor />
-        <Navbar />
-        <main>{children}</main>
+        <SmoothScroll>
+          <GlobalCursor />
+          <Navbar />
+          <main>{children}</main>
 
-        {/* Hidden Semantic SEO Content */}
-        <footer className="sr-only">
-          <p>
-            Shihab Saleem is a UI UX Designer and Product Designer in Kerala, India.
-            Specializing in SaaS design, mobile app interface design, and product strategy.
-            Providing premium design solutions for global clients using Figma, React, and Next.js.
-          </p>
-        </footer>
+          {/* Hidden Semantic SEO Content */}
+          <footer className="sr-only">
+            <p>
+              Shihab Saleem is a UI UX Designer and Product Designer in Kerala, India.
+              Specializing in SaaS design, mobile app interface design, and product strategy.
+              Providing premium design solutions for global clients using Figma, React, and Next.js.
+            </p>
+          </footer>
 
-        <CookieBanner />
+          <CookieBanner />
+        </SmoothScroll>
       </body>
     </html>
   );
