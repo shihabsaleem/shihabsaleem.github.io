@@ -161,7 +161,7 @@ const AboutHero = () => {
             </span>
           </div>
 
-          <h1 className="about-reveal text-4xl lg:text-6xl leading-[0.85] font-bold tracking-tighter mb-8 text-black dark:text-white">
+          <h1 className="about-reveal text-6xl leading-[0.85] font-bold tracking-tighter mb-8 text-black dark:text-white">
             Shihab
             <br />
             <span className="text-red-600">Saleem.</span>
