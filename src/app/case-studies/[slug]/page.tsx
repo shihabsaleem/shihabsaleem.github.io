@@ -24,10 +24,10 @@ export async function generateMetadata({
 
   return {
     title: `${caseStudy.name} UX Case Study`,
-    description: caseStudy.overview,
+    description: caseStudy.hook,
     openGraph: {
       title: `${caseStudy.name} UX Case Study`,
-      description: caseStudy.overview,
+      description: caseStudy.hook,
       images: [
         {
           url: caseStudy.heroImage,
@@ -65,7 +65,7 @@ export default async function CaseStudyPage({
             "@context": "https://schema.org",
             "@type": "CreativeWork",
             "name": caseStudy.name,
-            "description": caseStudy.overview,
+            "description": caseStudy.hook,
             "image": `https://www.shihabsaleem.site${caseStudy.heroImage}`,
             "author": {
               "@type": "Person",

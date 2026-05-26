@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import caseStudies from "@/data/casestudy";
+import caseStudies from "@/data/casestudy.js";
 import LegalLinks from "@/components/legal";
 import assetData from "@/data/asset";
 
@@ -51,7 +51,7 @@ export default function CaseStudiesPage() {
       </main>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {caseStudies.map((study, index) => (
+        {caseStudies.map((study: { id: number; slug: string; name: string; heroImage: string; tags: string[] }, index: number) => (
           <Link
             key={study.id}
             href={`/case-studies/${study.slug}`}
@@ -70,7 +70,7 @@ export default function CaseStudiesPage() {
               {study.name}
             </h2>
             <div className="flex flex-wrap gap-2 mb-4">
-              {study.tags.slice(0, 3).map((tag, i) => (
+              {study.tags.slice(0, 3).map((tag: string, i: number) => (
                 <span key={i} className="text-xs font-mono uppercase tracking-widest text-gray-500">
                   {tag}
                 </span>
