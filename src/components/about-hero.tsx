@@ -282,7 +282,7 @@ const AboutHero = () => {
 
           {/* Floating Card: Projects (Bottom Left) */}
           <div className="about-float-card absolute -bottom-10 lg:bottom-10 left-0 lg:-left-24 z-20 px-8 py-6 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-            <p className="text-5xl font-normal mb-1 text-black dark:text-white">30 <span className="text-red-600">+</span></p>
+            <p className="text-2xl md:text-5xl font-normal mb-1 text-black dark:text-white">30 <span className="text-red-600">+</span></p>
             <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500">Projects</p>
           </div>
 
