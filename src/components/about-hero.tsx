@@ -161,7 +161,7 @@ const AboutHero = () => {
             </span>
           </div>
 
-          <h1 className="about-reveal text-6xl lg:text-8xl leading-[0.85] font-black tracking-tighter mb-8 text-black dark:text-white">
+          <h1 className="about-reveal text-4xl lg:text-6xl leading-[0.85] font-bold tracking-tighter mb-8 text-black dark:text-white">
             Shihab
             <br />
             <span className="text-red-600">Saleem.</span>
@@ -172,7 +172,7 @@ const AboutHero = () => {
           </p>
 
           <div className="about-reveal mb-12 ml-4">
-            <p className={`${halimun.className} text-3xl text-red-600 transform -rotate-3 opacity-90`}>
+            <p className={`${halimun.className} text-2xl text-red-600 transform -rotate-3 opacity-90`}>
               Shihab Saleem
             </p>
           </div>
@@ -248,19 +248,19 @@ const AboutHero = () => {
               }}
             >
               {/* Liquid Glass Effect */}
-              <div 
+              <div
                 className="absolute inset-0"
                 style={{
                   backdropFilter: "blur(6px)",
                   WebkitBackdropFilter: "blur(6px)",
                 }}
               />
-              
+
               {/* Liquid Glass Tint (No linear gradient) */}
               <div className="absolute inset-0 bg-white/10 dark:bg-white/5" />
-              
+
               {/* Liquid Glass Shine / Refraction Highlights */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-full"
                 style={{
                   boxShadow: "inset 2px 2px 2px 0 rgba(255, 255, 255, 0.4), inset -1px -1px 2px 1px rgba(255, 255, 255, 0.2)",
@@ -289,9 +289,9 @@ const AboutHero = () => {
               className="object-cover object-top grayscale contrast-125 hidden dark:block"
               priority
             />
-            
+
             {/* Gradient Border Overlay (Opposite of top-right lighting) */}
-            <div 
+            <div
               className="absolute inset-0 rounded-full pointer-events-none z-20"
               style={{
                 padding: "2px",
