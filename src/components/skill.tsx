@@ -10,7 +10,7 @@ const Skill = () => {
   const { skillCategories } = assetData;
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  // Particle animation background - Updated for theme awareness
+  // Particle animation background
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -44,7 +44,6 @@ const Skill = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Check theme for particle visibility
       const isDark = document.documentElement.classList.contains("dark");
       const particleAlpha = isDark ? 0.2 : 0.4;
 
@@ -93,7 +92,14 @@ const Skill = () => {
         gsap.fromTo(
           cards,
           { scale: 0.9, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)", delay: 0.2 }
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "back.out(1.2)",
+            delay: 0.2,
+          }
         );
       }
     }, sectionRef.current);
@@ -105,6 +111,8 @@ const Skill = () => {
     setActiveCategory(activeCategory === category ? null : category);
   };
 
+  // ✅ FIXED: Hover handlers now target the outer wrapper (e.currentTarget)
+  // so GSAP transforms don't interfere with the inner expand logic
   const handleCardHover = (e: React.MouseEvent<HTMLDivElement>) => {
     if (typeof window !== "undefined" && window.innerWidth < 1024) return;
     const card = e.currentTarget;
@@ -135,8 +143,7 @@ const Skill = () => {
   return (
     <section
       ref={sectionRef}
-      /* UPDATED: Theme-consistent backgrounds */
-      className="relative px-6 md:px-12 lg:px-20 py-24  text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
+      className="relative px-6 md:px-12 lg:px-20 py-24 text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
     >
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 
@@ -145,8 +152,7 @@ const Skill = () => {
           <h2 className="skill-heading text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8 text-zinc-900 dark:text-white">
             Skills<span className="text-red-600">.</span>
           </h2>
-          {/* UPDATED: Zinc divider */}
-          <div className="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800" />
+          <div className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -156,25 +162,29 @@ const Skill = () => {
             return (
               <div
                 key={category}
+                // ✅ FIXED: onMouseEnter/Leave moved HERE (outer wrapper)
+                // GSAP animates this element, keeping the inner expand untouched
                 className="category-card perspective-1000"
                 style={{ transformStyle: "preserve-3d" }}
+                onMouseEnter={handleCardHover}
+                onMouseLeave={handleCardLeave}
               >
                 <div
-                  className={`relative cursor-pointer transition-all duration-500`}
+                  // ✅ FIXED: onClick stays here, hover handlers removed
+                  className="relative cursor-pointer transition-all duration-500"
                   onClick={() => handleCardClick(category)}
-                  onMouseEnter={handleCardHover}
-                  onMouseLeave={handleCardLeave}
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <div
                     className={`relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 ${
-                      isActive ? "shadow-2xl shadow-red-600/10 border-red-600/30" : "hover:border-zinc-300 dark:hover:border-zinc-700"
+                      isActive
+                        ? "shadow-2xl shadow-red-600/10 border-red-600/30"
+                        : "hover:border-zinc-300 dark:hover:border-zinc-700"
                     }`}
                   >
                     <div className="relative p-8">
                       <div className="flex items-start justify-between mb-6">
                         <div className="relative">
-                          {/* UPDATED: Numbering color adjusted for zinc */}
                           <div className="absolute -left-2 -top-2 text-6xl font-bold text-zinc-100 dark:text-zinc-800/50">
                             {String(index + 1).padStart(2, "0")}
                           </div>
@@ -193,12 +203,16 @@ const Skill = () => {
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </div>
                       </div>
 
-                      {/* UPDATED: Skill badge colors */}
                       <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-6">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
                         <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
@@ -206,16 +220,24 @@ const Skill = () => {
                         </span>
                       </div>
 
+                      {/* ✅ This expand logic now works freely — no GSAP interference */}
                       <div
                         className={`transition-all duration-700 ease-in-out ${
-                          isActive ? "max-h-[800px] opacity-100" : "max-h-[112px] opacity-50"
+                          isActive
+                            ? "max-h-[800px] opacity-100"
+                            : "max-h-[112px] opacity-50"
                         } overflow-hidden`}
                       >
                         <div className="space-y-3 pb-4">
                           {categorySkills.map((skill) => (
-                            <div key={skill} className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 group/skill">
+                            <div
+                              key={skill}
+                              className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 group/skill"
+                            >
                               <div className="w-1 h-1 rounded-full bg-red-600/40 group-hover/skill:bg-red-600 transition-colors" />
-                              <span className="group-hover/skill:text-red-600 transition-colors font-medium">{skill}</span>
+                              <span className="group-hover/skill:text-red-600 transition-colors font-medium">
+                                {skill}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -223,7 +245,7 @@ const Skill = () => {
                     </div>
 
                     <div
-                      className={`h-1 bg-gradient-to-r from-red-600 to-transparent transition-all duration-500 ${
+                      className={`h-1 bg-linear-to-r from-red-600 to-transparent transition-all duration-500 ${
                         isActive ? "opacity-100" : "opacity-0"
                       }`}
                     />
