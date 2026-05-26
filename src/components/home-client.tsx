@@ -125,9 +125,9 @@ export default function HomeClient() {
                 Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
                 Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
                 <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
-                    <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
-                    <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
-                    <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
+                    <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" >LinkedIn</a>
+                    <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" >GitHub</a>
+                    <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" >Instagram</a>
                 </div>
             </h1>
 
@@ -138,8 +138,8 @@ export default function HomeClient() {
 
             <main className="relative z-10 pt-20">
                 {/* HERO */}
-                <section className=" h-[30vh] md:h-[70vh] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-6 md:pb-10">
-                    <h2 className="text-[14vw] md:text-[10vw] leading-[0.8] font-black  tracking-tighter">
+                <section className="relative z-10 pt-32 pb-8 md:pt-48 md:pb-12 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+                    <h2 className="text-[14vw] md:text-[10vw] leading-[0.85] font-black tracking-tighter text-zinc-900 dark:text-white">
                         Selected
                         <br />
                         Works<span className="text-red-600">.</span>
@@ -147,20 +147,27 @@ export default function HomeClient() {
                 </section>
 
                 {/* COMPONENT: TAGS FILTER */}
-                <section className="px-6 md:px-12 lg:px-20 pb-6 md:pb-10 overflow-x-auto no-scrollbar">
-                    <div className="flex space-x-4 min-w-max">
-                        {CATEGORIES.map((category) => (
-                            <button
-                                key={category}
-                                onClick={() => setActiveTag(category)}
-                                className={`px-4 py-2 rounded-full text-xs font-normal uppercase tracking-widest transition-all duration-300 ${activeTag === category
-                                    ? "bg-black text-white dark:bg-white dark:text-black"
-                                    : "bg-gray-100 text-gray-500 hover:bg-gray-200 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                <section className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pb-0 overflow-x-auto no-scrollbar">
+                    <div className="flex space-x-8 min-w-max border-b border-zinc-200 dark:border-zinc-800">
+                        {CATEGORIES.map((category) => {
+                            const isActive = activeTag === category;
+                            return (
+                                <button
+                                    key={category}
+                                    onClick={() => setActiveTag(category)}
+                                    className={`relative pb-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
+                                        isActive
+                                            ? "text-zinc-900 dark:text-white"
+                                            : "text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300"
                                     }`}
-                            >
-                                {category}
-                            </button>
-                        ))}
+                                >
+                                    {category}
+                                    {isActive && (
+                                        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-red-600 translate-y-[1px]" />
+                                    )}
+                                </button>
+                            );
+                        })}
                     </div>
                 </section>
 
@@ -173,7 +180,7 @@ export default function HomeClient() {
                             <Link
                                 key={work.id}
                                 href={`/work/${work.name.toLowerCase().replace(/\s+/g, "-")}`}
-                                className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.01] transition-colors ${isVisible ? "block" : "hidden"}`}
+                                className={`work-${work.id} group border-b border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 transition-colors ${isVisible ? "block" : "hidden"}`}
                             >
                                 <div className="px-6 md:px-12 lg:px-20 py-12 md:py-24 grid grid-cols-12 gap-8 items-center cursor-pointer">
                                     <div className="col-span-12 lg:col-span-4">
@@ -190,7 +197,7 @@ export default function HomeClient() {
                                     </div>
 
                                     <div className="col-span-12 lg:col-span-8">
-                                        <div className="work-image-container relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                                        <div className="work-image-container relative overflow-hidden rounded-2xl md:rounded-3xl grayscale group-hover:grayscale-0 transition-all duration-700">
                                             <Image
                                                 src={work.image}
                                                 alt={`${work.name} - ${work.shortdesc} UI UX Design`}

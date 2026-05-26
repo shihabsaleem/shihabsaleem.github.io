@@ -87,7 +87,7 @@ export default function CaseStudiesClient() {
                 
                 {/* Image Section */}
                 <Link href={`/case-studies/${study.slug}`} className="w-full lg:w-[60%] block overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer">
-                  <div className="relative w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-zinc-200 dark:bg-zinc-800">
+                  <div className="relative w-full aspect-4/3 md:aspect-16/10 overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                     <Image
                       src={study.heroImage}
                       alt={study.name}
@@ -135,7 +135,7 @@ export default function CaseStudiesClient() {
                     className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors duration-300 relative overflow-hidden group/btn"
                   >
                     <span>View Case Study</span>
-                    <span className="w-8 h-[1px] bg-current transform origin-left group-hover/btn:scale-x-150 transition-transform duration-300" />
+                    <span className="w-8 h-px bg-current transform origin-left group-hover/btn:scale-x-150 transition-transform duration-300" />
                   </Link>
                 </div>
               </div>
