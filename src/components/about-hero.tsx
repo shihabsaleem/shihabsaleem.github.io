@@ -20,19 +20,19 @@ const HALO = {
   neonSize: "112%",          // diameter relative to portrait wrapper
   neonColor: "239,68,68",    // RGB of red-500
   neonOpacity: 0.85,         // border opacity
-  glowSpread: "45px",        // box-shadow spread
-  glowOpacity: 0.55,         // glow alpha
+  glowSpread: "20px",        // box-shadow spread
+  glowOpacity: 0.70,         // glow alpha
   /* Arc mask — conic-gradient */
-  arcFrom: "280deg",         // where the arc begins
+  arcFrom: "325deg",         // where the arc begins
   arcFadeIn: "10%",          // how far into the arc it fades in
-  arcPeak: "18%",            // where it reaches full opacity
-  arcPeakEnd: "68%",         // where it starts fading out
-  arcFadeOut: "78%",         // where it goes back to transparent
+  arcPeak: "15%",            // where it reaches full opacity
+  arcPeakEnd: "32%",         // where it starts fading out
+  arcFadeOut: "37%",         // where it goes back to transparent
   /* Glass / refraction ring */
   glassSize: "118%",
   glassBlur: "18px",
   glassSaturate: "200%",
-  glassBorderOpacity: 0.2,
+  glassBorderOpacity: 0.9,
 };
 
 /* Shared conic mask used by both rings */
@@ -43,7 +43,7 @@ const conicMask = `conic-gradient(
   black ${HALO.arcPeak},
   black ${HALO.arcPeakEnd},
   rgba(0,0,0,0.55) ${HALO.arcFadeOut},
-  transparent 82%,
+  transparent 45%,
   transparent 100%
 )`;
 
@@ -67,8 +67,8 @@ const AboutHero = () => {
 
       tl.fromTo(
         ".halo-neon, .halo-glass",
-        { opacity: 0, scale: 0.85 },
-        { opacity: 1, scale: 1, stagger: 0.18, duration: 1.6, ease: "power2.out" },
+        { opacity: 0, scale: 0.85, xPercent: -50, yPercent: -50 },
+        { opacity: 1, scale: 1, xPercent: -50, yPercent: -50, stagger: 0.18, duration: 1.6, ease: "power2.out" },
         0.35
       );
 
@@ -226,26 +226,12 @@ const AboutHero = () => {
           />
 
           {/*
-           * ─── HALO LAYER 2: Glass / refraction ring ────────────────────────
-           *
-           * Slightly larger than the neon ring. Uses backdrop-filter to
-           * create a frosted-glass / refractive shimmer effect — blurs and
-           * saturates whatever is behind it (background texture, dot grid).
-           *
-           * The same conic mask keeps it on the same arc as the neon ring.
-           * An inner SVG with `mask-image: radial-gradient` cuts out the
-           * center so only the ring band gets the frosted effect (not the
-           * portrait area).
-           *
-           * Key CSS properties:
-           *   backdrop-filter  → blur + saturate for the glass look
-           *   mask-image       → conic arc (outer) + radial hole (inner band)
-           *   border           → very faint tinted border
+           * ─── HALO LAYER 2: Liquid Glass ring ────────────────────────
            */}
           <div
-            className="halo-glass absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+            className="halo-glass absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none isolate"
             style={{
-              width: HALO.glassSize,
+              width: HALO.neonSize, // Aligns exactly with the neon ring border
               aspectRatio: "1 / 1",
               zIndex: 2,
               /* Conic arc mask — same shape as the neon ring */
@@ -253,36 +239,40 @@ const AboutHero = () => {
               maskImage: conicMask,
             }}
           >
-            {/*
-             * Inner div applies the glass backdrop + radial hole mask.
-             * Separating the two masks into parent/child avoids compositing
-             * issues with stacked mask-image values in some browsers.
-             */}
             <div
-              className="w-full h-full rounded-full"
+              className="w-full h-full rounded-full relative overflow-hidden"
               style={{
-                border: `1px solid rgba(${HALO.neonColor}, ${HALO.glassBorderOpacity})`,
-                backdropFilter: `blur(${HALO.glassBlur}) saturate(${HALO.glassSaturate}) contrast(1.1) brightness(1.05)`,
-                WebkitBackdropFilter: `blur(${HALO.glassBlur}) saturate(${HALO.glassSaturate}) contrast(1.1) brightness(1.05)`,
-                filter: "url(#glass-distortion)",
-                /*
-                 * Radial mask punches a hole in the center so the glass
-                 * effect only shows on the ring band (not over the portrait).
-                 * 47% = just inside the neon ring radius.
-                 */
-                WebkitMaskImage: "radial-gradient(circle, transparent 47%, black 49%)",
-                maskImage: "radial-gradient(circle, transparent 47%, black 49%)",
-                /* Subtle dark-side gradient for depth */
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(239,68,68,0.03) 50%, rgba(0,0,0,0.04) 100%)",
+                /* Radial mask punches a hole in the center */
+                WebkitMaskImage: "radial-gradient(circle, transparent 48%, black 50%)",
+                maskImage: "radial-gradient(circle, transparent 48%, black 50%)",
               }}
-            />
+            >
+              {/* Liquid Glass Effect */}
+              <div 
+                className="absolute inset-0"
+                style={{
+                  backdropFilter: "blur(6px)",
+                  WebkitBackdropFilter: "blur(6px)",
+                }}
+              />
+              
+              {/* Liquid Glass Tint (No linear gradient) */}
+              <div className="absolute inset-0 bg-white/10 dark:bg-white/5" />
+              
+              {/* Liquid Glass Shine / Refraction Highlights */}
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  boxShadow: "inset 2px 2px 2px 0 rgba(255, 255, 255, 0.4), inset -1px -1px 2px 1px rgba(255, 255, 255, 0.2)",
+                }}
+              />
+            </div>
           </div>
 
 
 
           {/* Portrait */}
-          <div className="about-portrait-wrap relative w-[80%] lg:w-full aspect-square max-w-sm lg:max-w-md z-10 rounded-full overflow-hidden border border-white/20 dark:border-white/10 bg-white/20 dark:bg-black/20 backdrop-blur-2xl">
+          <div className="about-portrait-wrap relative w-[80%] lg:w-full aspect-square max-w-sm lg:max-w-md z-10 rounded-full overflow-hidden bg-white/20 dark:bg-black/20 backdrop-blur-2xl">
             <Image
               src={info.dpLight}
               alt={info.name}
@@ -298,6 +288,18 @@ const AboutHero = () => {
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover object-top grayscale contrast-125 hidden dark:block"
               priority
+            />
+            
+            {/* Gradient Border Overlay (Opposite of top-right lighting) */}
+            <div 
+              className="absolute inset-0 rounded-full pointer-events-none z-20"
+              style={{
+                padding: "2px",
+                background: "linear-gradient(to top right, rgba(239,68,68,1) 0%, rgba(239,68,68,0) 25%)",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+              }}
             />
           </div>
 
