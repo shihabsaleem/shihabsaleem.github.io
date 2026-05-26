@@ -66,17 +66,17 @@ const Experience = ({ data = assetData.experience }) => {
           <h2 className="exp-title text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8">
             Work History<span className="text-red-600">.</span>
           </h2>
-          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+          <div className="h-px w-full bg-black/10 dark:bg-white/10" />
         </div>
 
         <div className="exp-list">
           {data.map((item, i) => (
             <div
               key={i}
-              className="exp-row group relative border-b border-black/10 dark:border-white/10 hover:bg-black/[0.01] dark:hover:bg-white/[0.02] transition-colors duration-500"
+              className="exp-row group relative border-b border-black/10 dark:border-white/10 hover:bg-black/1 dark:hover:bg-white/2 transition-colors duration-500"
             >
               <div className="grid grid-cols-1 md:grid-cols-12 py-10 md:py-16 items-center gap-6 md:gap-4">
-                
+
                 {/* 1. Counter */}
                 <div className="md:col-span-1 hidden md:block">
                   <span className="font-mono text-xs text-gray-400 group-hover:text-red-600 transition-colors duration-300">
@@ -97,7 +97,7 @@ const Experience = ({ data = assetData.experience }) => {
                     {item.Designation}
                   </h3>
                   <div className="mt-4 flex items-center gap-3">
-                    <span className="h-[1px] w-6 bg-red-600 opacity-50" />
+                    <span className="h-px w-6 bg-red-600 opacity-50" />
                     <a
                       href={item.CLink}
                       target="_blank"
@@ -111,23 +111,23 @@ const Experience = ({ data = assetData.experience }) => {
 
                 {/* 4. Action Icon - Legibility Optimized */}
                 <div className="hidden md:flex md:col-span-2 lg:col-span-1 justify-start md:justify-end">
-                   <a
-                     href={item.CLink}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-500 shadow-sm cursor-pointer"
-                   >
-                      <svg 
-                        width="14" 
-                        height="14" 
-                        viewBox="0 0 15 15" 
-                        fill="none" 
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="group-hover:rotate-45 transition-transform duration-500"
-                      >
-                        <path d="M1 14L14 1M14 1H5M14 1V10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                   </a>
+                  <a
+                    href={item.CLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-500 shadow-sm cursor-pointer"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="group-hover:rotate-45 transition-transform duration-500"
+                    >
+                      <path d="M1 14L14 1M14 1H5M14 1V10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>

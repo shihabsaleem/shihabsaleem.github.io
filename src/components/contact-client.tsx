@@ -223,7 +223,7 @@ export default function ContactClient() {
                         onClick={handleCopyEmail}
                         style={{ transformStyle: "preserve-3d" }}
                     >
-                        <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
+                        <div className="relative h-full bg-zinc-50 dark:bg-linear-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
                             <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div className="relative z-10">
                                 <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
@@ -250,7 +250,7 @@ export default function ContactClient() {
                         style={{ transformStyle: "preserve-3d" }}
                     >
                         <a href={`tel:${info.phone}`} className="block h-full">
-                            <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
+                            <div className="relative h-full bg-zinc-50 dark:bg-linear-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
                                 <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="relative z-10">
                                     <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
@@ -277,7 +277,7 @@ export default function ContactClient() {
                         onMouseLeave={handleCardLeave}
                         style={{ transformStyle: "preserve-3d" }}
                     >
-                        <div className="relative h-full bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
+                        <div className="relative h-full bg-zinc-50 dark:bg-linear-to-br dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-red-600/20 rounded-3xl p-8 md:p-12 overflow-hidden group">
                             <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div className="relative z-10">
                                 <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">

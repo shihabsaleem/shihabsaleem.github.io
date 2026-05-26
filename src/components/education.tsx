@@ -117,7 +117,7 @@ const Education = ({ data = assetData.education }) => {
           <h2 className="edu-heading text-[8vw] md:text-[5vw] font-black uppercase leading-[0.8] tracking-tighter mb-8 text-zinc-900 dark:text-white">
             Education<span className="text-red-600">.</span>
           </h2>
-          <div className="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800" />
+          <div className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 perspective-1000">
@@ -129,11 +129,11 @@ const Education = ({ data = assetData.education }) => {
               onMouseMove={handleItemHover}
               onMouseLeave={handleItemLeave}
             >
-              <div 
+              <div
                 className="relative h-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-zinc-200 dark:border-zinc-800/80 hover:border-red-600/30 dark:hover:border-red-600/30 transition-all duration-300 hover:shadow-[0_30px_60px_-15px_rgba(220,38,38,0.1)] overflow-hidden flex flex-col justify-between"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                
+
                 {/* Background decorative glow */}
                 <div className="absolute -right-20 -top-20 w-40 h-40 bg-red-600/5 dark:bg-red-600/10 rounded-full blur-3xl pointer-events-none group-hover:scale-150 transition-transform duration-700" />
 
@@ -143,7 +143,7 @@ const Education = ({ data = assetData.education }) => {
                     <span className="edu-dot w-2 h-2 rounded-full border-2 border-red-600 transition-all duration-300" />
                     {edu.start} — {edu.end}
                   </span>
-                  
+
                   {/* Floating index indicator */}
                   <span className="text-4xl font-mono font-black text-zinc-100 dark:text-zinc-800/40 select-none tracking-tighter">
                     {String(index + 1).padStart(2, "0")}
@@ -155,21 +155,21 @@ const Education = ({ data = assetData.education }) => {
                   <h3 className="text-2xl md:text-3xl font-black mb-4 group-hover:text-red-600 transition-colors leading-tight text-zinc-900 dark:text-white">
                     {edu.qualification}
                   </h3>
-                  
+
                   <div className="flex items-center gap-3 mb-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-600/50" />
                     <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-300 font-bold tracking-tight">
                       {edu.College}
                     </p>
                   </div>
-                  
+
                   <p className="text-sm font-mono text-zinc-400 dark:text-zinc-500 pl-4 border-l border-zinc-200 dark:border-zinc-800 py-0.5">
                     {edu.Aff}
                   </p>
                 </div>
 
                 {/* Bottom line decorative highlight */}
-                <div className="edu-line absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-red-600 via-red-500 to-transparent transform scale-x-0 origin-left" />
+                <div className="edu-line absolute bottom-0 left-0 right-0 h-[3px] bg-linear-to-r from-red-600 via-red-500 to-transparent transform scale-x-0 origin-left" />
               </div>
             </div>
           ))}
