@@ -1,19 +1,17 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, useMemo } from "react";
-import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import caseStudies from "@/data/casestudy";
 import LegalLinks from "@/components/legal";
-import Lightbox from "@/components/lightbox";
+import MagnifiableImage from "@/components/magnifiable-image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CaseStudy({ slug }: { slug: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const currentIndex = caseStudies.findIndex((cs) => cs.slug === slug);
   const caseStudy = caseStudies[currentIndex] || caseStudies[0];
@@ -54,21 +52,6 @@ export default function CaseStudy({ slug }: { slug: string }) {
     }, containerRef);
     return () => ctx.revert();
   }, [slug]);
-
-  // Collect all viewable images into a single ordered array
-  const allImages = useMemo(() => {
-    const imgs: { src: string; alt: string }[] = [];
-    imgs.push({ src: caseStudy.heroImage, alt: `${caseStudy.name} Hero` });
-    if (caseStudy.ideation?.image) imgs.push({ src: caseStudy.ideation.image, alt: "Ideation Process" });
-    if (caseStudy.design?.images) caseStudy.design.images.forEach((img: string, i: number) => imgs.push({ src: img, alt: `High Fidelity UI ${i + 1}` }));
-    if (caseStudy.gallery) caseStudy.gallery.forEach((img: string, i: number) => imgs.push({ src: img, alt: `Gallery ${i + 1}` }));
-    return imgs;
-  }, [caseStudy]);
-
-  const openLightbox = (src: string) => {
-    const idx = allImages.findIndex((img) => img.src === src);
-    setLightboxIndex(idx >= 0 ? idx : 0);
-  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
@@ -125,15 +108,14 @@ export default function CaseStudy({ slug }: { slug: string }) {
       {/* ── HERO IMAGE ── */}
       <div className="hero-image-wrap w-full pb-0">
         <div className="relative w-full md:h-[80vh] overflow-hidden shadow-2xl shadow-zinc-900/10">
-          <Image
+          <MagnifiableImage
             src={caseStudy.heroImage}
             alt={`${caseStudy.name} Hero`}
             width={1920}
             height={1080}
             priority
             sizes="100vw"
-            className="w-full h-auto md:h-full object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100 cursor-zoom-in"
-            onClick={() => openLightbox(caseStudy.heroImage)}
+            className="w-full h-auto md:h-full object-cover transition-all duration-1000 ease-in-out scale-105 hover:scale-100"
           />
         </div>
       </div>
@@ -247,14 +229,13 @@ export default function CaseStudy({ slug }: { slug: string }) {
               {caseStudy.ideation.description}
             </p>
             {caseStudy.ideation.image && (
-              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000">
-                <Image
+              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000">
+                <MagnifiableImage
                   src={caseStudy.ideation.image}
                   alt="Ideation Process"
                   fill
                   sizes="(max-width: 896px) 100vw, 896px"
-                  className="object-cover cursor-zoom-in"
-                  onClick={() => openLightbox(caseStudy.ideation.image!)}
+                  className="object-cover"
                 />
               </div>
             )}
@@ -295,13 +276,12 @@ export default function CaseStudy({ slug }: { slug: string }) {
                     key={idx}
                     className="relative w-full aspect-square rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-all duration-1000"
                   >
-                    <Image
+                    <MagnifiableImage
                       src={img}
                       alt={`High Fidelity UI ${idx + 1}`}
                       fill
                       sizes="100vw"
-                      className="object-cover cursor-zoom-in"
-                      onClick={() => openLightbox(img)}
+                      className="object-cover"
                     />
                   </div>
                 ))}
@@ -402,13 +382,12 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   className={`gallery-item relative aspect-square overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 transition-all duration-700 ${idx === 0 ? "md:col-span-2 md:row-span-2" : ""
                     }`}
                 >
-                  <Image
+                  <MagnifiableImage
                     src={img}
                     alt={`Gallery ${idx + 1}`}
                     fill
                     sizes={idx === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-                    className="object-cover cursor-zoom-in hover:scale-105 transition-transform duration-700"
-                    onClick={() => openLightbox(img)}
+                    className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               ))}
@@ -459,15 +438,6 @@ export default function CaseStudy({ slug }: { slug: string }) {
         <LegalLinks />
       </div>
 
-      {/* ── LIGHTBOX ── */}
-      {lightboxIndex !== null && (
-        <Lightbox
-          images={allImages}
-          currentIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
-          onNavigate={setLightboxIndex}
-        />
-      )}
     </div>
   );
 }

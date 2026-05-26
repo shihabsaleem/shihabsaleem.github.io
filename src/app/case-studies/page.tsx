@@ -25,9 +25,9 @@ export default function CaseStudiesPage() {
         Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
         Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
         <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
-          <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">LinkedIn</a>
-          <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">GitHub</a>
-          <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 dark:hover:text-red-600 transition-all duration-300">Instagram</a>
+          <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" className=" dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 transition-all duration-300">LinkedIn</a>
+          <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" className=" dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600  transition-all duration-300">GitHub</a>
+          <a href={`https://${info.insta}`} target="_blank" rel="noopener noreferrer" className=" dark:hover:text-white hover:underline underline-offset-8 hover:text-red-600 transition-all duration-300">Instagram</a>
         </div>
       </h1>
 
@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
             href={`/case-studies/${study.slug}`}
             className="group block cursor-pointer"
           >
-            <div className="relative w-full aspect-[2/1] overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
+            <div className="relative w-full aspect-2/1 overflow-hidden bg-gray-100 dark:bg-zinc-900 mb-6 rounded-sm">
               <Image
                 src={study.heroImage}
                 alt={study.name}
