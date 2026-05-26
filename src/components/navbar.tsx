@@ -90,7 +90,7 @@ const Navbar = () => {
     <nav
       ref={navRef}
       /* UPDATED: Glass effect using Zinc palette */
-      className="fixed z-50 w-full top-0 left-0 backdrop-blur-md bg-white/70 dark:bg-[#050505]/70 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-500"
+      className="fixed z-[60] w-full top-0 left-0 backdrop-blur-md bg-white/70 dark:bg-[#050505]/70 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-500"
     >
       <div className="container mx-auto px-6 sm:px-8 py-4">
         <div className="flex items-center justify-between">
