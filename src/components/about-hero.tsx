@@ -12,30 +12,23 @@ const halimun = localFont({ src: "../../public/Halimun.ttf" });
 
 const info = assetData.info[0];
 
-/* ─────────────────────────────────────────────
-   HALO CONSTANTS  — tweak these to taste
-───────────────────────────────────────────── */
 const HALO = {
-  /* Neon ring */
-  neonSize: "112%",          // diameter relative to portrait wrapper
-  neonColor: "239,68,68",    // RGB of red-500
-  neonOpacity: 0.85,         // border opacity
-  glowSpread: "20px",        // box-shadow spread
-  glowOpacity: 0.70,         // glow alpha
-  /* Arc mask — conic-gradient */
-  arcFrom: "325deg",         // where the arc begins
-  arcFadeIn: "10%",          // how far into the arc it fades in
-  arcPeak: "15%",            // where it reaches full opacity
-  arcPeakEnd: "32%",         // where it starts fading out
-  arcFadeOut: "37%",         // where it goes back to transparent
-  /* Glass / refraction ring */
+  neonSize: "112%",
+  neonColor: "231,0,11",
+  neonOpacity: 0.85,
+  glowSpread: "20px",
+  glowOpacity: 0.70,
+  arcFrom: "325deg",
+  arcFadeIn: "10%",
+  arcPeak: "15%",
+  arcPeakEnd: "32%",
+  arcFadeOut: "37%",
   glassSize: "118%",
   glassBlur: "18px",
   glassSaturate: "200%",
   glassBorderOpacity: 0.9,
 };
 
-/* Shared conic mask used by both rings */
 const conicMask = `conic-gradient(
   from ${HALO.arcFrom} at center,
   transparent 0%,
@@ -194,20 +187,7 @@ const AboutHero = () => {
         {/* ── Center: Portrait + Halo ── */}
         <div className="lg:col-span-4 relative flex items-center justify-center order-1 lg:order-2 h-[50vh] lg:h-[80vh]">
 
-          {/*
-           * ─── HALO LAYER 1: Neon glow ring ─────────────────────────────────
-           *
-           * A thin border styled with box-shadow (inner + outer glow).
-           * A conic-gradient mask reveals only a partial arc so the ring
-           * appears to wrap around one side of the portrait instead of being
-           * a full circle.
-           *
-           * Key CSS properties:
-           *   border           → thin ring line (rgba with high opacity)
-           *   box-shadow       → outer glow + inner glow via "inset"
-           *   mask-image       → conic-gradient arc cutout
-           *   mix-blend-mode   → "screen" so it blends into dark backgrounds
-           */}
+
           <div
             className="halo-neon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
             style={{
@@ -225,16 +205,13 @@ const AboutHero = () => {
             }}
           />
 
-          {/*
-           * ─── HALO LAYER 2: Liquid Glass ring ────────────────────────
-           */}
           <div
             className="halo-glass absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none isolate"
             style={{
-              width: HALO.neonSize, // Aligns exactly with the neon ring border
+              width: HALO.neonSize,
               aspectRatio: "1 / 1",
               zIndex: 2,
-              /* Conic arc mask — same shape as the neon ring */
+
               WebkitMaskImage: conicMask,
               maskImage: conicMask,
             }}
@@ -374,7 +351,7 @@ const AboutHero = () => {
         </div>
       </div>
 
-      {/* SVG Filter for Liquid Glass Refraction/Distortion */}
+
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
         <defs>
           <filter id="glass-distortion">
