@@ -340,9 +340,12 @@ const AboutHero = () => {
 
       {/* ── Footer / Socials ── */}
       <div className="relative z-20 mt-auto pt-12 px-6 md:px-12 lg:px-20 lg:pl-28 w-full max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 border-t border-zinc-200 dark:border-zinc-900">
-        <div className="about-footer-reveal w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-black dark:hover:text-white transition-colors cursor-pointer">
-          <span className="font-bold text-sm">N</span>
-        </div>
+        <a
+          href={`mailto:${info.email}`}
+          className="about-footer-reveal px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-black dark:hover:text-white hover:border-zinc-500 dark:hover:border-zinc-500 transition-colors cursor-pointer"
+        >
+          <span className="font-bold text-sm">Let's connect!</span>
+        </a>
 
         <div className="flex flex-wrap justify-center items-center gap-4 lg:gap-6">
           {[
