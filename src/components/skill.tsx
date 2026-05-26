@@ -143,7 +143,7 @@ const Skill = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative px-6 md:px-12 lg:px-20 py-24 text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
+      className="relative px-6 md:px-12 lg:px-20 py-12 text-zinc-900 dark:text-zinc-100 overflow-hidden transition-colors duration-500"
     >
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 

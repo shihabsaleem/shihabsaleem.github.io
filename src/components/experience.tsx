@@ -58,7 +58,7 @@ const Experience = ({ data = assetData.experience }) => {
   return (
     <section
       ref={sectionRef}
-      className=" text-black dark:text-white py-12 md:py-24 px-5 md:px-12 lg:px-20 transition-colors"
+      className=" text-black dark:text-white py-12 px-5 md:px-12 lg:px-20 transition-colors"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
@@ -110,8 +110,13 @@ const Experience = ({ data = assetData.experience }) => {
                 </div>
 
                 {/* 4. Action Icon - Legibility Optimized */}
-                <div className="md:col-span-2 lg:col-span-1 flex justify-start md:justify-end">
-                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="hidden md:flex md:col-span-2 lg:col-span-1 justify-start md:justify-end">
+                   <a
+                     href={item.CLink}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-500 shadow-sm cursor-pointer"
+                   >
                       <svg 
                         width="14" 
                         height="14" 
@@ -122,7 +127,7 @@ const Experience = ({ data = assetData.experience }) => {
                       >
                         <path d="M1 14L14 1M14 1H5M14 1V10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                   </div>
+                   </a>
                 </div>
               </div>
             </div>
