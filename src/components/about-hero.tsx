@@ -211,19 +211,13 @@ const AboutHero = () => {
               width: HALO.neonSize,
               aspectRatio: "1 / 1",
               zIndex: 2,
-
-              WebkitMaskImage: conicMask,
-              maskImage: conicMask,
+              WebkitMaskImage: `${conicMask}, radial-gradient(circle, transparent 20%, black 50%)`,
+              maskImage: `${conicMask}, radial-gradient(circle, transparent 20%, black 50%)`,
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
             }}
           >
-            <div
-              className="w-full h-full rounded-full relative overflow-hidden"
-              style={{
-                /* Radial mask punches a hole in the center */
-                WebkitMaskImage: "radial-gradient(circle, transparent 48%, black 50%)",
-                maskImage: "radial-gradient(circle, transparent 48%, black 50%)",
-              }}
-            >
+            <div className="w-full h-full rounded-full relative overflow-hidden">
               {/* Liquid Glass Effect */}
               <div
                 className="absolute inset-0"
@@ -249,13 +243,13 @@ const AboutHero = () => {
 
 
           {/* Portrait */}
-          <div className="about-portrait-wrap relative w-[80%] lg:w-full aspect-square max-w-sm lg:max-w-md z-10 rounded-full overflow-hidden bg-white/20 dark:bg-black/20 backdrop-blur-2xl">
+          <div className="about-portrait-wrap relative w-[80%] lg:w-full aspect-square max-w-sm lg:max-w-md z-10 rounded-full overflow-hidden  backdrop-blur-4xl">
             <Image
               src={info.dpLight}
               alt={info.name}
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
-              className="object-cover object-top grayscale contrast-125 block dark:hidden"
+              className="object-cover object-top  contrast-125 block dark:hidden"
               priority
             />
             <Image
@@ -263,7 +257,7 @@ const AboutHero = () => {
               alt={info.name}
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
-              className="object-cover object-top grayscale contrast-125 hidden dark:block"
+              className="object-cover object-top   hidden dark:block"
               priority
             />
 
