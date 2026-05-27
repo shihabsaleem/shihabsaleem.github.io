@@ -132,7 +132,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
             src={caseStudy.heroImage}
             alt={`${caseStudy.name} Hero`}
             fill
-            priority
+            preload
             sizes="100vw"
             className="object-cover scale-[1.04] hover:scale-100 transition-transform duration-[1.4s] ease-in-out"
           />
@@ -154,8 +154,8 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   href={`#${id}`}
                   onClick={e => { e.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
                   className={`block text-[10px] font-bold uppercase tracking-[0.18em] py-1 transition-colors duration-200 ${activeSection === id
-                      ? "text-red-600"
-                      : "text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300"
+                    ? "text-red-600"
+                    : "text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300"
                     }`}
                 >
                   {activeSection === id && <span className="inline-block w-3 h-px bg-red-600 mr-2 align-middle" />}

@@ -128,7 +128,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
             height={1080}
             className="object-contain max-h-[85vh] w-auto rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)]"
             quality={100}
-            priority
+            preload
           />
         </div>
       </div>

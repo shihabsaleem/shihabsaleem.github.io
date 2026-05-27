@@ -167,7 +167,7 @@ const Hero = () => {
               fill
               sizes="(max-width: 1024px) 288px, 448px"
               className="object-contain block dark:hidden"
-              priority
+              preload
             />
             <Image
               src={info.dpDark}
@@ -175,7 +175,7 @@ const Hero = () => {
               fill
               sizes="(max-width: 1024px) 288px, 448px"
               className="object-contain hidden dark:block"
-              priority
+              preload
             />
           </div>
 

@@ -250,7 +250,7 @@ const AboutHero = () => {
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover object-top  contrast-125 block dark:hidden"
-              priority
+              preload
             />
             <Image
               src={info.dpDark}
@@ -258,7 +258,7 @@ const AboutHero = () => {
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover object-top   hidden dark:block"
-              priority
+              preload
             />
 
             {/* Gradient Border Overlay (Opposite of top-right lighting) */}

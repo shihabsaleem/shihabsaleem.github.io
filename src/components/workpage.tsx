@@ -122,7 +122,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
                 width={1200}
                 height={675}
                 className="w-full h-auto cursor-zoom-in"
-                priority
+                preload
                 onClick={() => openLightbox(project.images[0])}
               />
             </div>
