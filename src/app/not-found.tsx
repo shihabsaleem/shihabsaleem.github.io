@@ -84,7 +84,7 @@ export default function NotFound() {
       </main>
 
       {/* Decorative Background Element */}
-      <div className="absolute right-[-10%] bottom-[-10%] text-[40vw] font-black text-black/[0.03] dark:text-white/[0.02] select-none pointer-events-none">
+      <div className="absolute right-[-10%] bottom-[-10%] text-[40vw] font-black text-black/3 dark:text-white/2 select-none pointer-events-none">
         404
       </div>
     </div>
