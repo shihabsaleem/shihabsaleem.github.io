@@ -287,14 +287,14 @@ const AboutHero = () => {
           </div>
 
           {/* Floating Card: Experience (Top Right) */}
-          <div className="about-float-card absolute top-10 lg:top-20 right-0 lg:-right-24 z-20 px-8 py-6 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+          <div className="about-float-card absolute top-0 lg:top-20 right-0 lg:-right-24 z-20 px-8 py-6 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-black/5 dark:border-white/5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
             <p className="text-4xl md:text-5xl font-normal mb-1 text-black dark:text-white">3yr <span className="text-red-600">+</span></p>
             <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500">Experience</p>
           </div>
         </div>
 
         {/* ── Right: Expertise ── */}
-        <div className="lg:col-span-3 flex flex-col justify-center order-3 pl-0 lg:pl-12 pt-12 lg:pt-0">
+        <div className="lg:col-span-3 flex flex-col justify-center order-3 pl-0 pb-4 lg:pl-12 pt-12 lg:pt-0">
           <div className="flex items-center gap-4 mb-8 about-reveal">
             <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-zinc-400">
               Expertise
