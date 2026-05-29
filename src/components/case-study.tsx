@@ -101,7 +101,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
 
           {/* Hook + meta split */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-12 pb-14 border-b border-zinc-200 dark:border-zinc-800">
-            <p className="hero-hook-text text-lg md:text-xl font-light leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl">
+            <p className="hero-hook-text text-lg md:text-xl font-light leading-relaxed text-zinc-700 dark:text-zinc-400 max-w-2xl">
               {caseStudy.hook}
             </p>
             <dl className="grid grid-cols-2 gap-x-8 gap-y-7 self-end">
@@ -392,14 +392,16 @@ export default function CaseStudy({ slug }: { slug: string }) {
               {caseStudy.gallery.map((img: string, idx: number) => (
                 <div
                   key={idx}
-                  className="relative w-full aspect-video md:aspect-3/2 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
+                  className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800"
                 >
                   <MagnifiableImage
                     src={img}
                     alt={`Gallery ${idx + 1}`}
-                    fill
-                    sizes="100vw"
-                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    width={1920}
+                    height={1080}
+                    loading="lazy"
+                    sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1024px) calc(100vw - 8rem), (max-width: 1280px) calc(100vw - 12rem), 1280px"
+                    className="w-full h-auto"
                   />
                 </div>
               ))}

@@ -217,7 +217,8 @@ const caseStudies = [
     "gallery": [
       "/assets/case-study/flow/Flow-gallery-1.jpg",
       "/assets/case-study/flow/Flow-gallery-2.jpg",
-      "/assets/case-study/flow/Flow-gallery-3.jpg"
+      "/assets/case-study/flow/Flow-gallery-3.jpg",
+      "/assets/case-study/flow/untitled.jpg"
     ]
   }
 ]

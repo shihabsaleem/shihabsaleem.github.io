@@ -21,23 +21,27 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
 
   const goNext = useCallback(() => {
     if (hasNext) {
-      gsap.to(imageRef.current, { x: -30, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
-        onNavigate(currentIndex + 1);
-        requestAnimationFrame(() => {
-          gsap.fromTo(imageRef.current, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" });
-        });
-      }});
+      gsap.to(imageRef.current, {
+        x: -30, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
+          onNavigate(currentIndex + 1);
+          requestAnimationFrame(() => {
+            gsap.fromTo(imageRef.current, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" });
+          });
+        }
+      });
     }
   }, [hasNext, currentIndex, onNavigate]);
 
   const goPrev = useCallback(() => {
     if (hasPrev) {
-      gsap.to(imageRef.current, { x: 30, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
-        onNavigate(currentIndex - 1);
-        requestAnimationFrame(() => {
-          gsap.fromTo(imageRef.current, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" });
-        });
-      }});
+      gsap.to(imageRef.current, {
+        x: 30, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
+          onNavigate(currentIndex - 1);
+          requestAnimationFrame(() => {
+            gsap.fromTo(imageRef.current, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" });
+          });
+        }
+      });
     }
   }, [hasPrev, currentIndex, onNavigate]);
 
@@ -77,13 +81,13 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-12 cursor-zoom-out"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-12 cursor-zoom-out"
       onClick={() => handleClose()}
     >
       {/* Close */}
       <button
         onClick={(e) => handleClose(e)}
-        className="absolute top-8 right-8 text-white/70 hover:text-white text-4xl transition-all duration-300 z-[110] hover:rotate-90"
+        className="absolute top-8 right-8 text-white/70 hover:text-white text-4xl transition-all duration-300 z-110 hover:rotate-90"
       >
         <IoCloseOutline />
       </button>
@@ -92,7 +96,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
       {hasPrev && (
         <button
           onClick={(e) => { e.stopPropagation(); goPrev(); }}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-110 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
         >
           <IoChevronBackOutline />
         </button>
@@ -102,7 +106,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
       {hasNext && (
         <button
           onClick={(e) => { e.stopPropagation(); goNext(); }}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-110 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
         >
           <IoChevronForwardOutline />
         </button>
@@ -110,7 +114,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
 
       {/* Counter */}
       {images.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[110] text-white/50 text-xs font-mono tracking-widest">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-110 text-white/50 text-xs font-mono tracking-widest">
           {currentIndex + 1} / {images.length}
         </div>
       )}

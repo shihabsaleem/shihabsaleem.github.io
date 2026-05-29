@@ -104,6 +104,7 @@ const Navbar = () => {
               alt="Shihab Saleem Logo - UI UX Designer Kerala"
               width={120}
               height={40}
+              priority
               className="h-8 w-auto dark:invert-0 transition-all"
             />
           </Link>

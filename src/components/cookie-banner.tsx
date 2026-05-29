@@ -25,7 +25,7 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:max-w-md">
+    <div className="fixed bottom-6 left-6 right-6 z-100 md:left-auto md:max-w-md">
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl shadow-2xl shadow-zinc-900/10 transition-colors duration-500">
         <div className="flex items-start gap-4">
           <div className="w-2 h-2 bg-red-600 rounded-full mt-2 animate-pulse" />
