@@ -7,112 +7,166 @@ const caseStudies = [
     "client": "Jadbery",
     "clientLink": "https://jadbery.com/",
     "year": "2025",
-    "role": "UX Designer & Developer",
-    "duration": "3 weeks",
+    "role": "Product Designer & Developer",
+    "duration": "4 Weeks",
     "timeline": "2025",
-    "platform": "Web Application + Chrome Extension",
-    "team": ["1 UX Designer, 1 Developer"],
+    "platform": "Web App + Chrome Extension",
+    "team": ["Solo Designer & Developer"],
 
     "heroImage": "/assets/invoice/invoice.jpg",
 
-    "hook": "Invoicing tools charge subscriptions, demand account creation, and store sensitive financial data in the cloud — for freelancers who invoice five clients a month, this is absurd. I designed and built a free, browser-native invoice generator that produces a professional PDF in under two minutes with no sign-up, full global currency support, and zero server-side data storage.",
+    "hook": "Most invoicing tools are built around subscriptions, onboarding flows, and cloud storage. Freelancers who simply need to send a professional invoice are forced through unnecessary friction before they can complete a basic task. Invoice was designed as a privacy-first, offline-capable invoice generator that creates branded PDF invoices, estimates, and receipts directly in the browser — with no sign-up, no tracking, and no server-side data storage.",
 
     "context": {
-      "description": "This was a 3-week solo project — I was both the designer and the developer, which meant every design decision had an immediate implementation cost. The constraint that shaped everything was the decision to store no data server-side: this ruled out features like saved client profiles and invoice history, forcing the UX to be so fast that users wouldn't miss them.",
+      "description": "Invoice was conceived as a lightweight alternative to traditional invoicing platforms. The goal was simple: allow freelancers and small business owners to generate professional documents within minutes while maintaining full ownership of their data. As both designer and developer, I was responsible for research, UX, visual design, front-end development, PDF generation, and deployment."
     },
 
     "problemFraming": {
-      "statement": "The real problem wasn't missing features — it was that every existing tool required users to become a customer before they could become a user. Account creation, plan selection, and onboarding flows front-loaded friction onto people who needed a PDF in two minutes. The invoicing itself was almost incidental.",
-      "rootCause": "Existing tools were built around retention and upsell mechanics, not around the actual task. The job-to-be-done — generate a clean PDF right now — was buried behind infrastructure designed for recurring users.",
+      "statement": "Most invoicing tools optimize for user retention instead of task completion. Users are asked to create accounts, verify emails, choose plans, and learn new interfaces before generating a single invoice.",
+      "rootCause": "The core job-to-be-done — create a professional invoice quickly — becomes secondary to business models built around subscriptions and recurring engagement."
     },
+
+    "goals": [
+      "Enable users to generate a professional PDF invoice in under two minutes.",
+      "Eliminate account creation and onboarding friction.",
+      "Keep all invoice data on the user's device.",
+      "Support global currencies and international freelancers.",
+      "Provide a fast and intuitive experience across web and browser extension environments."
+    ],
 
     "insights": [
       {
-        "title": "Onboarding friction causes immediate abandonment",
-        "text": "Any step before invoice creation — email verification, plan selection, tutorial prompts — was enough to cause drop-off. Users had already decided to invoice; they didn't need to be sold on the concept.",
-        "implication": "This ruled out accounts entirely, which in turn drove the local-storage architecture."
+        "title": "Speed is the primary value proposition",
+        "text": "Users arriving at invoicing tools typically have an immediate task to complete. Every additional step before invoice creation increases abandonment risk.",
+        "implication": "The product removes account creation, onboarding, and setup requirements entirely."
       },
       {
-        "title": "Privacy is a trust signal, not a feature",
-        "text": "Freelancers enter client names, project rates, and tax IDs into these tools. Knowing that data never leaves the browser was a meaningful differentiator — not a marketing claim, but a genuine concern that existing tools ignored.",
-        "implication": "Led to positioning local data storage as a primary benefit, not a technical footnote."
+        "title": "Privacy builds trust",
+        "text": "Invoices often contain sensitive client information, project rates, tax identifiers, and business details.",
+        "implication": "A fully local architecture became both a technical decision and a product differentiator."
       },
       {
-        "title": "Currency gaps break global workflows",
-        "text": "Most tools support USD, EUR, and GBP. Freelancers working with regional clients — across Southeast Asia, Latin America, Africa — were forced to approximate or use a separate tool for the currency row alone.",
-        "implication": "Full ISO currency support became a core requirement, not a nice-to-have."
+        "title": "Global freelancers need global currency support",
+        "text": "Many existing tools prioritize only a handful of major currencies.",
+        "implication": "Full ISO currency support was included from the beginning to support international workflows."
       }
     ],
 
     "decisions": [
       {
-        "title": "Live split-screen preview over a download-and-check loop",
-        "options": "The two approaches were: (A) a standard form that generates a preview on submit, or (B) a persistent live preview that updates on every keystroke.",
-        "choice": "Option B — a left/right split with the form on the left and a real-time invoice preview on the right.",
-        "rationale": "User testing on comparable tools showed that the download-check-adjust-repeat loop was the single most cited frustration. The live preview collapsed this entirely. The implementation cost was higher, but as the developer I could absorb it — and it was the decision that made the product feel qualitatively different from alternatives.",
-        "tradeoff": "On smaller screens, the split layout required the preview to collapse behind a toggle, adding one extra step for mobile users. Given that most invoicing happens on desktop, this was an acceptable trade-off.",
-        "image": "/assets/case-study/invoice/invoice-cs-1.jpg"
-      },
-      {
-        "title": "Currency display: symbol + full name, not symbol alone",
-        "options": "Early versions showed only the currency symbol (e.g., '₹'). An alternative was symbol + 3-letter code ('₹ INR'). The shipped version uses symbol + full name ('₹ — Indian Rupee').",
-        "choice": "Symbol + full name.",
-        "rationale": "In testing, users selecting currencies for the first time were unsure whether the symbol change also updated number formatting. The full name resolved ambiguity without requiring users to already know the symbol. This was a trust problem, not a UI aesthetics problem — and the fix needed to address it at that level.",
-        "tradeoff": "The dropdown becomes taller and takes more space. We accepted this because clarity at the point of selection is more important than compactness.",
+        "title": "Real-Time Invoice Preview",
+        "options": "Option A was a traditional form-then-download flow where users fill in fields and click a button to generate a PDF. Option B was a split-screen layout with a live preview that updates as the user types.",
+        "choice": "Option B — a split-screen editor with a live PDF preview updating in real time.",
+        "rationale": "The traditional generate-download-check cycle adds unnecessary friction for a tool whose entire value is fast document creation. A live preview collapses that loop: users see exactly what they're producing as they produce it, which builds confidence and reduces errors before export. It also makes the product feel more immediate and responsive — closer to a design tool than a form.",
+        "tradeoff": "The split-screen layout requires sufficient horizontal screen space to be useful. On narrow screens, one panel must give way to the other, which undermines the core benefit. This made mobile an open problem from the start.",
+        "impact": "Reduced friction and increased user confidence during invoice creation.",
         "image": null
       },
       {
-        "title": "No accounts, no saved data — by design, not limitation",
-        "options": "Option A was to build lightweight account creation for returning users. Option B was to stay fully local with no persistence.",
-        "choice": "Option B, with the explicit decision to communicate local storage as a privacy feature.",
-        "rationale": "Accounts would have reintroduced exactly the friction the product was trying to eliminate. More importantly, the privacy positioning was only credible if it was architecturally real — users could verify it in the browser's dev tools. A 'no account needed' headline over a cloud sync backend is a UX lie.",
-        "tradeoff": "Users cannot retrieve a previous invoice from a different device or session. We accepted this and added a clear note in the UI: 'Save your PDF — data isn't stored between sessions.'",
+        "title": "Privacy-first, local-only architecture",
+        "options": "Option A was a server-side model where invoice data is stored in a database and users access their invoices via an account. Option B was a fully local model where all data lives in the browser and nothing is transmitted to a server.",
+        "choice": "Option B — all invoice data stored locally in the browser, with no server-side storage.",
+        "rationale": "Invoices contain sensitive business data: client details, rates, tax identifiers, project values. Asking users to trust a third-party server with that information adds a meaningful barrier — especially for freelancers who have had bad experiences with platforms that lock or lose their data. A local-only architecture makes the privacy guarantee credible because it's structural, not just a policy claim. It also enables offline use as a natural side effect.",
+        "tradeoff": "Local storage means no cross-device sync and no data recovery if the user clears their browser. For a tool targeting professionals who may switch devices, this is a real limitation. The decision was accepted as a deliberate trade against privacy and simplicity.",
+        "impact": "Users retain full ownership of their business data with no dependency on an external service.",
+        "image": null
+      },
+      {
+        "title": "Progressive Web App over native app",
+        "options": "Option A was a native mobile or desktop application requiring installation through an app store. Option B was a Progressive Web App installable directly from the browser, with offline support built in.",
+        "choice": "Option B — a PWA with offline capability, accessible from any browser without an app store.",
+        "rationale": "Freelancers need to generate invoices in inconsistent environments — in a café, on a client call, on a slow connection. A PWA can be added to the home screen like a native app but requires no store submission, no update approval cycle, and no platform-specific build. Offline support followed naturally from the local-first architecture: since no data touches a server, the app continues working regardless of network state.",
+        "tradeoff": "PWAs have lower discoverability than App Store or Google Play listings. Users who search for invoicing tools on mobile are more likely to find a native app. A Chrome Extension was added to partially compensate for this — meeting users in the browser context where they already work.",
+        "impact": "Invoice creation remains available across environments, including offline, with no installation friction.",
+        "image": null
+      },
+      {
+        "title": "Custom branding support from day one",
+        "options": "Option A was a fixed professional template where all invoices share the same layout and visual style. Option B was a customisable template that accepts logos, brand colors, and document-level styling.",
+        "choice": "Option B — full branding support including logo upload, custom colors, and document customisation.",
+        "rationale": "A generic invoice template may be functional, but it signals that the sender is using a free tool rather than running a professional business. For freelancers, the invoice is often the last impression they leave with a client. Supporting branding closes the gap between 'document generated by a tool' and 'document from a business.' It also differentiates the product from bare-minimum generators that produce identical outputs for every user.",
+        "tradeoff": "Branding options add UI complexity. More fields, more decisions, more potential for a user to feel like they need to set things up before getting started. This was managed by making all branding fields optional — the product works without them, and users can add personalisation progressively.",
+        "impact": "Generated documents feel client-ready and reflect the user's professional identity rather than the tool's defaults.",
         "image": null
       }
+    ],
+    "features": [
+      "Professional PDF invoice generation",
+      "Custom logos and brand colors",
+      "Invoices, estimates, and receipts",
+      "Global currency support",
+      "Offline functionality",
+      "No sign-up required",
+      "Chrome Extension",
+      "One-click PDF export",
+      "Privacy-first local data storage"
     ],
 
     "outcomes": {
-      "summary": "Invoice Generator launched as a fully free tool on web and as a Chrome Extension.",
+      "summary": "Invoice launched as a free web application and Chrome Extension focused on speed, simplicity, and privacy.",
       "metrics": [
-        { "label": "Time to first PDF", "value": "Under 2 min", "note": "Timed from cold page load to downloaded PDF, no prior use" },
-        { "label": "Data stored server-side", "value": "Zero", "note": "All financial data stays in the user's browser" },
+        {
+          "label": "Time to First Invoice",
+          "value": "< 2 Minutes",
+          "note": ""
+        },
+        {
+          "label": "Account Creation",
+          "value": "0 Steps",
+          "note": ""
+        },
+        {
+          "label": "Server-Side Data Storage",
+          "value": "0%",
+          "note": ""
+        },
+        {
+          "label": "Supported Platforms",
+          "value": "Web + Chrome Extension",
+          "note": ""
+        }
+      ]
 
-        { "label": "Activation friction", "value": "None", "note": "No sign-up, no plan selection, no onboarding flow" }
-      ],
-      "note": "These are design-driven metrics, not post-launch analytics. The product was built and shipped; usage data would require instrumentation added after launch."
+
     },
-
-    "reflection": "The decision I'd revisit is the mobile experience. Collapsing the live preview behind a toggle on small screens was a reasonable trade-off on paper, but in practice it weakens the product's core value proposition for a meaningful portion of users. Given more time I would have prototyped a stacked layout — form above, preview below, with sticky scroll — rather than defaulting to a toggle. The desktop-first assumption was mine, and I made it too quickly.",
 
     "achievements": [
       {
-        "title": "Shipped as a real product",
-        "description": "Deployed on web and published as a Chrome Extension — not a prototype, not a mockup. A working tool used by actual freelancers."
+        "title": "Shipped as a Production Product",
+        "description": "Successfully launched on the web and as a Chrome Extension."
       },
       {
-        "title": "Zero-server architecture",
-        "description": "Achieved full financial data privacy by designing entirely around browser-local storage — a constraint that shaped every UX decision in the product."
+        "title": "Privacy-First Architecture",
+        "description": "All invoice generation happens locally without transmitting user data to external servers."
       },
       {
-        "title": "Sub-2 minute time to first PDF",
-        "description": "From cold page load to a downloaded, professional-grade invoice in under two minutes — validated by timed user testing with first-time users."
+        "title": "Fast Document Creation",
+        "description": "Users can generate professional invoices in under two minutes."
       },
       {
-        "title": "Peerlist.io Week 6 — Ranked #4",
-        "description": "Reached #4 on Peerlist's weekly rankings with 158 votes. User feedback from the community helped identify design gaps — I iterated on the UI based on real responses and shipped improvements shortly after."
+        "title": "Peerlist Week 6 Ranking",
+        "description": "Reached #4 on Peerlist with 158 community votes and valuable user feedback."
       }
     ],
 
-    "tags": ["Product Design", "Web App", "Privacy-First", "Developer Tool", "Chrome Extension"],
+    "reflection": "The biggest improvement opportunity is the mobile workflow. While the desktop experience benefits greatly from the split-screen layout, future iterations could explore a stacked editing and preview experience that better preserves the live-preview advantage on smaller screens.",
+
+    "tags": [
+      "Product Design",
+      "UX Design",
+      "Web Application",
+      "Chrome Extension",
+      "Privacy-First",
+      "PWA"
+    ],
 
     "gallery": [
-      "/assets/case-study/invoice/invoice-gallery-1.jpg",
-      "/assets/case-study/invoice/invoice-gallery-2.jpg",
-      "/assets/case-study/invoice/invoice-gallery-3.jpg",
-      "/assets/case-study/invoice/invoice-gallery-4.jpg",
-      "/assets/case-study/invoice/invoice-gallery-5.jpg"
+      "/assets/case-study/invoice/gallery-1.jpg",
+      "/assets/case-study/invoice/gallery-2.jpg",
+      "/assets/case-study/invoice/gallery-3.jpg"
     ]
   },
+
 
   {
     "id": 2,

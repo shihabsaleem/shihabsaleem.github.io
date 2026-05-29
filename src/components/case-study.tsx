@@ -83,7 +83,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
         </div>
 
         {/* Giant index number watermark */}
-        <div className="hero-index absolute top-10 right-6 md:right-16 text-[20vw] font-black text-zinc-100 dark:text-zinc-900 leading-none select-none pointer-events-none tabular-nums">
+        <div className="hero-index absolute top-10 right-6 md:right-16 text-[20vw] font-black text-zinc-200 dark:text-zinc-900 leading-none select-none pointer-events-none tabular-nums">
           {String(caseStudy.id).padStart(2, "0")}
         </div>
 
