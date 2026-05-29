@@ -6,7 +6,7 @@ const caseStudies = [
     "name": "Invoice",
     "client": "Jadbery",
     "clientLink": "https://jadbery.com/",
-    "year": "2026",
+    "year": "2025",
     "role": "UX Designer & Developer",
     "duration": "3 weeks",
     "timeline": "2025",
@@ -132,7 +132,7 @@ const caseStudies = [
     "hook": "Small businesses and solo marketers spend hours moving between design tools, copywriting tools, and ad platforms to produce a single ad — then do it again for every variation. I designed Flow, an AI-powered ad creation platform that collapses that workflow into a single prompt-to-publish loop, built specifically for people who aren't designers and can't afford to act like they are.",
 
     "context": {
-      "description": "This was a 1-week solo concept project with no engineering constraints — which created a different kind of discipline problem: infinite surface area. The constraint I imposed on myself was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
+      "description": "This was a 1-week solo concept project centered on a prompt-to-image generation workflow with iterative refinement built into a chat window. Instead of a canvas-based editor, users generate ad visuals through natural-language prompts and alter them conversationally — requesting changes, swapping elements, or adjusting tone without leaving the chat interface. The constraint I imposed was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
     },
 
     "problemFraming": {
@@ -195,12 +195,12 @@ const caseStudies = [
       "note": "Explicitly naming what I'd measure — rather than claiming metrics from a concept project — is itself a design decision about honesty."
     },
 
-    "reflection": "The decision I'm least confident about is the prompt-first entry point. It's correct for experienced digital marketers but I underestimated how disorienting it is for small business owners who have no mental model of what a good prompt looks like. The Inspiration Engine partially compensates for this, but it's downstream of the problem. I would explore a hybrid entry: a structured brief form (audience, tone, product) that generates a prompt on the user's behalf, letting them edit or use it directly. That would serve Omar without alienating Sara.",
+    "reflection": "The decision I'm least confident about is the prompt-first entry point. It's correct for experienced digital marketers but I underestimated how disorienting it is for small business owners who have no mental model of what a good prompt looks like. The Inspiration Engine partially compensates for this, but it's downstream of the problem. I would explore a hybrid entry: a structured brief form (audience, tone, product) that generates a prompt on the user's behalf, letting them edit or use it directly. That would serve first-time users without alienating power users who prefer writing their own prompts.",
 
     "achievements": [
       {
         "title": "End-to-end solo concept delivered",
-        "description": "Scoped, designed, and documented a full AI product concept — from discovery through UI — in 4 weeks with no external dependencies."
+        "description": "Scoped, designed, and documented a full AI product concept — from discovery through UI — in 1 week with no external dependencies."
       },
       {
         "title": "Core loop validated in user testing",

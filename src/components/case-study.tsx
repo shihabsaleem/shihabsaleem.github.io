@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import caseStudies from "@/data/casestudy";
@@ -127,14 +128,16 @@ export default function CaseStudy({ slug }: { slug: string }) {
 
       {/* ── HERO IMAGE ───────────────────────────────────────── */}
       <div className="hero-img-wrap w-full">
-        <div className="relative w-full h-[55vw] max-h-[85vh] min-h-[320px] overflow-hidden">
-          <MagnifiableImage
+        <div className="relative w-full h-[40vw] max-h-[65vh] min-h-[280px] overflow-hidden">
+          <Image
             src={caseStudy.heroImage}
             alt={`${caseStudy.name} Hero`}
             fill
-            preload
+            priority
+            quality={100}
+            unoptimized
             sizes="100vw"
-            className="object-cover scale-[1.04] hover:scale-100 transition-transform duration-[1.4s] ease-in-out"
+            className="object-cover hover:scale-105 transition-transform duration-[1.4s] ease-in-out"
           />
           {/* Subtle bottom gradient */}
           <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#f8f7f5] dark:from-[#0a0a0a] to-transparent pointer-events-none" />
@@ -362,7 +365,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
                   <p className="text-[9px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-6 relative">
                     What I&apos;d do differently
                   </p>
-                  <p className="text-lg md:text-xl font-black tracking-tight leading-snug italic text-white dark:text-zinc-900 relative">
+                  <p className="text-md md:text-lg font-medium tracking-tight leading-snug italic text-white dark:text-zinc-900 relative">
                     &ldquo;{caseStudy.reflection}&rdquo;
                   </p>
                 </div>
