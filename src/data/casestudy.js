@@ -122,7 +122,7 @@ const caseStudies = [
     "clientLink": "",
     "year": "2025",
     "role": "UX Designer",
-    "duration": "4 weeks",
+    "duration": "1 week",
     "timeline": "2025",
     "platform": "Web Application",
     "team": ["1 UX Designer"],
@@ -132,7 +132,7 @@ const caseStudies = [
     "hook": "Small businesses and solo marketers spend hours moving between design tools, copywriting tools, and ad platforms to produce a single ad — then do it again for every variation. I designed Flow, an AI-powered ad creation platform that collapses that workflow into a single prompt-to-publish loop, built specifically for people who aren't designers and can't afford to act like they are.",
 
     "context": {
-      "description": "This was a 4-week solo concept project with no engineering constraints — which created a different kind of discipline problem: infinite surface area. The constraint I imposed on myself was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
+      "description": "This was a 1-week solo concept project with no engineering constraints — which created a different kind of discipline problem: infinite surface area. The constraint I imposed on myself was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
     },
 
     "problemFraming": {
@@ -165,7 +165,7 @@ const caseStudies = [
         "choice": "Option B — prompt-first, with templates surfaced as inspiration rather than starting points.",
         "rationale": "Templates solve the blank-canvas problem by giving users something to modify. But they also anchor users to an existing aesthetic, which limits variation and makes every output feel derivative. Prompt-based generation aligned with how marketers actually think about campaigns — in terms of message and audience, not visual style. Templates became the fallback (the Inspiration Engine) for users who couldn't articulate a prompt, not the default path.",
         "tradeoff": "Prompt-first creates its own blank-canvas problem at the input level — which is what led to the prompt suggestion system. One friction point was replaced with a smaller one.",
-        "image": "/assets/case-study/flow/Flow-cs-1.jpg"
+        "image": "/assets/case-study/flow/flow-wf-1.jpg"
       },
       {
         "title": "Bento-grid dashboard over a linear campaign view",
@@ -173,7 +173,7 @@ const caseStudies = [
         "choice": "Bento-grid layout, with analytics, active campaigns, and inspiration modules visible without navigation.",
         "rationale": "Social media managers managing multiple clients need to orient quickly across several dimensions: spend, performance, and upcoming tasks. A linear list forces serial scanning; the bento grid allows parallel orientation. It also made the dashboard feel like a workspace rather than a report, which aligned with how users described their daily workflow.",
         "tradeoff": "The bento layout is harder to adapt to mobile screen sizes and risks feeling visually complex to new users. I mitigated this with a strict information hierarchy — high-priority metrics large, supporting data smaller — but it's a layout that rewards familiarity.",
-        "image": "/assets/case-study/flow/Flow-cs-2.jpg"
+        "image": null
       },
       {
         "title": "Surfacing performance suggestions inline, not in a separate analytics section",
@@ -181,7 +181,7 @@ const caseStudies = [
         "choice": "Option B — inline suggestions attached to the outputs they're about.",
         "rationale": "Talking to users revealed that campaign data existed in their current tools but wasn't being acted on. The gap wasn't access to data — it was the cost of translating a number into an action. By surfacing a suggestion ('This ad is outperforming similar ones — generate a variation?') at the point where the decision is most relevant, the product does the translation work. A separate analytics page requires the user to make the connection themselves.",
         "tradeoff": "Inline suggestions can feel intrusive if they appear too frequently or at the wrong moment. This required careful logic around when to surface them — a problem that would need real usage data to tune properly.",
-        "image": null
+        "image": "/assets/case-study/flow/flow-wf-2.jpg"
       }
     ],
 
@@ -215,10 +215,9 @@ const caseStudies = [
     "tags": ["AI Product", "UX Design", "Web App", "Creative Tools", "Marketing"],
 
     "gallery": [
-      "/assets/case-study/flow/Flow-gallery-1.jpg",
-      "/assets/case-study/flow/Flow-gallery-2.jpg",
-      "/assets/case-study/flow/Flow-gallery-3.jpg",
-      "/assets/case-study/flow/untitled.jpg"
+      "/assets/case-study/flow/gallery-1.jpg",
+      "/assets/case-study/flow/gallery-2.jpg",
+      "/assets/case-study/flow/gallery-3.jpg"
     ]
   }
 ]
