@@ -1,0 +1,424 @@
+const works = [
+  {
+    id: 1,
+    name: "Parrot Vacation",
+    image: "/assets/parrot/parrot.jpg",
+    shortdesc: "Branding",
+    year: "2023",
+    client: "Parrot Vacation",
+    clientLink: "",
+    role: "Brand Designer",
+    duration: "2 Week",
+    description:
+      "The Parrot Vacation logo is a modern, minimalist brand mark that seamlessly combines a parrot, a location pin, and the letter ‘P’ into a single cohesive symbol. Inspired by vibrant parakeet colors, the identity captures the essence of travel, freedom, and exploration while maintaining a clean, contemporary aesthetic suited for digital-first platforms.",
+    challenge:
+      "The challenge was to create a distinctive travel brand identity that feels playful yet professional, while clearly communicating movement, destinations, and a sense of adventure in a simple visual form.",
+    solution:
+      "We designed a unified symbol that merges meaningful elements into a compact, recognizable mark. A fresh color palette inspired by parakeets enhances visual appeal, while the minimalist form ensures clarity, scalability, and versatility across digital and print touchpoints.",
+    impact: [
+      "Distinct and memorable travel brand identity",
+      "Clear visual association with travel and exploration",
+      "Scalable logo adaptable across platforms",
+      "Strong brand recall through symbolic design",
+    ],
+    images: [
+      "/assets/parrot/parrot-0.jpg",
+      "/assets/parrot/parrot-1.jpg",
+      "/assets/parrot/parrot-2.jpg",
+      "/assets/parrot/parrot-3.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Travel Branding",
+      "Minimal Design",
+      "Adobe Illustrator",
+    ],
+  },
+
+  {
+    id: 2,
+    name: "Inventory",
+    image: "/assets/inventory/inventory.jpg",
+    shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Jadbery.",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "1 month",
+    description:
+      "Inventory is a clean, intuitive UI/UX design solution crafted for a mid-sized snack manufacturing company. The design helps streamline the management of storage, production, and inventory processes with user-friendly interfaces focused on clarity and efficiency. Built to support day-to-day operations, it enhances visibility and control across all stages of production and supply.",
+    challenge:
+      "The company was struggling with outdated inventory management systems that lacked visibility and real-time tracking. The goal was to create an intuitive interface that would help staff quickly understand stock levels, production status, and distribution needs without extensive training.",
+    solution:
+      "We designed a dashboard-first approach with clear visual hierarchies, color-coded status indicators, and streamlined workflows. The interface prioritizes the most critical information while keeping advanced features accessible through progressive disclosure.",
+    impact: [
+      "40% reduction in inventory processing time",
+      "Improved accuracy in stock management",
+      "Enhanced cross-department collaboration",
+      "Faster onboarding for new employees",
+    ],
+    images: [
+      "/assets/inventory/inventory-0.jpg",
+      "/assets/inventory/inventory-1.jpg",
+      "/assets/inventory/inventory-2.jpg",
+      "/assets/inventory/inventory-3.jpg",
+    ],
+    tags: ["UI Design", "UX Research", "Prototyping", "Figma", "User Testing"],
+  },
+  {
+    id: 3,
+    name: "Custom ERP",
+    image: "/assets/erp/erp.jpg",
+    shortdesc: "UI/UX Design",
+    year: "2024",
+    client: "Jadbery.",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "1 month",
+    description:
+      "A clean and functional UI/UX design for an ERP product tailored to the needs of the snack manufacturing industry. The system streamlines and manages production, sales, storage, and distribution through an intuitive, user-friendly interface — helping businesses improve efficiency, visibility, and operational control across all departments.",
+    challenge:
+      "The client needed a comprehensive ERP system that could handle multiple departments while remaining simple enough for non-technical staff. The existing fragmented systems caused data silos and inefficiencies across production, sales, and distribution teams.",
+    solution:
+      "We created a unified design system with role-based dashboards, automated workflows, and real-time data visualization. The modular interface allows each department to focus on their specific needs while maintaining seamless integration with other business functions.",
+    impact: [
+      "Unified data across all departments",
+      "50% faster order processing",
+      "Real-time visibility into production pipeline",
+      "Reduced manual data entry errors by 65%",
+    ],
+    images: [
+      "/assets/erp/erp-0.jpg",
+      "/assets/erp/erp-1.jpg",
+      "/assets/erp/erp-2.jpg",
+      "/assets/erp/erp-3.jpg",
+    ],
+    tags: [
+      "ERP Design",
+      "System Integration",
+      "UX Research",
+      "Figma",
+      "Workflow Design",
+    ],
+  },
+  {
+    id: 4,
+    name: "Acuverse",
+    image: "/assets/acuverse/acuverse.jpg",
+    clientLink: "",
+    shortdesc: "Branding",
+    year: "2024",
+    client: "Acuverse",
+    role: "Brand Designer",
+    duration: "3 Weeks",
+    description:
+      "Acuverse's logo features a modern, geometric, and symmetrically balanced design that forms an abstract 'a' using clean lines and interconnected shapes. The visual language communicates precision, innovation, and digital connectivity—perfectly expressing the company's forward-thinking approach to IT development.",
+    challenge:
+      "Acuverse needed a brand identity that visually reflects its commitment to innovation, technological precision, and digital infrastructure. The challenge was to create a logo that is both minimal and highly symbolic, reinforcing trust and technical expertise.",
+    solution:
+      "We developed a geometric, interconnected monogram that forms an abstract 'A.' Its symmetrical construction and precise linework symbolize structured systems, seamless connectivity, and modern digital architecture. The simplified yet bold aesthetic ensures strong brand recognition across platforms.",
+    impact: [
+      "A modern and memorable visual identity",
+      "Clear association with digital connectivity and innovation",
+      "Scalable geometric logo adaptable to various digital environments",
+      "Strengthened brand presence within the IT development sector",
+    ],
+    images: [
+      "/assets/acuverse/acuverse-0.jpg",
+      "/assets/acuverse/acuverse-1.jpg",
+      "/assets/acuverse/acuverse-2.jpg",
+      "/assets/acuverse/acuverse-3.jpg",
+      "/assets/acuverse/acuverse-4.jpg",
+    ],
+    tags: ["Brand Identity", "Logo Design", "Geometric Design", "IT Branding"],
+  },
+  {
+    id: 5,
+    name: "Diet",
+    image: "/assets/diet/diet.jpg",
+    shortdesc: "UI / UX Design",
+    year: "2024",
+    client: "Jadbery",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "2 Weeks",
+    description:
+      "Diet+ is a mobile application designed to help users manually track their daily calorie intake and calories burned. The project focuses on delivering a clean and intuitive UI/UX that simplifies health tracking through minimal interactions, clear visual feedback, and an easy-to-understand interface that encourages consistent daily use.",
+    challenge:
+      "Many calorie tracking applications overwhelm users with complex data entry flows and cluttered interfaces. The challenge was to design an experience that allows quick and effortless manual logging while still providing meaningful insights into daily calorie consumption and activity.",
+    solution:
+      "We designed a mobile-first interface with simplified logging flows, clear visual hierarchy, and intuitive progress indicators. By breaking actions into small, manageable steps and prioritizing essential information, the design reduces friction and cognitive load during daily tracking.",
+    impact: [
+      "Simplified daily calorie tracking experience",
+      "Reduced effort required for manual calorie logging",
+      "Improved clarity through clean and focused UI",
+      "Encouraged consistent user engagement",
+    ],
+    images: [
+      "/assets/diet/diet-0.jpg",
+      "/assets/diet/diet-1.jpg",
+      "/assets/diet/diet-2.jpg",
+      "/assets/diet/diet-3.jpg",
+    ],
+    tags: [
+      "UI Design",
+      "UX Design",
+      "Mobile App Design",
+      "Health & Fitness App",
+      "Figma",
+      "Prototyping",
+    ],
+  },
+  {
+    id: 6,
+    name: "Milkow",
+    image: "/assets/milkow/Milkow.jpg",
+    shortdesc: "Branding & Packaging",
+    year: "2023",
+    client: "Milkow Fresh",
+    clientLink: "https://milkow.in",
+    role: "Brand & Packaging Designer",
+    duration: "2 Week",
+    description:
+      "Milkow is a branding and packaging identity created for a local fresh milk brand. The logo combines a friendly mascot with a clean wordmark, resulting in an approachable and memorable visual identity. Designed in solid black, the mark contrasts effectively against transparent milk bottles and the natural white of the milk, reinforcing clarity, freshness, and trust through a minimal and versatile aesthetic.",
+    challenge:
+      "The challenge was to create a brand identity that communicates freshness, hygiene, and trust while standing out on transparent packaging. The design needed to feel friendly and local, yet clean and professional enough to build confidence in an unpasteurized milk product.",
+    solution:
+      "We developed a mascot-led logo paired with a minimal wordmark, using a solid black color palette to ensure strong visibility and contrast on clear packaging. The simplified, abstract approach allows the identity to remain versatile, legible, and effective across bottles, labels, and marketing materials.",
+    impact: [
+      "Memorable and approachable local brand identity",
+      "Strong visual contrast on transparent packaging",
+      "Clear communication of freshness and trust",
+      "Versatile logo system suitable for packaging and promotion",
+    ],
+    images: [
+      "/assets/milkow/Milkow-0.jpg",
+      "/assets/milkow/Milkow-1.jpg",
+      "/assets/milkow/Milkow-2.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Packaging Design",
+      "Logo Design",
+      "Food & Beverage Branding",
+      "Adobe Illustrator",
+    ],
+  },
+  {
+    id: 7,
+    name: "Adil Rafeeque",
+    image: "/assets/adil/adil.jpg",
+    clientLink: "https://adilrafeeque.com/",
+    shortdesc: "Personal Brand Identity",
+    year: "2025",
+    client: "Adil Rafeeque",
+    role: "Brand Designer",
+    duration: "2 Weeks",
+    description:
+      "The brand identity for Adil Rafeeque is built around a bold wordmark 'ADIL' inspired by visible growth found in upward line charts. The design communicates his analytical, growth-driven approach as a digital marketing professional. The minimal, high-contrast aesthetic reinforces clarity, precision, and modernity.",
+    challenge:
+      "Adil needed a personal brand that clearly represented his expertise in digital marketing, performance analytics, and growth strategy. The challenge was creating a visual identity that feels both personal and professional, while expressing measurable progress and digital intelligence.",
+    solution:
+      "We developed a custom wordmark featuring 'ADIL' with subtle line-chart-inspired elements that symbolize upward growth. The letter 'A' was crafted as a standalone icon for use across digital platforms. The contrasting, modern design ensures recognition, scalability, and a strong digital presence.",
+    impact: [
+      "A recognizable and scalable personal brand identity",
+      "Professional digital presence across platforms",
+      "Clear association with growth and performance analytics",
+      "Strong visual system with a versatile icon",
+    ],
+    images: ["/assets/adil/adil-0.jpg", "/assets/adil/adil-1.jpg", "/assets/adil/adil-2.jpg"],
+    tags: [
+      "Personal Branding",
+      "Logo Design",
+      "Wordmark Design",
+      "Digital Marketing Identity",
+    ],
+  },
+  {
+    id: 8,
+    name: "ADOVO",
+    image: "/assets/adovo/adovo.jpg",
+    clientLink: "",
+    shortdesc: "Branding",
+    year: "2025",
+    client: "ADOVO Solutions",
+    role: "Brand Designer",
+    duration: "2 Weeks",
+    description:
+      "The Adovo logo combines a wordmark with an abstract symbol, reflecting the fusion of technology and creativity. Designed with a minimalist approach in midnight blue with white background, it captures the agency's focus on AI-driven innovation with clarity and sophistication.",
+    challenge:
+      "ADOVO needed a brand identity that would communicate their expertise in AI-driven solutions while maintaining a professional and approachable aesthetic. The challenge was to balance cutting-edge technology with human-centered design principles.",
+    solution:
+      "We developed a clean, geometric logo that merges abstract symbolism with a custom wordmark. The midnight blue color palette conveys trust and intelligence, while the minimalist approach ensures versatility across digital and print applications.",
+    impact: [
+      "Strong brand recognition in the AI tech space",
+      "Versatile identity system across all touchpoints",
+      "Enhanced professional credibility",
+      "Positive client feedback on brand perception",
+    ],
+    images: [
+      "/assets/adovo/adovo-0.jpg",
+      "/assets/adovo/adovo-1.jpg",
+      "/assets/adovo/adovo-2.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Visual Identity",
+      "Adobe Illustrator",
+    ],
+  },
+  {
+    id: 9,
+    name: "Jadbery",
+    image: "/assets/jadbery/jadbery.jpg",
+    shortdesc: "UI / UX Design",
+    year: "2025",
+    client: "Jadbery",
+    clientLink: "https://www.jadbery.com/",
+    role: "UI/UX Designer",
+    duration: "2 Weeks",
+    description:
+      "Jadbery is a minimalist website design created for an IT service company portfolio. Focused on clean layouts and simple navigation, the design highlights services, expertise, and case studies with clarity and professionalism, reflecting the brand's modern and reliable approach to technology solutions.",
+    challenge:
+      "The client needed a portfolio website that would stand out in a crowded IT services market while clearly communicating their technical expertise and service offerings. The challenge was to create a design that was both visually striking and highly functional.",
+    solution:
+      "We implemented a minimalist design approach with strategic use of whitespace, clear typography hierarchy, and intuitive navigation patterns. The layout emphasizes key services and case studies while maintaining a clean, professional aesthetic throughout.",
+    impact: [
+      "45% increase in client inquiries",
+      "Improved engagement metrics across all pages",
+      "Reduced bounce rate by 30%",
+      "Enhanced brand perception as a modern IT partner",
+    ],
+    images: [
+      "/assets/jadbery/jadbery-0.jpg",
+      "/assets/jadbery/jadbery-1.jpg",
+      "/assets/jadbery/jadbery-2.jpg",
+    ],
+    tags: ["Web Design", "UI/UX", "Responsive Design", "Figma", "HTML/CSS"],
+  },
+  {
+    id: 10,
+    name: "Invoice",
+    image: "/assets/invoice/invoice.jpg",
+    shortdesc: "UI / UX Design & Development",
+    year: "2026",
+    client: "Jadbery",
+    clientLink: "https://invoice.shihabsaleem.site/",
+    role: "Designer & Developer",
+    duration: "2 Months",
+    description:
+      "Invoice by Jadbery is a free, simple, and intuitive invoice generator designed to run entirely on the client side without any backend dependency. Built for speed and accessibility, the application allows users to create and export invoices instantly without signup or login. The product is available both as a web application and a Chrome extension, ensuring flexibility across platforms.",
+    challenge:
+      "Most invoice tools require user accounts, backend storage, or paid subscriptions, creating friction for users who need quick, one-time invoicing. The challenge was to design and develop a lightweight solution that works instantly while maintaining a clean and professional user experience.",
+    solution:
+      "We designed a minimal UI with a focus on clarity and ease of use, paired with a fully client-side architecture using Next.js. All data processing and rendering happen in the browser, ensuring privacy, speed, and zero dependency on servers. The same design system was adapted seamlessly for both the web app and Chrome extension.",
+    impact: [
+      "Instant invoice generation without signup or login",
+      "100% client-side rendering with no backend dependency",
+      "Consistent experience across web and Chrome extension",
+      "Fast, accessible, and privacy-focused invoicing solution",
+    ],
+    images: [
+      "/assets/invoice/invoice-0.jpg",
+      "/assets/invoice/invoice-1.jpg",
+      "/assets/invoice/invoice-2.jpg",
+      "/assets/invoice/invoice-3.jpg",
+      "/assets/invoice/invoice-4.jpg",
+    ],
+    tags: [
+      "UI/UX Design",
+      "Frontend Development",
+      "Next.js",
+      "Figma",
+      "Client-Side Rendering",
+      "Product Design",
+    ],
+  },
+  {
+    id: 11,
+    name: "Archimud",
+    image: "/assets/archimud/archimud.jpg",
+    shortdesc: "Brand Identity",
+    year: "2026",
+    client: "Archimud / brandbab",
+    clientLink: "https://brandbab.in/",
+    role: "Brand Designer",
+    duration: "6 Weeks",
+    description:
+      "Archimud is a home décor brand rooted in craftsmanship, culture, and authentic artistry. The project focused on building a warm, modern, and culturally rich brand identity that reflects handmade quality, natural materials, and human-centered design. The identity balances contemporary minimalism with traditional inspiration, creating a timeless visual system grounded in heritage.",
+    challenge:
+      "The challenge was to create a cohesive identity that feels modern and refined while staying deeply connected to traditional craftsmanship. The brand needed to communicate authenticity, warmth, and cultural depth without appearing rustic or outdated.",
+    solution:
+      "We created a complete brand identity inspired by pottery, textiles, masks, frames, and traditional stitch patterns. The logo’s stylized “U” forms a bowl and a subtle smile, symbolizing warmth, joy, and handcrafted care. An earthy palette drawn from clay, soil, sand, and stone grounds the brand in nature, while Urbanist and Merriweather balance modern clarity with cultural depth.",
+    impact: [
+      "Strong and emotionally resonant home décor brand identity",
+      "Clear visual connection to craftsmanship and heritage",
+      "Scalable logo system with defined usage guidelines",
+      "Consistent visual language across print and digital platforms",
+    ],
+    images: [
+      "/assets/archimud/archimud-0.jpg",
+      "/assets/archimud/archimud-1.jpg",
+      "/assets/archimud/archimud-2.jpg",
+      "/assets/archimud/archimud-3.jpg",
+      "/assets/archimud/archimud-4.jpg",
+    ],
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Typography System",
+      "Color System",
+      "Home Décor Branding",
+      "Adobe Illustrator",
+    ],
+  },
+  {
+    id: 12,
+    name: "Sevens Hospitality",
+    image: "/assets/sevens/sevens.jpg",
+    shortdesc: "Brand Identity",
+    year: "2026",
+    client: "Sevens Hospitality",
+    clientLink: "",
+    role: "Brand Designer",
+    duration: "2 Weeks",
+
+    description:
+      "Sevens Hospitality is a premium hospitality brand focused on delivering exceptional guest experiences through comfort, elegance, and service excellence. The identity is centered around a custom Penrose Triangle-inspired number seven, symbolizing innovation, ambition, and continuous growth. The result is a modern and memorable visual system designed to communicate trust, professionalism, and a commitment to excellence.",
+
+    challenge:
+      "The challenge was to develop a distinctive identity that could stand out in the competitive hospitality industry while conveying trust, sophistication, and exceptional service. The brand required a memorable visual element that could represent excellence and innovation while remaining simple, scalable, and recognizable across various hospitality touchpoints.",
+
+    solution:
+      "The identity was built around a custom Penrose Triangle integrated into the number seven, creating a unique emblem that serves as the centerpiece of the brand. The Penrose Triangle symbolizes ambition, continuity, excellence, and limitless possibilities—qualities that align with Sevens Hospitality’s vision of delivering exceptional guest experiences. Combined with a refined typography system and a modern color palette, the identity creates a premium and recognizable brand presence across digital, print, and environmental applications.",
+
+    impact: [
+      "Distinctive and memorable hospitality brand identity",
+      "Strong visual recognition through a custom Penrose Triangle emblem",
+      "Consistent brand presence across print and digital applications",
+      "Scalable logo system supported by comprehensive brand guidelines",
+    ],
+
+    images: [
+      "/assets/sevens/sevens-0.jpg",
+      "/assets/sevens/sevens-1.jpg",
+      "/assets/sevens/sevens-2.jpg",
+    ],
+
+    tags: [
+      "Brand Identity",
+      "Logo Design",
+      "Hospitality Branding",
+      "Visual Identity System",
+      "Brand Guidelines",
+      "Penrose Triangle",
+      "Adobe Illustrator",
+    ],
+  }
+
+
+];
+
+export default works;

@@ -187,7 +187,7 @@ export default function ProjectPage({ projectId }: { projectId: number }) {
         </div>
       </section>
 
-      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950">
+      <section className="px-6 md:px-12 lg:px-20 py-20 bg-white dark:bg-zinc-950 tags-section">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 mb-8">Technologies</h2>
           <div className="flex flex-wrap justify-center gap-3">
