@@ -9,11 +9,11 @@ const info = [
       "Design intuitive digital experiences by blending problem-solving and storytelling, always grounded in a deep understanding of users, their goals, and real-world needs.",
     desc: "I approach design as a blend of problem-solving and storytelling. Each project begins with understanding people, their goals, and the obstacles in their way. From there, I craft interfaces that are simple, thoughtful, and grounded in real user needs, ensuring that every decision serves a clear purpose.",
     seoDesc:
-      "Product Designer and Developer specializing in UI/UX design, user research, and frontend development. Crafting intuitive digital experiences with Figma, React, and modern design systems.",
+      "UI/UX Designer & Product Designer based in Kerala, India. Specializing in SaaS dashboard design, mobile app UI, branding, and user-centered digital experiences. Building with Figma, React, and Next.js.",
     seoAboutDesc:
-      "Explore the professional journey of Shihab Saleem, a Product Designer and Developer based in Kerala. Specializing in UI/UX design, branding, and frontend development with expertise in Figma, React, and Next.js.",
+      "Meet Shihab Saleem — UI/UX Designer and Product Designer from Kerala, India with 3+ years of experience. Expert in SaaS design, mobile app UI, design systems, and frontend development using Figma, React, and Next.js.",
     seoContactDesc:
-      "Get in touch with Shihab Saleem for UI/UX design, branding, or web development projects. Available for collaborations and freelance inquiries in Kerala and remotely.",
+      "Hire Shihab Saleem — UI/UX Designer & Product Designer based in Kerala, India. Open to freelance projects, SaaS product design, mobile app UI, and global remote collaborations. Let's build something great.",
     dpDark: "/assets/shihab.png",
     dpLight: "/assets/shihab-Light.png",
     ogImage: "/assets/og.jpg",
@@ -194,6 +194,7 @@ const skills = [
   "Stakeholder Management",
   "Agile / Scrum",
 ];
+
 const assetData = {
   works,
   info,

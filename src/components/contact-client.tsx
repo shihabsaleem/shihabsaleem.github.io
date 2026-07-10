@@ -2,11 +2,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import assetData from "@/data/asset";
-
-const info = assetData.info[0];
+import { useCountryInfo } from "@/data/useCountryInfo";
 
 export default function ContactClient() {
+    const info = useCountryInfo();
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [copiedEmail, setCopiedEmail] = useState(false);
