@@ -15,8 +15,25 @@ export function useCountryInfo() {
   const [info, setInfo] = useState(defaultInfo);
 
   useEffect(() => {
-    const country = getCookie('x-country') ?? 'IN';
-    setInfo(getInfoByCountry(country));
+    // 1. Check URL parameters directly in the browser (bypasses any proxy/caching issues)
+    const params = new URLSearchParams(window.location.search);
+    const urlCountry = params.get('country');
+
+    // 2. Read the cookie
+    const rawCookie = getCookie('x-country');
+    console.log('[DEBUG] URL:', urlCountry, '| Cookie:', rawCookie);
+    
+    // 3. Prioritize URL > Cookie > Default
+    const country = urlCountry || rawCookie || 'IN';
+    console.log('[DEBUG] Using country code:', country);
+    
+    // Auto-fix the cookie client-side if the proxy failed to set it
+    if (urlCountry && rawCookie !== urlCountry) {
+      document.cookie = `x-country=${urlCountry}; path=/; max-age=3600`;
+    }
+
+    const newInfo = getInfoByCountry(country);
+    setInfo(newInfo);
   }, []);
 
   return info;
