@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/case-studies/${study.slug}`,
     lastModified: staticLastModified,
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority: 0.9,
   }));
 
   return [...staticPages, ...workPages, ...caseStudyPages];
