@@ -33,8 +33,10 @@ export function useCountryInfo() {
     console.log('[LOCALIZATION DEBUG] Cookie x-country =', rawCookie);
     
     // 3. Bulletproof Fallback
-    if (!rawCookie || rawCookie === 'IN') {
-      console.log('[LOCALIZATION DEBUG] Cookie is IN or missing. Fetching from IP API...');
+    // Since Vercel is misidentifying your UAE IP as 'FR', let's make the client-side check 
+    // more aggressive. If the server didn't explicitly detect 'AE', we will double check!
+    if (!rawCookie || rawCookie !== 'AE') {
+      console.log('[LOCALIZATION DEBUG] Cookie is not AE. Double-checking with client API...');
       fetch('https://get.geojs.io/v1/ip/country.json')
         .then(res => {
           console.log('[LOCALIZATION DEBUG] IP API Response Status:', res.status);
