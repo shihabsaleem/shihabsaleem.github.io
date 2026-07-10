@@ -3,12 +3,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import assetData from "@/data/asset";
+import { useCountryInfo } from "@/data/useCountryInfo";
 import { IoLogoWhatsapp, IoMail, IoClose } from "react-icons/io5";
 
-const info = assetData.info[0];
-
 const Hero = () => {
+  const info = useCountryInfo();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showPopup, setShowPopup] = useState(false);

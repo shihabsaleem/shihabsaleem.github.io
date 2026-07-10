@@ -7,16 +7,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LegalLinks from "@/components/legal";
 import assetData from "@/data/asset";
+import { useCountryInfo } from "@/data/useCountryInfo";
 
 gsap.registerPlugin(ScrollTrigger);
 
 // 1. Sort the works descending (ID 8 to ID 1)
 const sortedWorks = [...assetData.works].sort((a, b) => b.id - a.id);
-const info = assetData.info[0];
 
 const CATEGORIES = ["All", "UI/UX Design", "Branding", "Development"];
 
 export default function HomeClient() {
+    const info = useCountryInfo();
     const containerRef = useRef<HTMLDivElement>(null);
     const [activeTag, setActiveTag] = useState("All");
 
