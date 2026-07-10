@@ -15,12 +15,14 @@ export function useCountryInfo() {
   const [info, setInfo] = useState(defaultInfo);
 
   useEffect(() => {
+    console.log('[LOCALIZATION DEBUG] === START ===');
     // 1. Check URL parameters directly in the browser
     const params = new URLSearchParams(window.location.search);
     const urlCountry = params.get('country');
+    console.log('[LOCALIZATION DEBUG] URL Parameter ?country=', urlCountry);
 
     if (urlCountry) {
-      // Force URL override
+      console.log('[LOCALIZATION DEBUG] Forcing URL override to:', urlCountry);
       document.cookie = `x-country=${urlCountry}; path=/; max-age=3600`;
       setInfo(getInfoByCountry(urlCountry));
       return;
@@ -28,26 +30,34 @@ export function useCountryInfo() {
 
     // 2. Read the cookie set by our proxy
     const rawCookie = getCookie('x-country');
+    console.log('[LOCALIZATION DEBUG] Cookie x-country =', rawCookie);
     
-    // 3. Bulletproof Fallback: If cookie is missing OR it fell back to default 'IN', 
-    // double-check with a free reliable client-side API just in case Vercel headers failed.
+    // 3. Bulletproof Fallback
     if (!rawCookie || rawCookie === 'IN') {
+      console.log('[LOCALIZATION DEBUG] Cookie is IN or missing. Fetching from IP API...');
       fetch('https://get.geojs.io/v1/ip/country.json')
-        .then(res => res.json())
+        .then(res => {
+          console.log('[LOCALIZATION DEBUG] IP API Response Status:', res.status);
+          return res.json();
+        })
         .then(data => {
+          console.log('[LOCALIZATION DEBUG] IP API Data:', data);
           if (data && data.country) {
             const realCountry = data.country; // e.g. "AE", "US", "IN"
+            console.log('[LOCALIZATION DEBUG] Updating cookie and UI to:', realCountry);
             document.cookie = `x-country=${realCountry}; path=/; max-age=3600`;
             setInfo(getInfoByCountry(realCountry));
           } else {
+            console.log('[LOCALIZATION DEBUG] API returned invalid data, falling back to IN');
             setInfo(getInfoByCountry('IN'));
           }
         })
-        .catch(() => {
+        .catch((err) => {
+          console.error('[LOCALIZATION DEBUG] IP API Fetch Error:', err);
           setInfo(getInfoByCountry(rawCookie || 'IN')); // ultimate fallback
         });
     } else {
-      // We have a valid non-default cookie (e.g. 'AE'), use it immediately
+      console.log('[LOCALIZATION DEBUG] Using existing cookie value:', rawCookie);
       setInfo(getInfoByCountry(rawCookie));
     }
   }, []);
