@@ -14,7 +14,7 @@ import type { NextRequest } from 'next/server';
  * Falls back to "IN" (India) when geo is unavailable (local dev).
  */
 export function proxy(request: NextRequest) {
-  // In Next.js 16+, geo data is provided via Vercel request headers
+  // In Next.js 1in, geo data is provided via Vercel request headers
   // (request.geo was removed). Falls back to 'IN' locally.
   const country = request.headers.get('x-vercel-ip-country') ?? 'IN';
 
