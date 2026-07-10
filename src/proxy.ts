@@ -6,8 +6,9 @@ export function proxy(request: NextRequest) {
   // Example usage: localhost:3000/?country=AE
   const urlCountry = request.nextUrl.searchParams.get('country');
 
-  // 2. Check various hosting provider headers (Vercel, Cloudflare, AWS)
+  // 2. Check Next.js official geo object, then fallback to various hosting provider headers
   const headerCountry = 
+    request.geo?.country ||
     request.headers.get('x-vercel-ip-country') ||
     request.headers.get('cf-ipcountry') ||
     request.headers.get('cloudfront-viewer-country');
