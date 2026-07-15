@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
             },
             {
-                userAgent: ["GPTBot", "PerplexityBot", "Claude-Bot", "OAI-SearchBot"],
+                userAgent: ["GPTBot", "PerplexityBot", "ClaudeBot", "anthropic-ai", "OAI-SearchBot", "Google-Extended"],
                 allow: "/",
             }
         ],

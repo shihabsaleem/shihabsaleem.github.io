@@ -63,6 +63,29 @@
 - **Description:** Archimud is a home décor brand rooted in craftsmanship, culture, and authentic artistry. The project focused on building a warm, modern, and culturally rich brand identity that reflects handmade quality, natural materials, and human-centered design. The identity balances contemporary minimalism with traditional inspiration, creating a timeless visual system grounded in heritage.
 - **Link:** https://www.shihabsaleem.site/archimud
 
+## 📝 Case Studies
+
+### 1. Flow
+- **Year:** 2025
+- **Category:** Web Application
+- **Role:** UX Designer
+- **Description:** Small businesses and solo marketers spend hours moving between design tools, copywriting tools, and ad platforms to produce a single ad. Flow is an AI-powered ad creation platform that collapses that workflow into a single prompt-to-publish loop, built specifically for people who aren't designers.
+- **Link:** https://www.shihabsaleem.site/case-studies/flow-case-study
+
+### 2. Invoice Case Study
+- **Year:** 2025
+- **Category:** Web App + Chrome Extension
+- **Role:** Product Designer & Developer
+- **Description:** Invoice was designed as a privacy-first, offline-capable invoice generator that creates branded PDF invoices, estimates, and receipts directly in the browser — with no sign-up, no tracking, and no server-side data storage.
+- **Link:** https://www.shihabsaleem.site/case-studies/invoice-case-study
+
+### 3. Milkow Delivery CRM
+- **Year:** 2026
+- **Category:** Mobile first web app
+- **Role:** Product Designer & Developer
+- **Description:** Milkow is a full-stack Customer Relationship Management (CRM) and route management application designed specifically for the unique, fast-paced operational needs of daily milk delivery businesses. Built as a mobile-first PWA.
+- **Link:** https://www.shihabsaleem.site/case-studies/milkow-case-study
+
 ## 📚 Education
 - B. Tech in Computer Science and Engineering, College of Engineering, Munnar (2020 - 2023)
 - Diploma in Computer Engineering, St.Marys Polytechnic College, Palakkad (2015 - 2018)
