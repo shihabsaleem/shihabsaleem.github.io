@@ -140,7 +140,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
             className="object-cover hover:scale-105 transition-transform duration-[1.4s] ease-in-out"
           />
           {/* Subtle bottom gradient */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#f8f7f5] dark:from-[#0a0a0a] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-[#f8f7f5] dark:from-[#0a0a0a] to-[#f8f7f500] dark:to-[#0a0a0a00] pointer-events-none" />
         </div>
       </div>
 
