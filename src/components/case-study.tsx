@@ -128,7 +128,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
 
       {/* ── HERO IMAGE ───────────────────────────────────────── */}
       <div className="hero-img-wrap w-full">
-        <div className="relative w-full h-[40vw] max-h-[65vh] min-h-[280px] overflow-hidden">
+        <div className="relative w-full aspect-9/4 overflow-hidden">
           <Image
             src={caseStudy.heroImage}
             alt={`${caseStudy.name} Hero`}

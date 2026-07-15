@@ -237,9 +237,9 @@ export default function RootLayout({
           {/* Hidden Semantic SEO Content */}
           <footer className="sr-only">
             <p>
-              Shihab Saleem is a UI UX Designer and Product Designer in Kerala, India.
-              Specializing in SaaS design, mobile app interface design, and product strategy.
-              Providing premium design solutions for global clients using Figma, React, and Next.js.
+              Shihab Saleem is a leading UI/UX Designer, Product Designer, and Frontend Developer in Kerala, India.
+              Specializing in high-converting SaaS design, engaging mobile app interface design, brand identity, and comprehensive product strategy.
+              Delivering premium, user-centric design solutions and seamless web development for global clients using Figma, React, Next.js, and Tailwind CSS.
             </p>
           </footer>
 

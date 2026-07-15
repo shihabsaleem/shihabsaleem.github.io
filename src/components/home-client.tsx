@@ -84,7 +84,7 @@ export default function HomeClient() {
                         },
                         {
                             clipPath: "inset(0% 0% 0% 0%)",
-                            duration: 0.7,
+                            duration: 0.2,
                             ease: "expo.in",
                             scrollTrigger: {
                                 trigger: `.work-${work.id}`,
@@ -122,9 +122,9 @@ export default function HomeClient() {
         >
             {/* Hero Section */}
             <h1 className="sr-only">
-                Shihab Saleem - UI/UX Designer & Product Designer based in Kerala, India.
-                Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
-                Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
+                Shihab Saleem - Expert UI/UX Designer, Product Designer, and Frontend Developer in Kerala, India.
+                Specializing in high-converting SaaS design, engaging mobile applications, brand strategy, and user-centered digital experiences.
+                View my portfolio featuring responsive web design, interactive prototyping, and custom frontend development using Next.js, React, and Tailwind CSS.
                 <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
                     <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer" >LinkedIn</a>
                     <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer" >GitHub</a>
@@ -226,7 +226,7 @@ export default function HomeClient() {
                 <section className="sr-only">
                     <div className="max-w-4xl">
                         <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-red-600 mb-8">
-                            About Shihab Saleem - Kerala based UI UX Designer
+                            About Shihab Saleem - Freelance UI/UX Designer, Product Designer & Web Developer based in Kerala, India offering innovative digital solutions.
                         </h2>
                         <div className="prose dark:prose-invert max-w-none">
                             <h3 className="text-xl md:text-3xl font-light leading-relaxed mb-8">
@@ -246,7 +246,7 @@ export default function HomeClient() {
                             <h2 className="text-[10vw] font-black leading-none tracking-tighter uppercase mb-12">
                                 Let&apos;s Make <br /> <span className="text-red-600">History.</span>
                             </h2>
-                            <p className="sr-only">Contact Shihab Saleem for UI UX design services in Kerala.</p>
+                            <p className="sr-only">Contact Shihab Saleem, leading UI/UX Designer and Frontend Developer in Kerala, India, to collaborate on your next website, mobile app, or SaaS product design.</p>
                             <a
                                 href={`mailto:${info.email}`}
                                 className="text-2xl md:text-5xl font-light hover:text-red-600 transition-colors border-b border-black/20 dark:border-white/20 hover:border-red-600 pb-4 inline-block"

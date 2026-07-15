@@ -4,7 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useCountryInfo } from "@/data/useCountryInfo";
-import { IoLogoWhatsapp, IoMail, IoClose } from "react-icons/io5";
+import { SiWhatsapp } from "@icons-pack/react-simple-icons";
+import { Mail, X } from "lucide-react";
 
 const Hero = () => {
   const info = useCountryInfo();
@@ -120,7 +121,7 @@ const Hero = () => {
       <div className="popup-content relative w-full max-w-sm bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-3xl p-8 shadow-2xl overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-red-600 to-transparent opacity-50" />
         <button onClick={() => setShowPopup(false)} className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-full transition-colors z-10">
-          <IoClose size={24} />
+          <X size={24} />
         </button>
         <div className="text-center mb-10 relative z-10">
           <h3 className="text-3xl font-sans mb-2">Let's connect</h3>
@@ -129,7 +130,7 @@ const Hero = () => {
         <div className="space-y-4 relative z-10">
           <a href={`https://wa.me/${info.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full p-5 bg-green-500/5 hover:bg-green-500/10 border border-green-500/10 hover:border-green-500/30 rounded-2xl transition-all group active:scale-95">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-green-500 rounded-xl text-white shadow-lg shadow-green-500/20"><IoLogoWhatsapp size={22} /></div>
+              <div className="p-3 bg-green-500 rounded-xl text-white shadow-lg shadow-green-500/20"><SiWhatsapp size={22} /></div>
               <div className="text-left">
                 <p className="font-bold text-green-600 dark:text-green-400">WhatsApp</p>
                 <p className="text-xs text-gray-400 tracking-wide uppercase">Quickest Reply</p>
@@ -139,7 +140,7 @@ const Hero = () => {
           </a>
           <a href={`mailto:${info.email}`} className="flex items-center justify-between w-full p-5 bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 hover:border-red-500/30 rounded-2xl transition-all group active:scale-95">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-red-600 rounded-xl text-white shadow-lg shadow-red-600/20"><IoMail size={22} /></div>
+              <div className="p-3 bg-red-600 rounded-xl text-white shadow-lg shadow-red-600/20"><Mail size={22} /></div>
               <div className="text-left">
                 <p className="font-bold text-red-600 dark:text-red-400">Email Me</p>
                 <p className="text-xs text-gray-400 tracking-wide uppercase">Formal Requests</p>

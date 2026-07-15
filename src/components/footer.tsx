@@ -16,11 +16,12 @@ export default function GlobalFooter() {
 
                 {/* Hidden SEO Content */}
                 <div className="sr-only">
+                    <h2>Shihab Saleem - Freelance UI/UX Designer & Frontend Developer</h2>
                     <p>
-                        Shihab Saleem is a professional UI UX Designer and Product Designer based in Kerala, India.
-                        Offering expert design services for SaaS platforms, mobile applications, and enterprise digital products.
-                        Providing end-to-end design solutions from user research and wireframing to high-fidelity UI design and frontend development using React and Next.js.
-                        Experience spanning branding, interface design, user experience optimization, and design systems.
+                        Shihab Saleem is a top-tier professional UI/UX Designer, Product Designer, and Web Developer based in Kerala, India. 
+                        Delivering expert user-centric design services for SaaS platforms, mobile applications, e-commerce, and enterprise digital products globally. 
+                        Comprehensive end-to-end design solutions covering user research, wireframing, prototyping, high-fidelity UI design, and responsive frontend development utilizing React, Next.js, and Tailwind CSS. 
+                        Proven expertise spanning brand identity design, intuitive interface design, user experience (UX) optimization, usability testing, and scalable design systems. Hire a dedicated UI/UX expert to elevate your digital presence.
                     </p>
                 </div>
             </div>

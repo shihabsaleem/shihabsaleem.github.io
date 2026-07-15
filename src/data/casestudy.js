@@ -1,7 +1,112 @@
 const caseStudies = [
-
   {
     "id": 1,
+    "slug": "flow-case-study",
+    "name": "Flow",
+    "client": "Concept Project",
+    "clientLink": "",
+    "year": "2025",
+    "role": "UX Designer",
+    "duration": "1 week",
+    "timeline": "2025",
+    "platform": "Web Application",
+    "team": ["1 UX Designer"],
+    "coverImage": "/assets/case-study/flow/cover.jpg",
+    "heroImage": "/assets/case-study/flow/flow.jpg",
+
+    "hook": "Small businesses and solo marketers spend hours moving between design tools, copywriting tools, and ad platforms to produce a single ad — then do it again for every variation. I designed Flow, an AI-powered ad creation platform that collapses that workflow into a single prompt-to-publish loop, built specifically for people who aren't designers and can't afford to act like they are.",
+
+    "context": {
+      "description": "This was a 1-week solo concept project centered on a prompt-to-image generation workflow with iterative refinement built into a chat window. Instead of a canvas-based editor, users generate ad visuals through natural-language prompts and alter them conversationally — requesting changes, swapping elements, or adjusting tone without leaving the chat interface. The constraint I imposed was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
+    },
+
+    "problemFraming": {
+      "statement": "The brief I started with was 'make ad creation easier.' The more specific problem, after talking to small business owners and social media managers, was that the bottleneck wasn't the tools — it was the transitions between them. Every context switch between design, copywriting, and publishing broke momentum and made iteration feel expensive.",
+      "rootCause": "Ad creation tools are built around professional workflows — they assume users have creative direction before they open the tool. The real gap was upstream: users needed help deciding what to make, not just tools to make it with.",
+    },
+
+    "insights": [
+      {
+        "title": "Fragmentation is the real cost, not any single tool",
+        "text": "Users weren't frustrated with Canva or Meta Ads Manager specifically — they were frustrated with having to context-switch between them. The problem was systemic, not product-specific.",
+        "implication": "Consolidation was the value proposition, not feature superiority. Flow didn't need to be better than each individual tool — it needed to replace the workflow that connected them."
+      },
+      {
+        "title": "Blank prompt anxiety is the primary drop-off point",
+        "text": "In testing, users who understood the generation mechanic still hesitated at the prompt field. Not because they couldn't write a prompt, but because they didn't know what would produce a good result. Uncertainty about input quality killed action.",
+        "implication": "Prompt suggestions and example-based generation weren't nice-to-haves — they were the onramp. The generator was useless without them."
+      },
+      {
+        "title": "Iteration beats perfection — but only if iteration is cheap",
+        "text": "Marketers consistently said they cared less about a perfect first ad than about testing multiple variants quickly. But existing tools made each iteration feel like starting over.",
+        "implication": "The core loop needed to be designed for rapid refinement: each generated output should feel like a step in a conversation, not a discrete artifact."
+      }
+    ],
+
+    "decisions": [
+      {
+        "title": "Prompt-based generation over template selection",
+        "options": "Option A was a template library (like Canva) where users start from an existing design. Option B was a prompt-first interface where generation starts from a text input.",
+        "choice": "Option B — prompt-first, with templates surfaced as inspiration rather than starting points.",
+        "rationale": "Templates solve the blank-canvas problem by giving users something to modify. But they also anchor users to an existing aesthetic, which limits variation and makes every output feel derivative. Prompt-based generation aligned with how marketers actually think about campaigns — in terms of message and audience, not visual style. Templates became the fallback (the Inspiration Engine) for users who couldn't articulate a prompt, not the default path.",
+        "tradeoff": "Prompt-first creates its own blank-canvas problem at the input level — which is what led to the prompt suggestion system. One friction point was replaced with a smaller one.",
+        "image": "/assets/case-study/flow/flow-wf-1.jpg"
+      },
+      {
+        "title": "Bento-grid dashboard over a linear campaign view",
+        "options": "The dashboard could be a traditional list/table of campaigns, or a modular bento-style grid surfacing different data types simultaneously.",
+        "choice": "Bento-grid layout, with analytics, active campaigns, and inspiration modules visible without navigation.",
+        "rationale": "Social media managers managing multiple clients need to orient quickly across several dimensions: spend, performance, and upcoming tasks. A linear list forces serial scanning; the bento grid allows parallel orientation. It also made the dashboard feel like a workspace rather than a report, which aligned with how users described their daily workflow.",
+        "tradeoff": "The bento layout is harder to adapt to mobile screen sizes and risks feeling visually complex to new users. I mitigated this with a strict information hierarchy — high-priority metrics large, supporting data smaller — but it's a layout that rewards familiarity.",
+        "image": null
+      },
+      {
+        "title": "Surfacing performance suggestions inline, not in a separate analytics section",
+        "options": "Option A: a dedicated analytics page where users go to review performance. Option B: performance insights surfaced contextually, inline with the relevant campaign or creative.",
+        "choice": "Option B — inline suggestions attached to the outputs they're about.",
+        "rationale": "Talking to users revealed that campaign data existed in their current tools but wasn't being acted on. The gap wasn't access to data — it was the cost of translating a number into an action. By surfacing a suggestion ('This ad is outperforming similar ones — generate a variation?') at the point where the decision is most relevant, the product does the translation work. A separate analytics page requires the user to make the connection themselves.",
+        "tradeoff": "Inline suggestions can feel intrusive if they appear too frequently or at the wrong moment. This required careful logic around when to surface them — a problem that would need real usage data to tune properly.",
+        "image": "/assets/case-study/flow/flow-wf-2.jpg"
+      }
+    ],
+
+    "outcomes": {
+      "summary": "Flow is a concept project — there are no post-launch metrics. What was validated was the core loop through user testing.",
+      "metrics": [
+        { "label": "Core loop validated", "value": "Prompt → generate → refine → export completable without guidance", "note": "3 of 4 test users completed first ad without instruction" },
+        { "label": "Blank prompt anxiety", "value": "Reduced with suggestions", "note": "Users who hesitated at the prompt field started faster with suggested prompts" },
+        { "label": "What I'd measure post-launch", "value": "Time to first export, iteration rate per session, prompt suggestion adoption rate", "note": "These three metrics would tell whether the core loop is working" }
+      ],
+      "note": "Explicitly naming what I'd measure — rather than claiming metrics from a concept project — is itself a design decision about honesty."
+    },
+
+    "reflection": "The decision I'm least confident about is the prompt-first entry point. It's correct for experienced digital marketers but I underestimated how disorienting it is for small business owners who have no mental model of what a good prompt looks like. The Inspiration Engine partially compensates for this, but it's downstream of the problem. I would explore a hybrid entry: a structured brief form (audience, tone, product) that generates a prompt on the user's behalf, letting them edit or use it directly. That would serve first-time users without alienating power users who prefer writing their own prompts.",
+
+    "achievements": [
+      {
+        "title": "End-to-end solo concept delivered",
+        "description": "Scoped, designed, and documented a full AI product concept — from discovery through UI — in 1 week with no external dependencies."
+      },
+      {
+        "title": "Core loop validated in user testing",
+        "description": "3 of 4 test users completed the full prompt → generate → refine → export loop without instruction on their first session."
+      },
+      {
+        "title": "Eliminated blank-prompt anxiety",
+        "description": "Introduced a prompt suggestion system that measurably reduced hesitation at the generator's entry point — the primary user drop-off identified in research."
+      }
+    ],
+
+    "tags": ["AI Product", "UX Design", "Web App", "Creative Tools", "Marketing"],
+
+    "gallery": [
+      "/assets/case-study/flow/gallery-1.jpg",
+      "/assets/case-study/flow/gallery-2.jpg",
+      "/assets/case-study/flow/gallery-3.jpg"
+    ]
+  },
+  {
+    "id": 2,
     "slug": "invoice-case-study",
     "name": "Invoice",
     "client": "Jadbery",
@@ -12,8 +117,8 @@ const caseStudies = [
     "timeline": "2025",
     "platform": "Web App + Chrome Extension",
     "team": ["Solo Designer & Developer"],
-
-    "heroImage": "/assets/invoice/invoice.jpg",
+    "coverImage": "/assets/case-study/invoice/invoice.jpg",
+    "heroImage": "/assets/case-study/invoice/invoice.jpg",
 
     "hook": "Most invoicing tools are built around subscriptions, onboarding flows, and cloud storage. Freelancers who simply need to send a professional invoice are forced through unnecessary friction before they can complete a basic task. Invoice was designed as a privacy-first, offline-capable invoice generator that creates branded PDF invoices, estimates, and receipts directly in the browser — with no sign-up, no tracking, and no server-side data storage.",
 
@@ -166,112 +271,125 @@ const caseStudies = [
       "/assets/case-study/invoice/gallery-3.jpg"
     ]
   },
-
-
   {
-    "id": 2,
-    "slug": "flow-case-study",
-    "name": "Flow",
-    "client": "Concept Project",
-    "clientLink": "",
-    "year": "2025",
-    "role": "UX Designer",
-    "duration": "1 week",
-    "timeline": "2025",
-    "platform": "Web Application",
-    "team": ["1 UX Designer"],
+    "id": 3,
+    "slug": "milkow-case-study",
+    "name": "Milkow Delivery CRM",
+    "client": "Milkow Fresh",
+    "clientLink": "https://www.milkow.in/",
+    "year": "2026",
+    "role": "Product Designer & Developer",
+    "duration": "16 Weeks",
+    "timeline": "2026",
+    "platform": "Mobile first web app",
+    "team": ["1 Product Designer & 3 Developers"],
+    "coverImage": "/assets/case-study/milkow/cover.jpg",
+    "heroImage": "/assets/case-study/milkow/milkow.jpg",
 
-    "heroImage": "/assets/case-study/flow/flow.jpg",
-
-    "hook": "Small businesses and solo marketers spend hours moving between design tools, copywriting tools, and ad platforms to produce a single ad — then do it again for every variation. I designed Flow, an AI-powered ad creation platform that collapses that workflow into a single prompt-to-publish loop, built specifically for people who aren't designers and can't afford to act like they are.",
+    "hook": "Milkow is a full-stack Customer Relationship Management (CRM) and route management application designed specifically for the unique, fast-paced operational needs of daily milk delivery businesses. Built on a robust tech stack, it acts as a mobile-first Progressive Web App (PWA) bridging the gap between chaotic physical logistics and digital precision.",
 
     "context": {
-      "description": "This was a 1-week solo concept project centered on a prompt-to-image generation workflow with iterative refinement built into a chat window. Instead of a canvas-based editor, users generate ad visuals through natural-language prompts and alter them conversationally — requesting changes, swapping elements, or adjusting tone without leaving the chat interface. The constraint I imposed was a single core loop: every feature had to either accelerate generation or reduce the friction of iteration. Features that didn't serve one of those two goals were cut from scope, regardless of how useful they seemed in isolation.",
+      "description": "This case study details the end-to-end UX research, design, and engineering process used to transform a legacy paper-based industry into a streamlined digital experience. The process began with direct immersion into the users' environment, conducting 'ride-alongs' with delivery drivers during their 4:00 AM morning shifts to understand constraints like one-handed operation, low light, and network unreliability."
     },
 
     "problemFraming": {
-      "statement": "The brief I started with was 'make ad creation easier.' The more specific problem, after talking to small business owners and social media managers, was that the bottleneck wasn't the tools — it was the transitions between them. Every context switch between design, copywriting, and publishing broke momentum and made iteration feel expensive.",
-      "rootCause": "Ad creation tools are built around professional workflows — they assume users have creative direction before they open the tool. The real gap was upstream: users needed help deciding what to make, not just tools to make it with.",
+      "statement": "The daily milk delivery industry operates with chaotic physical logistics and paper-based tracking. Drivers operate under severe environmental constraints (one hand, gloves, low/high light, poor network), while franchise owners struggle with irregular cash flow and inventory leakage.",
+      "rootCause": "Traditional logistics apps are overkill (requiring barcode scanning and signatures), while basic apps fail due to tiny buttons, multiple taps, and freezing when networks drop. Rigid billing cycles fail because customers pay ad-hoc, and end-of-shift physical stock reconciliation rarely matches paper ledgers."
     },
 
     "insights": [
       {
-        "title": "Fragmentation is the real cost, not any single tool",
-        "text": "Users weren't frustrated with Canva or Meta Ads Manager specifically — they were frustrated with having to context-switch between them. The problem was systemic, not product-specific.",
-        "implication": "Consolidation was the value proposition, not feature superiority. Flow didn't need to be better than each individual tool — it needed to replace the workflow that connected them."
+        "title": "The 'Three-Second' Rule",
+        "text": "If logging a delivery takes more than three seconds, the driver abandons the app in favor of remembering it later, leading to massive data inaccuracy.",
+        "implication": "The UI must be instant. State mutations need to be staged locally, and background syncing is required to hide network latency."
       },
       {
-        "title": "Blank prompt anxiety is the primary drop-off point",
-        "text": "In testing, users who understood the generation mechanic still hesitated at the prompt field. Not because they couldn't write a prompt, but because they didn't know what would produce a good result. Uncertainty about input quality killed action.",
-        "implication": "Prompt suggestions and example-based generation weren't nice-to-haves — they were the onramp. The generator was useless without them."
+        "title": "Irregular Cash Flow & Ad-hoc Payments",
+        "text": "Customers don't follow strict daily, weekly, or monthly payment schedules. They pay randomly (ad-hoc), making rigid billing cycles useless.",
+        "implication": "The billing system needs to act as a Unified Running Ledger. Any delivery debits the ledger, and any payment credits it."
       },
       {
-        "title": "Iteration beats perfection — but only if iteration is cheap",
-        "text": "Marketers consistently said they cared less about a perfect first ad than about testing multiple variants quickly. But existing tools made each iteration feel like starting over.",
-        "implication": "The core loop needed to be designed for rapid refinement: each generated output should feel like a step in a conversation, not a discrete artifact."
+        "title": "Environmental Constraints Dictate Design",
+        "text": "Drivers operate outdoors, often in blinding high sunlight, making standard subtle grays and low-contrast modern UI trends fail miserably.",
+        "implication": "The UI requires a stark black-and-white theme and extremely padded button hitboxes to accommodate gloved, walking users."
       }
     ],
 
     "decisions": [
       {
-        "title": "Prompt-based generation over template selection",
-        "options": "Option A was a template library (like Canva) where users start from an existing design. Option B was a prompt-first interface where generation starts from a text input.",
-        "choice": "Option B — prompt-first, with templates surfaced as inspiration rather than starting points.",
-        "rationale": "Templates solve the blank-canvas problem by giving users something to modify. But they also anchor users to an existing aesthetic, which limits variation and makes every output feel derivative. Prompt-based generation aligned with how marketers actually think about campaigns — in terms of message and audience, not visual style. Templates became the fallback (the Inspiration Engine) for users who couldn't articulate a prompt, not the default path.",
-        "tradeoff": "Prompt-first creates its own blank-canvas problem at the input level — which is what led to the prompt suggestion system. One friction point was replaced with a smaller one.",
-        "image": "/assets/case-study/flow/flow-wf-1.jpg"
-      },
-      {
-        "title": "Bento-grid dashboard over a linear campaign view",
-        "options": "The dashboard could be a traditional list/table of campaigns, or a modular bento-style grid surfacing different data types simultaneously.",
-        "choice": "Bento-grid layout, with analytics, active campaigns, and inspiration modules visible without navigation.",
-        "rationale": "Social media managers managing multiple clients need to orient quickly across several dimensions: spend, performance, and upcoming tasks. A linear list forces serial scanning; the bento grid allows parallel orientation. It also made the dashboard feel like a workspace rather than a report, which aligned with how users described their daily workflow.",
-        "tradeoff": "The bento layout is harder to adapt to mobile screen sizes and risks feeling visually complex to new users. I mitigated this with a strict information hierarchy — high-priority metrics large, supporting data smaller — but it's a layout that rewards familiarity.",
+        "title": "Decimal-Based Route Ordering",
+        "options": "SQL linked list vs. String-based sorting vs. Decimal-based system",
+        "choice": "Decimal-based system for the delivery_order column with a visual Drag-and-Drop interface.",
+        "rationale": "We needed a way to dynamically insert new customers between existing ones. A linked list proved overly complex and fragile during bulk updates. String-based sorting had length limits. A decimal-based system provides ample numerical room to insert records without triggering massive, system-wide database recalculations.",
+        "tradeoff": "Requires careful management of the decimal precision over time, but avoids immediate re-indexing performance hits.",
+        "impact": "Drivers have an efficient, easily updatable route sequence.",
         "image": null
       },
       {
-        "title": "Surfacing performance suggestions inline, not in a separate analytics section",
-        "options": "Option A: a dedicated analytics page where users go to review performance. Option B: performance insights surfaced contextually, inline with the relevant campaign or creative.",
-        "choice": "Option B — inline suggestions attached to the outputs they're about.",
-        "rationale": "Talking to users revealed that campaign data existed in their current tools but wasn't being acted on. The gap wasn't access to data — it was the cost of translating a number into an action. By surfacing a suggestion ('This ad is outperforming similar ones — generate a variation?') at the point where the decision is most relevant, the product does the translation work. A separate analytics page requires the user to make the connection themselves.",
-        "tradeoff": "Inline suggestions can feel intrusive if they appear too frequently or at the wrong moment. This required careful logic around when to surface them — a problem that would need real usage data to tune properly.",
-        "image": "/assets/case-study/flow/flow-wf-2.jpg"
+        "title": "Optimistic UI & Offline-First Execution",
+        "options": "Traditional request-response model vs. Optimistic UI with Background Syncing",
+        "choice": "Optimistic UI where state mutations are staged in local storage and synced silently.",
+        "rationale": "To solve 'The Three-Second Rule', we couldn't wait for network requests. When a driver taps a delivery checkbox, the UI updates instantly. A custom syncBatchDeliveries() function batches interactions and pushes them to the backend when the network is restored.",
+        "tradeoff": "Increases front-end complexity to handle conflict resolution and failed sync states.",
+        "impact": "Interaction time per stop reduced to under one second, eliminating loading spinners.",
+        "image": null
+      },
+      {
+        "title": "Impersonation Mode for Superadmin",
+        "options": "Standard admin panel vs. Impersonation Mode",
+        "choice": "Impersonation Mode that safely hijacks the activeFranchiseId.",
+        "rationale": "Superadmins need to troubleshoot franchise-specific issues without compromising strict Row Level Security (RLS) that isolates tenant data. Impersonation allows them to instantly view the exact dashboard and UI state that the franchisee sees, enabling rapid, safe debugging.",
+        "tradeoff": "Requires strict auditing and logging to ensure the feature isn't abused for unauthorized data access.",
+        "impact": "Enabled safe debugging without brittle backend workarounds.",
+        "image": null
+      },
+      {
+        "title": "Unified Running Ledger for Billing",
+        "options": "Traditional 30-day invoicing vs. Unified Running Ledger",
+        "choice": "Unified Running Ledger where deliveries are debits and ad-hoc payments are credits.",
+        "rationale": "Franchise owners struggled with generating invoices for customers who paid random amounts in advance. Redesigning the system to act as a running ledger natively solved the unpredictable payment frequency problem.",
+        "tradeoff": "Requires educating users to move away from the concept of a 'monthly bill' to a continuous balance.",
+        "impact": "Solved spot payment confusion and eliminated manual ledger reconciliation.",
+        "image": null
       }
     ],
 
     "outcomes": {
-      "summary": "Flow is a concept project — there are no post-launch metrics. What was validated was the core loop through user testing.",
+      "summary": "By aligning technical architecture directly with physical, real-world user research, Milkow achieved significant operational improvements, demonstrating how physical context dictates every layer of the product.",
       "metrics": [
-        { "label": "Core loop validated", "value": "Prompt → generate → refine → export completable without guidance", "note": "3 of 4 test users completed first ad without instruction" },
-        { "label": "Blank prompt anxiety", "value": "Reduced with suggestions", "note": "Users who hesitated at the prompt field started faster with suggested prompts" },
-        { "label": "What I'd measure post-launch", "value": "Time to first export, iteration rate per session, prompt suggestion adoption rate", "note": "These three metrics would tell whether the core loop is working" }
-      ],
-      "note": "Explicitly naming what I'd measure — rather than claiming metrics from a concept project — is itself a design decision about honesty."
+        { "label": "Interaction Time Per Stop", "value": "< 1 Second", "note": "Achieved through Optimistic UI and high-contrast targets" },
+        { "label": "Balance Drift", "value": "Eliminated", "note": "Real-time inventory deduction instantly updates balances" },
+        { "label": "Manual Ledger Reconciliation", "value": "Eliminated", "note": "Automated daily bill generation replaced manual work" }
+      ]
     },
 
-    "reflection": "The decision I'm least confident about is the prompt-first entry point. It's correct for experienced digital marketers but I underestimated how disorienting it is for small business owners who have no mental model of what a good prompt looks like. The Inspiration Engine partially compensates for this, but it's downstream of the problem. I would explore a hybrid entry: a structured brief form (audience, tone, product) that generates a prompt on the user's behalf, letting them edit or use it directly. That would serve first-time users without alienating power users who prefer writing their own prompts.",
+    "reflection": "Milkow serves as a prime example of how deeply understanding the physical context of the user (sunlight, network drops, ad-hoc payments) dictates every layer of the product, from the SQL schema to the CSS color palette.",
 
     "achievements": [
       {
-        "title": "End-to-end solo concept delivered",
-        "description": "Scoped, designed, and documented a full AI product concept — from discovery through UI — in 1 week with no external dependencies."
+        "title": "Lightning-Fast Route Execution",
+        "description": "Reduced the time spent interacting with the app per stop to under one second by combining Optimistic UI with fat-finger friendly touch targets."
       },
       {
-        "title": "Core loop validated in user testing",
-        "description": "3 of 4 test users completed the full prompt → generate → refine → export loop without instruction on their first session."
+        "title": "Elimination of Balance Drift",
+        "description": "Implemented real-time inventory deduction the moment a delivery is marked complete, ensuring immediate accuracy without waiting for end-of-shift batching."
       },
       {
-        "title": "Eliminated blank-prompt anxiety",
-        "description": "Introduced a prompt suggestion system that measurably reduced hesitation at the generator's entry point — the primary user drop-off identified in research."
+        "title": "Frictionless Collections",
+        "description": "Integrated dynamic high-resolution UPI QR code generation on an HTML5 Canvas, allowing admins to instantly share pre-filled payment requests via WhatsApp."
+      },
+      {
+        "title": "End-Customer Empowerment",
+        "description": "Designed a minimalist Public View Bill Portal allowing customers to securely view their outstanding ledgers via phone number, drastically reducing support calls."
       }
     ],
 
-    "tags": ["AI Product", "UX Design", "Web App", "Creative Tools", "Marketing"],
+    "tags": ["UX Design", "Engineering", "PWA", "Next.js", "Supabase", "Offline-First", "Logistics"],
 
     "gallery": [
-      "/assets/case-study/flow/gallery-1.jpg",
-      "/assets/case-study/flow/gallery-2.jpg",
-      "/assets/case-study/flow/gallery-3.jpg"
+      "/assets/case-study/milkow/gallery-1.jpg",
+      "/assets/case-study/milkow/gallery-2.jpg",
+      "/assets/case-study/milkow/gallery-3.jpg"
     ]
   }
 ]

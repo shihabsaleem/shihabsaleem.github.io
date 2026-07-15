@@ -50,7 +50,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <h1 className="sr-only">
-        About Shihab Saleem - UI UX Designer & Product Designer based in Kerala
+        About Shihab Saleem - Expert UI/UX Designer, Product Strategist & Web Developer based in Kerala, India
       </h1>
       <AboutHero />
       <div className="px-6 md:px-12 lg:px-20 py-12">

@@ -15,9 +15,9 @@ export default function CaseStudiesPage() {
   return (
     <>
       <h1 className="sr-only">
-        Shihab Saleem - UI/UX Designer & Product Designer based in Kerala, India.
-        Specializing in SaaS design, mobile applications, branding, and user-centered digital experiences.
-        Explore my portfolio of responsive web design, interactive prototyping, and frontend development projects using React and Next.js.
+        Shihab Saleem Case Studies - Expert UI/UX Design & Product Design Portfolio from Kerala, India.
+        Discover in-depth case studies on SaaS platforms, engaging mobile apps, and user-centered digital experiences.
+        Explore real-world examples of my responsive web design, interactive prototyping, and frontend development using Next.js and React.
         <div className="flex gap-8 mb-8 tracking-widest text-gray-400 dark:text-gray-500 z-20">
           <a href={`https://${info.linkedin}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href={`https://${info.github}`} target="_blank" rel="noopener noreferrer">GitHub</a>

@@ -72,7 +72,7 @@ export default function CaseStudiesClient() {
 
       {/* CASE STUDIES LIST */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-32 space-y-32 md:space-y-48">
-        {caseStudies.map((study: any, index: number) => {
+        {[...caseStudies].sort((a: any, b: any) => b.id - a.id).map((study: any, index: number) => {
           const isEven = index % 2 === 0;
           return (
             <div key={study.id} className="cs-item relative group">
@@ -89,7 +89,7 @@ export default function CaseStudiesClient() {
                 <Link href={`/case-studies/${study.slug}`} className="w-full lg:w-[60%] block overflow-hidden rounded-2xl md:rounded-3xl cursor-pointer">
                   <div className="relative w-full aspect-4/3 md:aspect-16/10 overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                     <Image
-                      src={study.heroImage}
+                      src={study.coverImage || study.heroImage }
                       alt={study.name}
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
@@ -111,9 +111,11 @@ export default function CaseStudiesClient() {
                     </span>
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none mb-6 text-zinc-900 dark:text-white group-hover:text-red-600 transition-colors duration-300">
-                    {study.name}
-                  </h2>
+                  <Link href={`/case-studies/${study.slug}`}>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none mb-6 text-zinc-900 dark:text-white group-hover:text-red-600 transition-colors duration-300">
+                      {study.name}
+                    </h2>
+                 
                   
                   <p className="text-base md:text-lg font-light text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed line-clamp-4">
                     {study.hook}
@@ -128,7 +130,7 @@ export default function CaseStudiesClient() {
                       <p className="text-[9px] font-bold uppercase tracking-widest text-red-600 mb-1">Duration</p>
                       <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{study.duration}</p>
                     </div>
-                  </div>
+                  </div> </Link>
 
                   <Link 
                     href={`/case-studies/${study.slug}`} 

@@ -4,8 +4,8 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import assetData from "@/data/asset";
-import { FaLinkedinIn, FaGithub, FaBehance, FaInstagram } from "react-icons/fa";
-import { GoArrowRight } from "react-icons/go";
+import { SiLinkedin, SiGithub, SiBehance, SiInstagram } from "@icons-pack/react-simple-icons";
+import { ArrowRight } from "lucide-react";
 import localFont from "next/font/local";
 
 const halimun = localFont({ src: "../../public/Halimun.ttf" });
@@ -172,7 +172,7 @@ const AboutHero = () => {
 
           <div className="about-reveal flex flex-wrap items-center gap-6">
             <button className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold text-sm tracking-wide flex items-center gap-3 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-lg shadow-black/10 dark:shadow-white/10">
-              Hire me now <GoArrowRight size={20} />
+              Hire me now <ArrowRight size={20} />
             </button>
             <div className="px-6 py-3.5 border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-black/40 backdrop-blur-md rounded-full font-medium text-xs tracking-widest uppercase text-zinc-600 dark:text-zinc-300 flex items-center gap-3">
               <span className="relative flex h-2 w-2">
@@ -320,10 +320,10 @@ const AboutHero = () => {
 
         <div className="flex flex-wrap justify-center items-center gap-4 lg:gap-6">
           {[
-            { label: "LinkedIn", url: `https://${info.linkedin}`, icon: FaLinkedinIn },
-            { label: "GitHub", url: `https://${info.github}`, icon: FaGithub },
-            { label: "Behance", url: `https://${info.behance}`, icon: FaBehance },
-            { label: "Instagram", url: `https://${info.insta}`, icon: FaInstagram },
+            { label: "LinkedIn", url: `https://${info.linkedin}`, icon: SiLinkedin },
+            { label: "GitHub", url: `https://${info.github}`, icon: SiGithub },
+            { label: "Behance", url: `https://${info.behance}`, icon: SiBehance },
+            { label: "Instagram", url: `https://${info.insta}`, icon: SiInstagram },
           ].map((s, idx, arr) => (
             <React.Fragment key={s.label}>
               <a

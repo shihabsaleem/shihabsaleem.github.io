@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { IoCloseOutline, IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface LightboxProps {
   images: { src: string; alt: string }[];
@@ -89,7 +89,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
         onClick={(e) => handleClose(e)}
         className="absolute top-8 right-8 text-white/70 hover:text-white text-4xl transition-all duration-300 z-110 hover:rotate-90"
       >
-        <IoCloseOutline />
+        <X />
       </button>
 
       {/* Prev */}
@@ -98,7 +98,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
           onClick={(e) => { e.stopPropagation(); goPrev(); }}
           className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-110 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
         >
-          <IoChevronBackOutline />
+          <ChevronLeft />
         </button>
       )}
 
@@ -108,7 +108,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
           onClick={(e) => { e.stopPropagation(); goNext(); }}
           className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-110 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white text-2xl transition-all duration-300 backdrop-blur-sm cursor-pointer"
         >
-          <IoChevronForwardOutline />
+          <ChevronRight />
         </button>
       )}
 

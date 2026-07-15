@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useCountryInfo } from "@/data/useCountryInfo";
+import { SiLinkedin, SiGithub, SiBehance, SiInstagram, SiX } from "@icons-pack/react-simple-icons";
 
 export default function ContactClient() {
     const info = useCountryInfo();
@@ -160,12 +161,12 @@ export default function ContactClient() {
     };
 
     const socialLinks = [
-        { name: "LN", full: "LinkedIn", url: `https://${info.linkedin}` },
-        { name: "GH", full: "GitHub", url: `https://${info.github}` },
-        { name: "BE", full: "Behance", url: `https://${info.behance}` },
-        { name: "IG", full: "Instagram", url: `https://${info.insta}` },
+        { icon: <SiLinkedin />, full: "LinkedIn", url: `https://${info.linkedin}` },
+        { icon: <SiGithub />, full: "GitHub", url: `https://${info.github}` },
+        { icon: <SiBehance />, full: "Behance", url: `https://${info.behance}` },
+        { icon: <SiInstagram />, full: "Instagram", url: `https://${info.insta}` },
         {
-            name: "TW",
+            icon: <SiX />,
             full: "Twitter",
             url: `https://twitter.com/${info.twitter.replace("@", "")}`,
         },
@@ -178,7 +179,7 @@ export default function ContactClient() {
             style={{ perspective: "1000px" }}
         >
             <h1 className="sr-only">
-                Contact Shihab Saleem - UI UX Designer & Product Designer in Kerala
+                Contact Shihab Saleem - Hire Expert UI/UX Designer, Product Designer, & Frontend Developer in Kerala, India
             </h1>
 
             <canvas
@@ -228,10 +229,10 @@ export default function ContactClient() {
                                 <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
                                     01
                                 </span>
-                                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                                <h3 className="text-xs md:text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
                                     Email Address
                                 </h3>
-                                <p className="text-2xl md:text-3xl font-light mb-6 break-all">
+                                <p className="text-xl md:text-3xl font-light mb-6 break-all">
                                     {info.email}
                                 </p>
                                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-600/30 rounded-full text-sm">
@@ -255,10 +256,10 @@ export default function ContactClient() {
                                     <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
                                         02
                                     </span>
-                                    <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                                    <h3 className="text-xs md:text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
                                         Phone Number
                                     </h3>
-                                    <p className="text-2xl md:text-3xl font-light mb-6">
+                                    <p className="text-xl md:text-3xl font-light mb-6">
                                         {info.phone}
                                     </p>
                                     <div className="text-red-600 text-sm font-medium">
@@ -282,10 +283,10 @@ export default function ContactClient() {
                                 <span className="text-xs tracking-widest text-zinc-400 dark:text-zinc-500">
                                     03
                                 </span>
-                                <h3 className="text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
+                                <h3 className="text-xs md:text-sm uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mt-8 mb-4">
                                     Based In
                                 </h3>
-                                <p className="text-2xl md:text-3xl font-light mb-6">
+                                <p className="text-xl md:text-3xl font-light mb-6">
                                     {info.location}
                                 </p>
                                 <div className="text-zinc-400 text-sm">Open to work</div>
@@ -310,10 +311,10 @@ export default function ContactClient() {
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                                 <div className="relative z-10">
                                     <span className="text-xs tracking-widest opacity-70">04</span>
-                                    <h3 className="text-sm uppercase tracking-widest opacity-70 mt-8 mb-4">
+                                    <h3 className="text-xs md:text-sm uppercase tracking-widest opacity-70 mt-8 mb-4">
                                         Resume / CV
                                     </h3>
-                                    <p className="text-2xl md:text-3xl font-light mb-6">
+                                    <p className="text-xl md:text-3xl font-light mb-6">
                                         Download My CV
                                     </p>
                                     <div className="text-white text-sm font-medium">
@@ -329,19 +330,19 @@ export default function ContactClient() {
                     <h2 className="text-2xl font-light mb-8 text-center">
                         Connect on Social<span className="text-red-600">.</span>
                     </h2>
-                    <div className="flex flex-wrap justify-center gap-4">
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
                         {socialLinks.map((social) => (
                             <a
-                                key={social.name}
+                                key={social.full}
                                 href={social.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link group"
                             >
                                 <div className="relative">
-                                    <div className="w-16 h-16 md:w-20 md:h-20 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-red-600/20 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
-                                        <span className="text-xl md:text-2xl font-bold group-hover:text-white transition-colors">
-                                            {social.name}
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-red-600/20 rounded-xl md:rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
+                                        <span className="text-xl sm:text-2xl md:text-3xl group-hover:text-white transition-colors">
+                                            {social.icon}
                                         </span>
                                     </div>
                                 </div>
